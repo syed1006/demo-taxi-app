@@ -42,7 +42,7 @@ jobs:
                       ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
 
             - name: Build with Next.js 🏗️
-              run: npm run build && touch ${{ github.workspace }}/build/.nojekyll
+              run: pnpm build && touch ${{ github.workspace }}/build/.nojekyll
 
             - name: List output directory (debugging) 📂
               run: ls -la
