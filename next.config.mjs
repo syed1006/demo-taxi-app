@@ -13,7 +13,7 @@ const nextConfig = {
 	output: "export",
 	distDir: "build",
 	reactStrictMode: true,
-	assetPrefix: "https://syedgaian.github.io/demo-taxi-app/",
+	assetPrefix: "https://syed1006.github.io/demo-taxi-app/",
 };
 
 export default nextConfig;
