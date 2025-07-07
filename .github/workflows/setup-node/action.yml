@@ -9,6 +9,10 @@ runs:
           with:
               node-version: 20
 
+        - name: Install pnpm 📦
+          shell: bash
+          run: npm install -g pnpm
+
         - name: Cache dependencies ⚡
           id: cache_dependencies
           uses: actions/cache@v3
