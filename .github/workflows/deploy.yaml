@@ -35,6 +35,9 @@ jobs:
                 restore-keys: |
                   ${{ runner.os }}-vite-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
 
+            - name: List output directory (debugging) 📂
+              run: ls -la
+
             - name: Build with vite 🏗️
               run: pnpm build && touch ${{ github.workspace }}/build/.nojekyll
 
