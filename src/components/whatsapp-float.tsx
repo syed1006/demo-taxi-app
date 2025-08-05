@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { MessageCircle, X, Phone, Headphones } from "lucide-react"
+import {WHATSAPP_NUMBER} from "@/constants"
 
 export function WhatsAppFloat() {
   const [isVisible, setIsVisible] = useState(true)
@@ -11,12 +12,12 @@ export function WhatsAppFloat() {
   const handleWhatsAppClick = () => {
     const message = `Hi! I'm interested in booking a taxi with BangaloreUrbanCabs. Can you please help me with the details?`
     const whatsappNumber = "7022762929"
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, "_blank")
   }
 
   const handleCallClick = () => {
-    window.location.href = "tel:+7022762929"
+    window.location.href = `tel:+${WHATSAPP_NUMBER}`
   }
 
   const handleClose = () => {
