@@ -54,26 +54,7 @@ const vehicleCategories = {
           "https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
         popular: true,
         color: "from-blue-500 to-cyan-600",
-      },
-      {
-        id: "electric",
-        name: "Electric",
-        subtitle: "4+1 Seater",
-        description: "Tata Nexon EV, MG ZS EV, Hyundai Kona Electric",
-        pricing: {
-          airport: "₹849",
-          hourly4: "₹1,300",
-          hourly8: "₹2,500",
-          outstation: "₹13-14",
-          driverBata: "₹400",
-        },
-        features: ["4+1 passengers", "Zero emissions", "Silent ride", "Eco-friendly"],
-        icon: Zap,
-        image:
-          "https://images.unsplash.com/photo-1593941707882-a5bac6861d75?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        popular: false,
-        color: "from-green-400 to-teal-500",
-      },
+      }
     ],
   },
   premium: {

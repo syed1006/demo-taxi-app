@@ -71,7 +71,7 @@ export function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
               <Phone className="h-4 w-4" />
-              <span>+91 98765 43210</span>
+              <span>+91 70227 62929</span>
             </div>
             <ThemeToggle />
             <Button

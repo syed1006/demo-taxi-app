@@ -11,13 +11,13 @@ interface HeroSliderProps {
 const slides = [
   {
     id: 1,
-    title: "BangaloreCabs",
+    title: "BangaloreUrbanCabs",
     subtitle: "ನಮ್ಮ ಸೇವೆ",
     description:
       "From Koramangala to Whitefield, MG Road to Electronic City - Your trusted ride partner across Bangalore.",
     cta: "Book Your Ride Now",
     background:
-      "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "/assets/bg/city-bg.png",
     theme: "from-orange-600/80 via-red-600/70 to-pink-600/80",
     icon: Car,
     features: [
@@ -35,7 +35,7 @@ const slides = [
       "Professional airport transfers with flight tracking, meet & greet service, and luggage assistance. Never miss a flight again!",
     cta: "Book Airport Ride",
     background:
-      "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "/assets/bg/airplane.png",
     theme: "from-blue-600/80 via-purple-600/70 to-indigo-600/80",
     icon: Plane,
     features: [
@@ -53,7 +53,7 @@ const slides = [
       "Discover beautiful destinations around Bangalore. From Nandi Hills to Mysore, Coorg to Ooty - adventure awaits!",
     cta: "Plan Your Trip",
     background:
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "/assets/bg/mountain.png",
     theme: "from-green-600/80 via-teal-600/70 to-emerald-600/80",
     icon: Mountain,
     features: [
@@ -71,7 +71,7 @@ const slides = [
       "Professional business travel solutions with premium vehicles, punctual service, and invoice support for corporate clients.",
     cta: "Corporate Booking",
     background:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "/assets/bg/corporate.jpg",
     theme: "from-gray-700/80 via-slate-600/70 to-zinc-600/80",
     icon: Users,
     features: [
@@ -153,7 +153,7 @@ export function HeroSlider({ onBookNow }: HeroSliderProps) {
       <Button
         variant="ghost"
         size="icon"
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30 rounded-full w-12 h-12"
+        className="absolute left-4 top-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30 rounded-full w-12 h-12"
         onClick={prevSlide}
       >
         <ChevronLeft className="h-6 w-6" />
@@ -162,7 +162,7 @@ export function HeroSlider({ onBookNow }: HeroSliderProps) {
       <Button
         variant="ghost"
         size="icon"
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30 rounded-full w-12 h-12"
+        className="absolute right-4 top-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30 rounded-full w-12 h-12"
         onClick={nextSlide}
       >
         <ChevronRight className="h-6 w-6" />
