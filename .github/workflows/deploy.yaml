@@ -36,7 +36,10 @@ jobs:
                   ${{ runner.os }}-vite-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
 
             - name: List output directory (debugging) 📂
-              run: ls -laR
+              run: ls -la
+
+            - name: List src directory (debugging) 📂
+              run: ls -laR src
 
             - name: Build with vite 🏗️
               run: pnpm build && touch ${{ github.workspace }}/build/.nojekyll
