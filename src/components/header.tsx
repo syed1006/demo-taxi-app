@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Car, Menu, Phone } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import {WHATSAPP_NUMBER} from "@/constants"
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -49,7 +50,7 @@ export function Header() {
               <Car className="h-8 w-8 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-foreground">BangaloreCabs</h1>
+              <h1 className="text-2xl font-bold text-foreground">BangaloreUrbanCabs</h1>
               <p className="text-xs text-muted-foreground">ನಮ್ಮ ಸೇವೆ</p>
             </div>
           </div>
@@ -71,7 +72,7 @@ export function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
               <Phone className="h-4 w-4" />
-              <span>+91 70227 62929</span>
+              <span>+91 {WHATSAPP_NUMBER}</span>
             </div>
             <ThemeToggle />
             <Button

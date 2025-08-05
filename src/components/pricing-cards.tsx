@@ -1,266 +1,25 @@
 "use client"
 
+import type React from "react"
+
+import { useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { MapPin, Clock, Plane, Car, Users, Luggage, Star, Crown, Bus, Zap, Shield } from "lucide-react"
+import {ImageCarousel} from "@/components/image-corousel"
+import {VEHICLE_CATEGORIES, WHATSAPP_NUMBER} from "@/constants"
+import {
+    MapPin,
+    Clock,
+    Plane,
+} from "lucide-react"
 
 interface PricingCardsProps {
   onCabSelect: (cabType: string) => void
 }
 
-const vehicleCategories = {
-  economy: {
-    title: "Economy",
-    description: "Budget-friendly options for everyday travel",
-    icon: Car,
-    gradient: "from-green-500 to-emerald-600",
-    vehicles: [
-      {
-        id: "mini",
-        name: "Mini",
-        subtitle: "4+1 Seater",
-        description: "Maruti Alto, Hyundai Eon, Tata Nano, Maruti Wagon R",
-        pricing: {
-          airport: "₹699",
-          hourly4: "₹999",
-          hourly8: "₹1,899",
-          outstation: "₹10-11",
-          driverBata: "₹300",
-        },
-        features: ["4+1 passengers", "AC Hatchback", "City rides", "Budget friendly"],
-        icon: Car,
-        image:
-          "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        popular: false,
-        color: "from-green-500 to-emerald-600",
-      },
-      {
-        id: "sedan",
-        name: "Sedan",
-        subtitle: "4+1 Seater",
-        description: "Toyota Etios, Swift Dzire, Honda Xcent, Honda Amaze",
-        pricing: {
-          airport: "₹799",
-          hourly4: "₹1,200",
-          hourly8: "₹2,300",
-          outstation: "₹12-13",
-          driverBata: "₹400",
-        },
-        features: ["4+1 passengers", "AC Sedan", "Comfortable seating", "Luggage space"],
-        icon: Users,
-        image:
-          "https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        popular: true,
-        color: "from-blue-500 to-cyan-600",
-      }
-    ],
-  },
-  premium: {
-    title: "Premium",
-    description: "Enhanced comfort with premium vehicles",
-    icon: Star,
-    gradient: "from-purple-500 to-violet-600",
-    vehicles: [
-      {
-        id: "prime-sedan",
-        name: "Prime Sedan",
-        subtitle: "4+1 Seater",
-        description: "Maruti Ciaz, Platinum Etios, Nissan Sunny, Honda City",
-        pricing: {
-          airport: "₹899",
-          hourly4: "₹1,400",
-          hourly8: "₹2,600",
-          outstation: "₹14",
-          driverBata: "₹500",
-        },
-        features: ["4+1 passengers", "Premium sedan", "Enhanced comfort", "Premium interiors"],
-        icon: Star,
-        image:
-          "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        popular: false,
-        color: "from-purple-500 to-violet-600",
-      },
-      {
-        id: "premium-suv",
-        name: "Premium SUV",
-        subtitle: "6+1 Seater",
-        description: "Maruti Ertiga, Mahindra Marazzo, Toyota Rumion",
-        pricing: {
-          airport: "₹1,299",
-          hourly4: "₹1,500",
-          hourly8: "₹2,900",
-          outstation: "₹15-16",
-          driverBata: "₹500",
-        },
-        features: ["6+1 passengers", "Premium SUV", "Spacious interior", "Comfort ride"],
-        icon: Luggage,
-        image:
-          "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        popular: true,
-        color: "from-indigo-500 to-purple-600",
-      },
-    ],
-  },
-  suv: {
-    title: "SUV",
-    description: "Spacious vehicles for groups and families",
-    icon: Luggage,
-    gradient: "from-orange-500 to-red-600",
-    vehicles: [
-      {
-        id: "suv",
-        name: "SUV",
-        subtitle: "6+1 to 7+1 Seater",
-        description: "Maruti Ertiga, Toyota Innova, Kia Carens, Toyota Rumion",
-        pricing: {
-          airport: "₹1,499",
-          hourly4: "₹1,600-1,900",
-          hourly8: "₹3,100-3,500",
-          outstation: "₹16-18",
-          driverBata: "₹500",
-        },
-        features: ["6+1 to 7+1 passengers", "Spacious SUV", "Large luggage space", "Group travel"],
-        icon: Luggage,
-        image:
-          "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        popular: true,
-        color: "from-orange-500 to-red-600",
-      },
-      {
-        id: "large-suv",
-        name: "Large SUV",
-        subtitle: "7+1 Seater",
-        description: "Mahindra Scorpio, Tata Safari, Mahindra XUV700",
-        pricing: {
-          airport: "₹1,699",
-          hourly4: "₹1,800",
-          hourly8: "₹3,400",
-          outstation: "₹17-19",
-          driverBata: "₹500",
-        },
-        features: ["7+1 passengers", "Large SUV", "Maximum space", "Powerful engine"],
-        icon: Shield,
-        image:
-          "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        popular: false,
-        color: "from-red-500 to-orange-600",
-      },
-    ],
-  },
-  luxury: {
-    title: "Luxury",
-    description: "Premium luxury vehicles for special occasions",
-    icon: Crown,
-    gradient: "from-amber-500 to-yellow-600",
-    vehicles: [
-      {
-        id: "luxury-suv",
-        name: "Luxury SUV",
-        subtitle: "6+1 to 7+1 Seater",
-        description: "Innova Crysta, Toyota Innova Hycross, Toyota Fortuner",
-        pricing: {
-          airport: "₹1,999-2,499",
-          hourly4: "Not Available",
-          hourly8: "₹3,800-4,800",
-          outstation: "₹19-24",
-          driverBata: "₹600",
-        },
-        features: ["6+1 to 7+1 passengers", "Luxury SUV", "Premium comfort", "Executive travel"],
-        icon: Crown,
-        image:
-          "https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        popular: false,
-        color: "from-amber-500 to-yellow-600",
-      },
-      {
-        id: "premium-luxury",
-        name: "Premium Luxury",
-        subtitle: "4+1 Seater",
-        description: "BMW 3 Series, Audi A4, Mercedes C-Class, Jaguar XE",
-        pricing: {
-          airport: "₹2,999-3,999",
-          hourly4: "Not Available",
-          hourly8: "₹5,999-7,999",
-          outstation: "₹25-35",
-          driverBata: "₹800",
-        },
-        features: ["4+1 passengers", "Luxury sedan", "Premium experience", "VIP treatment"],
-        icon: Crown,
-        image:
-          "https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        popular: false,
-        color: "from-yellow-500 to-amber-600",
-      },
-    ],
-  },
-  group: {
-    title: "Group Travel",
-    description: "Large capacity vehicles for big groups",
-    icon: Bus,
-    gradient: "from-indigo-500 to-blue-600",
-    vehicles: [
-      {
-        id: "tempo-traveller",
-        name: "Tempo Traveller",
-        subtitle: "12+1 Seater",
-        description: "Spacious tempo traveller for large groups and events",
-        pricing: {
-          airport: "₹3,500-4,000",
-          hourly4: "Not Available",
-          hourly8: "₹4,499",
-          outstation: "₹22-29",
-          driverBata: "₹600",
-        },
-        features: ["12+1 passengers", "Large group travel", "Event transportation", "Ample luggage space"],
-        icon: Bus,
-        image:
-          "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        popular: false,
-        color: "from-indigo-500 to-blue-600",
-      },
-      {
-        id: "mini-bus",
-        name: "Mini Bus",
-        subtitle: "17+1 Seater",
-        description: "Force Traveller, Mahindra Tourister for large groups",
-        pricing: {
-          airport: "₹4,500-5,500",
-          hourly4: "Not Available",
-          hourly8: "₹5,999",
-          outstation: "₹25-32",
-          driverBata: "₹700",
-        },
-        features: ["17+1 passengers", "Corporate events", "Wedding parties", "Tour groups"],
-        icon: Bus,
-        image:
-          "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        popular: false,
-        color: "from-blue-500 to-indigo-600",
-      },
-      {
-        id: "luxury-bus",
-        name: "Luxury Bus",
-        subtitle: "35+1 Seater",
-        description: "Volvo, Mercedes luxury coaches for large groups",
-        pricing: {
-          airport: "₹8,000-12,000",
-          hourly4: "Not Available",
-          hourly8: "₹12,999",
-          outstation: "₹35-45",
-          driverBata: "₹800",
-        },
-        features: ["35+1 passengers", "AC luxury coach", "Reclining seats", "Entertainment system"],
-        icon: Bus,
-        image:
-          "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        popular: false,
-        color: "from-purple-500 to-indigo-600",
-      },
-    ],
-  },
-}
+// Image Carousel Component
 
 export function PricingCards({ onCabSelect }: PricingCardsProps) {
   return (
@@ -283,7 +42,7 @@ export function PricingCards({ onCabSelect }: PricingCardsProps) {
           <TabsList className="w-full mb-8 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm p-1 rounded-xl shadow-lg">
             {/* Mobile: Horizontal Scrollable Tabs */}
             <div className="flex overflow-x-auto scrollbar-hide w-full space-x-1 md:hidden">
-              {Object.entries(vehicleCategories).map(([key, category]) => {
+              {Object.entries(VEHICLE_CATEGORIES).map(([key, category]) => {
                 const CategoryIcon = category.icon
                 return (
                   <TabsTrigger
@@ -300,7 +59,7 @@ export function PricingCards({ onCabSelect }: PricingCardsProps) {
 
             {/* Desktop: Grid Layout */}
             <div className="hidden md:grid md:grid-cols-5 w-full gap-1">
-              {Object.entries(vehicleCategories).map(([key, category]) => {
+              {Object.entries(VEHICLE_CATEGORIES).map(([key, category]) => {
                 const CategoryIcon = category.icon
                 return (
                   <TabsTrigger
@@ -321,7 +80,7 @@ export function PricingCards({ onCabSelect }: PricingCardsProps) {
             <p className="text-xs text-muted-foreground animate-pulse">← Swipe to see more categories →</p>
           </div>
 
-          {Object.entries(vehicleCategories).map(([categoryKey, category]) => (
+          {Object.entries(VEHICLE_CATEGORIES).map(([categoryKey, category]) => (
             <TabsContent key={categoryKey} value={categoryKey} className="space-y-8">
               <div className="text-center mb-8">
                 <div className="flex items-center justify-center mb-4">
@@ -359,40 +118,13 @@ export function PricingCards({ onCabSelect }: PricingCardsProps) {
 
                         {/* Mobile-Optimized Layout */}
                         <div className="flex flex-col md:flex-row">
-                          {/* Vehicle Image with Fallback Background */}
-                          <div className="relative h-48 md:h-64 md:w-1/3 overflow-hidden">
-                            {/* Fallback gradient background - always visible */}
-                            <div className={`absolute inset-0 bg-gradient-to-br ${vehicle.color}`} />
-
-                            {/* Vehicle icon overlay for fallback */}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div
-                                className={`w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-lg`}
-                              >
-                                <VehicleIcon className="h-8 w-8 text-white" />
-                              </div>
-                            </div>
-
-                            {/* Actual image */}
-                            <img
-                              src={vehicle.image || "/placeholder.svg"}
-                              alt={vehicle.name}
-                              className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500 z-10"
-                              loading="lazy"
-                              onLoad={(e) => {
-                                const target = e.target as HTMLImageElement
-                                target.style.opacity = "1"
-                              }}
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement
-                                target.style.opacity = "0"
-                              }}
-                              style={{ opacity: 0 }}
-                            />
-
-                            {/* Overlay gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-20" />
-                          </div>
+                          {/* Vehicle Image Carousel */}
+                          <ImageCarousel
+                            images={vehicle.images}
+                            alt={vehicle.name}
+                            color={vehicle.color}
+                            icon={VehicleIcon}
+                          />
 
                           {/* Content Section */}
                           <div className="flex-1 p-4 sm:p-6">
@@ -537,7 +269,7 @@ export function PricingCards({ onCabSelect }: PricingCardsProps) {
             <Button
               onClick={() => {
                 const message = "Hi! I need a custom quote for my travel requirements. Can you help me?"
-                const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`
+                const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
                 window.open(whatsappUrl, "_blank")
               }}
               className="bg-white text-orange-500 hover:bg-orange-50 font-bold px-6 sm:px-8 py-2 sm:py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
