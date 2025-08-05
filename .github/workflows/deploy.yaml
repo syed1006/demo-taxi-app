@@ -46,13 +46,13 @@ jobs:
               run: ls -laR src
 
             - name: Build with vite 🏗️
-              run: pnpm build && touch ${{ github.workspace }}/build/.nojekyll
+              run: pnpm build && touch ${{ github.workspace }}/dist/.nojekyll
 
             - name: Upload artifact 📡
               uses: actions/upload-pages-artifact@v3
               with:
                   name: "github-pages"
-                  path: ./build
+                  path: ./dist
 
     deploy:
         environment:
