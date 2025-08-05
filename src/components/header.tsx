@@ -49,7 +49,7 @@ export function Header() {
               <Car className="h-8 w-8 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-foreground">BangaloreCabs</h1>
+              <h1 className="text-2xl font-bold text-foreground">BangaloreUrbanCabs</h1>
               <p className="text-xs text-muted-foreground">ನಮ್ಮ ಸೇವೆ</p>
             </div>
           </div>
