@@ -47,7 +47,7 @@ export default function Home() {
   }
 
   return (
-    <div className="box-border min-h-screen w-screen h-screen bg-background overflow-x-hidden">
+    <div className="box-border min-h-screen bg-background overflow-x-hidden">
       {/* Sticky Header */}
       <Header />
 
