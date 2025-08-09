@@ -979,19 +979,6 @@ export function BookingForm({
 								)}
 							</div>
 
-							{/* Fare Estimator - not for driver-only */}
-							{!isDriverOnly &&
-								formData.pickup &&
-								formData.drop &&
-								formData.cabType && (
-									<FareEstimator
-										pickup={formData.pickup}
-										drop={formData.drop}
-										cabType={formData.cabType}
-										bookingType={formData.bookingType}
-									/>
-								)}
-
 							{/* Additional Notes */}
 							<div className="space-y-4">
 								<Label
