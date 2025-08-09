@@ -445,8 +445,7 @@ export function BookingForm({
 		}
 	};
 
-	const isFormValid =
-		formProgress === 100 && Object.keys(errors).length === 0;
+	const isFormValid = formProgress === 100;
 
 	const getFieldStatus = (field: string) => {
 		const hasValue = formData[field as keyof typeof formData]
