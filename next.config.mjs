@@ -9,11 +9,11 @@ const nextConfig = {
 	images: {
 		unoptimized: true,
 	},
-	// basePath: "/demo-taxi-app",
+	basePath: "/demo-taxi-app",
 	output: "export",
-	// distDir: "build",
+	distDir: "build",
 	reactStrictMode: true,
-	// assetPrefix: "//bangaloreurbancabs.com/",
+	assetPrefix: "//bangaloreurbancabs.com/",
 };
 
 export default nextConfig;
