@@ -36,6 +36,7 @@ import {
 	CheckCircle2,
 	Info,
 } from "lucide-react";
+import { WHATSAPP_NUMBER } from "@/constants";
 
 interface BookingFormProps {
 	selectedCabType: string;
@@ -406,7 +407,7 @@ export function BookingForm({
 
 			message += `\nPlease confirm the booking and share the fare details. Thank you! 🙏`;
 
-			const whatsappNumber = "919876543210";
+			const whatsappNumber = WHATSAPP_NUMBER;
 			const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
 				message
 			)}`;

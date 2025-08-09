@@ -17,7 +17,7 @@ import {
 	ChevronRight,
 } from "lucide-react";
 import { useRef } from "react";
-import { DESTINATIONS } from "@/constants";
+import { DESTINATIONS, WHATSAPP_NUMBER } from "@/constants";
 
 interface DestinationsProps {
 	onBookDestination: (destination: string) => void;
@@ -317,7 +317,7 @@ export function Destinations({ onBookDestination }: DestinationsProps) {
 							onClick={() => {
 								const message =
 									"Hi! I'd like to know about trips to destinations not listed on your website. Can you help me?";
-								const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(
+								const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
 									message
 								)}`;
 								window.open(whatsappUrl, "_blank");
