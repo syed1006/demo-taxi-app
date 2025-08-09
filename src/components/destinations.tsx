@@ -17,226 +17,11 @@ import {
 	ChevronRight,
 } from "lucide-react";
 import { useRef } from "react";
+import { DESTINATIONS } from "@/constants";
 
 interface DestinationsProps {
 	onBookDestination: (destination: string) => void;
 }
-
-const destinations = {
-	bangalore: [
-		{
-			id: 1,
-			name: "Lalbagh Botanical Garden",
-			description:
-				"Historic 240-acre garden with glasshouse and diverse plant species",
-			image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-			distance: "15 km",
-			duration: "45 mins",
-			oneWay: "₹250",
-			roundTrip: "₹450",
-			category: "Nature",
-			rating: 4.5,
-			popular: true,
-		},
-		{
-			id: 2,
-			name: "Cubbon Park",
-			description:
-				"Green oasis in city center, perfect for jogging and relaxing",
-			image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-			distance: "12 km",
-			duration: "35 mins",
-			oneWay: "₹200",
-			roundTrip: "₹350",
-			category: "Nature",
-			rating: 4.3,
-			popular: false,
-		},
-		{
-			id: 3,
-			name: "Bangalore Palace",
-			description:
-				"Majestic Tudor-style palace with elegant interiors and royal artifacts",
-			image: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-			distance: "18 km",
-			duration: "50 mins",
-			oneWay: "₹300",
-			roundTrip: "₹550",
-			category: "Heritage",
-			rating: 4.6,
-			popular: true,
-		},
-		{
-			id: 4,
-			name: "ISKCON Temple",
-			description: "Stunning white marble temple with spiritual ambiance",
-			image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-			distance: "20 km",
-			duration: "55 mins",
-			oneWay: "₹350",
-			roundTrip: "₹650",
-			category: "Spiritual",
-			rating: 4.7,
-			popular: false,
-		},
-		{
-			id: 5,
-			name: "Wonderla Amusement Park",
-			description:
-				"Biggest amusement park with high-thrill rides and water slides",
-			image: "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-			distance: "25 km",
-			duration: "1 hr",
-			oneWay: "₹400",
-			roundTrip: "₹750",
-			category: "Entertainment",
-			rating: 4.4,
-			popular: true,
-		},
-	],
-	weekend: [
-		{
-			id: 6,
-			name: "Nandi Hills",
-			description:
-				"Scenic hill station with sunrise views and cycling trails",
-			image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-			distance: "60 km",
-			duration: "1.5 hrs",
-			oneWay: "₹1,200",
-			roundTrip: "₹2,000",
-			category: "Hills",
-			rating: 4.8,
-			popular: true,
-		},
-		{
-			id: 7,
-			name: "Ramanagara",
-			description:
-				"Rocky terrain famous from Sholay movie, ideal for rock climbing",
-			image: "https://images.unsplash.com/photo-1464822759844-d150baec4ba5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-			distance: "50 km",
-			duration: "1.2 hrs",
-			oneWay: "₹1,000",
-			roundTrip: "₹1,800",
-			category: "Adventure",
-			rating: 4.4,
-			popular: false,
-		},
-		{
-			id: 8,
-			name: "Shivanasamudra Falls",
-			description: "Breathtaking segmented waterfall on the Kaveri River",
-			image: "https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-			distance: "130 km",
-			duration: "2.5 hrs",
-			oneWay: "₹2,500",
-			roundTrip: "₹4,500",
-			category: "Waterfalls",
-			rating: 4.6,
-			popular: true,
-		},
-		{
-			id: 9,
-			name: "Mysore",
-			description: "Heritage city with grand palace and cultural charm",
-			image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-			distance: "145 km",
-			duration: "3 hrs",
-			oneWay: "₹3,000",
-			roundTrip: "₹5,500",
-			category: "Heritage",
-			rating: 4.9,
-			popular: true,
-		},
-		{
-			id: 10,
-			name: "Skandagiri",
-			description:
-				"Night trek destination with magical sunrise above clouds",
-			image: "https://images.unsplash.com/photo-1464822759844-d150baec4ba5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-			distance: "60 km",
-			duration: "1.5 hrs",
-			oneWay: "₹1,200",
-			roundTrip: "₹2,200",
-			category: "Trekking",
-			rating: 4.5,
-			popular: false,
-		},
-	],
-	extended: [
-		{
-			id: 11,
-			name: "Chikmagalur",
-			description:
-				"Hill station with lush coffee plantations and trekking trails",
-			image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-			distance: "250 km",
-			duration: "4.5 hrs",
-			oneWay: "₹5,500",
-			roundTrip: "₹10,000",
-			category: "Coffee Estates",
-			rating: 4.7,
-			popular: true,
-		},
-		{
-			id: 12,
-			name: "Coorg",
-			description:
-				"Scotland of India with misty hills and coffee estates",
-			image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-			distance: "260 km",
-			duration: "5 hrs",
-			oneWay: "₹6,000",
-			roundTrip: "₹11,000",
-			category: "Hills",
-			rating: 4.8,
-			popular: true,
-		},
-		{
-			id: 13,
-			name: "Ooty",
-			description:
-				"Charming hill station with colonial architecture and toy train",
-			image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-			distance: "270 km",
-			duration: "5.5 hrs",
-			oneWay: "₹6,500",
-			roundTrip: "₹12,000",
-			category: "Hills",
-			rating: 4.6,
-			popular: false,
-		},
-		{
-			id: 14,
-			name: "Wayanad",
-			description:
-				"Lush Kerala district with forests, waterfalls, and caves",
-			image: "https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-			distance: "290 km",
-			duration: "6 hrs",
-			oneWay: "₹7,000",
-			roundTrip: "₹13,000",
-			category: "Nature",
-			rating: 4.5,
-			popular: false,
-		},
-		{
-			id: 15,
-			name: "Hogenakkal Falls",
-			description:
-				"Niagara of India with coracle rides and scenic beauty",
-			image: "https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-			distance: "180 km",
-			duration: "3.5 hrs",
-			oneWay: "₹4,000",
-			roundTrip: "₹7,500",
-			category: "Waterfalls",
-			rating: 4.4,
-			popular: true,
-		},
-	],
-};
 
 const categoryIcons = {
 	Nature: TreePine,
@@ -278,21 +63,21 @@ export function Destinations({ onBookDestination }: DestinationsProps) {
 		{
 			title: "🏙️ Within Bangalore",
 			subtitle: "Explore the Garden City",
-			data: destinations.bangalore,
+			data: DESTINATIONS.bangalore,
 			gradient: "from-green-500 to-emerald-600",
 			ref: bangaloreScrollRef,
 		},
 		{
 			title: "🏞️ Weekend Getaways",
 			subtitle: "Perfect for short trips",
-			data: destinations.weekend,
+			data: DESTINATIONS.weekend,
 			gradient: "from-blue-500 to-cyan-600",
 			ref: weekendScrollRef,
 		},
 		{
 			title: "🌲 Extended Trips",
 			subtitle: "Multi-day adventures",
-			data: destinations.extended,
+			data: DESTINATIONS.extended,
 			gradient: "from-purple-500 to-violet-600",
 			ref: extendedScrollRef,
 		},
@@ -368,9 +153,6 @@ export function Destinations({ onBookDestination }: DestinationsProps) {
 										style={{
 											animationDelay: `${index * 100}ms`,
 										}}
-										onClick={() =>
-											onBookDestination(destination.name)
-										}
 									>
 										{destination.popular && (
 											<Badge className="absolute top-4 right-4 bg-orange-500 text-white font-semibold z-10 animate-pulse-soft">
