@@ -445,8 +445,7 @@ export function BookingForm({
 		}
 	};
 
-	const isFormValid =
-		formProgress === 100 && Object.keys(errors).length === 0;
+	const isFormValid = formProgress === 100;
 
 	const getFieldStatus = (field: string) => {
 		const hasValue = formData[field as keyof typeof formData]
@@ -978,19 +977,6 @@ export function BookingForm({
 									</div>
 								)}
 							</div>
-
-							{/* Fare Estimator - not for driver-only */}
-							{!isDriverOnly &&
-								formData.pickup &&
-								formData.drop &&
-								formData.cabType && (
-									<FareEstimator
-										pickup={formData.pickup}
-										drop={formData.drop}
-										cabType={formData.cabType}
-										bookingType={formData.bookingType}
-									/>
-								)}
 
 							{/* Additional Notes */}
 							<div className="space-y-4">
