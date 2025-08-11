@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 interface BookingTypeCardsProps {
-	onBookingTypeSelect: (bookingType: string) => void;
+	onBookingTypeSelect: (bookingType: string, scrollTo: string) => void;
 }
 
 const bookingTypes = [
@@ -31,7 +31,7 @@ const bookingTypes = [
 		name: "Hourly Rental",
 		description: "Flexible stops, hourly",
 		icon: Clock,
-		popular: false,
+		popular: true,
 		color: "from-green-500 to-emerald-600",
 	},
 	{
@@ -47,7 +47,7 @@ const bookingTypes = [
 		name: "Outstation",
 		description: "Travel beyond city",
 		icon: Mountain,
-		popular: false,
+		popular: true,
 		color: "from-orange-500 to-red-600",
 	},
 	{
@@ -71,8 +71,9 @@ const bookingTypes = [
 		name: "Spare Driver",
 		description: "Hire driver only",
 		icon: User,
-		popular: false,
+		popular: true,
 		color: "from-amber-500 to-orange-600",
+		scrollTo: "booking-form",
 	},
 ];
 
@@ -103,7 +104,14 @@ export function BookingTypeCards({
 								<button
 									key={type.id}
 									data-booking-type={type.id}
-									onClick={() => onBookingTypeSelect(type.id)}
+									onClick={() =>
+										onBookingTypeSelect(
+											type.id,
+											type.scrollTo
+												? type.scrollTo
+												: "pricing-cards"
+										)
+									}
 									className="flex-shrink-0 flex flex-col items-center gap-2 p-3 rounded-xl border bg-card hover:bg-accent transition-colors min-w-[100px]"
 								>
 									<div
@@ -141,7 +149,14 @@ export function BookingTypeCards({
 								key={type.id}
 								data-booking-type={type.id}
 								className="group cursor-pointer border hover:border-orange-200 dark:hover:border-orange-800 transition-all duration-200 hover:shadow-md"
-								onClick={() => onBookingTypeSelect(type.id)}
+								onClick={() =>
+									onBookingTypeSelect(
+										type.id,
+										type.scrollTo
+											? type.scrollTo
+											: "pricing-cards"
+									)
+								}
 							>
 								<CardContent className="p-4">
 									<div className="flex items-start gap-3">
@@ -171,7 +186,12 @@ export function BookingTypeCards({
 										className="w-full mt-3 h-8 text-xs group-hover:bg-orange-500 group-hover:text-white transition-colors"
 										onClick={(e) => {
 											e.stopPropagation();
-											onBookingTypeSelect(type.id);
+											onBookingTypeSelect(
+												type.id,
+												type.scrollTo
+													? type.scrollTo
+													: "pricing-cards"
+											);
 										}}
 									>
 										Select

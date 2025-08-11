@@ -21,7 +21,6 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Progress } from "@/components/ui/progress";
-import { FareEstimator } from "@/components/fare-estimator";
 import { useToast } from "@/hooks/use-toast";
 import {
 	MapPin,
@@ -375,7 +374,7 @@ export function BookingForm({
 				bookingTypes.find((bt) => bt.id === formData.bookingType)
 					?.name || formData.bookingType;
 
-			let message = `🚗 *BangaloreCabs Booking Request*\n\n`;
+			let message = `🚗 *BangaloreUrbanCabs Booking Request*\n\n`;
 			message += `📋 *Booking Details:*\n`;
 			message += `👤 Name: ${formData.name}\n`;
 			message += `📱 Mobile: ${formData.mobile}\n`;
@@ -946,20 +945,23 @@ export function BookingForm({
 												<SelectValue placeholder="Select cab" />
 											</SelectTrigger>
 											<SelectContent>
-												<SelectItem value="Mini">
-													Mini (₹12/km)
-												</SelectItem>
 												<SelectItem value="Sedan">
-													Sedan (₹15/km)
+													Sedan
 												</SelectItem>
 												<SelectItem value="SUV">
-													SUV (₹20/km)
+													SUV
 												</SelectItem>
-												<SelectItem value="Premium">
-													Premium (₹25/km)
+												<SelectItem value="Prime Sedan">
+													Prime Sedan
 												</SelectItem>
-												<SelectItem value="Electric">
-													Electric (₹13/km)
+												<SelectItem value="Premium SUV">
+													Premium SUV
+												</SelectItem>
+												<SelectItem value="Luxury">
+													Luxury
+												</SelectItem>
+												<SelectItem value="Group Travel">
+													Group Travel
 												</SelectItem>
 											</SelectContent>
 										</Select>
