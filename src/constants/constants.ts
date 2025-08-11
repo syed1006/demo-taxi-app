@@ -86,7 +86,7 @@ export const VEHICLE_CATEGORIES = {
 				description:
 					"Maruti Ciaz, Platinum Etios, Nissan Sunny, Honda City",
 				pricing: {
-					airport: "starting at ₹899",
+					airport: "starting at ₹999",
 					hourly4: "₹1,300",
 					hourly8: "₹2,400",
 					outstation: "₹13-₹14",
