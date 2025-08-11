@@ -24,9 +24,12 @@ export default function Home() {
 		scrollToSection("booking-form");
 	};
 
-	const handleBookingTypeSelect = (bookingType: string) => {
+	const handleBookingTypeSelect = (
+		bookingType: string,
+		section: string = "pricing-cards"
+	) => {
 		setSelectedBookingType(bookingType);
-		scrollToSection("pricing-cards");
+		scrollToSection(section);
 	};
 
 	const scrollToSection = (sectionId: string) => {
