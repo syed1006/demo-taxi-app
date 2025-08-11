@@ -83,27 +83,19 @@ export function Footer() {
 							24/7.
 						</p>
 						<div className="flex space-x-4">
-							<Button
-								variant="ghost"
-								size="icon"
-								className="hover:bg-orange-500/20"
-							>
+							<a className="hover:bg-orange-500/20 h-5 w-5">
 								<Facebook className="h-5 w-5" />
-							</Button>
-							<Button
-								variant="ghost"
-								size="icon"
-								className="hover:bg-orange-500/20"
-							>
+							</a>
+							<a className="hover:bg-orange-500/20 h-5 w-5">
 								<Twitter className="h-5 w-5" />
-							</Button>
-							<Button
-								variant="ghost"
-								size="icon"
-								className="hover:bg-orange-500/20"
+							</a>
+							<a
+								className="hover:bg-orange-500/20 h-5 w-5"
+								href="https://www.instagram.com/bangalore_urban_cabs/"
+								target="blank"
 							>
 								<Instagram className="h-5 w-5" />
-							</Button>
+							</a>
 						</div>
 					</div>
 
