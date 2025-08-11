@@ -31,7 +31,7 @@ const bookingTypes = [
 		name: "Hourly Rental",
 		description: "Flexible stops, hourly",
 		icon: Clock,
-		popular: false,
+		popular: true,
 		color: "from-green-500 to-emerald-600",
 	},
 	{
@@ -47,7 +47,7 @@ const bookingTypes = [
 		name: "Outstation",
 		description: "Travel beyond city",
 		icon: Mountain,
-		popular: false,
+		popular: true,
 		color: "from-orange-500 to-red-600",
 	},
 	{
@@ -71,7 +71,7 @@ const bookingTypes = [
 		name: "Spare Driver",
 		description: "Hire driver only",
 		icon: User,
-		popular: false,
+		popular: true,
 		color: "from-amber-500 to-orange-600",
 	},
 ];
