@@ -1074,7 +1074,7 @@ export function BookingForm({
 			{showPickupMap ? (
 				<MapPicker
 					onClose={() => setShowPickupMap(false)}
-					onLocationSelect={(location, longitude, latitude) =>
+					onLocationSelect={(location, latitude, longitude) =>
 						handleInputChange("pickup", location)
 					}
 					title="Select Pickup Location"
@@ -1086,7 +1086,7 @@ export function BookingForm({
 			{showDropMap ? (
 				<MapPicker
 					onClose={() => setShowDropMap(false)}
-					onLocationSelect={(location, longitude, latitude) =>
+					onLocationSelect={(location, latitude, longitude) =>
 						handleInputChange("drop", location)
 					}
 					title="Select Drop Location"

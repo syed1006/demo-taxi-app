@@ -134,8 +134,8 @@ export function MapPicker({
 		console.log(place.geometry.location.lng, place.geometry.location.lat);
 		onLocationSelect(
 			place.description,
-			place.geometry.location.lng,
-			place.geometry.location.lat
+			place.geometry.location.lat,
+			place.geometry.location.lng
 		);
 		onClose();
 	};
