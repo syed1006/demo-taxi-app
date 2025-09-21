@@ -15,6 +15,9 @@ import {
 	TreePine,
 	ChevronLeft,
 	ChevronRight,
+	UserRound,
+	IndianRupee,
+	Luggage,
 } from "lucide-react";
 import { useRef } from "react";
 import { DESTINATIONS, WHATSAPP_NUMBER } from "@/constants";
@@ -61,13 +64,6 @@ export function Destinations({ onBookDestination }: DestinationsProps) {
 
 	const sections = [
 		{
-			title: "🏙️ Within Bangalore",
-			subtitle: "Explore the Garden City",
-			data: DESTINATIONS.bangalore,
-			gradient: "from-green-500 to-emerald-600",
-			ref: bangaloreScrollRef,
-		},
-		{
 			title: "🏞️ Weekend Getaways",
 			subtitle: "Perfect for short trips",
 			data: DESTINATIONS.weekend,
@@ -80,6 +76,13 @@ export function Destinations({ onBookDestination }: DestinationsProps) {
 			data: DESTINATIONS.extended,
 			gradient: "from-purple-500 to-violet-600",
 			ref: extendedScrollRef,
+		},
+		{
+			title: "🏙️ Within Bangalore",
+			subtitle: "Explore the Garden City",
+			data: DESTINATIONS.bangalore,
+			gradient: "from-green-500 to-emerald-600",
+			ref: bangaloreScrollRef,
 		},
 	];
 
@@ -209,7 +212,7 @@ export function Destinations({ onBookDestination }: DestinationsProps) {
 											</div>
 
 											{/* Rating */}
-											<div className="absolute top-16 left-4 flex items-center bg-black/50 backdrop-blur-sm rounded-full px-2 py-1 z-30">
+											<div className="absolute top-12 left-4 flex items-center bg-black/50 backdrop-blur-sm rounded-full px-2 py-1 z-30">
 												<Star className="h-3 w-3 text-yellow-400 fill-current mr-1" />
 												<span className="text-white text-xs font-semibold">
 													{destination.rating}
@@ -229,53 +232,106 @@ export function Destinations({ onBookDestination }: DestinationsProps) {
 													</p>
 												</CardHeader>
 
-												<CardContent className="p-0 space-y-4">
+												<CardContent className="p-0">
 													{/* Distance & Duration */}
-													<div className="flex items-center justify-between text-sm text-white/80">
+													<div className="flex items-center justify-between text-sm text-white/80 mb-1">
 														<div className="flex items-center">
-															<MapPin className="h-4 w-4 mr-1" />
-															<span>
-																{
-																	destination.distance
-																}
-															</span>
+															{destination.distance ? (
+																<>
+																	<MapPin className="h-4 w-4 mr-1" />
+																	<span>
+																		{
+																			destination.distance
+																		}{" "}
+																		included
+																	</span>
+																</>
+															) : (
+																<></>
+															)}
 														</div>
 														<div className="flex items-center">
-															<Clock className="h-4 w-4 mr-1" />
-															<span>
-																{
-																	destination.duration
-																}
-															</span>
+															{destination.duration ? (
+																<>
+																	<Clock className="h-4 w-4 mr-1" />
+																	<span>
+																		{
+																			destination.duration
+																		}
+																	</span>
+																</>
+															) : (
+																<></>
+															)}
 														</div>
 													</div>
+													{destination.additionalInfo ? (
+														<div className="flex flex-col justify-between text-sm text-white/80 mb-1">
+															<div className="flex items-center justify-between">
+																<div className="flex items-center">
+																	<IndianRupee className="h-4 w-4 mr-1" />
+																	<span>
+																		13/km
+																		after{" "}
+																		{
+																			destination.distance
+																		}
+																	</span>
+																</div>
+																<div className="flex items-center">
+																	<Luggage className="h-4 w-4 mr-1" />
+																	<span>
+																		3 bags
+																	</span>
+																</div>
+															</div>
+															<div className="flex items-center">
+																<UserRound className="h-4 w-4 mr-1" />
+																<span>
+																	Driver bata
+																	included
+																</span>
+															</div>
+														</div>
+													) : (
+														<></>
+													)}
 
 													{/* Pricing */}
-													<div className="bg-black/30 backdrop-blur-sm rounded-lg p-3 space-y-2">
-														<div className="flex justify-between items-center">
-															<span className="text-sm text-white/80">
-																One Way:
-															</span>
-															<span className="font-bold text-green-400">
-																{
-																	destination.oneWay
-																}
-															</span>
+													{destination.oneWay ||
+													destination.roundTrip ? (
+														<div className="bg-black/30 backdrop-blur-sm rounded-lg p-3 space-y-2">
+															{destination.oneWay ? (
+																<div className="flex justify-between items-center">
+																	<span className="text-sm text-white/80">
+																		One Way:
+																	</span>
+																	<span className="font-bold text-green-400">
+																		{
+																			destination.oneWay
+																		}
+																	</span>
+																</div>
+															) : (
+																<></>
+															)}
+															<div className="flex justify-between items-center">
+																<span className="text-sm text-white/80">
+																	Round Trip:
+																</span>
+																<span className="font-bold text-blue-400">
+																	{
+																		destination.roundTrip
+																	}
+																</span>
+															</div>
 														</div>
-														<div className="flex justify-between items-center">
-															<span className="text-sm text-white/80">
-																Round Trip:
-															</span>
-															<span className="font-bold text-blue-400">
-																{
-																	destination.roundTrip
-																}
-															</span>
-														</div>
-													</div>
+													) : (
+														<></>
+													)}
 
 													<Button
-														className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold hover:scale-105 transition-all duration-300"
+														className=" mt-2 w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold hover:scale-105 transition-all duration-300"
 														onClick={(e) => {
 															e.stopPropagation();
 															onBookDestination(
