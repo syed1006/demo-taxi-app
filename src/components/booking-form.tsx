@@ -2,13 +2,7 @@
 
 import type React from "react";
 import { useState, useEffect } from "react";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -19,7 +13,6 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
 import {
@@ -38,6 +31,7 @@ import {
 } from "lucide-react";
 import { WHATSAPP_NUMBER } from "@/constants";
 import { MapPicker } from "./map-picker";
+import { generateMapUrls } from "@/lib/utils";
 
 interface BookingFormProps {
 	selectedCabType: string;
@@ -426,6 +420,20 @@ export function BookingForm({
 
 			if (formData.notes) {
 				message += `📝 Notes: ${formData.notes}\n`;
+			}
+
+			const mapsUrl = generateMapUrls(coordinates);
+
+			if (mapsUrl.pickup) {
+				message += `\n PICKUP : ${mapsUrl.pickup}`;
+			}
+
+			if (mapsUrl.drop) {
+				message += `\n DROP : ${mapsUrl.drop}`;
+			}
+
+			if (mapsUrl.direction) {
+				message += `\n DIRECTION : ${mapsUrl.direction}`;
 			}
 
 			message += `\nPlease confirm the booking and share the fare details. Thank you! 🙏`;
