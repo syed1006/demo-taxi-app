@@ -125,7 +125,7 @@ export function Header() {
 									<div className="pt-4 border-t border-border">
 										<div className="flex items-center space-x-2 text-muted-foreground mb-4">
 											<Phone className="h-4 w-4" />
-											<span>+91 98765 43210</span>
+											<span>+91 {WHATSAPP_NUMBER}</span>
 										</div>
 										<Button
 											onClick={() =>

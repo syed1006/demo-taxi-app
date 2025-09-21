@@ -43,6 +43,8 @@ jobs:
 
             - name: Build with Next.js 🏗️
               run: pnpm build && touch ${{ github.workspace }}/build/.nojekyll
+              env:
+                  NEXT_PUBLIC_API_KEY: ${{ secrets.NEXT_PUBLIC_API_KEY }}
 
             - name: List output directory (debugging) 📂
               run: ls -la

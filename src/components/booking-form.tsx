@@ -2,13 +2,7 @@
 
 import type React from "react";
 import { useState, useEffect } from "react";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -19,7 +13,6 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
 import {
@@ -34,8 +27,11 @@ import {
 	Star,
 	CheckCircle2,
 	Info,
+	Map,
 } from "lucide-react";
 import { WHATSAPP_NUMBER } from "@/constants";
+import { MapPicker } from "./map-picker";
+import { generateMapUrls } from "@/lib/utils";
 
 interface BookingFormProps {
 	selectedCabType: string;
@@ -147,8 +143,29 @@ export function BookingForm({
 
 	const [errors, setErrors] = useState<FormErrors>({});
 	const [touched, setTouched] = useState<Record<string, boolean>>({});
+	const [coordinates, setCoordinates] = useState<{
+		pickup: {
+			lat: null | number;
+			lng: null | number;
+		};
+		drop: {
+			lat: null | number;
+			lng: null | number;
+		};
+	}>({
+		pickup: {
+			lat: null,
+			lng: null,
+		},
+		drop: {
+			lat: null,
+			lng: null,
+		},
+	});
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [formProgress, setFormProgress] = useState(0);
+	const [showPickupMap, setShowPickupMap] = useState(false);
+	const [showDropMap, setShowDropMap] = useState(false);
 
 	// Sync external selections
 	useEffect(() => {
@@ -271,6 +288,7 @@ export function BookingForm({
 	};
 
 	const handleInputChange = (field: string, value: string) => {
+		console.log(field, value);
 		setFormData((prev) => ({ ...prev, [field]: value }));
 
 		// Mark field as touched
@@ -404,6 +422,20 @@ export function BookingForm({
 				message += `📝 Notes: ${formData.notes}\n`;
 			}
 
+			const mapsUrl = generateMapUrls(coordinates);
+
+			if (mapsUrl.pickup) {
+				message += `\n PICKUP : ${mapsUrl.pickup}`;
+			}
+
+			if (mapsUrl.drop) {
+				message += `\n DROP : ${mapsUrl.drop}`;
+			}
+
+			if (mapsUrl.direction) {
+				message += `\n DIRECTION : ${mapsUrl.direction}`;
+			}
+
 			message += `\nPlease confirm the booking and share the fare details. Thank you! 🙏`;
 
 			const whatsappNumber = WHATSAPP_NUMBER;
@@ -462,588 +494,647 @@ export function BookingForm({
 	};
 
 	return (
-		<section
-			id="booking-form"
-			className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800"
-		>
-			<div className="max-w-4xl mx-auto">
-				<div className="text-center mb-12">
-					<h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6 animate-fade-in">
-						Book Your Ride
-					</h2>
-					<p className="text-xl text-muted-foreground animate-fade-in delay-200">
-						Fill in your details and we'll connect you via WhatsApp
-						instantly
-					</p>
-				</div>
+		<>
+			<section
+				id="booking-form"
+				className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800"
+			>
+				<div className="max-w-4xl mx-auto">
+					<div className="text-center mb-12">
+						<h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6 animate-fade-in">
+							Book Your Ride
+						</h2>
+						<p className="text-xl text-muted-foreground animate-fade-in delay-200">
+							Fill in your details and we'll connect you via
+							WhatsApp instantly
+						</p>
+					</div>
 
-				<Card className="shadow-2xl border-2 border-orange-100 dark:border-orange-900 animate-slide-up">
-					<CardHeader className="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-t-lg">
-						<div className="flex items-center justify-between">
-							<div>
-								<CardTitle className="flex items-center gap-3 text-2xl">
-									<MessageCircle className="h-6 w-6" />
-									Booking Details
-								</CardTitle>
-								<CardDescription className="text-orange-100">
-									Complete the form below to book your taxi
-									via WhatsApp
-								</CardDescription>
-							</div>
-							<div className="text-right">
-								<div className="text-sm text-orange-100 mb-2">
-									Form Progress
+					<Card className="shadow-2xl border-2 border-orange-100 dark:border-orange-900 animate-slide-up">
+						<CardHeader className="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-t-lg">
+							<div className="flex items-center justify-between">
+								<div>
+									<CardTitle className="flex items-center gap-3 text-2xl">
+										<MessageCircle className="h-6 w-6" />
+										Booking Details
+									</CardTitle>
 								</div>
-								<div className="flex items-center gap-2">
-									<Progress
-										value={formProgress}
-										className="w-24 h-2"
-									/>
-									<span className="text-sm font-semibold">
-										{Math.round(formProgress)}%
-									</span>
+								<div className="text-right">
+									<div className="text-sm text-orange-100 mb-2">
+										Form Progress
+									</div>
+									<div className="flex items-center gap-2">
+										<Progress
+											value={formProgress}
+											className="w-24 h-2"
+										/>
+										<span className="text-sm font-semibold">
+											{Math.round(formProgress)}%
+										</span>
+									</div>
 								</div>
 							</div>
-						</div>
-					</CardHeader>
+						</CardHeader>
 
-					<CardContent className="p-8">
-						<form onSubmit={handleSubmit} className="space-y-8">
-							{/* Booking Type */}
-							<div className="space-y-4">
-								<Label
-									htmlFor="bookingType"
-									className="flex items-center gap-2 text-lg font-semibold"
-								>
-									<Briefcase className="h-5 w-5 text-orange-500" />
-									Booking Type
-									<span className="text-red-500 ml-1">*</span>
-								</Label>
-								<Select
-									value={formData.bookingType}
-									onValueChange={(value) =>
-										handleInputChange("bookingType", value)
-									}
-								>
-									<SelectTrigger
-										className={`min-h-[56px] data-[state=open]:min-h-[56px] transition-all duration-200 ${
-											getFieldStatus("bookingType") ===
-											"error"
-												? "border-red-500 bg-red-50 dark:bg-red-950"
-												: getFieldStatus(
-														"bookingType"
-												  ) === "success"
-												? "border-green-500 bg-green-50 dark:bg-green-950"
-												: ""
-										}`}
+						<CardContent className="p-8">
+							<form onSubmit={handleSubmit}>
+								{/* Booking Type */}
+								<div>
+									<Label
+										htmlFor="bookingType"
+										className="flex items-center gap-2 text-lg font-semibold"
 									>
-										<SelectValue placeholder="Select your booking type" />
-									</SelectTrigger>
-									<SelectContent>
-										{bookingTypes.map((type) => (
-											<SelectItem
-												key={type.id}
-												value={type.id}
-											>
-												<div>
-													<div className="font-medium">
-														{type.name}
+										<Briefcase className="h-5 w-5 text-orange-500" />
+										Booking Type
+										<span className="text-red-500 ml-1">
+											*
+										</span>
+									</Label>
+									<Select
+										value={formData.bookingType}
+										onValueChange={(value) =>
+											handleInputChange(
+												"bookingType",
+												value
+											)
+										}
+									>
+										<SelectTrigger
+											className={`min-h-[56px] data-[state=open]:min-h-[56px] transition-all duration-200 ${
+												getFieldStatus(
+													"bookingType"
+												) === "error"
+													? "border-red-500 bg-red-50 dark:bg-red-950"
+													: getFieldStatus(
+															"bookingType"
+													  ) === "success"
+													? "border-green-500 bg-green-50 dark:bg-green-950"
+													: ""
+											}`}
+										>
+											<SelectValue placeholder="Select your booking type" />
+										</SelectTrigger>
+										<SelectContent>
+											{bookingTypes.map((type) => (
+												<SelectItem
+													key={type.id}
+													value={type.id}
+												>
+													<div>
+														<div className="font-medium">
+															{type.name}
+														</div>
+														<div className="text-sm text-muted-foreground">
+															{type.description}
+														</div>
 													</div>
-													<div className="text-sm text-muted-foreground">
-														{type.description}
-													</div>
+												</SelectItem>
+											))}
+										</SelectContent>
+									</Select>
+									<div className="min-h-[24px]">
+										{errors.bookingType &&
+											touched.bookingType && (
+												<div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 dark:bg-red-950 p-3 rounded-lg">
+													<AlertCircle className="h-4 w-4 flex-shrink-0" />
+													<span>
+														{errors.bookingType}
+													</span>
 												</div>
-											</SelectItem>
-										))}
-									</SelectContent>
-								</Select>
-								<div className="min-h-[24px]">
-									{errors.bookingType &&
-										touched.bookingType && (
-											<div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 dark:bg-red-950 p-3 rounded-lg">
-												<AlertCircle className="h-4 w-4 flex-shrink-0" />
-												<span>
-													{errors.bookingType}
-												</span>
+											)}
+									</div>
+
+									{/* Driver-only note */}
+									{isDriverOnly && (
+										<div className="flex items-start gap-3 p-3 rounded-lg bg-amber-50 dark:bg-amber-950 border border-amber-200 dark:border-amber-800">
+											<Info className="h-5 w-5 text-amber-600 mt-0.5" />
+											<div className="text-sm text-amber-800 dark:text-amber-200">
+												Spare Driver selected. We will
+												assign a professional driver. No
+												vehicle selection required.
 											</div>
-										)}
+										</div>
+									)}
 								</div>
 
-								{/* Driver-only note */}
-								{isDriverOnly && (
-									<div className="flex items-start gap-3 p-3 rounded-lg bg-amber-50 dark:bg-amber-950 border border-amber-200 dark:border-amber-800">
-										<Info className="h-5 w-5 text-amber-600 mt-0.5" />
-										<div className="text-sm text-amber-800 dark:text-amber-200">
-											Spare Driver selected. We will
-											assign a professional driver. No
-											vehicle selection required.
+								<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+									{/* Name */}
+									<div>
+										<Label
+											htmlFor="name"
+											className="flex items-center gap-2 text-lg font-semibold"
+										>
+											<User className="h-5 w-5 text-orange-500" />
+											Full Name
+											<span className="text-red-500 ml-1">
+												*
+											</span>
+											{getFieldStatus("name") ===
+												"success" && (
+												<CheckCircle2 className="h-4 w-4 text-green-500" />
+											)}
+										</Label>
+										<Input
+											id="name"
+											placeholder="Enter your full name"
+											value={formData.name}
+											onChange={(e) =>
+												handleInputChange(
+													"name",
+													e.target.value
+												)
+											}
+											onBlur={() => handleBlur("name")}
+											className={`min-h-[56px] transition-all duration-200 ${
+												getFieldStatus("name") ===
+												"error"
+													? "border-red-500 bg-red-50 dark:bg-red-950"
+													: getFieldStatus("name") ===
+													  "success"
+													? "border-green-500 bg-green-50 dark:bg-green-950"
+													: ""
+											}`}
+											required
+										/>
+										<div className="min-h-[24px]">
+											{errors.name && touched.name && (
+												<div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 dark:bg-red-950 p-3 rounded-lg">
+													<AlertCircle className="h-4 w-4 flex-shrink-0" />
+													<span>{errors.name}</span>
+												</div>
+											)}
 										</div>
 									</div>
-								)}
-							</div>
 
-							<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-								{/* Name */}
-								<div className="space-y-4">
-									<Label
-										htmlFor="name"
-										className="flex items-center gap-2 text-lg font-semibold"
-									>
-										<User className="h-5 w-5 text-orange-500" />
-										Full Name
-										<span className="text-red-500 ml-1">
-											*
-										</span>
-										{getFieldStatus("name") ===
-											"success" && (
-											<CheckCircle2 className="h-4 w-4 text-green-500" />
-										)}
-									</Label>
-									<Input
-										id="name"
-										placeholder="Enter your full name"
-										value={formData.name}
-										onChange={(e) =>
-											handleInputChange(
-												"name",
-												e.target.value
-											)
-										}
-										onBlur={() => handleBlur("name")}
-										className={`min-h-[56px] transition-all duration-200 ${
-											getFieldStatus("name") === "error"
-												? "border-red-500 bg-red-50 dark:bg-red-950"
-												: getFieldStatus("name") ===
-												  "success"
-												? "border-green-500 bg-green-50 dark:bg-green-950"
-												: ""
-										}`}
-										required
-									/>
-									<div className="min-h-[24px]">
-										{errors.name && touched.name && (
-											<div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 dark:bg-red-950 p-3 rounded-lg">
-												<AlertCircle className="h-4 w-4 flex-shrink-0" />
-												<span>{errors.name}</span>
-											</div>
-										)}
-									</div>
-								</div>
-
-								{/* Mobile */}
-								<div className="space-y-4">
-									<Label
-										htmlFor="mobile"
-										className="flex items-center gap-2 text-lg font-semibold"
-									>
-										<Phone className="h-5 w-5 text-orange-500" />
-										Mobile Number
-										<span className="text-red-500 ml-1">
-											*
-										</span>
-										{getFieldStatus("mobile") ===
-											"success" && (
-											<CheckCircle2 className="h-4 w-4 text-green-500" />
-										)}
-									</Label>
-									<Input
-										id="mobile"
-										type="tel"
-										placeholder="9876543210"
-										value={formData.mobile}
-										onChange={(e) =>
-											handleInputChange(
-												"mobile",
-												e.target.value
-											)
-										}
-										onBlur={() => handleBlur("mobile")}
-										className={`min-h-[56px] transition-all duration-200 ${
-											getFieldStatus("mobile") === "error"
-												? "border-red-500 bg-red-50 dark:bg-red-950"
-												: getFieldStatus("mobile") ===
-												  "success"
-												? "border-green-500 bg-green-50 dark:bg-green-950"
-												: ""
-										}`}
-										required
-									/>
-									<div className="min-h-[24px]">
-										{errors.mobile && touched.mobile && (
-											<div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 dark:bg-red-950 p-3 rounded-lg">
-												<AlertCircle className="h-4 w-4 flex-shrink-0" />
-												<span>{errors.mobile}</span>
-											</div>
-										)}
-									</div>
-								</div>
-							</div>
-
-							<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-								{/* Pickup Location (Simplified: no map button) */}
-								<div className="space-y-4">
-									<Label
-										htmlFor="pickup"
-										className="flex items-center gap-2 text-lg font-semibold"
-									>
-										<MapPin className="h-5 w-5 text-green-600" />
-										Pickup Location
-										<span className="text-red-500 ml-1">
-											*
-										</span>
-										{getFieldStatus("pickup") ===
-											"success" && (
-											<CheckCircle2 className="h-4 w-4 text-green-500" />
-										)}
-									</Label>
-									<Input
-										id="pickup"
-										placeholder="e.g., Koramangala, Bangalore"
-										value={formData.pickup}
-										onChange={(e) =>
-											handleInputChange(
-												"pickup",
-												e.target.value
-											)
-										}
-										onBlur={() => handleBlur("pickup")}
-										className={`min-h-[56px] flex-1 transition-all duration-200 ${
-											getFieldStatus("pickup") === "error"
-												? "border-red-500 bg-red-50 dark:bg-red-950"
-												: getFieldStatus("pickup") ===
-												  "success"
-												? "border-green-500 bg-green-50 dark:bg-green-950"
-												: ""
-										}`}
-										required
-									/>
-									<div className="min-h-[24px]">
-										{errors.pickup && touched.pickup && (
-											<div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 dark:bg-red-950 p-3 rounded-lg">
-												<AlertCircle className="h-4 w-4 flex-shrink-0" />
-												<span>{errors.pickup}</span>
-											</div>
-										)}
-									</div>
-								</div>
-
-								{/* Drop Location (optional for hourly, tour, driver-only) */}
-								{formData.bookingType !== "hourly" &&
-									formData.bookingType !== "tour" &&
-									!isDriverOnly && (
-										<div className="space-y-4">
-											<Label
-												htmlFor="drop"
-												className="flex items-center gap-2 text-lg font-semibold"
-											>
-												<MapPin className="h-5 w-5 text-red-600" />
-												Drop Location
-												<span className="text-red-500 ml-1">
-													*
-												</span>
-												{getFieldStatus("drop") ===
-													"success" && (
-													<CheckCircle2 className="h-4 w-4 text-green-500" />
+									{/* Mobile */}
+									<div>
+										<Label
+											htmlFor="mobile"
+											className="flex items-center gap-2 text-lg font-semibold"
+										>
+											<Phone className="h-5 w-5 text-orange-500" />
+											Mobile Number
+											<span className="text-red-500 ml-1">
+												*
+											</span>
+											{getFieldStatus("mobile") ===
+												"success" && (
+												<CheckCircle2 className="h-4 w-4 text-green-500" />
+											)}
+										</Label>
+										<Input
+											id="mobile"
+											type="tel"
+											placeholder="Enter your mobile number"
+											value={formData.mobile}
+											onChange={(e) =>
+												handleInputChange(
+													"mobile",
+													e.target.value
+												)
+											}
+											onBlur={() => handleBlur("mobile")}
+											className={`min-h-[56px] transition-all duration-200 ${
+												getFieldStatus("mobile") ===
+												"error"
+													? "border-red-500 bg-red-50 dark:bg-red-950"
+													: getFieldStatus(
+															"mobile"
+													  ) === "success"
+													? "border-green-500 bg-green-50 dark:bg-green-950"
+													: ""
+											}`}
+											required
+										/>
+										<div className="min-h-[24px]">
+											{errors.mobile &&
+												touched.mobile && (
+													<div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 dark:bg-red-950 p-3 rounded-lg">
+														<AlertCircle className="h-4 w-4 flex-shrink-0" />
+														<span>
+															{errors.mobile}
+														</span>
+													</div>
 												)}
-											</Label>
-											<Input
-												id="drop"
-												placeholder="e.g., Electronic City, Bangalore"
-												value={formData.drop}
-												onChange={(e) =>
-													handleInputChange(
-														"drop",
-														e.target.value
-													)
-												}
-												onBlur={() =>
-													handleBlur("drop")
-												}
-												className={`min-h-[56px] flex-1 transition-all duration-200 ${
-													getFieldStatus("drop") ===
+										</div>
+									</div>
+								</div>
+
+								<div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+									{/* Date */}
+									<div>
+										<Label
+											htmlFor="date"
+											className="flex items-center gap-2 text-lg font-semibold"
+										>
+											<Calendar className="h-5 w-5 text-orange-500" />
+											Travel Date
+											<span className="text-red-500 ml-1">
+												*
+											</span>
+											{getFieldStatus("date") ===
+												"success" && (
+												<CheckCircle2 className="h-4 w-4 text-green-500" />
+											)}
+										</Label>
+										<Input
+											id="date"
+											type="date"
+											value={formData.date}
+											onChange={(e) =>
+												handleInputChange(
+													"date",
+													e.target.value
+												)
+											}
+											onBlur={() => handleBlur("date")}
+											min={
+												new Date()
+													.toISOString()
+													.split("T")[0]
+											}
+											max={
+												new Date(
+													Date.now() +
+														30 * 24 * 60 * 60 * 1000
+												)
+													.toISOString()
+													.split("T")[0]
+											}
+											className={`min-h-[56px] transition-all duration-200 ${
+												getFieldStatus("date") ===
+												"error"
+													? "border-red-500 bg-red-50 dark:bg-red-950"
+													: getFieldStatus("date") ===
+													  "success"
+													? "border-green-500 bg-green-50 dark:bg-green-950"
+													: ""
+											}`}
+											required
+										/>
+										<div className="min-h-[24px]">
+											{errors.date && touched.date && (
+												<div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 dark:bg-red-950 p-3 rounded-lg">
+													<AlertCircle className="h-4 w-4 flex-shrink-0" />
+													<span>{errors.date}</span>
+												</div>
+											)}
+										</div>
+									</div>
+
+									{/* Time */}
+									<div>
+										<Label
+											htmlFor="time"
+											className="flex items-center gap-2 text-lg font-semibold"
+										>
+											<Clock className="h-5 w-5 text-orange-500" />
+											Travel Time
+											<span className="text-red-500 ml-1">
+												*
+											</span>
+											{getFieldStatus("time") ===
+												"success" && (
+												<CheckCircle2 className="h-4 w-4 text-green-500" />
+											)}
+										</Label>
+										<Select
+											value={formData.time}
+											onValueChange={(value) =>
+												handleInputChange("time", value)
+											}
+										>
+											<SelectTrigger
+												className={`min-h-[56px] data-[state=open]:min-h-[56px] transition-all duration-200 ${
+													getFieldStatus("time") ===
 													"error"
 														? "border-red-500 bg-red-50 dark:bg-red-950"
 														: getFieldStatus(
-																"drop"
+																"time"
 														  ) === "success"
 														? "border-green-500 bg-green-50 dark:bg-green-950"
 														: ""
 												}`}
-												required
-											/>
+											>
+												<SelectValue placeholder="Select time" />
+											</SelectTrigger>
+											<SelectContent className="max-h-60">
+												{timeSlots.map((time) => (
+													<SelectItem
+														key={time}
+														value={time}
+													>
+														{time}
+													</SelectItem>
+												))}
+											</SelectContent>
+										</Select>
+										<div className="min-h-[24px]">
+											{errors.time && touched.time && (
+												<div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 dark:bg-red-950 p-3 rounded-lg">
+													<AlertCircle className="h-4 w-4 flex-shrink-0" />
+													<span>{errors.time}</span>
+												</div>
+											)}
+										</div>
+									</div>
+
+									{/* Cab Type - hidden for driver-only */}
+									{!isDriverOnly && (
+										<div>
+											<Label
+												htmlFor="cabType"
+												className="flex items-center gap-2 text-lg font-semibold"
+											>
+												<Star className="h-5 w-5 text-orange-500" />
+												Cab Type
+												<span className="text-red-500 ml-1">
+													*
+												</span>
+												{getFieldStatus("cabType") ===
+													"success" && (
+													<CheckCircle2 className="h-4 w-4 text-green-500" />
+												)}
+											</Label>
+											<Select
+												value={formData.cabType}
+												onValueChange={(value) =>
+													handleInputChange(
+														"cabType",
+														value
+													)
+												}
+											>
+												<SelectTrigger
+													className={`min-h-[56px] data-[state=open]:min-h-[56px] transition-all duration-200 ${
+														getFieldStatus(
+															"cabType"
+														) === "error"
+															? "border-red-500 bg-red-50 dark:bg-red-950"
+															: getFieldStatus(
+																	"cabType"
+															  ) === "success"
+															? "border-green-500 bg-green-50 dark:bg-green-950"
+															: ""
+													}`}
+												>
+													<SelectValue placeholder="Select cab" />
+												</SelectTrigger>
+												<SelectContent>
+													<SelectItem value="Sedan">
+														Sedan
+													</SelectItem>
+													<SelectItem value="SUV">
+														SUV
+													</SelectItem>
+													<SelectItem value="Prime Sedan">
+														Prime Sedan
+													</SelectItem>
+													<SelectItem value="Premium SUV">
+														Premium SUV
+													</SelectItem>
+													<SelectItem value="Luxury">
+														Luxury
+													</SelectItem>
+													<SelectItem value="Group Travel">
+														Group Travel
+													</SelectItem>
+												</SelectContent>
+											</Select>
 											<div className="min-h-[24px]">
-												{errors.drop &&
-													touched.drop && (
+												{errors.cabType &&
+													touched.cabType && (
 														<div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 dark:bg-red-950 p-3 rounded-lg">
 															<AlertCircle className="h-4 w-4 flex-shrink-0" />
 															<span>
-																{errors.drop}
+																{errors.cabType}
 															</span>
 														</div>
 													)}
 											</div>
 										</div>
 									)}
-							</div>
-
-							<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-								{/* Date */}
-								<div className="space-y-4">
-									<Label
-										htmlFor="date"
-										className="flex items-center gap-2 text-lg font-semibold"
-									>
-										<Calendar className="h-5 w-5 text-orange-500" />
-										Travel Date
-										<span className="text-red-500 ml-1">
-											*
-										</span>
-										{getFieldStatus("date") ===
-											"success" && (
-											<CheckCircle2 className="h-4 w-4 text-green-500" />
-										)}
-									</Label>
-									<Input
-										id="date"
-										type="date"
-										value={formData.date}
-										onChange={(e) =>
-											handleInputChange(
-												"date",
-												e.target.value
-											)
-										}
-										onBlur={() => handleBlur("date")}
-										min={
-											new Date()
-												.toISOString()
-												.split("T")[0]
-										}
-										max={
-											new Date(
-												Date.now() +
-													30 * 24 * 60 * 60 * 1000
-											)
-												.toISOString()
-												.split("T")[0]
-										}
-										className={`min-h-[56px] transition-all duration-200 ${
-											getFieldStatus("date") === "error"
-												? "border-red-500 bg-red-50 dark:bg-red-950"
-												: getFieldStatus("date") ===
-												  "success"
-												? "border-green-500 bg-green-50 dark:bg-green-950"
-												: ""
-										}`}
-										required
-									/>
-									<div className="min-h-[24px]">
-										{errors.date && touched.date && (
-											<div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 dark:bg-red-950 p-3 rounded-lg">
-												<AlertCircle className="h-4 w-4 flex-shrink-0" />
-												<span>{errors.date}</span>
-											</div>
-										)}
-									</div>
 								</div>
 
-								{/* Time */}
-								<div className="space-y-4">
-									<Label
-										htmlFor="time"
-										className="flex items-center gap-2 text-lg font-semibold"
-									>
-										<Clock className="h-5 w-5 text-orange-500" />
-										Travel Time
-										<span className="text-red-500 ml-1">
-											*
-										</span>
-										{getFieldStatus("time") ===
-											"success" && (
-											<CheckCircle2 className="h-4 w-4 text-green-500" />
-										)}
-									</Label>
-									<Select
-										value={formData.time}
-										onValueChange={(value) =>
-											handleInputChange("time", value)
-										}
-									>
-										<SelectTrigger
-											className={`min-h-[56px] data-[state=open]:min-h-[56px] transition-all duration-200 ${
-												getFieldStatus("time") ===
-												"error"
-													? "border-red-500 bg-red-50 dark:bg-red-950"
-													: getFieldStatus("time") ===
-													  "success"
-													? "border-green-500 bg-green-50 dark:bg-green-950"
-													: ""
-											}`}
-										>
-											<SelectValue placeholder="Select time" />
-										</SelectTrigger>
-										<SelectContent className="max-h-60">
-											{timeSlots.map((time) => (
-												<SelectItem
-													key={time}
-													value={time}
-												>
-													{time}
-												</SelectItem>
-											))}
-										</SelectContent>
-									</Select>
-									<div className="min-h-[24px]">
-										{errors.time && touched.time && (
-											<div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 dark:bg-red-950 p-3 rounded-lg">
-												<AlertCircle className="h-4 w-4 flex-shrink-0" />
-												<span>{errors.time}</span>
-											</div>
-										)}
-									</div>
-								</div>
-
-								{/* Cab Type - hidden for driver-only */}
-								{!isDriverOnly && (
+								<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+									{/* Pickup Location */}
 									<div className="space-y-4">
 										<Label
-											htmlFor="cabType"
+											htmlFor="pickup"
 											className="flex items-center gap-2 text-lg font-semibold"
 										>
-											<Star className="h-5 w-5 text-orange-500" />
-											Cab Type
+											<MapPin className="h-5 w-5 text-green-600" />
+											Pickup Location
 											<span className="text-red-500 ml-1">
 												*
 											</span>
-											{getFieldStatus("cabType") ===
+											{getFieldStatus("pickup") ===
 												"success" && (
 												<CheckCircle2 className="h-4 w-4 text-green-500" />
 											)}
 										</Label>
-										<Select
-											value={formData.cabType}
-											onValueChange={(value) =>
-												handleInputChange(
-													"cabType",
-													value
-												)
-											}
-										>
-											<SelectTrigger
-												className={`min-h-[56px] data-[state=open]:min-h-[56px] transition-all duration-200 ${
-													getFieldStatus(
-														"cabType"
-													) === "error"
+										<div className="flex gap-2">
+											<Input
+												id="pickup"
+												placeholder="e.g., Koramangala, Bangalore"
+												value={formData.pickup}
+												onChange={(e) =>
+													handleInputChange(
+														"pickup",
+														e.target.value
+													)
+												}
+												onBlur={() =>
+													handleBlur("pickup")
+												}
+												className={`min-h-[56px] flex-1 transition-all duration-200 ${
+													getFieldStatus("pickup") ===
+													"error"
 														? "border-red-500 bg-red-50 dark:bg-red-950"
 														: getFieldStatus(
-																"cabType"
+																"pickup"
 														  ) === "success"
 														? "border-green-500 bg-green-50 dark:bg-green-950"
 														: ""
 												}`}
+												required
+											/>
+											<Button
+												type="button"
+												variant="outline"
+												size="icon"
+												className="h-14 w-14 flex-shrink-0"
+												onClick={() =>
+													setShowPickupMap(true)
+												}
 											>
-												<SelectValue placeholder="Select cab" />
-											</SelectTrigger>
-											<SelectContent>
-												<SelectItem value="Sedan">
-													Sedan
-												</SelectItem>
-												<SelectItem value="SUV">
-													SUV
-												</SelectItem>
-												<SelectItem value="Prime Sedan">
-													Prime Sedan
-												</SelectItem>
-												<SelectItem value="Premium SUV">
-													Premium SUV
-												</SelectItem>
-												<SelectItem value="Luxury">
-													Luxury
-												</SelectItem>
-												<SelectItem value="Group Travel">
-													Group Travel
-												</SelectItem>
-											</SelectContent>
-										</Select>
+												<Map className="h-5 w-5" />
+											</Button>
+										</div>
 										<div className="min-h-[24px]">
-											{errors.cabType &&
-												touched.cabType && (
+											{errors.pickup &&
+												touched.pickup && (
 													<div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 dark:bg-red-950 p-3 rounded-lg">
 														<AlertCircle className="h-4 w-4 flex-shrink-0" />
 														<span>
-															{errors.cabType}
+															{errors.pickup}
 														</span>
 													</div>
 												)}
 										</div>
 									</div>
-								)}
-							</div>
 
-							{/* Additional Notes */}
-							<div className="space-y-4">
-								<Label
-									htmlFor="notes"
-									className="text-lg font-semibold"
-								>
-									Additional Notes (Optional)
-								</Label>
-								<Textarea
-									id="notes"
-									placeholder={
-										isDriverOnly
-											? "Any specific instructions for the driver (timings, route, pickup point, etc.)..."
-											: "Any special requirements, landmarks, or instructions..."
-									}
-									value={formData.notes}
-									onChange={(e) =>
-										handleInputChange(
-											"notes",
-											e.target.value
-										)
-									}
-									rows={4}
-									className="resize-none min-h-[100px]"
-								/>
-							</div>
-
-							{/* Submit Button */}
-							<Button
-								type="submit"
-								className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-6 text-xl rounded-xl shadow-2xl hover:shadow-orange-500/25 transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-								disabled={!isFormValid || isSubmitting}
-							>
-								{isSubmitting ? (
-									<div className="flex items-center gap-3">
-										<div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
-										Sending Request...
-									</div>
-								) : (
-									<div className="flex items-center gap-3">
-										<MessageCircle className="h-6 w-6" />
-										{isDriverOnly
-											? "Book Spare Driver via WhatsApp"
-											: "Book via WhatsApp"}
-									</div>
-								)}
-							</Button>
-
-							{!isFormValid && (
-								<div className="text-center p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
-									<p className="text-sm text-orange-700 dark:text-orange-300 font-medium">
-										Please complete all required fields to
-										proceed with your booking
-									</p>
-									<p className="text-xs text-orange-600 dark:text-orange-400 mt-1">
-										Form completion:{" "}
-										{Math.round(formProgress)}%
-									</p>
+									{/* Drop Location */}
+									{formData.bookingType !== "hourly" &&
+										formData.bookingType !== "tour" && (
+											<div className="space-y-4">
+												<Label
+													htmlFor="drop"
+													className="flex items-center gap-2 text-lg font-semibold"
+												>
+													<MapPin className="h-5 w-5 text-red-600" />
+													Drop Location
+													<span className="text-red-500 ml-1">
+														*
+													</span>
+													{getFieldStatus("drop") ===
+														"success" && (
+														<CheckCircle2 className="h-4 w-4 text-green-500" />
+													)}
+												</Label>
+												<div className="flex gap-2">
+													<Input
+														id="drop"
+														placeholder="e.g., Electronic City, Bangalore"
+														value={formData.drop}
+														onChange={(e) =>
+															handleInputChange(
+																"drop",
+																e.target.value
+															)
+														}
+														onBlur={() =>
+															handleBlur("drop")
+														}
+														className={`min-h-[56px] flex-1 transition-all duration-200 ${
+															getFieldStatus(
+																"drop"
+															) === "error"
+																? "border-red-500 bg-red-50 dark:bg-red-950"
+																: getFieldStatus(
+																		"drop"
+																  ) ===
+																  "success"
+																? "border-green-500 bg-green-50 dark:bg-green-950"
+																: ""
+														}`}
+														required
+													/>
+													<Button
+														type="button"
+														variant="outline"
+														size="icon"
+														className="h-14 w-14 flex-shrink-0"
+														onClick={() =>
+															setShowDropMap(true)
+														}
+													>
+														<Map className="h-5 w-5" />
+													</Button>
+												</div>
+												<div className="min-h-[24px]">
+													{errors.drop &&
+														touched.drop && (
+															<div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 dark:bg-red-950 p-3 rounded-lg">
+																<AlertCircle className="h-4 w-4 flex-shrink-0" />
+																<span>
+																	{
+																		errors.drop
+																	}
+																</span>
+															</div>
+														)}
+												</div>
+											</div>
+										)}
 								</div>
-							)}
-						</form>
-					</CardContent>
-				</Card>
-			</div>
-		</section>
+
+								{/* Submit Button */}
+								<Button
+									type="submit"
+									className="my-2 w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-6 text-xl rounded-xl shadow-2xl hover:shadow-orange-500/25 transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+									disabled={!isFormValid || isSubmitting}
+								>
+									{isSubmitting ? (
+										<div className="flex items-center gap-3">
+											<div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+											Sending Request...
+										</div>
+									) : (
+										<div className="flex items-center gap-3">
+											<MessageCircle className="h-6 w-6" />
+											{isDriverOnly
+												? "Book Spare Driver via WhatsApp"
+												: "Book via WhatsApp"}
+										</div>
+									)}
+								</Button>
+
+								{!isFormValid && (
+									<div className="text-center p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
+										<p className="text-sm text-orange-700 dark:text-orange-300 font-medium">
+											Please complete all required fields
+											to proceed with your booking
+										</p>
+										<p className="text-xs text-orange-600 dark:text-orange-400 mt-1">
+											Form completion:{" "}
+											{Math.round(formProgress)}%
+										</p>
+									</div>
+								)}
+							</form>
+						</CardContent>
+					</Card>
+				</div>
+			</section>
+			{/* Map Pickers */}
+			{showPickupMap ? (
+				<MapPicker
+					onClose={() => setShowPickupMap(false)}
+					onLocationSelect={(location, latitude, longitude) => {
+						handleInputChange("pickup", location);
+						setCoordinates({
+							...coordinates,
+							pickup: {
+								lat: latitude,
+								lng: longitude,
+							},
+						});
+					}}
+					title="Select Pickup Location"
+				/>
+			) : (
+				<></>
+			)}
+
+			{showDropMap ? (
+				<MapPicker
+					onClose={() => setShowDropMap(false)}
+					onLocationSelect={(location, latitude, longitude) => {
+						handleInputChange("drop", location);
+						setCoordinates({
+							...coordinates,
+							drop: {
+								lat: latitude,
+								lng: longitude,
+							},
+						});
+					}}
+					title="Select Drop Location"
+				/>
+			) : (
+				<></>
+			)}
+		</>
 	);
 }

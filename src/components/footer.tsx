@@ -246,7 +246,7 @@ export function Footer() {
 							<div className="flex items-center space-x-3">
 								<Mail className="h-5 w-5 text-orange-400" />
 								<span className="text-gray-300">
-									info@bangalorecabs.com
+									info@bangaloreurbancabs.com
 								</span>
 							</div>
 							<div className="flex items-start space-x-3">

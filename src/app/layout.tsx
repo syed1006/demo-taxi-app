@@ -1,31 +1,37 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
+import type React from "react";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "BangaloreUrbanCabs - ನಮ್ಮ ಸೇವೆ | Best Taxi Service in Bangalore",
-  description:
-    "Book reliable taxi service in Bangalore. From Koramangala to Whitefield, Electronic City to MG Road - Your trusted ride partner across Bangalore.",
-  keywords: "Bangalore taxi, cab booking, taxi service, Koramangala, Whitefield, Electronic City, airport transfer",
-    generator: 'v0.dev'
-}
+	title: "BangaloreUrbanCabs - ನಮ್ಮ ಸೇವೆ | Best Taxi Service in Bangalore",
+	description:
+		"Ride with Comfort, Ride with Care - Your Trusted Bangalore Cab Partner,Let us take the wheel - so you can relax and enjoy the ride.",
+	keywords:
+		"Bangalore taxi, cab booking, Comfort, care, ride, taxi service, Trusted, relax, enjoy, Koramangala, Whitefield, Electronic City, airport transfer",
+	generator: "v0.dev",
+};
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
-  )
+	return (
+		<html lang="en" suppressHydrationWarning>
+			<body className={inter.className}>
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
+				>
+					{children}
+				</ThemeProvider>
+			</body>
+		</html>
+	);
 }
