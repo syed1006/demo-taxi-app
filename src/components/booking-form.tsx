@@ -52,9 +52,9 @@ interface FormErrors {
 
 const bookingTypes = [
 	{
-		id: "point-to-point",
-		name: "Point to Point",
-		description: "Direct ride from pickup to drop",
+		id: "airport",
+		name: "Airport Transfer",
+		description: "To/From Bangalore Airport",
 	},
 	{
 		id: "hourly",
@@ -62,14 +62,14 @@ const bookingTypes = [
 		description: "Book for multiple hours",
 	},
 	{
-		id: "airport",
-		name: "Airport Transfer",
-		description: "To/From Bangalore Airport",
-	},
-	{
 		id: "outstation",
 		name: "Outstation",
 		description: "Travel outside Bangalore",
+	},
+	{
+		id: "point-to-point",
+		name: "Point to Point",
+		description: "Direct ride from pickup to drop",
 	},
 	{
 		id: "tour",
