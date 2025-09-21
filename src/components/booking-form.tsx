@@ -149,6 +149,25 @@ export function BookingForm({
 
 	const [errors, setErrors] = useState<FormErrors>({});
 	const [touched, setTouched] = useState<Record<string, boolean>>({});
+	const [coordinates, setCoordinates] = useState<{
+		pickup: {
+			lat: null | number;
+			lng: null | number;
+		};
+		drop: {
+			lat: null | number;
+			lng: null | number;
+		};
+	}>({
+		pickup: {
+			lat: null,
+			lng: null,
+		},
+		drop: {
+			lat: null,
+			lng: null,
+		},
+	});
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [formProgress, setFormProgress] = useState(0);
 	const [showPickupMap, setShowPickupMap] = useState(false);
@@ -658,7 +677,7 @@ export function BookingForm({
 										<Input
 											id="mobile"
 											type="tel"
-											placeholder="9876543210"
+											placeholder="Enter your mobile number"
 											value={formData.mobile}
 											onChange={(e) =>
 												handleInputChange(
@@ -1074,9 +1093,16 @@ export function BookingForm({
 			{showPickupMap ? (
 				<MapPicker
 					onClose={() => setShowPickupMap(false)}
-					onLocationSelect={(location, latitude, longitude) =>
-						handleInputChange("pickup", location)
-					}
+					onLocationSelect={(location, latitude, longitude) => {
+						handleInputChange("pickup", location);
+						setCoordinates({
+							...coordinates,
+							pickup: {
+								lat: latitude,
+								lng: longitude,
+							},
+						});
+					}}
 					title="Select Pickup Location"
 				/>
 			) : (
@@ -1086,9 +1112,16 @@ export function BookingForm({
 			{showDropMap ? (
 				<MapPicker
 					onClose={() => setShowDropMap(false)}
-					onLocationSelect={(location, latitude, longitude) =>
-						handleInputChange("drop", location)
-					}
+					onLocationSelect={(location, latitude, longitude) => {
+						handleInputChange("drop", location);
+						setCoordinates({
+							...coordinates,
+							drop: {
+								lat: latitude,
+								lng: longitude,
+							},
+						});
+					}}
 					title="Select Drop Location"
 				/>
 			) : (

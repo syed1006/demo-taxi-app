@@ -2,12 +2,22 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MapPin, Search, X } from "lucide-react";
+import { Check, ChevronsUpDown, MapPin, X } from "lucide-react";
 import { OlaMapsClient } from "ola-maps-client";
-import { Map as MapLibreMap, NavigationControl, Marker } from "maplibre-gl";
+import { Map as MapLibreMap, Marker } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+import {
+	Command,
+	CommandEmpty,
+	CommandGroup,
+	CommandInput,
+	CommandItem,
+	CommandList,
+} from "./ui/command";
+import { Popover, PopoverContent } from "./ui/popover";
+import { PopoverTrigger } from "@radix-ui/react-popover";
+import { cn } from "@/lib/utils";
 
 interface MapPickerProps {
 	onClose: () => void;
@@ -42,10 +52,12 @@ export function MapPicker({
 	onLocationSelect,
 	title,
 }: MapPickerProps) {
-	const [map, setMap] = useState<any>(null);
+	const [map, setMap] = useState<MapLibreMap | null>(null);
+	const [marker, setMarker] = useState<Marker | null>(null);
 	const mapContainer = useRef<HTMLDivElement>(null);
 	const [styleURL, setStyleURL] = useState<string | null>(null);
 	const [searchQuery, setSearchQuery] = useState("");
+	const [open, setOpen] = useState(false);
 
 	const [autocompleteResults, setAutocompleteResults] = useState<any[]>([]);
 
@@ -84,10 +96,10 @@ export function MapPicker({
 			transformRequest,
 		});
 
-		newMap.addControl(
-			new NavigationControl({ visualizePitch: false, showCompass: true }),
-			"bottom-left"
-		);
+		// newMap.addControl(
+		// 	new NavigationControl({ visualizePitch: false, showCompass: true }),
+		// 	"bottom-left"
+		// );
 
 		newMap.on("load", () => {
 			if ("geolocation" in navigator) {
@@ -98,18 +110,21 @@ export function MapPicker({
 							center: [longitude, latitude],
 							zoom: 14,
 						});
-						new Marker()
+						const newMarker = new Marker()
 							.setLngLat([longitude, latitude])
 							.addTo(newMap);
+						setMarker(newMarker);
 					},
 					() => {
 						newMap.flyTo({
 							center: [BANGALORE.lng, BANGALORE.lat],
 							zoom: 14,
 						});
-						new Marker()
+						const newMarker = new Marker()
 							.setLngLat([BANGALORE.lng, BANGALORE.lat])
 							.addTo(newMap);
+
+						setMarker(newMarker);
 					}
 				);
 			} else {
@@ -117,9 +132,10 @@ export function MapPicker({
 					center: [BANGALORE.lng, BANGALORE.lat],
 					zoom: 14,
 				});
-				new Marker()
+				const newMarker = new Marker()
 					.setLngLat([BANGALORE.lng, BANGALORE.lat])
 					.addTo(newMap);
+				setMarker(newMarker);
 			}
 		});
 
@@ -131,13 +147,33 @@ export function MapPicker({
 	}, [styleURL, transformRequest, mapContainer]);
 
 	const handleLocationSelect = (place: any) => {
-		console.log(place.geometry.location.lng, place.geometry.location.lat);
+		setOpen(false);
+		setSearchQuery(place.description);
 		onLocationSelect(
 			place.description,
 			place.geometry.location.lat,
 			place.geometry.location.lng
 		);
-		onClose();
+		if (map) {
+			map.flyTo({
+				center: [
+					place.geometry.location.lng,
+					place.geometry.location.lat,
+				],
+				zoom: 14,
+			});
+
+			if (marker) {
+				marker.remove();
+			}
+			const newMarker = new Marker()
+				.setLngLat([
+					place.geometry.location.lng,
+					place.geometry.location.lat,
+				])
+				.addTo(map);
+			setMarker(newMarker);
+		}
 	};
 
 	const handleInputChange = (query: string) => {
@@ -153,8 +189,6 @@ export function MapPicker({
 				const result = await client.places.autocomplete({
 					input: query,
 					location: bangaloreLocation,
-					radius: 200000,
-					strictbounds: true,
 				});
 				setAutocompleteResults(result.predictions || []);
 			} catch (error) {
@@ -165,7 +199,12 @@ export function MapPicker({
 	);
 
 	return (
-		<div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+		<div
+			className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
+			onWheel={(e) => e.stopPropagation()} // Prevent wheel events from bubbling
+			onScroll={(e) => e.stopPropagation()} // Prevent wheel events from bubbling
+			onTouchMove={(e) => e.stopPropagation()}
+		>
 			<Card className="w-full max-w-2xl max-h-[80vh] overflow-hidden">
 				<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
 					<CardTitle className="flex items-center gap-2">
@@ -179,44 +218,110 @@ export function MapPicker({
 
 				<CardContent className="space-y-4">
 					{/* Search Input */}
-					<div className="relative">
-						<Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-						<Input
-							placeholder="Search for a location..."
-							value={searchQuery}
-							onChange={(e) => handleInputChange(e.target.value)}
-							className="pl-10"
-						/>
+					<div className="space-y-2">
+						<label className="text-sm font-medium text-muted-foreground">
+							Search and select location:
+						</label>
+						<Popover open={open} onOpenChange={setOpen}>
+							<PopoverTrigger asChild>
+								<Button
+									variant="outline"
+									role="combobox"
+									aria-expanded={open}
+									className="w-full h-10 px-3 py-2 text-sm justify-between font-normal bg-transparent border border-input hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+								>
+									<span
+										className={cn(
+											"truncate",
+											!searchQuery &&
+												"text-muted-foreground"
+										)}
+									>
+										{searchQuery
+											? searchQuery
+											: "Search locations..."}
+									</span>
+									<ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+								</Button>
+							</PopoverTrigger>
+							<PopoverContent
+								className="w-[--radix-popover-trigger-width] p-0"
+								align="start"
+							>
+								<Command>
+									<CommandInput
+										placeholder="Search locations..."
+										className="h-9"
+										value={searchQuery}
+										onValueChange={handleInputChange}
+									/>
+									<CommandList className="max-h-[200px]">
+										<CommandEmpty>
+											No location found.
+										</CommandEmpty>
+										<CommandGroup>
+											{autocompleteResults.map(
+												(location) => (
+													<CommandItem
+														key={
+															location.description
+														}
+														value={
+															location.description
+														}
+														onSelect={() =>
+															handleLocationSelect(
+																location
+															)
+														}
+														className="cursor-pointer"
+													>
+														<div className="flex items-center space-x-2 w-full">
+															<div className="w-2 h-2 bg-orange-500 rounded-full flex-shrink-0" />
+															<div className="flex-1 min-w-0">
+																<div
+																	className="font-medium truncate"
+																	title={
+																		location.description
+																	}
+																>
+																	{
+																		location.description
+																	}
+																</div>
+															</div>
+															<Check
+																className={cn(
+																	"ml-auto h-4 w-4 flex-shrink-0",
+																	searchQuery ===
+																		location.description
+																		? "opacity-100"
+																		: "opacity-0"
+																)}
+															/>
+														</div>
+													</CommandItem>
+												)
+											)}
+										</CommandGroup>
+									</CommandList>
+								</Command>
+							</PopoverContent>
+						</Popover>
 					</div>
-
 					{/* Map Placeholder */}
 					<div
 						ref={mapContainer}
 						className="h-64 rounded-lg border-2 border-dashed border-border"
 					></div>
-
-					{/* Location List */}
-					<div className="max-h-48 overflow-y-auto space-y-2">
-						<h4 className="font-semibold text-sm text-muted-foreground mb-2">
-							Popular Locations
-						</h4>
-						{autocompleteResults.map((place, index) => (
-							<Button
-								key={index}
-								variant="ghost"
-								className="w-full justify-start h-auto p-3 hover:bg-orange-50 dark:hover:bg-orange-950"
-								onClick={() => handleLocationSelect(place)}
-							>
-								<div className="flex items-center space-x-3">
-									<div className="w-2 h-2 bg-orange-500 rounded-full" />
-									<div className="text-left">
-										<div className="font-medium">
-											{place.description}
-										</div>
-									</div>
-								</div>
-							</Button>
-						))}
+					<div className="flex gap-3 pt-2">
+						<Button
+							variant="outline"
+							onClick={onClose}
+							className="flex-1 bg-transparent"
+						>
+							Close
+						</Button>
 					</div>
 				</CardContent>
 			</Card>
