@@ -1,0 +1,26 @@
+---
+import { Icon } from "astro-icon/components";
+import { SITE, waLink } from "../data/site";
+
+const message =
+	"Hi! I'd like to book a cab. Can you help me with the booking?";
+---
+
+<div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+	<a
+		href={`tel:${SITE.phoneE164}`}
+		class="flex items-center justify-center w-14 h-14 rounded-full bg-blue-500 hover:bg-blue-600 text-white shadow-2xl hover:scale-110 transition-all duration-300"
+		aria-label={`Call us at ${SITE.phoneDisplay}`}
+	>
+		<Icon name="lucide:phone" class="h-6 w-6" />
+	</a>
+	<a
+		href={waLink(message)}
+		target="_blank"
+		rel="noopener"
+		class="flex items-center justify-center w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-2xl hover:scale-110 transition-all duration-300 animate-pulse-glow"
+		aria-label="Chat with us on WhatsApp"
+	>
+		<Icon name="lucide:message-circle" class="h-7 w-7" />
+	</a>
+</div>

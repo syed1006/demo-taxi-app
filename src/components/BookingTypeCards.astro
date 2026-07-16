@@ -1,0 +1,99 @@
+---
+import { Icon } from "astro-icon/components";
+import { BOOKING_TYPES } from "../data/booking-types";
+
+// Every card pre-fills the booking form via the page-wide prefill listener
+// (see booking-form.ts). Most types route through pricing so the user picks a
+// vehicle first; "driver-only" needs no vehicle and jumps straight to the form.
+const hrefFor = (id: string) =>
+	id === "driver-only" ? "#booking-form" : "#pricing-cards";
+---
+
+<section
+	id="booking-types"
+	class="py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-background"
+>
+	<div class="max-w-7xl mx-auto">
+		<div class="text-center mb-6 sm:mb-8">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-2">
+				Choose Your Journey Type
+			</h2>
+			<p class="text-sm sm:text-base text-muted-foreground">
+				Quick selection for your travel needs
+			</p>
+		</div>
+
+		{/* Mobile: horizontal scroll */}
+		<div class="sm:hidden">
+			<div class="flex gap-3 overflow-x-auto scrollbar-hide pb-2 -mx-1 px-1">
+				{
+					BOOKING_TYPES.map((type) => (
+						<a
+							href={hrefFor(type.id)}
+							data-booking-type={type.id}
+							class="flex-shrink-0 flex flex-col items-center gap-2 p-3 rounded-xl border bg-card hover:bg-accent transition-colors min-w-[100px]"
+						>
+							<div
+								class={`w-10 h-10 rounded-full bg-gradient-to-r ${type.color} flex items-center justify-center`}
+							>
+								<Icon name={type.icon} class="h-5 w-5 text-white" />
+							</div>
+							<div class="text-center">
+								<div class="text-xs font-medium leading-tight">
+									{type.name}
+								</div>
+								{type.popular && (
+									<span class="inline-block rounded-full bg-orange-500 text-white text-[10px] px-1.5 py-0.5 mt-1 font-semibold">
+										Popular
+									</span>
+								)}
+							</div>
+						</a>
+					))
+				}
+			</div>
+			<div class="text-center mt-3">
+				<p class="text-xs text-muted-foreground">← Swipe to see more options</p>
+			</div>
+		</div>
+
+		{/* Desktop and tablet: grid */}
+		<div class="hidden sm:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+			{
+				BOOKING_TYPES.map((type) => (
+					<a
+						href={hrefFor(type.id)}
+						data-booking-type={type.id}
+						class="group block rounded-lg border bg-card text-card-foreground hover:border-orange-200 dark:hover:border-orange-800 transition-all duration-200 hover:shadow-md p-4"
+					>
+						<div class="flex items-start gap-3">
+							<div
+								class={`flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-r ${type.color} flex items-center justify-center`}
+							>
+								<Icon name={type.icon} class="h-5 w-5 text-white" />
+							</div>
+							<div class="flex-1 min-w-0">
+								<div class="flex items-center gap-2 mb-1">
+									<h3 class="font-semibold text-sm leading-tight">
+										{type.name}
+									</h3>
+									{type.popular && (
+										<span class="inline-block rounded-full bg-orange-500 text-white text-[10px] px-1.5 py-0.5 font-semibold">
+											Popular
+										</span>
+									)}
+								</div>
+								<p class="text-xs text-muted-foreground leading-tight">
+									{type.description}
+								</p>
+							</div>
+						</div>
+						<span class="mt-3 inline-flex w-full items-center justify-center rounded-md border bg-background h-8 text-xs font-medium group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-colors">
+							Select
+						</span>
+					</a>
+				))
+			}
+		</div>
+	</div>
+</section>

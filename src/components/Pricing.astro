@@ -1,0 +1,180 @@
+---
+import { Icon } from "astro-icon/components";
+import { VEHICLE_CATEGORIES } from "../data/vehicles";
+import { waLink } from "../data/site";
+import VehicleCard from "./VehicleCard.astro";
+
+const categories = Object.entries(VEHICLE_CATEGORIES);
+const quoteMessage =
+	"Hi! I need a custom quote for my travel requirements. Can you help me?";
+---
+
+<section
+	id="pricing-cards"
+	class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800 overflow-hidden"
+>
+	<div class="max-w-7xl mx-auto">
+		<div class="text-center mb-12 sm:mb-16">
+			<h2
+				class="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6 animate-fade-in-up"
+			>
+				Choose Your Perfect Ride
+			</h2>
+			<p
+				class="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up delay-200 px-4"
+			>
+				From budget-friendly sedans to luxury SUVs and group travel — we have
+				the perfect vehicle for every journey
+			</p>
+		</div>
+
+		<div
+			id="pricing-tablist"
+			role="tablist"
+			aria-label="Vehicle categories"
+			class="flex overflow-x-auto scrollbar-hide md:grid md:grid-cols-5 gap-1 w-full mb-8 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm p-1 rounded-xl shadow-lg"
+		>
+			{
+				categories.map(([key, category], index) => (
+					<button
+						type="button"
+						role="tab"
+						id={`tab-${key}`}
+						data-tab={key}
+						aria-selected={index === 0 ? "true" : "false"}
+						aria-controls={`panel-${key}`}
+						tabindex={index === 0 ? 0 : -1}
+						class="flex-shrink-0 flex items-center justify-center space-x-2 px-4 py-3 min-w-[90px] rounded-lg font-medium transition-all duration-300 hover:bg-orange-100 dark:hover:bg-orange-900 aria-selected:bg-orange-500 aria-selected:text-white"
+					>
+						<Icon name={category.icon} class="h-4 w-4" />
+						<span class="text-xs md:text-base">{category.title}</span>
+					</button>
+				))
+			}
+		</div>
+
+		<div class="flex justify-center mb-6 md:hidden">
+			<p class="text-xs text-muted-foreground animate-pulse">
+				← Swipe to see more categories →
+			</p>
+		</div>
+
+		{
+			categories.map(([key, category], index) => (
+				<div
+					role="tabpanel"
+					id={`panel-${key}`}
+					data-tab-panel={key}
+					aria-labelledby={`tab-${key}`}
+					class:list={["tab-panel space-y-8", { hidden: index !== 0 }]}
+				>
+					<div class="text-center mb-8">
+						<div class="flex items-center justify-center mb-4">
+							<div
+								class={`w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r ${category.gradient} flex items-center justify-center shadow-lg`}
+							>
+								<Icon
+									name={category.icon}
+									class="h-6 w-6 sm:h-8 sm:w-8 text-white"
+								/>
+							</div>
+						</div>
+						<h3
+							class={`text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r ${category.gradient} bg-clip-text text-transparent mb-2`}
+						>
+							{category.title} Vehicles
+						</h3>
+						<p class="text-sm sm:text-base text-muted-foreground px-4">
+							{category.description}
+						</p>
+					</div>
+
+					<div class="space-y-6">
+						{category.vehicles.map((vehicle) => (
+							<VehicleCard vehicle={vehicle} />
+						))}
+					</div>
+				</div>
+			))
+		}
+
+		<div class="mt-16 text-center">
+			<div
+				class="bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl p-6 sm:p-8 md:p-12 text-white shadow-2xl"
+			>
+				<h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-4">
+					Need a Custom Quote?
+				</h3>
+				<p class="text-sm sm:text-base md:text-lg mb-6 text-orange-100">
+					For special events, corporate bookings, or custom requirements,
+					contact us for personalized pricing.
+				</p>
+				<a
+					href={waLink(quoteMessage)}
+					target="_blank"
+					rel="noopener"
+					class="inline-block bg-white text-orange-500 hover:bg-orange-50 font-bold px-6 sm:px-8 py-2.5 sm:py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg"
+				>
+					Get Custom Quote
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const tablist = document.getElementById("pricing-tablist");
+
+	function activateTab(key: string, focus = false) {
+		if (!tablist) return;
+		for (const tab of tablist.querySelectorAll<HTMLButtonElement>("[data-tab]")) {
+			const selected = tab.dataset.tab === key;
+			tab.setAttribute("aria-selected", String(selected));
+			tab.tabIndex = selected ? 0 : -1;
+			if (selected && focus) tab.focus();
+		}
+		for (const panel of document.querySelectorAll<HTMLElement>(
+			"[data-tab-panel]"
+		)) {
+			panel.classList.toggle("hidden", panel.dataset.tabPanel !== key);
+		}
+	}
+
+	tablist?.addEventListener("click", (event) => {
+		const tab = (event.target as Element).closest<HTMLElement>("[data-tab]");
+		if (tab?.dataset.tab) activateTab(tab.dataset.tab);
+	});
+
+	tablist?.addEventListener("keydown", (event) => {
+		if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+		const tabs = [...tablist.querySelectorAll<HTMLElement>("[data-tab]")];
+		const current = tabs.findIndex(
+			(tab) => tab.getAttribute("aria-selected") === "true"
+		);
+		const delta = event.key === "ArrowRight" ? 1 : -1;
+		const next = tabs[(current + delta + tabs.length) % tabs.length];
+		if (next?.dataset.tab) {
+			event.preventDefault();
+			activateTab(next.dataset.tab, true);
+		}
+	});
+
+	// Shared arrow-button scrolling for every carousel/rail on the page:
+	// buttons carry data-scroll="left|right", data-target="<container id>",
+	// and optionally data-amount (px); default is one full container width.
+	document.addEventListener("click", (event) => {
+		const button = (event.target as Element).closest<HTMLElement>(
+			"[data-scroll]"
+		);
+		if (!button?.dataset.target) return;
+		const container = document.getElementById(button.dataset.target);
+		if (!container) return;
+		const amount = button.dataset.amount
+			? Number(button.dataset.amount)
+			: container.clientWidth;
+		container.scrollBy({
+			left: button.dataset.scroll === "left" ? -amount : amount,
+			behavior: "smooth",
+		});
+	});
+</script>

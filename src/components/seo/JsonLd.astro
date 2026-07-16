@@ -1,0 +1,60 @@
+---
+import { SITE } from "../../data/site";
+import { FAQS } from "../../data/faq";
+
+const business = {
+	"@context": "https://schema.org",
+	"@type": ["LocalBusiness", "TaxiService"],
+	"@id": `${SITE.url}/#business`,
+	name: SITE.name,
+	alternateName: SITE.shortName,
+	url: SITE.url,
+	telephone: SITE.phoneE164,
+	email: SITE.email,
+	image: `${SITE.url}/og.png`,
+	address: {
+		"@type": "PostalAddress",
+		streetAddress: SITE.address.street,
+		addressLocality: SITE.address.locality,
+		addressRegion: SITE.address.region,
+		postalCode: SITE.address.postalCode,
+		addressCountry: SITE.address.country,
+	},
+	areaServed: {
+		"@type": "City",
+		name: "Bengaluru",
+	},
+	openingHoursSpecification: {
+		"@type": "OpeningHoursSpecification",
+		dayOfWeek: [
+			"Monday",
+			"Tuesday",
+			"Wednesday",
+			"Thursday",
+			"Friday",
+			"Saturday",
+			"Sunday",
+		],
+		opens: "00:00",
+		closes: "23:59",
+	},
+	sameAs: [SITE.instagram],
+	priceRange: "₹₹",
+};
+
+const faqPage = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	mainEntity: FAQS.map((faq) => ({
+		"@type": "Question",
+		name: faq.question,
+		acceptedAnswer: {
+			"@type": "Answer",
+			text: faq.answer,
+		},
+	})),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(business)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqPage)} />

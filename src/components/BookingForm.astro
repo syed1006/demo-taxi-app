@@ -1,0 +1,255 @@
+---
+import { Icon } from "astro-icon/components";
+import { SITE } from "../data/site";
+import { BOOKING_TYPES } from "../data/booking-types";
+import { CAB_TYPES } from "../data/vehicles";
+
+// Booking types where some fields don't apply; stamped on the <option>s and
+// read by booking-form.ts so the rules live in one place.
+const hiddenFieldsFor = (id: string): string =>
+	id === "driver-only" ? "drop cabType" : id === "hourly" || id === "tour" ? "drop" : "";
+
+const inputClass =
+	"flex h-11 w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-red-500";
+const labelClass = "flex items-center gap-2 text-sm font-medium text-foreground";
+const errorClass = "hidden text-sm text-red-500";
+---
+
+<section
+	id="booking-form"
+	class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800"
+>
+	<div class="max-w-4xl mx-auto">
+		<div class="text-center mb-12">
+			<h2
+				class="text-4xl sm:text-5xl font-bold text-foreground mb-6 animate-fade-in"
+			>
+				Book Your Ride
+			</h2>
+			<p class="text-xl text-muted-foreground animate-fade-in delay-200">
+				Fill in your details and we'll connect you via WhatsApp instantly
+			</p>
+		</div>
+
+		<div
+			class="rounded-lg bg-card text-card-foreground shadow-2xl border-2 border-orange-100 dark:border-orange-900 animate-slide-up overflow-hidden"
+		>
+			<div class="bg-gradient-to-r from-orange-500 to-red-500 text-white p-6">
+				<h3 class="flex items-center gap-3 text-2xl font-semibold">
+					<Icon name="lucide:message-circle" class="h-6 w-6" />
+					Booking Details
+				</h3>
+				<p class="text-orange-100 mt-1">
+					No payment needed now — we confirm your fare on WhatsApp before the
+					ride.
+				</p>
+			</div>
+
+			<form
+				class="p-6 sm:p-8 space-y-6"
+				data-whatsapp={SITE.whatsapp}
+				novalidate
+			>
+				<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+					<div data-field class="space-y-2">
+						<label for="bf-name" class={labelClass}>
+							<Icon name="lucide:user" class="h-4 w-4 text-orange-500" />
+							Full Name *
+						</label>
+						<input
+							id="bf-name"
+							name="name"
+							type="text"
+							required
+							minlength="2"
+							pattern="[A-Za-z ]+"
+							autocomplete="name"
+							placeholder="Enter your full name"
+							aria-describedby="err-name"
+							class={inputClass}
+						/>
+						<p id="err-name" class={errorClass}></p>
+					</div>
+
+					<div data-field class="space-y-2">
+						<label for="bf-mobile" class={labelClass}>
+							<Icon name="lucide:phone" class="h-4 w-4 text-orange-500" />
+							Mobile Number *
+						</label>
+						<input
+							id="bf-mobile"
+							name="mobile"
+							type="tel"
+							required
+							pattern="[6-9][0-9]{9}"
+							maxlength="10"
+							inputmode="numeric"
+							autocomplete="tel-national"
+							placeholder="10-digit mobile number"
+							aria-describedby="err-mobile"
+							class={inputClass}
+						/>
+						<p id="err-mobile" class={errorClass}></p>
+					</div>
+
+					<div data-field class="space-y-2">
+						<label for="bf-booking-type" class={labelClass}>
+							<Icon name="lucide:briefcase" class="h-4 w-4 text-orange-500" />
+							Booking Type *
+						</label>
+						<select
+							id="bf-booking-type"
+							name="bookingType"
+							required
+							aria-describedby="err-bookingType"
+							class={inputClass}
+						>
+							<option value="" selected>Select booking type</option>
+							{
+								BOOKING_TYPES.map((type) => (
+									<option value={type.id} data-hide={hiddenFieldsFor(type.id)}>
+										{type.name}
+									</option>
+								))
+							}
+						</select>
+						<p id="err-bookingType" class={errorClass}></p>
+					</div>
+
+					<div data-field class="space-y-2">
+						<label for="bf-cab-type" class={labelClass}>
+							<Icon name="lucide:star" class="h-4 w-4 text-orange-500" />
+							Cab Type *
+						</label>
+						<select
+							id="bf-cab-type"
+							name="cabType"
+							required
+							aria-describedby="err-cabType"
+							class={inputClass}
+						>
+							<option value="" selected>Select cab type</option>
+							{
+								CAB_TYPES.map((cab) => (
+									<option value={cab.name}>
+										{cab.name} ({cab.subtitle})
+									</option>
+								))
+							}
+						</select>
+						<p id="err-cabType" class={errorClass}></p>
+					</div>
+
+					<div data-field class="space-y-2">
+						<label for="bf-pickup" class={labelClass}>
+							<Icon name="lucide:map-pin" class="h-4 w-4 text-orange-500" />
+							Pickup Location *
+						</label>
+						<input
+							id="bf-pickup"
+							name="pickup"
+							type="text"
+							required
+							minlength="3"
+							placeholder="Flat/street, area, landmark"
+							aria-describedby="err-pickup"
+							class={inputClass}
+						/>
+						<p id="err-pickup" class={errorClass}></p>
+					</div>
+
+					<div data-field class="space-y-2">
+						<label for="bf-drop" class={labelClass}>
+							<Icon name="lucide:map-pin" class="h-4 w-4 text-orange-500" />
+							Drop Location *
+						</label>
+						<input
+							id="bf-drop"
+							name="drop"
+							type="text"
+							required
+							minlength="3"
+							placeholder="Flat/street, area, landmark"
+							aria-describedby="err-drop"
+							class={inputClass}
+						/>
+						<p id="err-drop" class={errorClass}></p>
+					</div>
+
+					<div data-field class="space-y-2">
+						<label for="bf-date" class={labelClass}>
+							<Icon name="lucide:calendar" class="h-4 w-4 text-orange-500" />
+							Travel Date *
+						</label>
+						<input
+							id="bf-date"
+							name="date"
+							type="date"
+							required
+							aria-describedby="err-date"
+							class={inputClass}
+						/>
+						<p id="err-date" class={errorClass}></p>
+					</div>
+
+					<div data-field class="space-y-2">
+						<label for="bf-time" class={labelClass}>
+							<Icon name="lucide:clock" class="h-4 w-4 text-orange-500" />
+							Travel Time *
+						</label>
+						<input
+							id="bf-time"
+							name="time"
+							type="time"
+							required
+							aria-describedby="err-time"
+							class={inputClass}
+						/>
+						<p id="err-time" class={errorClass}></p>
+					</div>
+				</div>
+
+				<div data-field class="space-y-2">
+					<label for="bf-notes" class={labelClass}>
+						<Icon name="lucide:info" class="h-4 w-4 text-orange-500" />
+						Additional Notes (optional)
+					</label>
+					<textarea
+						id="bf-notes"
+						name="notes"
+						rows="3"
+						placeholder="Flight number, number of passengers, extra luggage, child seat…"
+						class={`${inputClass} h-auto min-h-20`}></textarea>
+				</div>
+
+				<p
+					id="form-status"
+					role="status"
+					aria-live="polite"
+					class="hidden rounded-md p-4 text-sm font-medium"
+				>
+				</p>
+
+				<button
+					type="submit"
+					class="w-full inline-flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white text-lg font-bold py-4 transition-all duration-300 hover:shadow-lg"
+				>
+					<Icon name="lucide:message-circle" class="h-5 w-5" />
+					Book via WhatsApp
+				</button>
+
+				<p class="text-center text-xs text-muted-foreground">
+					Clicking the button opens WhatsApp with your booking details
+					pre-filled — just hit send. Prefer to talk?
+					<a href={`tel:${SITE.phoneE164}`} class="text-orange-500 font-medium">
+						Call {SITE.phoneDisplay}
+					</a>
+				</p>
+			</form>
+		</div>
+	</div>
+</section>
+
+<script>
+	import "../scripts/booking-form";
+</script>

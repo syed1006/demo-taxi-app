@@ -1,0 +1,140 @@
+---
+import { Icon } from "astro-icon/components";
+import { SITE } from "../data/site";
+import { BOOKING_TYPES } from "../data/booking-types";
+
+const year = new Date().getFullYear();
+
+const quickLinks = [
+	{ name: "About Us", href: "#hero" },
+	{ name: "Our Services", href: "#booking-types" },
+	{ name: "Pricing", href: "#pricing-cards" },
+	{ name: "Reviews", href: "#testimonials" },
+	{ name: "FAQ", href: "#faq" },
+	{ name: "Contact", href: "#booking-form" },
+];
+
+const services = BOOKING_TYPES.filter((type) => type.id !== "driver-only");
+---
+
+<footer class="bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+			<div class="space-y-6">
+				<div class="flex items-center space-x-3">
+					<div class="bg-gradient-to-r from-orange-500 to-red-500 rounded-full p-2">
+						<Icon name="lucide:car" class="h-8 w-8 text-white" />
+					</div>
+					<div>
+						<p class="text-2xl font-bold">{SITE.shortName}</p>
+						<p class="text-orange-300">{SITE.tagline}</p>
+					</div>
+				</div>
+				<p class="text-gray-300 leading-relaxed">
+					Your trusted ride partner across Bangalore. Safe, reliable, and
+					affordable taxi service available 24/7.
+				</p>
+				<div class="flex space-x-4">
+					<a
+						href={SITE.instagram}
+						target="_blank"
+						rel="noopener"
+						class="text-gray-300 hover:text-orange-300 transition-colors"
+						aria-label="Follow us on Instagram"
+					>
+						<Icon name="lucide:instagram" class="h-5 w-5" />
+					</a>
+				</div>
+			</div>
+
+			<nav class="space-y-6" aria-label="Quick links">
+				<h2 class="text-xl font-semibold text-orange-300">Quick Links</h2>
+				<ul class="space-y-3">
+					{
+						quickLinks.map((link) => (
+							<li>
+								<a
+									href={link.href}
+									class="text-gray-300 hover:text-orange-300 transition-colors"
+								>
+									{link.name}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+
+			<nav class="space-y-6" aria-label="Services">
+				<h2 class="text-xl font-semibold text-orange-300">Our Services</h2>
+				<ul class="space-y-3">
+					{
+						services.map((service) => (
+							<li>
+								<a
+									href="#booking-form"
+									data-booking-type={service.id}
+									class="text-gray-300 hover:text-orange-300 transition-colors"
+								>
+									{service.name}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+
+			<div class="space-y-6">
+				<h2 class="text-xl font-semibold text-orange-300">Contact Us</h2>
+				<address class="space-y-4 not-italic">
+					<a
+						href={`tel:${SITE.phoneE164}`}
+						class="flex items-center space-x-3 text-gray-300 hover:text-orange-300 transition-colors"
+					>
+						<Icon name="lucide:phone" class="h-5 w-5 text-orange-400" />
+						<span>{SITE.phoneDisplay}</span>
+					</a>
+					<a
+						href={`mailto:${SITE.email}`}
+						class="flex items-center space-x-3 text-gray-300 hover:text-orange-300 transition-colors"
+					>
+						<Icon name="lucide:mail" class="h-5 w-5 text-orange-400" />
+						<span>{SITE.email}</span>
+					</a>
+					<div class="flex items-start space-x-3 text-gray-300">
+						<Icon
+							name="lucide:map-pin"
+							class="h-5 w-5 text-orange-400 mt-1 flex-shrink-0"
+						/>
+						<span>
+							{SITE.address.street}, {SITE.address.locality}
+							<br />
+							{SITE.address.region} {SITE.address.postalCode}
+						</span>
+					</div>
+					<div class="flex items-center space-x-3 text-gray-300">
+						<Icon name="lucide:clock" class="h-5 w-5 text-orange-400" />
+						<span>24/7 Available</span>
+					</div>
+				</address>
+			</div>
+		</div>
+	</div>
+
+	<div class="border-t border-gray-700 bg-gray-900">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+			<div
+				class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
+			>
+				<p class="text-gray-400 text-sm">
+					© {year}
+					{SITE.name}. All rights reserved. Made with ❤️ in Bangalore.
+				</p>
+				<div class="flex items-center space-x-1 text-sm text-gray-400">
+					<Icon name="lucide:star" class="h-4 w-4 text-yellow-400 icon-fill" />
+					<span>{SITE.rating}/5 Rating</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

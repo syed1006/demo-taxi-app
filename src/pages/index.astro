@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import BookingTypeCards from "../components/BookingTypeCards.astro";
+import Pricing from "../components/Pricing.astro";
+import BookingForm from "../components/BookingForm.astro";
+import Destinations from "../components/Destinations.astro";
+import SocialProof from "../components/SocialProof.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Faq from "../components/Faq.astro";
+import Footer from "../components/Footer.astro";
+import ContactFloat from "../components/ContactFloat.astro";
+---
+
+<BaseLayout>
+	<Header />
+	<ContactFloat />
+	<main>
+		<Hero />
+		<BookingTypeCards />
+		<Pricing />
+		<BookingForm />
+		<Destinations />
+		<SocialProof />
+		<Testimonials />
+		<Faq />
+	</main>
+	<Footer />
+</BaseLayout>

@@ -1,0 +1,135 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { SITE } from "../data/site";
+import cityBg from "../assets/bg/city-bg.png";
+
+const features = [
+	{
+		icon: "lucide:clock",
+		title: "24/7 Available",
+		desc: "Round the clock service",
+	},
+	{ icon: "lucide:shield", title: "Safe & Secure", desc: "Verified drivers" },
+	{
+		icon: "lucide:star",
+		title: "Top Rated",
+		desc: `${SITE.rating}★ customer rating`,
+	},
+	{ icon: "lucide:users", title: "Local Experts", desc: "Know Bangalore well" },
+];
+---
+
+<section
+	id="hero"
+	class="relative min-h-screen flex items-center justify-center overflow-hidden"
+>
+	<Image
+		src={cityBg}
+		alt=""
+		width={1920}
+		widths={[640, 1024, 1600, 1920]}
+		sizes="100vw"
+		quality={70}
+		format="webp"
+		loading="eager"
+		fetchpriority="high"
+		class="absolute inset-0 h-full w-full object-cover"
+	/>
+
+	<div
+		class="absolute inset-0 bg-gradient-to-br from-orange-600/80 via-red-600/70 to-pink-600/80 dark:opacity-90"
+	>
+	</div>
+
+	<div class="absolute top-24 left-4 sm:left-10 animate-float" aria-hidden="true">
+		<Icon name="lucide:car" class="h-6 w-6 sm:h-8 sm:w-8 text-white/40" />
+	</div>
+	<div
+		class="absolute top-40 right-8 sm:right-16 animate-float-delayed"
+		aria-hidden="true"
+	>
+		<Icon name="lucide:map-pin" class="h-5 w-5 sm:h-6 sm:w-6 text-orange-300/60" />
+	</div>
+	<div
+		class="absolute bottom-32 left-8 sm:left-20 animate-float-slow"
+		aria-hidden="true"
+	>
+		<Icon name="lucide:clock" class="h-6 w-6 sm:h-7 sm:w-7 text-white/30" />
+	</div>
+
+	<div
+		class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full mt-20 pb-16"
+	>
+		<div class="space-y-6 sm:space-y-8">
+			<div class="flex justify-center">
+				<div
+					class="bg-white/15 backdrop-blur-sm rounded-full p-4 sm:p-6 border border-white/30 shadow-2xl animate-scale-in"
+				>
+					<Icon
+						name="lucide:car"
+						class="h-12 w-12 sm:h-16 sm:w-16 text-white"
+					/>
+				</div>
+			</div>
+
+			<div class="space-y-3 sm:space-y-4">
+				<h1
+					class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight"
+				>
+					<span class="block animate-slide-in-left">{SITE.shortName}</span>
+					<span class="block text-orange-300 animate-slide-in-right"
+						>{SITE.tagline}</span
+					>
+				</h1>
+
+				<p
+					class="text-base sm:text-lg md:text-xl text-white/85 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-400 px-4"
+				>
+					Ride with Comfort, Ride with Care — your trusted taxi service in
+					Bangalore. Airport transfers, hourly rentals, outstation trips and
+					more. Let us take the wheel, so you can relax and enjoy the ride.
+				</p>
+			</div>
+
+			<div
+				class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up delay-500"
+			>
+				<a
+					href="#booking-form"
+					class="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl rounded-full shadow-2xl hover:shadow-orange-500/25 hover:scale-105 transition-all duration-300 border-2 border-orange-400 animate-pulse-glow"
+				>
+					Book Your Ride Now
+					<Icon name="lucide:car" class="ml-2 sm:ml-3 h-5 w-5 sm:h-6 sm:w-6" />
+				</a>
+				<a
+					href={`tel:${SITE.phoneE164}`}
+					class="inline-flex items-center bg-white/15 backdrop-blur-sm hover:bg-white/25 text-white font-semibold px-6 sm:px-8 py-4 text-base sm:text-lg rounded-full border border-white/40 transition-all duration-300"
+				>
+					<Icon name="lucide:phone" class="mr-2 h-5 w-5" />
+					Call {SITE.phoneDisplay}
+				</a>
+			</div>
+
+			<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-6 sm:pt-8">
+				{
+					features.map((feature, index) => (
+						<div
+							class="bg-white/15 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 animate-fade-in-up"
+							style={`animation-delay: ${600 + index * 100}ms`}
+						>
+							<Icon
+								name={feature.icon}
+								class="h-8 w-8 sm:h-10 sm:w-10 text-orange-300 mx-auto mb-2 sm:mb-3"
+							/>
+							<p class="text-white font-semibold text-sm sm:text-lg">
+								{feature.title}
+							</p>
+							<p class="text-white/80 text-xs sm:text-sm">{feature.desc}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,54 @@
+export interface Testimonial {
+	name: string;
+	location: string;
+	rating: number;
+	text: string;
+}
+
+export const TESTIMONIALS: Testimonial[] = [
+	{
+		name: "Priya Sharma",
+		location: "Koramangala",
+		rating: 5,
+		text: "Excellent service! The driver was punctual and the car was clean. Highly recommend for airport transfers.",
+	},
+	{
+		name: "Rajesh Kumar",
+		location: "Electronic City",
+		rating: 5,
+		text: "Best taxi service in Bangalore. Professional drivers and reasonable rates. Been using for 2 years now.",
+	},
+	{
+		name: "Anita Reddy",
+		location: "Whitefield",
+		rating: 5,
+		text: "Safe and reliable. Perfect for late night rides. The booking process is so simple via WhatsApp.",
+	},
+	{
+		name: "Vikram Singh",
+		location: "Indiranagar",
+		rating: 5,
+		text: "Great for outstation trips. Comfortable cars and experienced drivers who know the routes well.",
+	},
+	{
+		name: "Meera Nair",
+		location: "HSR Layout",
+		rating: 5,
+		text: "Affordable and punctual. The hourly rental service is perfect for shopping trips around the city.",
+	},
+	{
+		name: "Arjun Patel",
+		location: "BTM Layout",
+		rating: 5,
+		text: "Corporate travel made easy. Professional service with proper invoicing. Highly recommended for business.",
+	},
+];
+
+/** "Priya Sharma" -> "PS" for the CSS initials avatar. */
+export const initials = (name: string): string =>
+	name
+		.split(/\s+/)
+		.map((part) => part[0])
+		.slice(0, 2)
+		.join("")
+		.toUpperCase();

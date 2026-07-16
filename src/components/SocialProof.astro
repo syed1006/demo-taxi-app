@@ -1,0 +1,49 @@
+---
+import { Icon } from "astro-icon/components";
+
+const stats = [
+	{ icon: "lucide:users", value: "50,000+", label: "Happy Customers" },
+	{ icon: "lucide:car", value: "1,000+", label: "Rides Daily" },
+	{ icon: "lucide:star", value: "4.8", label: "Average Rating" },
+	{ icon: "lucide:clock", value: "24/7", label: "Service Available" },
+];
+---
+
+<section
+	class="py-12 sm:py-16 bg-gradient-to-r from-orange-500 to-red-500 text-white overflow-hidden"
+	aria-label="Why riders trust us"
+>
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="text-center mb-8 sm:mb-12">
+			<h2
+				class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 animate-fade-in-up"
+			>
+				Trusted by Thousands in Bangalore
+			</h2>
+			<p class="text-lg sm:text-xl text-orange-100 animate-fade-in-up delay-200">
+				Join our growing community of satisfied customers
+			</p>
+		</div>
+
+		<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+			{
+				stats.map((stat, index) => (
+					<div
+						class="text-center animate-slide-up hover:scale-105 transition-transform duration-300"
+						style={`animation-delay: ${index * 100}ms`}
+					>
+						<div class="bg-white/20 rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto mb-3 sm:mb-4 animate-bounce-in">
+							<Icon name={stat.icon} class="h-6 w-6 sm:h-8 sm:w-8" />
+						</div>
+						<div class="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2 animate-count-up">
+							{stat.value}
+						</div>
+						<div class="text-orange-100 font-medium text-sm sm:text-base">
+							{stat.label}
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
