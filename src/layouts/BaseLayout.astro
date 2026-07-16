@@ -10,8 +10,11 @@ interface Props {
 }
 
 const { title = SITE.title, description = SITE.description } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL("/og.png", Astro.site);
+// "/" in production; "/<repo>/" on github.io test deploys.
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const isTestDeploy = base !== "";
+const canonical = new URL(`${base}/`, Astro.site);
+const ogImage = new URL(`${base}/og.png`, Astro.site);
 ---
 
 <!doctype html>
@@ -23,6 +26,7 @@ const ogImage = new URL("/og.png", Astro.site);
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonical} />
 		<meta name="generator" content={Astro.generator} />
+		{isTestDeploy && <meta name="robots" content="noindex, nofollow" />}
 
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonical} />
@@ -39,12 +43,22 @@ const ogImage = new URL("/og.png", Astro.site);
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImage} />
 
-		<link rel="icon" href="/favicon.ico" sizes="32x32" />
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-		<link rel="manifest" href="/site.webmanifest" />
-		<link rel="sitemap" href="/sitemap-index.xml" />
+		<link rel="icon" href={`${base}/favicon.ico`} sizes="32x32" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href={`${base}/favicon-32x32.png`}
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href={`${base}/favicon-16x16.png`}
+		/>
+		<link rel="apple-touch-icon" href={`${base}/apple-touch-icon.png`} />
+		<link rel="manifest" href={`${base}/site.webmanifest`} />
+		<link rel="sitemap" href={`${base}/sitemap-index.xml`} />
 
 		<meta
 			name="theme-color"

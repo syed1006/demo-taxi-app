@@ -1,21 +1,21 @@
 import type { ImageMetadata } from "astro";
 
-import etios from "../assets/cars/etios.png";
-import siftDezire from "../assets/cars/sift-dezire.png";
-import amaze from "../assets/cars/amaze.png";
-import innova from "../assets/cars/innova.png";
-import ertiga from "../assets/cars/ertiga.png";
-import kiaCarrens from "../assets/cars/kia-carrens.png";
-import ciaz from "../assets/cars/ciaz.png";
-import nissanSunny from "../assets/cars/nissan-sunny.png";
-import city from "../assets/cars/city.png";
-import fortuner from "../assets/cars/fortuner.png";
-import innovaCrysta from "../assets/cars/innova-crysta.png";
-import fortunerBlack from "../assets/cars/fortuner-black.png";
-import audi from "../assets/cars/audi.png";
-import bmw from "../assets/cars/bmw.png";
-import mercedes from "../assets/cars/mercedes.png";
-import traveller from "../assets/cars/traveller.png";
+import etios from "../assets/cars/etios.webp";
+import siftDezire from "../assets/cars/sift-dezire.webp";
+import amaze from "../assets/cars/amaze.webp";
+import innova from "../assets/cars/innova.webp";
+import ertiga from "../assets/cars/ertiga.webp";
+import kiaCarrens from "../assets/cars/kia-carrens.webp";
+import ciaz from "../assets/cars/ciaz.webp";
+import nissanSunny from "../assets/cars/nissan-sunny.webp";
+import city from "../assets/cars/city.webp";
+import fortuner from "../assets/cars/fortuner.webp";
+import innovaCrysta from "../assets/cars/innova-crysta.webp";
+import fortunerBlack from "../assets/cars/fortuner-black.webp";
+import audi from "../assets/cars/audi.webp";
+import bmw from "../assets/cars/bmw.webp";
+import mercedes from "../assets/cars/mercedes.webp";
+import traveller from "../assets/cars/traveller.webp";
 
 export interface Vehicle {
 	id: string;

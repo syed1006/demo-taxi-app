@@ -1,21 +1,21 @@
 import type { ImageMetadata } from "astro";
 
-import lalbagh from "../assets/destinations/lalbagh.jpg";
-import cubbonPark from "../assets/destinations/cubbon-park-unsplash.jpg";
-import bangalorePalace from "../assets/destinations/bangalore-palace.jpg";
-import iskconTemple from "../assets/destinations/iskcon-temple.jpg";
-import wonderla from "../assets/destinations/wonderla.jpg";
-import nandiHills from "../assets/destinations/nandi-hills.jpg";
-import lepakshiTemple from "../assets/destinations/lepakshi-temple.png";
-import shivanaSamudra from "../assets/destinations/shivana-samudra.png";
-import mysorePalace from "../assets/destinations/mysore-palace.jpg";
-import ishaFoundation from "../assets/destinations/isha-foundation.jpg";
-import chickmagaluru from "../assets/destinations/chickmagaluru.jpg";
-import coorg from "../assets/destinations/coorg.jpg";
-import ooty from "../assets/destinations/ooty.jpg";
-import waynad from "../assets/destinations/waynad.jpg";
-import hogenakkalFalls from "../assets/destinations/hogenakkal-falls.jpg";
-import chennai from "../assets/destinations/chennai.jpg";
+import lalbagh from "../assets/destinations/lalbagh.webp";
+import cubbonPark from "../assets/destinations/cubbon-park-unsplash.webp";
+import bangalorePalace from "../assets/destinations/bangalore-palace.webp";
+import iskconTemple from "../assets/destinations/iskcon-temple.webp";
+import wonderla from "../assets/destinations/wonderla.webp";
+import nandiHills from "../assets/destinations/nandi-hills.webp";
+import lepakshiTemple from "../assets/destinations/lepakshi-temple.webp";
+import shivanaSamudra from "../assets/destinations/shivana-samudra.webp";
+import mysorePalace from "../assets/destinations/mysore-palace.webp";
+import ishaFoundation from "../assets/destinations/isha-foundation.webp";
+import chickmagaluru from "../assets/destinations/chickmagaluru.webp";
+import coorg from "../assets/destinations/coorg.webp";
+import ooty from "../assets/destinations/ooty.webp";
+import waynad from "../assets/destinations/waynad.webp";
+import hogenakkalFalls from "../assets/destinations/hogenakkal-falls.webp";
+import chennai from "../assets/destinations/chennai.webp";
 
 export interface Destination {
 	id: number;
