@@ -21,11 +21,11 @@ const duration =
 
 <article
 	class:list={[
-		"group relative overflow-hidden rounded-lg border-2 bg-card text-card-foreground hover:shadow-2xl transition-all duration-500 hover:border-orange-200 dark:hover:border-orange-800",
+		"group relative overflow-hidden rounded-lg border-2 bg-card text-card-foreground hover:shadow-2xl transition-all duration-500 hover:border-orange-200 dark:hover:border-orange-800 h-full",
 		className,
 	]}
 >
-	<a href={href} class="block">
+	<a href={href} class="flex flex-col h-full">
 		<div class="relative h-40 overflow-hidden">
 			{
 				pkg.image ? (
@@ -56,26 +56,30 @@ const duration =
 				)
 			}
 		</div>
-		<div class="p-4 space-y-2">
-			<h3 class="font-bold text-foreground group-hover:text-orange-500 transition-colors leading-snug">
+		<div class="p-4 flex flex-col flex-1 space-y-2">
+			<h3 class="font-bold text-foreground group-hover:text-orange-500 transition-colors leading-snug line-clamp-2">
 				{pkg.shortName}
 			</h3>
 			<p class="text-xs text-muted-foreground">
 				{pkg.sightsCovered.length} places covered
 			</p>
-			{
-				sedanPrice && (
-					<p class="text-sm">
-						<span class="text-muted-foreground">Sedan</span>
-						<strong class="text-orange-600 dark:text-orange-400 ml-1">
-							{formatINR(sedanPrice)}
-						</strong>
-					</p>
-				)
-			}
-			<span class="text-sm font-semibold text-orange-500">
-				View itinerary →
-			</span>
+			<div class="mt-auto pt-1 flex items-center justify-between">
+				{
+					sedanPrice ? (
+						<p class="text-sm">
+							<span class="text-muted-foreground">Sedan</span>
+							<strong class="text-orange-600 dark:text-orange-400 ml-1">
+								{formatINR(sedanPrice)}
+							</strong>
+						</p>
+					) : (
+						<span />
+					)
+				}
+				<span class="text-sm font-semibold text-orange-500">
+					View itinerary →
+				</span>
+			</div>
 		</div>
 	</a>
 </article>
