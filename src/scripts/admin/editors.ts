@@ -978,8 +978,16 @@ export function viewTestimonials(): HTMLElement {
 
 /* ---------- Photos ---------- */
 
+/** Survives the view re-render after a successful upload. */
+let lastUploadNote = "";
+
 export function viewPhotos(): HTMLElement {
-	const uploadStatus = el("p", { class: "text-sm text-muted-foreground" });
+	const uploadStatus = el(
+		"p",
+		{ class: "text-sm font-semibold text-green-700 dark:text-green-400" },
+		lastUploadNote
+	);
+	lastUploadNote = "";
 	const folderSelect = el(
 		"select",
 		{ class: cx.input },
@@ -1007,9 +1015,7 @@ export function viewPhotos(): HTMLElement {
 		try {
 			const ref = await addPhoto(folderSelect.value as AssetFolder, file, nameInput.value || undefined);
 			const added = app.pending[app.pending.length - 1];
-			uploadStatus.textContent = `Ready to publish: ${ref} (${Math.round(added.bytes / 1024)} KB, resized & converted in your browser).`;
-			fileInput.value = "";
-			nameInput.value = "";
+			lastUploadNote = `Staged ${ref} (${Math.round(added.bytes / 1024)} KB — resized & WebP-converted in your browser). Publish to put it on the site.`;
 			app.show(viewPhotos());
 		} catch (err) {
 			uploadStatus.textContent = `Could not process the image: ${(err as Error).message}`;
