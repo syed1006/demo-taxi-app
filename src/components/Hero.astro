@@ -1,24 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import { SITE } from "../data/site";
+import { SITE, waLink } from "../data/site";
+import { SERVICES } from "../data/services";
 import { withBase } from "../lib/url";
 import cityBg from "../assets/bg/city-bg.webp";
-
-const features = [
-	{
-		icon: "lucide:clock",
-		title: "24/7 Available",
-		desc: "Round the clock service",
-	},
-	{ icon: "lucide:shield", title: "Safe & Secure", desc: "Verified drivers" },
-	{
-		icon: "lucide:star",
-		title: "Top Rated",
-		desc: `${SITE.rating}★ customer rating`,
-	},
-	{ icon: "lucide:users", title: "Local Experts", desc: "Know Bangalore well" },
-];
 ---
 
 <section
@@ -39,104 +25,191 @@ const features = [
 	/>
 
 	<div
-		class="absolute inset-0 bg-gradient-to-br from-orange-600/80 via-red-600/70 to-pink-600/80 dark:opacity-90"
+		class="absolute inset-0 bg-gradient-to-br from-orange-600/85 via-red-600/75 to-pink-600/85 dark:opacity-90"
 	>
 	</div>
 
-	<div class="absolute top-24 left-4 sm:left-10 animate-float" aria-hidden="true">
-		<Icon name="lucide:car" class="h-6 w-6 sm:h-8 sm:w-8 text-white/40" />
-	</div>
 	<div
-		class="absolute top-40 right-8 sm:right-16 animate-float-delayed"
-		aria-hidden="true"
+		class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full pt-28 pb-16"
 	>
-		<Icon name="lucide:map-pin" class="h-5 w-5 sm:h-6 sm:w-6 text-orange-300/60" />
-	</div>
-	<div
-		class="absolute bottom-32 left-8 sm:left-20 animate-float-slow"
-		aria-hidden="true"
-	>
-		<Icon name="lucide:clock" class="h-6 w-6 sm:h-7 sm:w-7 text-white/30" />
-	</div>
+		<div class="space-y-5">
+			<p class="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+				<span class="block">{SITE.shortName}</span>
+				<span class="block text-orange-300 text-2xl sm:text-3xl md:text-4xl">{SITE.tagline}</span>
+			</p>
 
-	<div
-		class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full mt-20 pb-16"
-	>
-		<div class="space-y-6 sm:space-y-8">
-			<div class="flex justify-center">
+			<h1 class="text-base sm:text-lg font-semibold text-white/90 max-w-2xl mx-auto">
+				Taxi Service in Bangalore — Airport, Outstation, Local & Tours
+			</h1>
+
+			{/* Service slider: each slide is a directly bookable service. */}
+			<div class="relative">
 				<div
-					class="bg-white/15 backdrop-blur-sm rounded-full p-4 sm:p-6 border border-white/30 shadow-2xl animate-scale-in"
+					id="hero-slider"
+					class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide rounded-2xl"
 				>
-					<Icon
-						name="lucide:car"
-						class="h-12 w-12 sm:h-16 sm:w-16 text-white"
-					/>
+					{
+						SERVICES.map((service) => (
+							<div class="w-full flex-shrink-0 snap-center px-1 py-2">
+								<div class="bg-white/15 backdrop-blur-md border border-white/25 rounded-2xl p-6 sm:p-10 shadow-2xl">
+									<div
+										class={`w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${service.color} flex items-center justify-center shadow-lg`}
+									>
+										<Icon
+											name={service.icon}
+											class="h-7 w-7 sm:h-8 sm:w-8 text-white"
+										/>
+									</div>
+									<h2 class="text-2xl sm:text-4xl font-bold text-white mb-1">
+										{service.name}
+										<span class="block sm:inline text-orange-300 text-xl sm:text-3xl sm:ml-2">
+											{service.priceHook}
+										</span>
+									</h2>
+									<p class="text-white/85 text-sm sm:text-base mb-6 max-w-xl mx-auto">
+										{service.description}
+									</p>
+									<div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+										<a
+											href={waLink(service.waMessage)}
+											target="_blank"
+											rel="noopener"
+											class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-3.5 text-lg rounded-full shadow-xl hover:scale-105 transition-all duration-300"
+										>
+											<Icon name="lucide:message-circle" class="h-5 w-5" />
+											Book on WhatsApp
+										</a>
+										<a
+											href={`tel:${SITE.phoneE164}`}
+											class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-orange-600 hover:bg-orange-50 font-bold px-8 py-3.5 text-lg rounded-full shadow-xl hover:scale-105 transition-all duration-300"
+										>
+											<Icon name="lucide:phone" class="h-5 w-5" />
+											Call Now
+										</a>
+									</div>
+									<a
+										href={withBase(service.path)}
+										class="inline-block mt-4 text-sm text-white/75 hover:text-white underline underline-offset-4"
+									>
+										See {service.name.toLowerCase()} fares →
+									</a>
+								</div>
+							</div>
+						))
+					}
+				</div>
+
+				<button
+					type="button"
+					data-hero-nav="-1"
+					class="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 items-center justify-center w-11 h-11 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-sm border border-white/30 text-white transition-colors"
+					aria-label="Previous service"
+				>
+					<Icon name="lucide:chevron-left" class="h-5 w-5" />
+				</button>
+				<button
+					type="button"
+					data-hero-nav="1"
+					class="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 items-center justify-center w-11 h-11 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-sm border border-white/30 text-white transition-colors"
+					aria-label="Next service"
+				>
+					<Icon name="lucide:chevron-right" class="h-5 w-5" />
+				</button>
+
+				<div class="flex justify-center gap-2 mt-4" id="hero-dots">
+					{
+						SERVICES.map((service, index) => (
+							<button
+								type="button"
+								data-hero-dot={index}
+								class:list={[
+									"h-2.5 rounded-full transition-all duration-300",
+									index === 0 ? "w-6 bg-white" : "w-2.5 bg-white/50",
+								]}
+								aria-label={`Go to ${service.name}`}
+							/>
+						))
+					}
 				</div>
 			</div>
 
-			<div class="space-y-3 sm:space-y-4">
-				<p
-					class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight"
-				>
-					<span class="block animate-slide-in-left">{SITE.shortName}</span>
-					<span class="block text-orange-300 animate-slide-in-right"
-						>{SITE.tagline}</span
-					>
-				</p>
-
-				<h1
-					class="text-lg sm:text-xl md:text-2xl font-semibold text-white/95 max-w-3xl mx-auto animate-fade-in-up delay-300 px-4"
-				>
-					Taxi Service in Bangalore — Airport, Outstation, Local & Tours
-				</h1>
-
-				<p
-					class="text-base sm:text-lg text-white/85 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-400 px-4"
-				>
-					Ride with Comfort, Ride with Care. Airport transfers from ₹799,
-					outstation trips from ₹12/km, hourly rentals and fixed-price tour
-					packages — fares confirmed on WhatsApp before you ride.
-				</p>
-			</div>
-
-			<div
-				class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up delay-500"
-			>
-				<a
-					href={withBase("/book/")}
-					class="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl rounded-full shadow-2xl hover:shadow-orange-500/25 hover:scale-105 transition-all duration-300 border-2 border-orange-400 animate-pulse-glow"
-				>
-					Book Your Ride Now
-					<Icon name="lucide:car" class="ml-2 sm:ml-3 h-5 w-5 sm:h-6 sm:w-6" />
-				</a>
-				<a
-					href={`tel:${SITE.phoneE164}`}
-					class="inline-flex items-center bg-white/15 backdrop-blur-sm hover:bg-white/25 text-white font-semibold px-6 sm:px-8 py-4 text-base sm:text-lg rounded-full border border-white/40 transition-all duration-300"
-				>
-					<Icon name="lucide:phone" class="mr-2 h-5 w-5" />
-					Call {SITE.phoneDisplay}
-				</a>
-			</div>
-
-			<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-6 sm:pt-8">
+			<div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-2">
 				{
-					features.map((feature, index) => (
-						<div
-							class="bg-white/15 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 animate-fade-in-up"
-							style={`animation-delay: ${600 + index * 100}ms`}
-						>
-							<Icon
-								name={feature.icon}
-								class="h-8 w-8 sm:h-10 sm:w-10 text-orange-300 mx-auto mb-2 sm:mb-3"
-							/>
-							<p class="text-white font-semibold text-sm sm:text-lg">
-								{feature.title}
-							</p>
-							<p class="text-white/80 text-xs sm:text-sm">{feature.desc}</p>
-						</div>
+					[
+						{ icon: "lucide:clock", label: "24/7 service" },
+						{ icon: "lucide:shield-check", label: "Verified drivers" },
+						{ icon: "lucide:star", label: `${SITE.rating}★ rated` },
+						{ icon: "lucide:wallet", label: "No advance payment" },
+					].map((chip) => (
+						<span class="inline-flex items-center gap-1.5 text-sm font-medium text-white/85">
+							<Icon name={chip.icon} class="h-4 w-4 text-orange-300" />
+							{chip.label}
+						</span>
 					))
 				}
 			</div>
 		</div>
 	</div>
 </section>
+
+<script>
+	const slider = document.getElementById("hero-slider");
+	const dots = [...document.querySelectorAll<HTMLElement>("[data-hero-dot]")];
+	const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+	if (slider && dots.length > 0) {
+		const count = dots.length;
+		let index = 0;
+		let paused = false;
+
+		const goTo = (next: number, smooth = true) => {
+			index = ((next % count) + count) % count;
+			slider.scrollTo({
+				left: index * slider.clientWidth,
+				behavior: smooth && !reducedMotion ? "smooth" : "auto",
+			});
+		};
+
+		const paint = () => {
+			for (const [i, dot] of dots.entries()) {
+				dot.classList.toggle("w-6", i === index);
+				dot.classList.toggle("bg-white", i === index);
+				dot.classList.toggle("w-2.5", i !== index);
+				dot.classList.toggle("bg-white/50", i !== index);
+			}
+		};
+
+		// Track manual swipes so autoplay continues from the right slide.
+		slider.addEventListener(
+			"scroll",
+			() => {
+				const nearest = Math.round(slider.scrollLeft / slider.clientWidth);
+				if (nearest !== index) {
+					index = nearest;
+					paint();
+				}
+			},
+			{ passive: true }
+		);
+
+		for (const dot of dots) {
+			dot.addEventListener("click", () => {
+				goTo(Number(dot.dataset.heroDot));
+			});
+		}
+		for (const nav of document.querySelectorAll<HTMLElement>("[data-hero-nav]")) {
+			nav.addEventListener("click", () => goTo(index + Number(nav.dataset.heroNav)));
+		}
+
+		for (const event of ["pointerenter", "touchstart", "focusin"]) {
+			slider.addEventListener(event, () => (paused = true), { passive: true });
+		}
+		slider.addEventListener("pointerleave", () => (paused = false));
+
+		if (!reducedMotion) {
+			setInterval(() => {
+				if (!paused && document.visibilityState === "visible") goTo(index + 1);
+			}, 4500);
+		}
+	}
+</script>

@@ -4,6 +4,7 @@ import { Icon } from "astro-icon/components";
 import type { Route } from "../data/route-types";
 import { routePath } from "../data/routes";
 import { formatINR } from "../lib/fare";
+import { waLink } from "../data/site";
 import { withBase } from "../lib/url";
 
 interface Props {
@@ -24,6 +25,12 @@ const CATEGORY_ICONS: Record<string, string> = {
 };
 const categoryIcon = CATEGORY_ICONS[route.category] ?? "lucide:map-pin";
 const href = withBase(routePath(route.slug));
+const sedan = route.fares.sedan;
+const waMessage = `Hi! I want to book a Bangalore to ${route.name} taxi (Sedan ${
+	sedan.oneWay
+		? `${formatINR(sedan.oneWay)} one-way`
+		: `${formatINR(sedan.roundTrip)} round trip`
+}).`;
 ---
 
 <article
@@ -32,7 +39,7 @@ const href = withBase(routePath(route.slug));
 		className,
 	]}
 >
-	<a href={href} class="block">
+	<a href={href} class="block" aria-label={`Bangalore to ${route.name} taxi fares`}>
 		<div class="relative h-44 overflow-hidden">
 			{
 				route.image ? (
@@ -67,7 +74,7 @@ const href = withBase(routePath(route.slug));
 			</span>
 		</div>
 
-		<div class="p-4 space-y-3">
+		<div class="p-4 pb-0 space-y-3">
 			<div>
 				<h3 class="text-lg font-bold text-foreground group-hover:text-orange-500 transition-colors">
 					Bangalore to {route.name} Taxi
@@ -92,11 +99,11 @@ const href = withBase(routePath(route.slug));
 
 			<div class="flex items-center justify-between rounded-lg bg-muted px-3 py-2">
 				{
-					route.fares.sedan.oneWay ? (
+					sedan.oneWay ? (
 						<span class="text-sm">
 							One-way
 							<strong class="text-green-600 dark:text-green-400 ml-1">
-								{formatINR(route.fares.sedan.oneWay)}
+								{formatINR(sedan.oneWay)}
 							</strong>
 						</span>
 					) : (
@@ -106,17 +113,28 @@ const href = withBase(routePath(route.slug));
 				<span class="text-sm">
 					Round trip
 					<strong class="text-orange-600 dark:text-orange-400 ml-1">
-						{formatINR(route.fares.sedan.roundTrip)}
+						{formatINR(sedan.roundTrip)}
 					</strong>
 				</span>
 			</div>
-
-			<span
-				class="btn flex w-full items-center justify-center rounded-md bg-orange-500 group-hover:bg-orange-600 text-white font-semibold py-2.5 transition-colors"
-			>
-				View Fares & Book
-				<Icon name="lucide:arrow-right" class="ml-2 h-4 w-4" />
-			</span>
 		</div>
 	</a>
+
+	<div class="p-4 pt-3 grid grid-cols-2 gap-2">
+		<a
+			href={waLink(waMessage)}
+			target="_blank"
+			rel="noopener"
+			class="btn inline-flex items-center justify-center gap-1.5 rounded-md bg-green-500 hover:bg-green-600 text-white text-sm font-bold py-2.5 transition-colors"
+		>
+			<Icon name="lucide:message-circle" class="h-4 w-4" />
+			Book Now
+		</a>
+		<a
+			href={href}
+			class="btn inline-flex items-center justify-center gap-1.5 rounded-md border-2 border-orange-500 text-orange-600 dark:text-orange-400 hover:bg-orange-500 hover:text-white text-sm font-bold py-2.5 transition-colors"
+		>
+			Fares & Details
+		</a>
+	</div>
 </article>

@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import type { Vehicle } from "../data/vehicles";
+import { SITE, waLink } from "../data/site";
+import { VEHICLE_PAGES } from "../data/services";
 import { withBase } from "../lib/url";
 
 interface Props {
@@ -10,6 +12,8 @@ interface Props {
 
 const { vehicle } = Astro.props;
 const carouselId = `carousel-${vehicle.id}`;
+const waMessage = `Hi! I want to book a ${vehicle.name} (${vehicle.subtitle}). Please share the fare.`;
+const detailsPath = VEHICLE_PAGES.find((entry) => entry.cab === vehicle.name)?.path;
 ---
 
 <article
@@ -204,12 +208,34 @@ const carouselId = `carousel-${vehicle.id}`;
 					}
 				</ul>
 
-				<a
-					href={withBase(`/book/?cab=${encodeURIComponent(vehicle.name)}`)}
-					class="btn block w-full text-center rounded-md border bg-background font-semibold py-3 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-all duration-300 hover:shadow-lg"
-				>
-					Select {vehicle.name}
-				</a>
+				<div class="grid grid-cols-2 gap-3">
+					<a
+						href={waLink(waMessage)}
+						target="_blank"
+						rel="noopener"
+						class="btn inline-flex items-center justify-center gap-2 rounded-md bg-green-500 hover:bg-green-600 text-white font-bold py-3 transition-colors"
+					>
+						<Icon name="lucide:message-circle" class="h-4 w-4" />
+						Book {vehicle.name}
+					</a>
+					<a
+						href={`tel:${SITE.phoneE164}`}
+						class="btn inline-flex items-center justify-center gap-2 rounded-md border-2 border-orange-500 text-orange-600 dark:text-orange-400 hover:bg-orange-500 hover:text-white font-bold py-3 transition-colors"
+					>
+						<Icon name="lucide:phone" class="h-4 w-4" />
+						Call to Book
+					</a>
+				</div>
+				{
+					detailsPath && (
+						<a
+							href={withBase(detailsPath)}
+							class="block text-center text-xs text-muted-foreground hover:text-orange-500 underline underline-offset-2"
+						>
+							Full {vehicle.name} rates & details
+						</a>
+					)
+				}
 			</div>
 		</div>
 	</div>

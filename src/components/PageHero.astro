@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import { waLink } from "../data/site";
+import { SITE, waLink } from "../data/site";
 import { withBase } from "../lib/url";
 
 interface Chip {
@@ -51,21 +51,27 @@ const {
 
 		<div class="flex flex-col sm:flex-row gap-4">
 			<a
-				href={withBase(bookHref)}
-				class="inline-flex items-center justify-center gap-2 bg-white text-orange-600 hover:bg-orange-50 font-bold px-8 py-3.5 rounded-full hover:scale-105 transition-all duration-300 shadow-xl"
-			>
-				<Icon name="lucide:car" class="h-5 w-5" />
-				{bookLabel}
-			</a>
-			<a
 				href={waLink(waMessage)}
 				target="_blank"
 				rel="noopener"
-				class="inline-flex items-center justify-center gap-2 bg-white/15 border border-white/40 hover:bg-white/25 text-white font-semibold px-8 py-3.5 rounded-full transition-all duration-300"
+				class="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-3.5 rounded-full hover:scale-105 transition-all duration-300 shadow-xl"
 			>
 				<Icon name="lucide:message-circle" class="h-5 w-5" />
-				Get Fare on WhatsApp
+				{bookLabel} on WhatsApp
+			</a>
+			<a
+				href={`tel:${SITE.phoneE164}`}
+				class="inline-flex items-center justify-center gap-2 bg-white text-orange-600 hover:bg-orange-50 font-bold px-8 py-3.5 rounded-full hover:scale-105 transition-all duration-300 shadow-xl"
+			>
+				<Icon name="lucide:phone" class="h-5 w-5" />
+				Call {SITE.phoneDisplay}
 			</a>
 		</div>
+		<a
+			href={withBase(bookHref)}
+			class="inline-block mt-4 text-sm text-white/75 hover:text-white underline underline-offset-4"
+		>
+			Prefer a form? Book online →
+		</a>
 	</div>
 </section>

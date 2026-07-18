@@ -1,108 +1,101 @@
 ---
 import { Icon } from "astro-icon/components";
 import { SERVICES } from "../data/services";
+import { SITE, waLink } from "../data/site";
 import { withBase } from "../lib/url";
 
-// The 6 service pages plus direct point-to-point booking.
+// One tap to book: every journey type goes straight to WhatsApp or a call.
 const cards = [
 	{
 		name: "Point to Point",
-		description: "Direct pickup to drop",
+		priceHook: "in-city drops",
 		icon: "lucide:map-pin",
 		color: "from-blue-500 to-cyan-600",
 		popular: true,
-		href: "/book/?type=point-to-point",
+		waMessage:
+			"Hi! I want to book a point-to-point cab in Bangalore. Please share the fare.",
+		path: null,
 	},
 	...SERVICES.map((service) => ({
 		name: service.name,
-		description: service.description,
+		priceHook: service.priceHook,
 		icon: service.icon,
 		color: service.color,
 		popular: service.popular,
-		href: service.path,
+		waMessage: service.waMessage,
+		path: service.path,
 	})),
 ];
 ---
 
 <section
 	id="booking-types"
-	class="py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-background"
+	class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-background"
 >
 	<div class="max-w-7xl mx-auto">
-		<div class="text-center mb-6 sm:mb-8">
+		<div class="text-center mb-8">
 			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-2">
-				Choose Your Journey Type
+				Book Your Ride — One Tap
 			</h2>
 			<p class="text-sm sm:text-base text-muted-foreground">
-				Quick selection for your travel needs
+				Pick your journey and book straight on WhatsApp or a call. No forms,
+				no sign-ups.
 			</p>
 		</div>
 
-		{/* Mobile: horizontal scroll */}
-		<div class="sm:hidden">
-			<div class="flex gap-3 overflow-x-auto scrollbar-hide pb-2 -mx-1 px-1">
-				{
-					cards.map((card) => (
-						<a
-							href={withBase(card.href)}
-							class="flex-shrink-0 flex flex-col items-center gap-2 p-3 rounded-xl border bg-card hover:bg-accent transition-colors min-w-[100px]"
-						>
-							<div
-								class={`w-10 h-10 rounded-full bg-gradient-to-r ${card.color} flex items-center justify-center`}
-							>
-								<Icon name={card.icon} class="h-5 w-5 text-white" />
-							</div>
-							<div class="text-center">
-								<div class="text-xs font-medium leading-tight">{card.name}</div>
-								{card.popular && (
-									<span class="inline-block rounded-full bg-orange-500 text-white text-[10px] px-1.5 py-0.5 mt-1 font-semibold">
-										Popular
-									</span>
-								)}
-							</div>
-						</a>
-					))
-				}
-			</div>
-			<div class="text-center mt-3">
-				<p class="text-xs text-muted-foreground">← Swipe to see more options</p>
-			</div>
-		</div>
-
-		{/* Desktop and tablet: grid */}
-		<div class="hidden sm:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
 			{
 				cards.map((card) => (
-					<a
-						href={withBase(card.href)}
-						class="group block rounded-lg border bg-card text-card-foreground hover:border-orange-200 dark:hover:border-orange-800 transition-all duration-200 hover:shadow-md p-4"
-					>
-						<div class="flex items-start gap-3">
+					<div class="rounded-xl border bg-card text-card-foreground hover:border-orange-200 dark:hover:border-orange-800 transition-all duration-200 hover:shadow-lg p-5">
+						<div class="flex items-center gap-3 mb-4">
 							<div
-								class={`flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-r ${card.color} flex items-center justify-center`}
+								class={`flex-shrink-0 w-11 h-11 rounded-full bg-gradient-to-r ${card.color} flex items-center justify-center`}
 							>
 								<Icon name={card.icon} class="h-5 w-5 text-white" />
 							</div>
-							<div class="flex-1 min-w-0">
-								<div class="flex items-center gap-2 mb-1">
-									<h3 class="font-semibold text-sm leading-tight">
-										{card.name}
-									</h3>
+							<div class="min-w-0">
+								<h3 class="font-bold text-foreground leading-tight flex items-center gap-2">
+									{card.name}
 									{card.popular && (
-										<span class="inline-block rounded-full bg-orange-500 text-white text-[10px] px-1.5 py-0.5 font-semibold">
+										<span class="rounded-full bg-orange-500 text-white text-[10px] px-1.5 py-0.5 font-semibold">
 											Popular
 										</span>
 									)}
-								</div>
-								<p class="text-xs text-muted-foreground leading-tight">
-									{card.description}
+								</h3>
+								<p class="text-sm text-orange-600 dark:text-orange-400 font-semibold">
+									{card.priceHook}
 								</p>
 							</div>
 						</div>
-						<span class="mt-3 inline-flex w-full items-center justify-center rounded-md border bg-background h-8 text-xs font-medium group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-colors">
-							Explore
-						</span>
-					</a>
+
+						<div class="grid grid-cols-2 gap-2">
+							<a
+								href={waLink(card.waMessage)}
+								target="_blank"
+								rel="noopener"
+								class="inline-flex items-center justify-center gap-1.5 rounded-md bg-green-500 hover:bg-green-600 text-white text-sm font-bold py-2.5 transition-colors"
+							>
+								<Icon name="lucide:message-circle" class="h-4 w-4" />
+								WhatsApp
+							</a>
+							<a
+								href={`tel:${SITE.phoneE164}`}
+								class="inline-flex items-center justify-center gap-1.5 rounded-md border-2 border-orange-500 text-orange-600 dark:text-orange-400 hover:bg-orange-500 hover:text-white text-sm font-bold py-2.5 transition-colors"
+							>
+								<Icon name="lucide:phone" class="h-4 w-4" />
+								Call
+							</a>
+						</div>
+
+						{card.path && (
+							<a
+								href={withBase(card.path)}
+								class="block text-center text-xs text-muted-foreground hover:text-orange-500 mt-3 underline underline-offset-2"
+							>
+								See fares & details
+							</a>
+						)}
+					</div>
 				))
 			}
 		</div>

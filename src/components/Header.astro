@@ -1,9 +1,11 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import { SITE } from "../data/site";
+import { SITE, waLink } from "../data/site";
 import { withBase } from "../lib/url";
 import logo from "../assets/logo.webp";
+
+const headerWaMessage = "Hi! I'd like to book a cab. Can you help me?";
 
 const navItems = [
 	{ name: "Airport", href: withBase("/airport-taxi-bangalore/") },
@@ -60,9 +62,12 @@ const navItems = [
 					<Icon name="lucide:moon" class="h-5 w-5 hidden dark:block" />
 				</button>
 				<a
-					href={withBase("/book/")}
-					class="inline-flex items-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold px-6 py-2.5 transition-colors"
+					href={waLink(headerWaMessage)}
+					target="_blank"
+					rel="noopener"
+					class="inline-flex items-center gap-2 rounded-md bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2.5 transition-colors"
 				>
+					<Icon name="lucide:message-circle" class="h-4 w-4" />
 					Book Now
 				</a>
 			</div>
@@ -119,10 +124,18 @@ const navItems = [
 					<span>{SITE.phoneDisplay}</span>
 				</a>
 				<a
-					href={withBase("/book/")}
-					class="block w-full text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold px-6 py-3 transition-colors"
+					href={waLink(headerWaMessage)}
+					target="_blank"
+					rel="noopener"
+					class="block w-full text-center rounded-md bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 transition-colors"
 				>
-					Book Now
+					Book on WhatsApp
+				</a>
+				<a
+					href={withBase("/book/")}
+					class="block w-full text-center text-sm text-muted-foreground hover:text-orange-500 underline underline-offset-2"
+				>
+					Prefer a form? Book online
 				</a>
 			</div>
 		</nav>

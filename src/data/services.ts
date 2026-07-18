@@ -9,6 +9,10 @@ export interface ServicePage {
 	name: string;
 	path: string;
 	description: string;
+	/** SERP/CTA price hook, e.g. "from ₹799". */
+	priceHook: string;
+	/** Pre-filled WhatsApp message for direct booking. */
+	waMessage: string;
 	icon: string;
 	bookingType: string;
 	color: string;
@@ -20,7 +24,10 @@ export const SERVICES: ServicePage[] = [
 		id: "airport",
 		name: "Airport Taxi",
 		path: "/airport-taxi-bangalore/",
-		description: "Kempegowda Airport pickup & drop from ₹799",
+		description: "Kempegowda Airport pickup & drop, flight tracking, 24/7",
+		priceHook: "from ₹799",
+		waMessage:
+			"Hi! I want to book an airport taxi in Bangalore. Please share the details.",
 		icon: "lucide:plane",
 		bookingType: "airport",
 		color: "from-purple-500 to-violet-600",
@@ -30,7 +37,10 @@ export const SERVICES: ServicePage[] = [
 		id: "outstation",
 		name: "Outstation Cabs",
 		path: "/outstation-cabs-bangalore/",
-		description: "One-way & round trips from ₹12/km",
+		description: "One-way drops & round trips across South India",
+		priceHook: "from ₹12/km",
+		waMessage:
+			"Hi! I want to book an outstation cab from Bangalore. Please share the fare.",
 		icon: "lucide:mountain",
 		bookingType: "outstation",
 		color: "from-orange-500 to-red-600",
@@ -40,7 +50,10 @@ export const SERVICES: ServicePage[] = [
 		id: "hourly",
 		name: "Hourly Rental",
 		path: "/hourly-cab-rental-bangalore/",
-		description: "4hr ₹1,200 · 8hr ₹2,200 with driver",
+		description: "Car + driver at your disposal — unlimited stops in the city",
+		priceHook: "4hr ₹1,200 · 8hr ₹2,200",
+		waMessage:
+			"Hi! I want to book an hourly cab rental in Bangalore. Please share availability.",
 		icon: "lucide:clock",
 		bookingType: "hourly",
 		color: "from-green-500 to-emerald-600",
@@ -50,7 +63,10 @@ export const SERVICES: ServicePage[] = [
 		id: "tour",
 		name: "Tour Packages",
 		path: "/tour-packages/",
-		description: "Fixed-price sightseeing trips, 1–4 days",
+		description: "Fixed-price sightseeing trips — Mysore, Coorg, Ooty & more",
+		priceHook: "from ₹3,399",
+		waMessage:
+			"Hi! I want to book a tour package from Bangalore. Please share the options.",
 		icon: "lucide:camera",
 		bookingType: "tour",
 		color: "from-pink-500 to-rose-600",
@@ -60,7 +76,10 @@ export const SERVICES: ServicePage[] = [
 		id: "corporate",
 		name: "Corporate Cabs",
 		path: "/corporate-cab-services-bangalore/",
-		description: "Employee transport with monthly billing",
+		description: "Employee transport & airport desk with monthly billing",
+		priceHook: "monthly billing",
+		waMessage:
+			"Hi! I'd like to discuss corporate cab services for my company.",
 		icon: "lucide:briefcase",
 		bookingType: "corporate",
 		color: "from-gray-600 to-gray-800",
@@ -70,7 +89,10 @@ export const SERVICES: ServicePage[] = [
 		id: "driver-only",
 		name: "Hire a Driver",
 		path: "/hire-driver-bangalore/",
-		description: "Verified drivers for your own car",
+		description: "Verified acting drivers for your own car, 24/7",
+		priceHook: "from ₹599",
+		waMessage:
+			"Hi! I want to hire a driver for my own car in Bangalore. Please share the details.",
 		icon: "lucide:user",
 		bookingType: "driver-only",
 		color: "from-amber-500 to-orange-600",
