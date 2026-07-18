@@ -1,0 +1,158 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FareTable from "../components/FareTable.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import { Icon } from "astro-icon/components";
+import type { FaqItem } from "../data/faq";
+
+const path = "/hire-driver-bangalore/";
+const title = "Hire a Driver in Bangalore for Your Own Car — Acting Drivers 24/7";
+const description =
+	"Hire verified acting drivers in Bangalore for your own car — hourly, full-day & outstation. Experienced with automatics & manuals. Call +91 70227 62929.";
+
+const driverRows = [
+	{
+		label: "In-city (up to 4 hrs)",
+		values: ["₹599"],
+	},
+	{
+		label: "In-city full day (8 hrs)",
+		values: ["₹999"],
+	},
+	{
+		label: "Outstation (per day + stay)",
+		values: ["₹1,199"],
+		highlight: true,
+	},
+	{
+		label: "Night driving (10 PM – 6 AM)",
+		values: ["+₹300"],
+	},
+];
+
+const steps = [
+	{
+		title: "Tell us when & where",
+		desc: "Share your pickup time, address and whether it's in-city or outstation.",
+	},
+	{
+		title: "We assign a verified driver",
+		desc: "Licence-checked, police-verified, experienced with your car type.",
+	},
+	{
+		title: "He drives, you relax",
+		desc: "Your car, our driver — pay the fixed rate at the end of the duty.",
+	},
+];
+
+const faqs: FaqItem[] = [
+	{
+		question: "Are your drivers experienced with automatic cars?",
+		answer: "Yes — tell us your car model when booking and we assign a driver experienced with automatics, manuals, EVs or premium cars accordingly.",
+	},
+	{
+		question: "How are the drivers verified?",
+		answer: "Every acting driver carries a valid commercial licence, has police verification on file, and is personally vetted with a driving assessment before joining our roster.",
+	},
+	{
+		question: "Who pays for fuel and tolls when I hire just a driver?",
+		answer: "You do — it's your car. You pay only the fixed driver charge, plus his return travel for late-night or outstation duties (confirmed upfront).",
+	},
+	{
+		question: "Can I hire a driver for an outstation trip in my car?",
+		answer: "Yes. Outstation duties are ₹1,199 per day plus the driver's food and stay (or a fixed bata if you prefer). Multi-day trips and one-way relocations are both available.",
+	},
+	{
+		question: "Is insurance affected if your driver drives my car?",
+		answer: "Your own car insurance applies as normal. Our drivers are licensed professionals; for long assignments we can share driver documents for your records.",
+	},
+];
+---
+
+<PageLayout
+	{title}
+	{description}
+	{path}
+	trail={[{ name: "Hire a Driver" }]}
+	waMessage="Hi! I'd like to hire a driver for my own car in Bangalore."
+	bookHref="/book/?type=driver-only"
+	ctaTitle="Get a driver for your car"
+>
+	<PageHero
+		title="Hire a Verified Driver for Your Car in Bangalore"
+		subtitle="Own a car but need a driver? Get background-verified acting drivers for city errands, functions, late nights and outstation trips — by the hour or by the day."
+		chips={[
+			{ icon: "lucide:user-check", label: "Police-verified" },
+			{ icon: "lucide:wallet", label: "From ₹599" },
+			{ icon: "lucide:clock", label: "24/7 availability" },
+		]}
+		bookHref="/book/?type=driver-only"
+		bookLabel="Book a Driver"
+		waMessage="Hi! I'd like to hire a driver for my own car in Bangalore."
+	/>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+				Acting Driver Charges
+			</h2>
+			<FareTable
+				caption="Acting driver charges"
+				columns={["Charge"]}
+				rows={driverRows}
+				footnotes={[
+					"Fuel, tolls and parking are on your account — it's your car.",
+					"Outstation duties: driver's food & stay extra (or fixed bata, your choice).",
+					"Driver's return travel applies for duties ending after 10 PM or outside Bangalore.",
+				]}
+			/>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800">
+		<div class="max-w-5xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center">
+				How it works
+			</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+				{
+					steps.map((step, index) => (
+						<div class="rounded-lg border bg-card p-6 text-center">
+							<div class="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center text-white font-bold">
+								{index + 1}
+							</div>
+							<h3 class="font-semibold text-foreground mb-1">{step.title}</h3>
+							<p class="text-sm text-muted-foreground">{step.desc}</p>
+						</div>
+					))
+				}
+			</div>
+			<p class="text-center text-sm text-muted-foreground mt-8">
+				<Icon
+					name="lucide:shield-check"
+					class="inline h-4 w-4 text-green-500 mr-1"
+				/>
+				Every driver is licence-checked, police-verified and assessed on the road
+				before joining our roster.
+			</p>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center">
+				Hire-a-Driver FAQs
+			</h2>
+			<FaqAccordion faqs={faqs} emitSchema group="driver-faq" />
+		</div>
+	</section>
+
+	<ServiceSchema
+		serviceType="Acting driver / hire a driver service in Bangalore"
+		description={description}
+		{path}
+		price={599}
+	/>
+</PageLayout>

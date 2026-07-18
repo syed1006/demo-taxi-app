@@ -1,0 +1,194 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import { Icon } from "astro-icon/components";
+import { SITE, waLink } from "../data/site";
+import { withBase } from "../lib/url";
+import type { FaqItem } from "../data/faq";
+
+const path = "/corporate-cab-services-bangalore/";
+const title = "Corporate Cab Services in Bangalore — Monthly Billing & GST Invoices";
+const description =
+	"Corporate cab services in Bangalore: employee transport, airport desk, client travel & event logistics with monthly billing and invoices. Call +91 70227 62929.";
+
+const offerings = [
+	{
+		icon: "lucide:users",
+		title: "Employee transportation",
+		desc: "Daily office pickups and drops on fixed rosters — sedans to tempo travellers, tracked and on time.",
+	},
+	{
+		icon: "lucide:plane",
+		title: "Airport transfer desk",
+		desc: "A single WhatsApp line for all your visitor and executive airport transfers, billed monthly.",
+	},
+	{
+		icon: "lucide:calendar",
+		title: "Events & offsites",
+		desc: "Multi-vehicle logistics for conferences, team outings and offsites — 4 to 50+ seats.",
+	},
+	{
+		icon: "lucide:handshake",
+		title: "Client & VIP travel",
+		desc: "Premium sedans and Innova Crystas with experienced chauffeurs for client-facing travel.",
+	},
+];
+
+const benefits = [
+	"Consolidated monthly invoice with trip-wise annexure",
+	"Dedicated account contact — no call centre loops",
+	"Verified, uniformed drivers on regular assignments",
+	"Flexible billing: per-trip, per-day or monthly retainer",
+	"24/7 support for last-minute and late-night bookings",
+];
+
+const faqs: FaqItem[] = [
+	{
+		question: "Do you provide invoices for corporate bookings?",
+		answer: "Yes — a consolidated monthly invoice with a trip-wise annexure (date, route, vehicle, fare). Per-trip invoices are also available if your process needs them.",
+	},
+	{
+		question: "Can you handle daily employee pickup rosters?",
+		answer: "Yes. Share your roster and we assign regular drivers to fixed routes, with WhatsApp confirmations for every trip and monthly consolidated billing.",
+	},
+	{
+		question: "Is there a minimum monthly commitment?",
+		answer: "No lock-ins. Start with per-trip billing; as volumes grow we'll propose retainer pricing that usually works out cheaper.",
+	},
+	{
+		question: "Which companies is this suited for?",
+		answer: "Startups and SMEs that need reliable cabs without running a transport desk — typically 10 to 500 trips a month across employee transport, airport runs and client travel.",
+	},
+];
+---
+
+<PageLayout
+	{title}
+	{description}
+	{path}
+	trail={[{ name: "Corporate Cab Services" }]}
+	waMessage="Hi! I'd like to discuss corporate cab services for my company."
+	bookHref="/book/?type=corporate"
+	ctaTitle="Set up cabs for your company"
+>
+	<PageHero
+		title="Corporate Cab Services in Bangalore"
+		subtitle="Employee transport, airport transfers and event logistics with a single point of contact, monthly billing and proper invoices — minus the transport-desk overhead."
+		chips={[
+			{ icon: "lucide:file-text", label: "Monthly invoices" },
+			{ icon: "lucide:users", label: "4–50+ seats" },
+			{ icon: "lucide:clock", label: "24/7 support" },
+		]}
+		bookHref="/book/?type=corporate"
+		bookLabel="Request Corporate Booking"
+		waMessage="Hi! I'd like to discuss corporate cab services for my company."
+	/>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-5xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8">
+				What we run for companies
+			</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+				{
+					offerings.map((offering) => (
+						<div class="rounded-lg border bg-card p-6">
+							<Icon
+								name={offering.icon}
+								class="h-8 w-8 mb-3 text-orange-500"
+							/>
+							<h3 class="font-semibold text-foreground mb-1">
+								{offering.title}
+							</h3>
+							<p class="text-sm text-muted-foreground">{offering.desc}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800">
+		<div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+			<div>
+				<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+					Why companies choose us
+				</h2>
+				<ul class="space-y-3">
+					{
+						benefits.map((benefit) => (
+							<li class="flex gap-2 text-muted-foreground">
+								<Icon
+									name="lucide:check-circle-2"
+									class="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5"
+								/>
+								{benefit}
+							</li>
+						))
+					}
+				</ul>
+			</div>
+			<div class="rounded-2xl border bg-card p-8 text-center">
+				<h3 class="text-xl font-bold text-foreground mb-2">
+					Talk to us about your requirement
+				</h3>
+				<p class="text-muted-foreground mb-6">
+					Share your routes and volumes — we'll send a proposal within a
+					working day.
+				</p>
+				<div class="space-y-3">
+					<a
+						href={waLink(
+							"Hi! I'd like a corporate cab services proposal for my company."
+						)}
+						target="_blank"
+						rel="noopener"
+						class="flex items-center justify-center gap-2 rounded-md bg-green-500 hover:bg-green-600 text-white font-semibold py-3 transition-colors"
+					>
+						<Icon name="lucide:message-circle" class="h-5 w-5" />
+						WhatsApp Us
+					</a>
+					<a
+						href={`mailto:${SITE.email}?subject=Corporate cab services enquiry`}
+						class="flex items-center justify-center gap-2 rounded-md border font-semibold py-3 hover:border-orange-500 hover:text-orange-500 transition-colors"
+					>
+						<Icon name="lucide:mail" class="h-5 w-5" />
+						{SITE.email}
+					</a>
+					<a
+						href={`tel:${SITE.phoneE164}`}
+						class="flex items-center justify-center gap-2 rounded-md border font-semibold py-3 hover:border-orange-500 hover:text-orange-500 transition-colors"
+					>
+						<Icon name="lucide:phone" class="h-5 w-5" />
+						{SITE.phoneDisplay}
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center">
+				Corporate Travel FAQs
+			</h2>
+			<FaqAccordion faqs={faqs} emitSchema group="corporate-faq" />
+			<p class="text-sm text-muted-foreground text-center mt-6">
+				Need vehicles for a one-off event instead? See our
+				<a
+					href={withBase("/tempo-traveller-hire-bangalore/")}
+					class="text-orange-500 hover:underline">Tempo Traveller hire</a
+				>
+				 page.
+			</p>
+		</div>
+	</section>
+
+	<ServiceSchema
+		serviceType="Corporate cab services in Bangalore"
+		description={description}
+		{path}
+	/>
+</PageLayout>

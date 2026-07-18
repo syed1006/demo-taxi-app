@@ -1,0 +1,235 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FareTable from "../components/FareTable.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import { Icon } from "astro-icon/components";
+import { AIRPORT_AREAS } from "../data/airport-areas";
+import { RATE_CARD, VEHICLE_CLASS_IDS } from "../data/rate-card";
+import { formatINR } from "../lib/fare";
+import { withBase } from "../lib/url";
+import type { FaqItem } from "../data/faq";
+
+const path = "/airport-taxi-bangalore/";
+const title = "Bangalore Airport Taxi — Pickup & Drop from ₹799 | 24/7";
+const description =
+	"Kempegowda Airport taxi from anywhere in Bangalore: Sedan from ₹799, Innova Crysta from ₹1,999. Flight tracking, 24/7 pickups, no advance payment. Call +91 70227 62929.";
+
+const baseRows = VEHICLE_CLASS_IDS.map((id) => {
+	const rates = RATE_CARD[id];
+	return {
+		label: rates.label,
+		capacity: rates.capacity,
+		values: [`from ${formatINR(rates.airportBase)}`],
+		highlight: id === "sedan",
+	};
+});
+
+const zones = [
+	{ id: "north", name: "North Bangalore" },
+	{ id: "central", name: "Central Bangalore" },
+	{ id: "east", name: "East Bangalore" },
+	{ id: "south", name: "South Bangalore" },
+	{ id: "west", name: "West Bangalore" },
+] as const;
+
+const usps = [
+	{
+		icon: "lucide:plane",
+		title: "Flight tracking",
+		desc: "We track your arrival — delayed flight, same driver, no extra stress.",
+	},
+	{
+		icon: "lucide:clock",
+		title: "On time, every time",
+		desc: "Drivers reach your pickup point 10 minutes early, day or night.",
+	},
+	{
+		icon: "lucide:luggage",
+		title: "Luggage help",
+		desc: "Meet & greet with luggage assistance at the terminal.",
+	},
+	{
+		icon: "lucide:wallet",
+		title: "Fixed fares",
+		desc: "The fare we confirm on WhatsApp is the fare you pay — tolls shown upfront.",
+	},
+];
+
+const faqs: FaqItem[] = [
+	{
+		question: "How much is a taxi from Bangalore city to Kempegowda Airport?",
+		answer: "Sedan airport transfers start at ₹799 for pickups within ~40 km of the airport (most of central and north Bangalore). Farther areas like Electronic City or Bannerghatta Road cost slightly more — exact fares are listed per area above and confirmed before booking.",
+	},
+	{
+		question: "Do you charge extra for late-night airport pickups?",
+		answer: "No surge pricing. The same fixed fare applies 24/7 — including 2 AM arrivals. Airport parking (if the driver enters the pickup lane) is billed at actuals.",
+	},
+	{
+		question: "What if my flight is delayed?",
+		answer: "We track your flight number. Your driver is scheduled against the actual landing time, so delays don't cost you anything extra.",
+	},
+	{
+		question: "How early should I book an airport drop?",
+		answer: "A few hours' notice is usually enough, but for 3–6 AM departures we recommend booking the previous evening so we can lock in your driver.",
+	},
+	{
+		question: "Where does the driver meet me at the airport?",
+		answer: "For pickups, the driver waits at the arrivals pickup lane and shares his live location and vehicle number on WhatsApp as soon as you land.",
+	},
+];
+
+const dedicatedAreas = AIRPORT_AREAS.filter((area) => area.dedicatedPage);
+---
+
+<PageLayout
+	{title}
+	{description}
+	{path}
+	trail={[{ name: "Airport Taxi" }]}
+	waMessage="Hi! I'd like to book a Bangalore airport taxi."
+	bookHref="/book/?type=airport"
+	ctaTitle="Never miss a flight again"
+>
+	<PageHero
+		title="Bangalore Airport Taxi (Kempegowda International)"
+		subtitle="Pickup and drop between any Bangalore neighbourhood and KIA — fixed fares, flight tracking, and drivers who show up early. 24 hours a day."
+		chips={[
+			{ icon: "lucide:wallet", label: "From ₹799" },
+			{ icon: "lucide:plane", label: "Flight tracking" },
+			{ icon: "lucide:clock", label: "24/7 service" },
+		]}
+		bookHref="/book/?type=airport"
+		bookLabel="Book Airport Taxi"
+		waMessage="Hi! I'd like to book a Bangalore airport taxi."
+	/>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-5xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+				Airport Taxi Fares
+			</h2>
+			<FareTable
+				caption="Airport transfer base fares by vehicle"
+				columns={["One-way fare"]}
+				rows={baseRows}
+				footnotes={[
+					"Base fare covers pickups within ~40 km of the airport; farther areas are priced per the table below.",
+					"Tolls and airport parking extra at actuals. No night surge.",
+				]}
+			/>
+
+			<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
+				{
+					usps.map((usp) => (
+						<div class="rounded-lg border bg-card p-4 text-center">
+							<Icon
+								name={usp.icon}
+								class="h-7 w-7 mx-auto mb-2 text-orange-500"
+							/>
+							<h3 class="font-semibold text-foreground text-sm mb-1">
+								{usp.title}
+							</h3>
+							<p class="text-xs text-muted-foreground">{usp.desc}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800">
+		<div class="max-w-5xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-2">
+				Airport Taxi from Your Area
+			</h2>
+			<p class="text-muted-foreground mb-10">
+				Sedan fares to/from Kempegowda International Airport by neighbourhood.
+				Every fare below works in both directions.
+			</p>
+
+			{
+				zones.map((zone) => {
+					const areas = AIRPORT_AREAS.filter((area) => area.zone === zone.id);
+					if (areas.length === 0) return null;
+					return (
+						<div class="mb-10">
+							<h3 class="text-xl font-bold text-foreground mb-4">
+								{zone.name}
+							</h3>
+							<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+								{areas.map((area) => (
+									<div class="rounded-lg border bg-card p-4">
+										<div class="flex items-center justify-between mb-1">
+											<h4 class="font-semibold text-foreground">
+												{area.dedicatedPage ? (
+													<a
+														href={withBase(`/airport-taxi-${area.slug}/`)}
+														class="hover:text-orange-500 transition-colors"
+													>
+														{area.name} → Airport
+													</a>
+												) : (
+													`${area.name} → Airport`
+												)}
+											</h4>
+											<span class="font-bold text-orange-600 dark:text-orange-400">
+												{formatINR(area.fares.sedan)}
+											</span>
+										</div>
+										<p class="text-xs text-muted-foreground">
+											{area.distanceKm} km · {area.durationRange} · covers{" "}
+											{area.neighbourhoods.slice(0, 3).join(", ")}
+											{area.neighbourhoods.length > 3 ? " & nearby" : ""}
+										</p>
+										{area.dedicatedPage && (
+											<a
+												href={withBase(`/airport-taxi-${area.slug}/`)}
+												class="text-xs font-semibold text-orange-500 hover:underline"
+											>
+												Fares & details →
+											</a>
+										)}
+									</div>
+								))}
+							</div>
+						</div>
+					);
+				})
+			}
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center">
+				Airport Taxi FAQs
+			</h2>
+			<FaqAccordion faqs={faqs} emitSchema group="airport-faq" />
+			<p class="text-sm text-muted-foreground text-center mt-6">
+				Popular areas:{" "}
+				{
+					dedicatedAreas.map((area, index) => (
+						<>
+							<a
+								href={withBase(`/airport-taxi-${area.slug}/`)}
+								class="text-orange-500 hover:underline"
+							>
+								{area.name}
+							</a>
+							{index < dedicatedAreas.length - 1 ? " · " : ""}
+						</>
+					))
+				}
+			</p>
+		</div>
+	</section>
+
+	<ServiceSchema
+		serviceType="Bangalore airport taxi service"
+		description={description}
+		{path}
+		price={799}
+	/>
+</PageLayout>

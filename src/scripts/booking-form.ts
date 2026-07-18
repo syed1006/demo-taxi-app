@@ -116,6 +116,30 @@ if (form) {
 
 	applyConditions();
 
+	// --- URL-param prefill: every page's CTAs deep-link here, e.g.
+	// /book/?type=outstation&drop=Mysore&cab=Sedan&package=coorg-2-days
+	const params = new URLSearchParams(location.search);
+	const setSelect = (el: HTMLSelectElement, value: string | null) => {
+		if (value && Array.from(el.options).some((o) => o.value === value)) {
+			el.value = value;
+		}
+	};
+	setSelect(bookingType, params.get("type"));
+	applyConditions();
+	setSelect(cabType, params.get("cab"));
+	for (const [param, el] of [
+		["pickup", pickup],
+		["drop", drop],
+	] as const) {
+		const value = params.get(param);
+		if (value && !el.disabled) el.value = value.slice(0, 120);
+	}
+	const pkg = params.get("package");
+	if (pkg) {
+		const notes = field<HTMLTextAreaElement>("notes");
+		notes.value = `Package: ${pkg.slice(0, 80)}`;
+	}
+
 	// --- Field-level listeners: validate on blur; once a field has an error,
 	// re-validate live so the message clears as the user fixes it.
 	form.addEventListener(

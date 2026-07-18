@@ -2,11 +2,22 @@
 import { Icon } from "astro-icon/components";
 import { SITE, waLink } from "../data/site";
 
+interface Props {
+	/** Hide on mobile when a StickyBookBar already covers those actions. */
+	desktopOnly?: boolean;
+}
+
+const { desktopOnly = false } = Astro.props;
 const message =
 	"Hi! I'd like to book a cab. Can you help me with the booking?";
 ---
 
-<div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+<div
+	class:list={[
+		"fixed bottom-6 right-6 z-50 flex-col gap-3",
+		desktopOnly ? "hidden md:flex" : "flex",
+	]}
+>
 	<a
 		href={`tel:${SITE.phoneE164}`}
 		class="flex items-center justify-center w-14 h-14 rounded-full bg-blue-500 hover:bg-blue-600 text-white shadow-2xl hover:scale-110 transition-all duration-300"

@@ -1,0 +1,55 @@
+---
+import { Icon } from "astro-icon/components";
+import { SITE, waLink } from "../data/site";
+import { withBase } from "../lib/url";
+
+interface Props {
+	title?: string;
+	subtitle?: string;
+	bookHref?: string;
+	waMessage?: string;
+}
+
+const {
+	title = "Ready to ride?",
+	subtitle = "No advance payment — your fare is confirmed on WhatsApp before the trip.",
+	bookHref = "/book/",
+	waMessage = "Hi! I'd like to book a cab. Can you help me?",
+} = Astro.props;
+---
+
+<section class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+	<div class="max-w-5xl mx-auto">
+		<div
+			class="bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl p-8 sm:p-12 text-white text-center shadow-2xl"
+		>
+			<h2 class="text-2xl sm:text-3xl font-bold mb-3">{title}</h2>
+			<p class="text-orange-100 text-base sm:text-lg mb-6">{subtitle}</p>
+			<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+				<a
+					href={withBase(bookHref)}
+					class="inline-flex items-center gap-2 bg-white text-orange-600 hover:bg-orange-50 font-bold px-8 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg"
+				>
+					<Icon name="lucide:car" class="h-5 w-5" />
+					Book Online
+				</a>
+				<a
+					href={waLink(waMessage)}
+					target="_blank"
+					rel="noopener"
+					class="inline-flex items-center gap-2 bg-white/15 border border-white/50 hover:bg-white/25 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300"
+				>
+					<Icon name="lucide:message-circle" class="h-5 w-5" />
+					WhatsApp Us
+				</a>
+				<a
+					href={`tel:${SITE.phoneE164}`}
+					class="inline-flex items-center gap-2 text-white font-semibold hover:underline"
+				>
+					<Icon name="lucide:phone" class="h-5 w-5" />
+					{SITE.phoneDisplay}
+				</a>
+			</div>
+		</div>
+	</div>
+</section>

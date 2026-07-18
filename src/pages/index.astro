@@ -1,30 +1,73 @@
 ---
+import { Icon } from "astro-icon/components";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import BookingTypeCards from "../components/BookingTypeCards.astro";
 import Pricing from "../components/Pricing.astro";
-import BookingForm from "../components/BookingForm.astro";
+import RouteCard from "../components/RouteCard.astro";
 import Destinations from "../components/Destinations.astro";
 import SocialProof from "../components/SocialProof.astro";
 import Testimonials from "../components/Testimonials.astro";
 import Faq from "../components/Faq.astro";
 import Footer from "../components/Footer.astro";
 import ContactFloat from "../components/ContactFloat.astro";
+import StickyBookBar from "../components/StickyBookBar.astro";
+import { ROUTES } from "../data/routes";
+import { withBase } from "../lib/url";
+
+const popularRoutes = [...ROUTES]
+	.sort((a, b) => Number(b.popular) - Number(a.popular) || b.rating - a.rating)
+	.slice(0, 8);
 ---
 
-<BaseLayout>
+<BaseLayout path="/">
 	<Header />
-	<ContactFloat />
-	<main>
+	<ContactFloat desktopOnly />
+	<main class="pb-14 md:pb-0">
 		<Hero />
 		<BookingTypeCards />
 		<Pricing />
-		<BookingForm />
+
+		<section
+			class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-background"
+			aria-labelledby="popular-routes-heading"
+		>
+			<div class="max-w-7xl mx-auto">
+				<div class="text-center mb-12">
+					<h2
+						id="popular-routes-heading"
+						class="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4"
+					>
+						Outstation Cabs from Bangalore
+					</h2>
+					<p class="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
+						Fixed transparent fares on every corridor — one-way and round
+						trip, fuel and driver bata included.
+					</p>
+				</div>
+
+				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+					{popularRoutes.map((route) => <RouteCard route={route} />)}
+				</div>
+
+				<div class="text-center mt-10">
+					<a
+						href={withBase("/outstation-cabs-bangalore/")}
+						class="inline-flex items-center gap-2 rounded-full border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold px-8 py-3 transition-all duration-300"
+					>
+						See all routes & outstation fares
+						<Icon name="lucide:arrow-right" class="h-4 w-4" />
+					</a>
+				</div>
+			</div>
+		</section>
+
 		<Destinations />
 		<SocialProof />
-		<Testimonials />
+		<Testimonials limit={3} showAllLink />
 		<Faq />
 	</main>
 	<Footer />
+	<StickyBookBar />
 </BaseLayout>

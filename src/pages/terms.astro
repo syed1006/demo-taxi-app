@@ -1,0 +1,84 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import { SITE } from "../data/site";
+
+const path = "/terms/";
+const title = `Terms of Service & Cancellation Policy | ${SITE.name}`;
+const description = `Booking terms, billing rules and cancellation policy for ${SITE.name} — outstation minimums, driver bata, night charges, tolls and refunds explained plainly.`;
+
+const sections = [
+	{
+		heading: "Bookings & confirmation",
+		items: [
+			"A booking is confirmed only after we send written confirmation (WhatsApp or SMS) with the vehicle type, fare basis and pickup details.",
+			"Driver and vehicle details are shared before pickup — typically the previous evening for morning duties.",
+			"Vehicle models shown on the website indicate the category; the exact model assigned may vary within the same class.",
+		],
+	},
+	{
+		heading: "Fares & billing",
+		items: [
+			"Quoted fares include fuel and driver charges unless stated otherwise. Tolls, parking, inter-state permits and entry tickets are billed at actuals.",
+			"Outstation round trips carry a minimum billing of 300 km per calendar day (midnight to midnight). Extra kilometres are billed at the vehicle's standard per-km rate.",
+			"Driver bata (₹400–₹600/day by vehicle class) applies on outstation trips and covers the driver's food and stay.",
+			"Driving between 10:00 PM and 6:00 AM attracts an additional night allowance, confirmed before booking.",
+			"AC remains off on steep ghat climbs for engine safety.",
+		],
+	},
+	{
+		heading: "Cancellations & refunds",
+		items: [
+			"City and airport transfers: free cancellation up to 2 hours before pickup; within 2 hours a nominal charge may apply if the driver is already en route.",
+			"Outstation trips: free cancellation up to 12 hours before pickup; later cancellations may attract up to one day's minimum billing.",
+			"Tour packages: any advance paid is fully refundable up to 48 hours before the trip date; within 48 hours the advance may be adjusted against vehicle blocking costs.",
+			"If we fail to provide the confirmed vehicle or an equivalent, you receive a full refund of anything paid — no questions asked.",
+		],
+	},
+	{
+		heading: "During the trip",
+		items: [
+			"Passengers are responsible for their personal belongings. Please check the vehicle before leaving.",
+			"Consumption of alcohol and smoking inside the vehicle is not permitted.",
+			"Damage to the vehicle caused by passengers is chargeable at actuals.",
+			"Route changes and extra sightseeing stops are welcome where feasible — extra kilometres and hours bill at the standard rates.",
+		],
+	},
+	{
+		heading: "Liability",
+		items: [
+			`${SITE.name} operates as a cab service provider. Our liability is limited to providing the booked transportation service.`,
+			"All vehicles carry commercial permits and insurance as required by law.",
+			"We are not liable for delays caused by traffic, weather, breakdowns beyond our control, or force majeure — though we always arrange the fastest possible alternative.",
+		],
+	},
+];
+---
+
+<PageLayout {title} {description} {path} trail={[{ name: "Terms of Service" }]} showCtaBand={false}>
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-3xl mx-auto">
+			<h1 class="text-3xl sm:text-4xl font-bold text-foreground mb-2">
+				Terms of Service
+			</h1>
+			<p class="text-muted-foreground mb-10">
+				Plain-language terms for riding with {SITE.name}. Questions? Call
+				{SITE.phoneDisplay}.
+			</p>
+
+			{
+				sections.map((section) => (
+					<div class="mb-10">
+						<h2 class="text-xl font-bold text-foreground mb-4">
+							{section.heading}
+						</h2>
+						<ul class="space-y-3 list-disc pl-5">
+							{section.items.map((item) => (
+								<li class="text-muted-foreground leading-relaxed">{item}</li>
+							))}
+						</ul>
+					</div>
+				))
+			}
+		</div>
+	</section>
+</PageLayout>

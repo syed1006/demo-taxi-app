@@ -1,0 +1,151 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FareTable from "../components/FareTable.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import { Icon } from "astro-icon/components";
+import { RATE_CARD, VEHICLE_CLASS_IDS } from "../data/rate-card";
+import { formatINR } from "../lib/fare";
+import type { FaqItem } from "../data/faq";
+
+const path = "/hourly-cab-rental-bangalore/";
+const title = "Hourly Cab Rental Bangalore — 4hr ₹1,200 · 8hr ₹2,200";
+const description =
+	"Rent a car with driver in Bangalore by the hour: 4hr/40km from ₹1,200, 8hr/80km from ₹2,200. Sedan, Innova Crysta & Tempo Traveller. Call +91 70227 62929.";
+
+const hourlyRows = VEHICLE_CLASS_IDS.map((id) => {
+	const rates = RATE_CARD[id];
+	return {
+		label: rates.label,
+		capacity: rates.capacity,
+		values: [
+			rates.hourly4 ? formatINR(rates.hourly4) : "—",
+			formatINR(rates.hourly8),
+		],
+		highlight: id === "sedan",
+	};
+});
+
+const useCases = [
+	{
+		icon: "lucide:shopping-bag",
+		title: "Shopping & errands",
+		desc: "Multiple stops across the city with the car waiting at each one.",
+	},
+	{
+		icon: "lucide:heart",
+		title: "Weddings & functions",
+		desc: "Guest pickups, venue hops and late-night returns without the parking hassle.",
+	},
+	{
+		icon: "lucide:briefcase",
+		title: "Business days",
+		desc: "Back-to-back meetings across Bangalore with a driver on standby.",
+	},
+	{
+		icon: "lucide:stethoscope",
+		title: "Hospital visits",
+		desc: "Comfortable, patient-friendly rides with flexible waiting.",
+	},
+];
+
+const faqs: FaqItem[] = [
+	{
+		question: "What does the 4-hour / 40 km package include?",
+		answer: "A car with driver at your disposal for 4 hours and up to 40 km — any number of stops, anywhere in Bangalore. Fuel and driver charges are included; tolls and parking are extra at actuals.",
+	},
+	{
+		question: "What if I exceed the hours or kilometres?",
+		answer: "Extra usage is billed transparently: additional kilometres at the vehicle's per-km rate and additional hours at a fixed hourly rate, both confirmed on WhatsApp when you book.",
+	},
+	{
+		question: "Can the hourly rental go outside Bangalore?",
+		answer: "Hourly packages cover Bangalore city limits. For Nandi Hills, day trips or anything beyond the city, our outstation and day-trip fares work out cheaper — check the outstation page.",
+	},
+	{
+		question: "Can I book an hourly cab for the same day?",
+		answer: "Yes, subject to availability — WhatsApp us and we typically confirm a car within 30 minutes. For early morning slots, book the previous evening.",
+	},
+];
+---
+
+<PageLayout
+	{title}
+	{description}
+	{path}
+	trail={[{ name: "Hourly Cab Rental" }]}
+	waMessage="Hi! I'd like to book an hourly cab rental in Bangalore."
+	bookHref="/book/?type=hourly"
+	ctaTitle="Keep a car on standby"
+>
+	<PageHero
+		title="Hourly Car Rental with Driver in Bangalore"
+		subtitle="A clean AC car and a professional driver at your disposal — pay by the hour, stop wherever you like, and never hunt for parking again."
+		chips={[
+			{ icon: "lucide:clock", label: "4 hr / 40 km from ₹1,200" },
+			{ icon: "lucide:clock", label: "8 hr / 80 km from ₹2,200" },
+			{ icon: "lucide:map-pin", label: "Unlimited stops" },
+		]}
+		bookHref="/book/?type=hourly"
+		waMessage="Hi! I'd like to book an hourly cab rental in Bangalore."
+	/>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-5xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+				Hourly Packages
+			</h2>
+			<FareTable
+				caption="Hourly rental packages by vehicle"
+				columns={["4 hr / 40 km", "8 hr / 80 km"]}
+				rows={hourlyRows}
+				footnotes={[
+					"Fuel and driver included. Tolls and parking extra at actuals.",
+					"Extra km at the vehicle's standard per-km rate; extra hours confirmed upfront.",
+					"12-hour packages available on request.",
+				]}
+			/>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800">
+		<div class="max-w-5xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8">
+				Perfect for
+			</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+				{
+					useCases.map((useCase) => (
+						<div class="rounded-lg border bg-card p-6">
+							<Icon
+								name={useCase.icon}
+								class="h-8 w-8 mb-3 text-orange-500"
+							/>
+							<h3 class="font-semibold text-foreground mb-1">
+								{useCase.title}
+							</h3>
+							<p class="text-sm text-muted-foreground">{useCase.desc}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center">
+				Hourly Rental FAQs
+			</h2>
+			<FaqAccordion faqs={faqs} emitSchema group="hourly-faq" />
+		</div>
+	</section>
+
+	<ServiceSchema
+		serviceType="Hourly car rental with driver in Bangalore"
+		description={description}
+		{path}
+		price={1200}
+	/>
+</PageLayout>

@@ -1,0 +1,22 @@
+---
+import { Icon } from "astro-icon/components";
+import { SITE } from "../data/site";
+
+const chips = [
+	{ icon: "lucide:clock", label: "24/7 service" },
+	{ icon: "lucide:shield-check", label: "Verified drivers" },
+	{ icon: "lucide:star", label: `${SITE.rating}★ rated` },
+	{ icon: "lucide:wallet", label: "No advance payment" },
+];
+---
+
+<div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+	{
+		chips.map((chip) => (
+			<span class="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground">
+				<Icon name={chip.icon} class="h-4 w-4 text-orange-500" />
+				{chip.label}
+			</span>
+		))
+	}
+</div>

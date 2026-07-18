@@ -1,0 +1,51 @@
+---
+import { SITE } from "../data/site";
+import { withBase } from "../lib/url";
+
+export interface Crumb {
+	name: string;
+	href?: string;
+}
+
+interface Props {
+	/** Trail excluding Home (prepended automatically). Last item = current page. */
+	trail: Crumb[];
+}
+
+const { trail } = Astro.props;
+const crumbs: Crumb[] = [{ name: "Home", href: "/" }, ...trail];
+
+const schema = {
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	itemListElement: crumbs.map((crumb, index) => ({
+		"@type": "ListItem",
+		position: index + 1,
+		name: crumb.name,
+		...(crumb.href ? { item: `${SITE.url}${crumb.href}` } : {}),
+	})),
+};
+---
+
+<nav aria-label="Breadcrumb">
+	<ol class="flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground">
+		{
+			crumbs.map((crumb, index) => (
+				<li class="flex items-center gap-1.5">
+					{index > 0 && <span aria-hidden="true">›</span>}
+					{crumb.href && index < crumbs.length - 1 ? (
+						<a href={withBase(crumb.href)} class="hover:text-orange-500 transition-colors">
+							{crumb.name}
+						</a>
+					) : (
+						<span aria-current="page" class="text-foreground font-medium">
+							{crumb.name}
+						</span>
+					)}
+				</li>
+			))
+		}
+	</ol>
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

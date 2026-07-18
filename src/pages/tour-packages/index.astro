@@ -1,0 +1,123 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import PackageCard from "../../components/PackageCard.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import ServiceSchema from "../../components/seo/ServiceSchema.astro";
+import { PACKAGES } from "../../data/packages";
+import { waLink } from "../../data/site";
+import type { FaqItem } from "../../data/faq";
+
+const path = "/tour-packages/";
+const title = "Tour Packages from Bangalore by Cab — 1-Day to 4-Day Trips";
+const description =
+	"Fixed-price cab tours from Bangalore: Mysore 1-day ₹3,999, Coorg 2-day ₹8,499, Ooty, Tirupati & more. Cab + driver + sightseeing in one price. Call +91 70227 62929.";
+
+const groups = [
+	{ label: "1-Day Tours", filter: (days: number) => days === 1 },
+	{ label: "2-Day Tours", filter: (days: number) => days === 2 },
+	{ label: "3-Day Tours", filter: (days: number) => days === 3 },
+	{ label: "4-Day Grand Tours", filter: (days: number) => days >= 4 },
+];
+
+const faqs: FaqItem[] = [
+	{
+		question: "What exactly does a tour package price include?",
+		answer: "The cab for the full itinerary, fuel, driver bata, all sightseeing transfers and pickup/drop anywhere in Bangalore. Hotels, meals, entry tickets, tolls, parking and inter-state permits are not included unless the package says so.",
+	},
+	{
+		question: "Are hotels included in multi-day packages?",
+		answer: "No — you book your own stay (or ask us and we'll suggest driver-friendly hotels at your budget). This keeps the package price honest and lets you pick accommodation you actually want.",
+	},
+	{
+		question: "Can you customise a package?",
+		answer: "Yes — every itinerary here can be reshuffled, extended or combined. WhatsApp us your dates and wishlist and we'll price a custom plan the same day.",
+	},
+	{
+		question: "How do I confirm a booking?",
+		answer: "Send the package name and date on WhatsApp or use the booking form. We confirm the vehicle, driver and final price in writing before any payment.",
+	},
+];
+---
+
+<PageLayout
+	{title}
+	{description}
+	{path}
+	trail={[{ name: "Tour Packages" }]}
+	waMessage="Hi! I'd like to know about your tour packages from Bangalore."
+	bookHref="/book/?type=tour"
+	ctaTitle="Pick a date, we'll do the rest"
+>
+	<PageHero
+		title="Tour Packages from Bangalore"
+		subtitle="Fixed-price cab tours with the itinerary, driver and sightseeing transfers sorted — from Mysore day trips to 4-day hill-station circuits."
+		chips={[
+			{ icon: "lucide:camera", label: `${PACKAGES.length} packages` },
+			{ icon: "lucide:wallet", label: "From ₹3,399" },
+			{ icon: "lucide:calendar", label: "1–4 days" },
+		]}
+		bookHref="/book/?type=tour"
+		bookLabel="Book a Package"
+		waMessage="Hi! I'd like to know about your tour packages from Bangalore."
+	/>
+
+	{
+		groups.map((group) => {
+			const groupPackages = PACKAGES.filter((pkg) => group.filter(pkg.durationDays));
+			if (groupPackages.length === 0) return null;
+			return (
+				<section class="py-10 px-4 sm:px-6 lg:px-8 even:bg-gradient-to-br even:from-orange-50 even:to-red-50 dark:even:from-gray-900 dark:even:to-gray-800">
+					<div class="max-w-7xl mx-auto">
+						<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8">
+							{group.label}
+						</h2>
+						<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+							{groupPackages.map((pkg) => (
+								<PackageCard pkg={pkg} />
+							))}
+						</div>
+					</div>
+				</section>
+			);
+		})
+	}
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			<div
+				class="rounded-2xl border-2 border-dashed border-orange-300 dark:border-orange-800 p-8 text-center mb-12"
+			>
+				<h2 class="text-xl font-bold text-foreground mb-2">
+					Want a custom itinerary?
+				</h2>
+				<p class="text-muted-foreground mb-4">
+					Mix destinations, add days, bring the whole family — we'll build the
+					plan and quote a fixed price.
+				</p>
+				<a
+					href={waLink(
+						"Hi! I'd like a custom tour package from Bangalore. Can you help me plan it?"
+					)}
+					target="_blank"
+					rel="noopener"
+					class="inline-flex items-center gap-2 rounded-full bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-3 transition-colors"
+				>
+					Plan on WhatsApp
+				</a>
+			</div>
+
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center">
+				Tour Package FAQs
+			</h2>
+			<FaqAccordion faqs={faqs} emitSchema group="packages-faq" />
+		</div>
+	</section>
+
+	<ServiceSchema
+		serviceType="Cab tour packages from Bangalore"
+		description={description}
+		{path}
+		price={3399}
+	/>
+</PageLayout>

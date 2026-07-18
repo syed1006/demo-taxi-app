@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import type { TourPackage } from "../data/route-types";
+import { formatINR } from "../lib/fare";
+import { withBase } from "../lib/url";
+
+interface Props {
+	pkg: TourPackage;
+	class?: string;
+}
+
+const { pkg, class: className = "" } = Astro.props;
+const sedanPrice = pkg.prices.find((p) => p.vehicle === "sedan")?.price;
+const href = withBase(`/tour-packages/${pkg.slug}/`);
+const duration =
+	pkg.durationNights > 0
+		? `${pkg.durationDays}D / ${pkg.durationNights}N`
+		: `${pkg.durationDays} Day`;
+---
+
+<article
+	class:list={[
+		"group relative overflow-hidden rounded-lg border-2 bg-card text-card-foreground hover:shadow-2xl transition-all duration-500 hover:border-orange-200 dark:hover:border-orange-800",
+		className,
+	]}
+>
+	<a href={href} class="block">
+		<div class="relative h-40 overflow-hidden">
+			{
+				pkg.image ? (
+					<Image
+						src={pkg.image}
+						alt={pkg.name}
+						widths={[400, 800]}
+						sizes="320px"
+						format="webp"
+						quality={75}
+						loading="lazy"
+						class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+					/>
+				) : (
+					<div class="w-full h-full bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 flex items-center justify-center">
+						<Icon name="lucide:camera" class="h-12 w-12 text-white/70" />
+					</div>
+				)
+			}
+			<span class="absolute top-3 left-3 rounded-full bg-white/90 text-gray-800 text-xs font-semibold px-2.5 py-1">
+				{duration}
+			</span>
+			{
+				pkg.popular && (
+					<span class="absolute top-3 right-3 rounded-full bg-orange-500 text-white text-xs font-semibold px-2.5 py-1">
+						Popular
+					</span>
+				)
+			}
+		</div>
+		<div class="p-4 space-y-2">
+			<h3 class="font-bold text-foreground group-hover:text-orange-500 transition-colors leading-snug">
+				{pkg.shortName}
+			</h3>
+			<p class="text-xs text-muted-foreground">
+				{pkg.sightsCovered.length} places covered
+			</p>
+			{
+				sedanPrice && (
+					<p class="text-sm">
+						<span class="text-muted-foreground">Sedan</span>
+						<strong class="text-orange-600 dark:text-orange-400 ml-1">
+							{formatINR(sedanPrice)}
+						</strong>
+					</p>
+				)
+			}
+			<span class="text-sm font-semibold text-orange-500">
+				View itinerary →
+			</span>
+		</div>
+	</a>
+</article>

@@ -1,0 +1,76 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import { SITE } from "../data/site";
+
+const path = "/privacy/";
+const title = `Privacy Policy | ${SITE.name}`;
+const description = `How ${SITE.name} handles your data: what we collect for bookings, how WhatsApp booking works, and what we never do with your information.`;
+
+const sections = [
+	{
+		heading: "What we collect",
+		items: [
+			"Booking details you share with us: name, mobile number, pickup/drop locations, travel date and time, and any notes you add.",
+			"That's it. The website itself sets no tracking cookies and runs no third-party analytics or ad scripts.",
+		],
+	},
+	{
+		heading: "How your data is used",
+		items: [
+			"To operate your booking: assigning a driver, coordinating pickup, and sending trip confirmations.",
+			"Booking conversations happen over WhatsApp — messages you send us are governed by WhatsApp's own terms in addition to ours.",
+			"We may contact you about your ride (confirmations, driver details, schedule changes). We do not send marketing spam.",
+		],
+	},
+	{
+		heading: "What we never do",
+		items: [
+			"We never sell, rent or trade your personal information to anyone.",
+			"We never share your contact details with third parties except the driver assigned to your trip.",
+			"We never ask for card details, OTPs or online-banking credentials — be alert to anyone claiming otherwise in our name.",
+		],
+	},
+	{
+		heading: "Retention & your choices",
+		items: [
+			"Trip records are kept as required for accounting and legal compliance.",
+			`Want your data deleted or corrected? Message us on WhatsApp or email ${SITE.email} and we'll act on it promptly.`,
+		],
+	},
+	{
+		heading: "Theme preference",
+		items: [
+			"The light/dark mode toggle stores a single preference value in your browser's localStorage. It never leaves your device.",
+		],
+	},
+];
+---
+
+<PageLayout {title} {description} {path} trail={[{ name: "Privacy Policy" }]} showCtaBand={false}>
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-3xl mx-auto">
+			<h1 class="text-3xl sm:text-4xl font-bold text-foreground mb-2">
+				Privacy Policy
+			</h1>
+			<p class="text-muted-foreground mb-10">
+				Short version: we collect only what's needed to run your trip, and we
+				don't share it.
+			</p>
+
+			{
+				sections.map((section) => (
+					<div class="mb-10">
+						<h2 class="text-xl font-bold text-foreground mb-4">
+							{section.heading}
+						</h2>
+						<ul class="space-y-3 list-disc pl-5">
+							{section.items.map((item) => (
+								<li class="text-muted-foreground leading-relaxed">{item}</li>
+							))}
+						</ul>
+					</div>
+				))
+			}
+		</div>
+	</section>
+</PageLayout>

@@ -1,7 +1,9 @@
 ---
 import { SITE } from "../../data/site";
-import { FAQS } from "../../data/faq";
 
+// Sitewide business entity. Per-page schema (FAQPage, BreadcrumbList,
+// Service, TouristTrip) is emitted by the components that render the
+// corresponding visible content, referencing this @id.
 const business = {
 	"@context": "https://schema.org",
 	"@type": ["LocalBusiness", "TaxiService"],
@@ -41,20 +43,6 @@ const business = {
 	sameAs: [SITE.instagram],
 	priceRange: "₹₹",
 };
-
-const faqPage = {
-	"@context": "https://schema.org",
-	"@type": "FAQPage",
-	mainEntity: FAQS.map((faq) => ({
-		"@type": "Question",
-		name: faq.question,
-		acceptedAnswer: {
-			"@type": "Answer",
-			text: faq.answer,
-		},
-	})),
-};
 ---
 
 <script type="application/ld+json" set:html={JSON.stringify(business)} />
-<script type="application/ld+json" set:html={JSON.stringify(faqPage)} />

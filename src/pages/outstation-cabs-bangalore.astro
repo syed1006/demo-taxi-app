@@ -1,0 +1,213 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FareTable from "../components/FareTable.astro";
+import RouteCard from "../components/RouteCard.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import { Icon } from "astro-icon/components";
+import { ROUTES } from "../data/routes";
+import { RATE_CARD, VEHICLE_CLASS_IDS } from "../data/rate-card";
+import { formatINR } from "../lib/fare";
+import type { FaqItem } from "../data/faq";
+
+const path = "/outstation-cabs-bangalore/";
+const title = "Outstation Cabs in Bangalore — One-Way & Round Trip from ₹12/km";
+const description =
+	"Book outstation cabs from Bangalore: Sedan ₹12/km, Innova Crysta ₹21/km, Tempo Traveller ₹24/km. One-way drops, round trips & multi-day tours. Call +91 70227 62929.";
+
+const perKmRows = VEHICLE_CLASS_IDS.map((id) => {
+	const rates = RATE_CARD[id];
+	return {
+		label: rates.label,
+		capacity: rates.capacity,
+		values: [
+			`${formatINR(rates.outstationPerKm)}/km`,
+			`${formatINR(rates.oneWayPerKm)}/km`,
+			`${formatINR(rates.driverBataPerDay)}/day`,
+		],
+		highlight: id === "sedan",
+	};
+});
+
+const weekendRoutes = ROUTES.filter((route) => route.days === 1);
+const extendedRoutes = ROUTES.filter((route) => route.days > 1);
+
+const faqs: FaqItem[] = [
+	{
+		question: "How is an outstation cab fare from Bangalore calculated?",
+		answer: "Round trips are billed per km (minimum 300 km per calendar day) plus a daily driver bata. One-way drops are billed at a higher per-km rate since the car returns empty. Fuel is always included; tolls, parking and inter-state permits are extra at actuals.",
+	},
+	{
+		question: "Do you provide one-way cabs from Bangalore?",
+		answer: "Yes — most corridors like Mysore, Coorg, Ooty, Chennai and Tirupati have fixed one-way drop fares. Check the route page for your destination or WhatsApp us for a one-way quote.",
+	},
+	{
+		question: "Is the driver's food and stay included for multi-day trips?",
+		answer: "Yes. The daily driver bata covers the driver's food and accommodation — you never need to arrange or pay for the driver separately.",
+	},
+	{
+		question: "Can I book an outstation cab for early morning pickup?",
+		answer: "Absolutely — we run 24/7. For pickups between 10 PM and 6 AM an additional night driving allowance applies, which we confirm upfront on WhatsApp.",
+	},
+	{
+		question: "Are inter-state permits included in the fare?",
+		answer: "No — state entry permits for Tamil Nadu, Kerala, Andhra Pradesh or Goa are charged at actuals (₹500–₹3,500 depending on the state and vehicle). We tell you the exact permit cost before you book.",
+	},
+	{
+		question: "What happens if we exceed the included kilometres?",
+		answer: "Extra kilometres are billed at the same per-km rate as your vehicle class — no inflated overage rates. The driver shares the closing odometer reading so everything stays transparent.",
+	},
+];
+---
+
+<PageLayout
+	{title}
+	{description}
+	{path}
+	trail={[{ name: "Outstation Cabs" }]}
+	waMessage="Hi! I'd like to book an outstation cab from Bangalore."
+	bookHref="/book/?type=outstation"
+	ctaTitle="Plan your outstation trip"
+>
+	<PageHero
+		title="Outstation Cabs from Bangalore"
+		subtitle="One-way drops and round trips to 21+ destinations across South India — transparent per-km pricing, verified drivers, fuel and driver bata included."
+		chips={[
+			{ icon: "lucide:map-pin", label: "21+ routes" },
+			{ icon: "lucide:wallet", label: "From ₹12/km" },
+			{ icon: "lucide:clock", label: "24/7 pickups" },
+		]}
+		bookHref="/book/?type=outstation"
+		waMessage="Hi! I'd like to book an outstation cab from Bangalore."
+	/>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-5xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+				Outstation Cab Rates from Bangalore
+			</h2>
+			<FareTable
+				caption="Outstation per-kilometre rates by vehicle"
+				columns={["Round trip", "One-way", "Driver bata"]}
+				rows={perKmRows}
+				footnotes={[
+					"Round trips: minimum 300 km billed per calendar day.",
+					"Fuel included. Tolls, parking and inter-state permits extra at actuals.",
+					"Prime Sedan and Luxury cars available on request — ask on WhatsApp.",
+				]}
+			/>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800">
+		<div class="max-w-7xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-2">
+				Day Trips & Weekend Getaways
+			</h2>
+			<p class="text-muted-foreground mb-8">
+				Same-day returns and overnight escapes within ~150 km of Bangalore.
+			</p>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+				{weekendRoutes.map((route) => <RouteCard route={route} />)}
+			</div>
+
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mt-14 mb-2">
+				Multi-Day & Long-Distance Trips
+			</h2>
+			<p class="text-muted-foreground mb-8">
+				Hill stations, beaches and heritage towns — 2–3 day round trips with
+				overnight halts.
+			</p>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+				{extendedRoutes.map((route) => <RouteCard route={route} />)}
+			</div>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+			<div>
+				<h2 class="text-2xl font-bold text-foreground mb-4">
+					How outstation billing works
+				</h2>
+				<ul class="space-y-3 text-muted-foreground">
+					{
+						[
+							"One calendar day = midnight to midnight; each day carries a 300 km minimum on round trips.",
+							"Driver bata (₹400–₹600/day by vehicle) covers the driver's food and stay.",
+							"Driving between 10 PM and 6 AM attracts an extra night allowance.",
+							"Final fare depends on actual kilometres — odometer readings shared openly.",
+							"AC is switched off on steep ghat climbs for engine safety, as on all South India routes.",
+						].map((item) => (
+							<li class="flex gap-2">
+								<Icon
+									name="lucide:check-circle-2"
+									class="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5"
+								/>
+								{item}
+							</li>
+						))
+					}
+				</ul>
+			</div>
+			<div>
+				<h2 class="text-2xl font-bold text-foreground mb-4">
+					What's included
+				</h2>
+				<ul class="space-y-3 text-muted-foreground">
+					{
+						[
+							"Fuel for the entire trip",
+							"Experienced driver who knows the route",
+							"Pickup from any address in Bangalore",
+							"Clean, sanitised AC vehicle",
+						].map((item) => (
+							<li class="flex gap-2">
+								<Icon
+									name="lucide:plus-circle"
+									class="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5"
+								/>
+								{item}
+							</li>
+						))
+					}
+				</ul>
+				<h2 class="text-2xl font-bold text-foreground mt-8 mb-4">
+					Billed extra (at actuals)
+				</h2>
+				<ul class="space-y-3 text-muted-foreground">
+					{
+						["Tolls and parking", "Inter-state entry permits", "Entry tickets at attractions"].map(
+							(item) => (
+								<li class="flex gap-2">
+									<Icon
+										name="lucide:minus-circle"
+										class="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5"
+									/>
+									{item}
+								</li>
+							)
+						)
+					}
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-gray-100 dark:from-slate-900 dark:to-gray-900">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center">
+				Outstation Cab FAQs
+			</h2>
+			<FaqAccordion faqs={faqs} emitSchema group="outstation-faq" />
+		</div>
+	</section>
+
+	<ServiceSchema
+		serviceType="Outstation taxi service from Bangalore"
+		description={description}
+		{path}
+		price={12}
+	/>
+</PageLayout>

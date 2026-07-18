@@ -1,0 +1,122 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import type { Route } from "../data/route-types";
+import { routePath } from "../data/routes";
+import { formatINR } from "../lib/fare";
+import { withBase } from "../lib/url";
+
+interface Props {
+	route: Route;
+	class?: string;
+}
+
+const { route, class: className = "" } = Astro.props;
+
+const CATEGORY_ICONS: Record<string, string> = {
+	hills: "lucide:mountain",
+	heritage: "lucide:building",
+	beach: "lucide:map-pin",
+	waterfalls: "lucide:tree-pine",
+	spiritual: "lucide:star",
+	nature: "lucide:tree-pine",
+	city: "lucide:building-2",
+};
+const categoryIcon = CATEGORY_ICONS[route.category] ?? "lucide:map-pin";
+const href = withBase(routePath(route.slug));
+---
+
+<article
+	class:list={[
+		"group relative overflow-hidden rounded-lg border-2 bg-card text-card-foreground hover:shadow-2xl transition-all duration-500 hover:border-orange-200 dark:hover:border-orange-800",
+		className,
+	]}
+>
+	<a href={href} class="block">
+		<div class="relative h-44 overflow-hidden">
+			{
+				route.image ? (
+					<Image
+						src={route.image}
+						alt={`Bangalore to ${route.name} taxi`}
+						widths={[400, 800]}
+						sizes="320px"
+						format="webp"
+						quality={75}
+						loading="lazy"
+						class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+					/>
+				) : (
+					<div class="w-full h-full bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 flex items-center justify-center">
+						<Icon name={categoryIcon} class="h-14 w-14 text-white/70" />
+					</div>
+				)
+			}
+			{
+				route.popular && (
+					<span class="absolute top-3 right-3 rounded-full bg-orange-500 text-white text-xs font-semibold px-2.5 py-1">
+						Popular
+					</span>
+				)
+			}
+			<span
+				class="absolute top-3 left-3 inline-flex items-center rounded-full bg-white/90 text-gray-800 text-xs font-medium px-2.5 py-1 capitalize"
+			>
+				<Icon name={categoryIcon} class="h-3 w-3 mr-1" />
+				{route.category}
+			</span>
+		</div>
+
+		<div class="p-4 space-y-3">
+			<div>
+				<h3 class="text-lg font-bold text-foreground group-hover:text-orange-500 transition-colors">
+					Bangalore to {route.name} Taxi
+				</h3>
+				<p class="text-sm text-muted-foreground line-clamp-2">{route.summary}</p>
+			</div>
+
+			<div class="flex items-center gap-4 text-xs text-muted-foreground">
+				<span class="flex items-center gap-1">
+					<Icon name="lucide:map-pin" class="h-3.5 w-3.5" />
+					{route.distanceKm} km
+				</span>
+				<span class="flex items-center gap-1">
+					<Icon name="lucide:clock" class="h-3.5 w-3.5" />
+					~{route.durationHrs} hrs
+				</span>
+				<span class="flex items-center gap-1">
+					<Icon name="lucide:star" class="h-3.5 w-3.5 text-yellow-500 icon-fill" />
+					{route.rating}
+				</span>
+			</div>
+
+			<div class="flex items-center justify-between rounded-lg bg-muted px-3 py-2">
+				{
+					route.fares.sedan.oneWay ? (
+						<span class="text-sm">
+							One-way
+							<strong class="text-green-600 dark:text-green-400 ml-1">
+								{formatINR(route.fares.sedan.oneWay)}
+							</strong>
+						</span>
+					) : (
+						<span class="text-sm text-muted-foreground">Round trip</span>
+					)
+				}
+				<span class="text-sm">
+					Round trip
+					<strong class="text-orange-600 dark:text-orange-400 ml-1">
+						{formatINR(route.fares.sedan.roundTrip)}
+					</strong>
+				</span>
+			</div>
+
+			<span
+				class="btn flex w-full items-center justify-center rounded-md bg-orange-500 group-hover:bg-orange-600 text-white font-semibold py-2.5 transition-colors"
+			>
+				View Fares & Book
+				<Icon name="lucide:arrow-right" class="ml-2 h-4 w-4" />
+			</span>
+		</div>
+	</a>
+</article>

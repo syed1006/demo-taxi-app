@@ -1,0 +1,82 @@
+/**
+ * Master rate card — every rupee figure on the site derives from here or
+ * from a hand-verified figure in routes/packages/airport data. Keep this in
+ * sync with src/data/vehicles.ts display strings.
+ */
+
+export type VehicleClassId = "sedan" | "suv" | "innova-crysta" | "tempo-traveller";
+
+export interface ClassRates {
+	label: string;
+	capacity: string;
+	/** Must match a CAB_TYPES name in vehicles.ts — used for /book/?cab= prefill. */
+	bookingFormValue: string;
+	/** Round-trip billing basis, ₹/km. */
+	outstationPerKm: number;
+	/** One-way trips bill higher per km (car returns empty). */
+	oneWayPerKm: number;
+	driverBataPerDay: number;
+	airportBase: number;
+	hourly4: number | null;
+	hourly8: number;
+	minKmPerDay: number;
+	/** Ratio used to derive this class's fare from a quoted sedan fare. */
+	sedanMultiplier: number;
+}
+
+export const RATE_CARD: Record<VehicleClassId, ClassRates> = {
+	sedan: {
+		label: "Sedan",
+		capacity: "4+1",
+		bookingFormValue: "Sedan",
+		outstationPerKm: 12,
+		oneWayPerKm: 18,
+		driverBataPerDay: 400,
+		airportBase: 799,
+		hourly4: 1200,
+		hourly8: 2200,
+		minKmPerDay: 300,
+		sedanMultiplier: 1,
+	},
+	suv: {
+		label: "SUV (Innova / Ertiga)",
+		capacity: "6+1 / 7+1",
+		bookingFormValue: "SUV",
+		outstationPerKm: 17,
+		oneWayPerKm: 24,
+		driverBataPerDay: 500,
+		airportBase: 1499,
+		hourly4: 1800,
+		hourly8: 3000,
+		minKmPerDay: 300,
+		sedanMultiplier: 1.4,
+	},
+	"innova-crysta": {
+		label: "Innova Crysta",
+		capacity: "6+1 / 7+1",
+		bookingFormValue: "Premium SUV",
+		outstationPerKm: 21,
+		oneWayPerKm: 30,
+		driverBataPerDay: 600,
+		airportBase: 1999,
+		hourly4: 2199,
+		hourly8: 3999,
+		minKmPerDay: 300,
+		sedanMultiplier: 1.75,
+	},
+	"tempo-traveller": {
+		label: "Tempo Traveller (12+1)",
+		capacity: "12+1",
+		bookingFormValue: "Tempo Traveller",
+		outstationPerKm: 24,
+		oneWayPerKm: 34,
+		driverBataPerDay: 600,
+		airportBase: 3200,
+		hourly4: null,
+		hourly8: 4199,
+		minKmPerDay: 300,
+		sedanMultiplier: 2.05,
+	},
+};
+
+export const VEHICLE_CLASS_IDS = Object.keys(RATE_CARD) as VehicleClassId[];

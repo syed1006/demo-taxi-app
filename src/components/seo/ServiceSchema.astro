@@ -1,0 +1,34 @@
+---
+import { SITE } from "../../data/site";
+
+interface Props {
+	serviceType: string;
+	description: string;
+	path: string;
+	/** Lowest advertised price, INR. */
+	price?: number;
+}
+
+const { serviceType, description, path, price } = Astro.props;
+
+const schema = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	serviceType,
+	description,
+	url: `${SITE.url}${path}`,
+	provider: { "@id": `${SITE.url}/#business` },
+	areaServed: { "@type": "City", name: "Bengaluru" },
+	...(price
+		? {
+				offers: {
+					"@type": "Offer",
+					price: String(price),
+					priceCurrency: "INR",
+				},
+			}
+		: {}),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

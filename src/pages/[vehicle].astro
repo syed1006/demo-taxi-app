@@ -1,0 +1,387 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FareTable from "../components/FareTable.astro";
+import RouteCard from "../components/RouteCard.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { VEHICLE_CATEGORIES, type Vehicle } from "../data/vehicles";
+import { RATE_CARD, type VehicleClassId } from "../data/rate-card";
+import { ROUTES } from "../data/routes";
+import { deriveClassFare, formatINR } from "../lib/fare";
+import { withBase } from "../lib/url";
+import type { FaqItem } from "../data/faq";
+
+interface VehiclePageDef {
+	slug: string;
+	classId: VehicleClassId | null;
+	vehicle: Vehicle;
+	h1: string;
+	title: string;
+	description: string;
+	intro: string[];
+	bestFor: string[];
+	faqs: FaqItem[];
+}
+
+export async function getStaticPaths() {
+	const { VEHICLE_CATEGORIES } = await import("../data/vehicles");
+
+	const defs: Omit<VehiclePageDef, "vehicle">[] = [
+		{
+			slug: "sedan-taxi-bangalore",
+			classId: "sedan",
+			h1: "Sedan Taxi in Bangalore",
+			title: "Sedan Taxi Bangalore — Dzire, Etios & Amaze from ₹12/km",
+			description:
+				"Book a sedan taxi in Bangalore: airport ₹799, hourly ₹1,200, outstation ₹12/km. Swift Dzire, Etios & Amaze with verified drivers. Call +91 70227 62929.",
+			intro: [
+				"The sedan is Bangalore's workhorse cab — right-sized for airport runs, daily office travel and couple or small-family trips. Our fleet runs Swift Dzire, Toyota Etios, Honda Xcent and Honda Amaze: comfortable AC cars with proper boot space for two large suitcases.",
+				"At ₹12/km for outstation round trips and ₹799 for airport transfers, sedans are the most economical way to travel without squeezing into a hatchback. Every car is owner-maintained, cleaned daily and driven by a verified chauffeur who knows the city and the highways.",
+			],
+			bestFor: [
+				"Airport pickups & drops (2–4 passengers)",
+				"Mysore, Nandi Hills & other day trips",
+				"Daily office and hourly city travel",
+				"Budget-conscious outstation round trips",
+			],
+			faqs: [
+				{
+					question: "How many passengers and bags fit in a sedan?",
+					answer: "Four passengers plus the driver, with boot space for two large suitcases and a couple of cabin bags. For five or more passengers, or heavy luggage, pick an SUV instead.",
+				},
+				{
+					question: "Which sedan models will I get?",
+					answer: "Swift Dzire, Toyota Etios, Honda Xcent or Honda Amaze — all AC, all recent. Want a premium sedan like a Honda City or Ciaz? Ask for Prime Sedan on WhatsApp.",
+				},
+				{
+					question: "Is a sedan comfortable for a long outstation trip?",
+					answer: "For up to 3 adults on trips like Mysore, Coorg or Tirupati, absolutely. For 4 adults on 5+ hour drives, the extra shoulder room of an SUV is worth the upgrade.",
+				},
+			],
+		},
+		{
+			slug: "suv-taxi-bangalore",
+			classId: "suv",
+			h1: "SUV Taxi in Bangalore (Innova & Ertiga)",
+			title: "SUV Taxi Bangalore — Innova & Ertiga 7 Seater from ₹16/km",
+			description:
+				"Book a 6–7 seater SUV taxi in Bangalore: Toyota Innova, Maruti Ertiga & Kia Carens. Airport ₹1,499, outstation from ₹16/km. Perfect for families. Call +91 70227 62929.",
+			intro: [
+				"When the whole family travels, an SUV is the sane choice. Our Toyota Innova, Maruti Ertiga, Kia Carens and Toyota Rumion cabs seat six to seven passengers with genuine luggage space — no bags on laps, no squeezing.",
+				"SUVs shine on outstation trips: captain-style seating on the Innova, stable highway manners, and room to sleep on those early-morning starts to Ooty or Tirupati. For groups of five to seven, an SUV usually costs less per person than two sedans.",
+			],
+			bestFor: [
+				"Family airport transfers with luggage",
+				"Group day trips & weekend getaways",
+				"Outstation trips for 5–7 passengers",
+				"Wedding and function guest shuttles",
+			],
+			faqs: [
+				{
+					question: "What's the difference between the SUV and Innova Crysta options?",
+					answer: "The standard SUV class covers Innova, Ertiga, Carens and Rumion at ₹16–18/km. The Innova Crysta is the newer, plusher Toyota with better seats and ride — it commands ₹19–24/km and has its own page.",
+				},
+				{
+					question: "Can 7 adults with luggage really fit?",
+					answer: "Seven adults fit comfortably; with all three rows occupied, boot space suits soft bags. For 7 people with big suitcases (airport trips), tell us on WhatsApp — we'll suggest a carrier-fitted vehicle or a Tempo Traveller.",
+				},
+				{
+					question: "Is the per-km rate the same for one-way trips?",
+					answer: "One-way drops bill at a higher per-km rate (₹24/km for SUVs) because the car returns empty — still usually cheaper than a round trip you don't need.",
+				},
+			],
+		},
+		{
+			slug: "innova-crysta-rental-bangalore",
+			classId: "innova-crysta",
+			h1: "Innova Crysta on Rent in Bangalore",
+			title: "Innova Crysta Rental Bangalore — ₹19–24/km | Airport ₹1,999",
+			description:
+				"Rent a Toyota Innova Crysta in Bangalore with driver: airport ₹1,999, outstation from ₹19/km, 8hr city package ₹3,999. Premium 6+1 comfort. Call +91 70227 62929.",
+			intro: [
+				"The Innova Crysta is the gold standard for premium group travel in South India — plush captain seats, a whisper-quiet cabin, and highway stability that makes a 6-hour run to Ooty feel easy. It's the vehicle we recommend for airport VIP pickups, client travel and comfort-first family holidays.",
+				"Our Crystas come with experienced chauffeurs who handle everything from early-morning airport runs to multi-day hill-station circuits. Book it per-km for outstation, as a fixed airport transfer, or on an 8-hour city package for weddings and business days.",
+			],
+			bestFor: [
+				"Executive & VIP airport transfers",
+				"Client-facing corporate travel",
+				"Comfort-first outstation holidays",
+				"Wedding entourages & special occasions",
+			],
+			faqs: [
+				{
+					question: "How is the Crysta different from a regular Innova?",
+					answer: "The Crysta is Toyota's premium generation — softer captain seats, better sound insulation, rear AC vents, and a noticeably smoother highway ride. If you're doing 300+ km in a day, the difference is real.",
+				},
+				{
+					question: "What does an Innova Crysta cost for a Mysore trip?",
+					answer: "A same-day Mysore round trip runs around ₹9,000–9,500 all-inclusive of fuel and driver bata (tolls extra). One-way drops are also available — see the Mysore route page for exact fares.",
+				},
+				{
+					question: "Can I book a Crysta for multiple days?",
+					answer: "Yes — multi-day trips bill at ₹19–24/km with a 300 km/day minimum and ₹600/day driver bata. For 3+ day itineraries, ask about our fixed tour packages, which usually work out cheaper.",
+				},
+			],
+		},
+		{
+			slug: "tempo-traveller-hire-bangalore",
+			classId: "tempo-traveller",
+			h1: "Tempo Traveller Hire in Bangalore (12+1 Seater)",
+			title: "Tempo Traveller Hire Bangalore — 12 Seater from ₹20/km",
+			description:
+				"Hire a 12-seater Tempo Traveller in Bangalore for group trips: outstation from ₹20/km, 8hr package ₹4,199. Pushback seats, big luggage space. Call +91 70227 62929.",
+			intro: [
+				"For groups of eight to twelve, one Tempo Traveller beats a convoy of cabs every time — everyone rides together, luggage travels in the back, and the per-person cost drops sharply. Our 12+1 seaters run pushback seats, powerful AC and ample aisle room for long hauls.",
+				"Tempo Travellers are the go-to for family functions, temple circuits, corporate offsites and college trips. Pair one with our fixed tour packages to Mysore, Coorg or Tirupati and the whole group travels on a single transparent bill.",
+			],
+			bestFor: [
+				"Group outstation trips (8–12 people)",
+				"Wedding & function guest transport",
+				"Corporate offsites and team outings",
+				"Temple-circuit and pilgrimage tours",
+			],
+			faqs: [
+				{
+					question: "How many seats does the Tempo Traveller have?",
+					answer: "Our standard unit is 12+1 (twelve passengers plus driver) with pushback seats. Larger 17-seater and mini-bus options are available on request for bigger groups.",
+				},
+				{
+					question: "Is AC available throughout the vehicle?",
+					answer: "Yes — ducted AC covers all rows. As with all vehicles, AC is switched off on steep ghat climbs (Ooty, Kodaikanal) for engine safety.",
+				},
+				{
+					question: "What's the minimum billing for an outstation Tempo Traveller trip?",
+					answer: "300 km per calendar day at ₹20–29/km depending on season and AC use, plus ₹600/day driver bata. Fuel is included; tolls, parking and permits are extra at actuals.",
+				},
+			],
+		},
+		{
+			slug: "luxury-car-rental-bangalore",
+			classId: null,
+			h1: "Luxury Car Rental in Bangalore",
+			title: "Luxury Car Rental Bangalore — BMW, Audi & Mercedes with Driver",
+			description:
+				"Rent a chauffeur-driven luxury car in Bangalore: BMW 3 Series, Audi A4, Mercedes C-Class. Airport from ₹2,999, weddings & events. Call +91 70227 62929.",
+			intro: [
+				"Some occasions call for more than a cab. Our luxury line — BMW 3 Series, Audi A4, Mercedes C-Class and Jaguar XE — comes with professionally groomed chauffeurs for weddings, VIP airport pickups, film shoots and board-level client travel.",
+				"Luxury bookings are curated: tell us the occasion, date and hours on WhatsApp and we confirm the exact car, decked as you need it (wedding ribbons and flowers on request). Airport transfers start at ₹2,999; 8-hour event packages from ₹5,999.",
+			],
+			bestFor: [
+				"Weddings & receptions (decorated cars)",
+				"VIP airport pickups",
+				"Corporate board-level travel",
+				"Shoots, launches & special events",
+			],
+			faqs: [
+				{
+					question: "Which luxury car models are available?",
+					answer: "BMW 3 Series, Audi A4, Mercedes C-Class and Jaguar XE, subject to date availability. Confirm your date early — wedding season weekends book out weeks ahead.",
+				},
+				{
+					question: "Can the car be decorated for a wedding?",
+					answer: "Yes — ribbon-and-flower decoration is available on request at a small extra cost. Share your theme on WhatsApp and we'll coordinate with the decorator.",
+				},
+				{
+					question: "Is self-drive available for luxury cars?",
+					answer: "No — all our luxury rentals are chauffeur-driven. That keeps insurance clean and lets you enjoy the day.",
+				},
+			],
+		},
+	];
+
+	const vehicleFor = (slug: string): Vehicle => {
+		switch (slug) {
+			case "sedan-taxi-bangalore":
+				return VEHICLE_CATEGORIES.economy.vehicles[0];
+			case "suv-taxi-bangalore":
+				return VEHICLE_CATEGORIES.suv.vehicles[0];
+			case "innova-crysta-rental-bangalore":
+				return VEHICLE_CATEGORIES.premium.vehicles[1];
+			case "tempo-traveller-hire-bangalore":
+				return VEHICLE_CATEGORIES.group.vehicles[0];
+			default:
+				return VEHICLE_CATEGORIES.luxury.vehicles[0];
+		}
+	};
+
+	return defs.map((def) => ({
+		params: { vehicle: def.slug },
+		props: { def: { ...def, vehicle: vehicleFor(def.slug) } },
+	}));
+}
+
+interface Props {
+	def: VehiclePageDef;
+}
+
+const { def } = Astro.props;
+const path = `/${def.slug}/`;
+const rates = def.classId ? RATE_CARD[def.classId] : null;
+
+const rateRows = rates
+	? [
+			{
+				label: "Airport transfer",
+				values: [`from ${formatINR(rates.airportBase)}`],
+			},
+			...(rates.hourly4
+				? [{ label: "4 hr / 40 km city package", values: [formatINR(rates.hourly4)] }]
+				: []),
+			{ label: "8 hr / 80 km city package", values: [formatINR(rates.hourly8)] },
+			{
+				label: "Outstation round trip",
+				values: [`${formatINR(rates.outstationPerKm)}/km`],
+				highlight: true,
+			},
+			{ label: "Outstation one-way", values: [`${formatINR(rates.oneWayPerKm)}/km`] },
+			{ label: "Driver bata", values: [`${formatINR(rates.driverBataPerDay)}/day`] },
+		]
+	: [
+			{ label: "Airport transfer", values: [def.vehicle.pricing.airport] },
+			{ label: "8 hr event package", values: [def.vehicle.pricing.hourly8] },
+			{
+				label: "Outstation",
+				values: [`₹${def.vehicle.pricing.outstation}/km`],
+				highlight: true,
+			},
+			{ label: "Driver bata", values: [`${def.vehicle.pricing.driverBata}/day`] },
+		];
+
+const topRoutes = def.classId
+	? [...ROUTES]
+			.sort((a, b) => Number(b.popular) - Number(a.popular) || b.rating - a.rating)
+			.slice(0, 6)
+	: [];
+
+const bookHref = `/book/?cab=${encodeURIComponent(def.vehicle.name)}`;
+const waMessage = `Hi! I'd like to book a ${def.vehicle.name} in Bangalore.`;
+---
+
+<PageLayout
+	title={def.title}
+	description={def.description}
+	{path}
+	trail={[{ name: def.h1 }]}
+	{waMessage}
+	{bookHref}
+	ctaTitle={`Book your ${def.vehicle.name}`}
+>
+	<PageHero
+		title={def.h1}
+		subtitle={def.vehicle.description}
+		chips={[
+			{ icon: "lucide:users", label: `${def.vehicle.subtitle}` },
+			...(rates
+				? [
+						{
+							icon: "lucide:wallet",
+							label: `Outstation ${formatINR(rates.outstationPerKm)}/km`,
+						},
+					]
+				: [{ icon: "lucide:wallet", label: "On request" }]),
+			{ icon: "lucide:clock", label: "24/7 available" },
+		]}
+		{bookHref}
+		bookLabel={`Book ${def.vehicle.name}`}
+		{waMessage}
+	/>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+			<div>
+				{def.intro.map((paragraph) => <p class="text-muted-foreground leading-relaxed mb-4">{paragraph}</p>)}
+				<ul class="space-y-2 mt-6">
+					{
+						def.bestFor.map((item) => (
+							<li class="flex gap-2 text-foreground">
+								<Icon
+									name="lucide:check-circle-2"
+									class="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5"
+								/>
+								{item}
+							</li>
+						))
+					}
+				</ul>
+			</div>
+			<div>
+				<div
+					class={`rounded-xl overflow-hidden bg-gradient-to-br ${def.vehicle.color} mb-6`}
+				>
+					<Image
+						src={def.vehicle.images[0]}
+						alt={`${def.vehicle.name} taxi in Bangalore`}
+						width={640}
+						widths={[400, 640]}
+						sizes="(min-width: 768px) 480px, 100vw"
+						format="webp"
+						class="w-full h-64 object-contain p-6"
+					/>
+				</div>
+				<FareTable
+					caption={`${def.vehicle.name} rates`}
+					columns={["Rate"]}
+					rows={rateRows}
+					footnotes={[
+						"Fuel included on all packages. Tolls, parking & permits extra at actuals.",
+						"Round trips: 300 km/day minimum billing.",
+					]}
+				/>
+			</div>
+		</div>
+	</section>
+
+	{
+		topRoutes.length > 0 && def.classId && (
+			<section class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800">
+				<div class="max-w-7xl mx-auto">
+					<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-2">
+						Popular {def.vehicle.name} Trips from Bangalore
+					</h2>
+					<p class="text-muted-foreground mb-8">
+						Approximate {def.vehicle.name} round-trip fares:{" "}
+						{topRoutes
+							.slice(0, 3)
+							.map(
+								(route) =>
+									`${route.name} ${formatINR(deriveClassFare(route.fares.sedan.roundTrip, def.classId!, route.days))}`
+							)
+							.join(" · ")}
+					</p>
+					<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+						{topRoutes.map((route) => (
+							<RouteCard route={route} />
+						))}
+					</div>
+				</div>
+			</section>
+		)
+	}
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center">
+				{def.vehicle.name} FAQs
+			</h2>
+			<FaqAccordion faqs={def.faqs} emitSchema group="vehicle-faq" />
+			<p class="text-sm text-muted-foreground text-center mt-6">
+				Compare options:
+				<a href={withBase("/sedan-taxi-bangalore/")} class="text-orange-500 hover:underline">Sedan</a> ·
+				<a href={withBase("/suv-taxi-bangalore/")} class="text-orange-500 hover:underline">SUV</a> ·
+				<a href={withBase("/innova-crysta-rental-bangalore/")} class="text-orange-500 hover:underline">Innova Crysta</a> ·
+				<a href={withBase("/tempo-traveller-hire-bangalore/")} class="text-orange-500 hover:underline">Tempo Traveller</a> ·
+				<a href={withBase("/luxury-car-rental-bangalore/")} class="text-orange-500 hover:underline">Luxury</a>
+			</p>
+		</div>
+	</section>
+
+	<ServiceSchema
+		serviceType={`${def.vehicle.name} rental in Bangalore`}
+		description={def.description}
+		{path}
+		price={rates?.airportBase}
+	/>
+</PageLayout>

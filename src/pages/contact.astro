@@ -1,0 +1,105 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import { Icon } from "astro-icon/components";
+import { SITE, waLink } from "../data/site";
+import { withBase } from "../lib/url";
+
+const path = "/contact/";
+const title = `Contact Us — 24/7 Cab Booking | ${SITE.name}`;
+const description = `Reach ${SITE.name} 24/7: call ${SITE.phoneDisplay}, WhatsApp, or email ${SITE.email}. Office: ${SITE.address.street}, ${SITE.address.locality} ${SITE.address.postalCode}.`;
+
+const channels = [
+	{
+		icon: "lucide:phone",
+		title: "Call us",
+		value: SITE.phoneDisplay,
+		href: `tel:${SITE.phoneE164}`,
+		note: "24/7 — a human answers",
+	},
+	{
+		icon: "lucide:message-circle",
+		title: "WhatsApp",
+		value: SITE.phoneDisplay,
+		href: waLink("Hi! I have a question about your cab services."),
+		note: "Fastest for bookings & quotes",
+	},
+	{
+		icon: "lucide:mail",
+		title: "Email",
+		value: SITE.email,
+		href: `mailto:${SITE.email}`,
+		note: "Corporate & partnership enquiries",
+	},
+	{
+		icon: "lucide:instagram",
+		title: "Instagram",
+		value: "@bangalore_urban_cabs",
+		href: SITE.instagram,
+		note: "Trips, offers & updates",
+	},
+];
+---
+
+<PageLayout
+	{title}
+	{description}
+	{path}
+	trail={[{ name: "Contact" }]}
+	ctaTitle="Need a cab right now?"
+>
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			<h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+				Contact {SITE.name}
+			</h1>
+			<p class="text-lg text-muted-foreground mb-10">
+				For bookings, quotes, corporate tie-ups or anything else — we're
+				reachable around the clock.
+			</p>
+
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+				{
+					channels.map((channel) => (
+						<a
+							href={channel.href}
+							target={channel.href.startsWith("http") ? "_blank" : undefined}
+							rel={channel.href.startsWith("http") ? "noopener" : undefined}
+							class="rounded-lg border bg-card p-6 hover:border-orange-500 hover:shadow-lg transition-all group"
+						>
+							<Icon
+								name={channel.icon}
+								class="h-8 w-8 mb-3 text-orange-500"
+							/>
+							<h2 class="font-semibold text-foreground group-hover:text-orange-500 transition-colors">
+								{channel.title}
+							</h2>
+							<p class="text-foreground font-medium">{channel.value}</p>
+							<p class="text-sm text-muted-foreground mt-1">{channel.note}</p>
+						</a>
+					))
+				}
+			</div>
+
+			<div class="rounded-lg border bg-card p-6">
+				<h2 class="font-semibold text-foreground mb-3 flex items-center gap-2">
+					<Icon name="lucide:map-pin" class="h-5 w-5 text-orange-500" />
+					Registered office
+				</h2>
+				<address class="not-italic text-muted-foreground">
+					{SITE.name}
+					<br />
+					{SITE.address.street}
+					<br />
+					{SITE.address.locality}, {SITE.address.region}
+					{SITE.address.postalCode}
+				</address>
+				<p class="text-sm text-muted-foreground mt-4">
+					Ready to ride? Skip the back-and-forth and
+					<a href={withBase("/book/")} class="text-orange-500 font-semibold hover:underline">
+						book online in 60 seconds</a
+					>.
+				</p>
+			</div>
+		</div>
+	</section>
+</PageLayout>

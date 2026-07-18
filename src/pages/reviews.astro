@@ -1,0 +1,96 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import { Icon } from "astro-icon/components";
+import { TESTIMONIALS, initials } from "../data/testimonials";
+import { SITE } from "../data/site";
+
+const path = "/reviews/";
+const title = `Customer Reviews — ${SITE.rating}★ | ${SITE.name}`;
+const description = `What riders say about ${SITE.name}: ${SITE.rating}★ across airport transfers, outstation trips and daily rentals in Bangalore. Read real customer reviews.`;
+---
+
+<PageLayout
+	{title}
+	{description}
+	{path}
+	trail={[{ name: "Reviews" }]}
+	ctaTitle="Experience it yourself"
+>
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-6xl mx-auto">
+			<div class="text-center mb-12">
+				<div class="flex items-center justify-center gap-1 mb-4">
+					{
+						Array.from({ length: 5 }).map(() => (
+							<Icon
+								name="lucide:star"
+								class="h-8 w-8 text-yellow-400 icon-fill"
+							/>
+						))
+					}
+				</div>
+				<h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+					Rated {SITE.rating}/5 by Bangalore Riders
+				</h1>
+				<p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+					Airport runs at 4 AM, family trips to Coorg, daily office travel —
+					here's what our customers say about riding with us.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+				{
+					TESTIMONIALS.map((testimonial) => (
+						<article class="rounded-lg border-2 bg-card p-6 hover:shadow-xl transition-shadow">
+							<div class="flex mb-3" aria-label={`${testimonial.rating} out of 5 stars`}>
+								{Array.from({ length: testimonial.rating }).map(() => (
+									<Icon
+										name="lucide:star"
+										class="h-4 w-4 text-yellow-400 icon-fill"
+									/>
+								))}
+							</div>
+							<p class="text-muted-foreground italic leading-relaxed mb-4">
+								"{testimonial.text}"
+							</p>
+							<div class="flex items-center">
+								<div
+									class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 text-white flex items-center justify-center font-semibold text-sm mr-3"
+									aria-hidden="true"
+								>
+									{initials(testimonial.name)}
+								</div>
+								<div>
+									<h2 class="font-semibold text-foreground text-sm">
+										{testimonial.name}
+									</h2>
+									<p class="text-xs text-muted-foreground">
+										{testimonial.location}
+									</p>
+								</div>
+							</div>
+						</article>
+					))
+				}
+			</div>
+
+			<div class="text-center mt-12 rounded-2xl border bg-card p-8 max-w-2xl mx-auto">
+				<h2 class="text-xl font-bold text-foreground mb-2">
+					Ridden with us recently?
+				</h2>
+				<p class="text-muted-foreground mb-4">
+					A quick review helps other travellers find a cab they can trust.
+				</p>
+				<a
+					href={`https://www.google.com/search?q=${encodeURIComponent(SITE.name + " Bangalore reviews")}`}
+					target="_blank"
+					rel="noopener"
+					class="inline-flex items-center gap-2 rounded-full border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold px-8 py-3 transition-all"
+				>
+					<Icon name="lucide:star" class="h-4 w-4" />
+					Review us on Google
+				</a>
+			</div>
+		</div>
+	</section>
+</PageLayout>

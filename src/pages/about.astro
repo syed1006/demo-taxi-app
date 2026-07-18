@@ -1,0 +1,112 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import TrustStrip from "../components/TrustStrip.astro";
+import { Icon } from "astro-icon/components";
+import { SITE } from "../data/site";
+import { SERVICES } from "../data/services";
+import { withBase } from "../lib/url";
+
+const path = "/about/";
+const title = `About Us — Bangalore's Trusted Cab Operator | ${SITE.name}`;
+const description = `${SITE.name} runs 24/7 taxis across Bangalore: airport transfers, outstation trips, hourly rentals and tours with verified drivers and honest fares.`;
+
+const pillars = [
+	{
+		icon: "lucide:shield-check",
+		title: "Verified drivers",
+		desc: "Licence checks, police verification and road assessments before any driver joins our roster.",
+	},
+	{
+		icon: "lucide:wallet",
+		title: "Transparent fares",
+		desc: "Per-km rates published openly. The fare confirmed on WhatsApp is the fare you pay.",
+	},
+	{
+		icon: "lucide:clock",
+		title: "Genuinely 24/7",
+		desc: "2 AM airport landings and 4 AM temple starts — a human answers and a car shows up.",
+	},
+	{
+		icon: "lucide:sparkles",
+		title: "Owner-maintained fleet",
+		desc: "Sedans to tempo travellers, serviced on schedule and cleaned before every duty.",
+	},
+];
+---
+
+<PageLayout
+	{title}
+	{description}
+	{path}
+	trail={[{ name: "About Us" }]}
+	ctaTitle="Take a ride with us"
+>
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			<h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6">
+				About {SITE.name}
+			</h1>
+			<div class="space-y-4 text-muted-foreground leading-relaxed text-lg">
+				<p>
+					{SITE.name} — <em>{SITE.tagline}</em> ("our service" in Kannada) — is
+					a Bangalore-grown cab operator built on a simple promise: show up on
+					time, drive safely, and never surprise anyone on price.
+				</p>
+				<p>
+					From our base in {SITE.address.street}, we run airport transfers,
+					outstation trips across South India, hourly city rentals, corporate
+					travel and fixed-price tour packages. Bookings work the way Bangalore
+					actually communicates — a WhatsApp message, a confirmed fare in
+					writing, and a driver whose details you have before pickup.
+				</p>
+				<p>
+					No surge pricing. No hidden charges. No call-centre runarounds. Just
+					a fleet we maintain ourselves and drivers we'd trust with our own
+					families.
+				</p>
+			</div>
+			<div class="mt-10">
+				<TrustStrip />
+			</div>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800">
+		<div class="max-w-5xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8">
+				What we stand on
+			</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+				{
+					pillars.map((pillar) => (
+						<div class="rounded-lg border bg-card p-6">
+							<Icon name={pillar.icon} class="h-8 w-8 mb-3 text-orange-500" />
+							<h3 class="font-semibold text-foreground mb-1">{pillar.title}</h3>
+							<p class="text-sm text-muted-foreground">{pillar.desc}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto text-center">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+				Everything we run
+			</h2>
+			<div class="flex flex-wrap justify-center gap-3">
+				{
+					SERVICES.map((service) => (
+						<a
+							href={withBase(service.path)}
+							class="rounded-full border px-5 py-2 text-sm font-medium hover:border-orange-500 hover:text-orange-500 transition-colors"
+						>
+							{service.name}
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</PageLayout>

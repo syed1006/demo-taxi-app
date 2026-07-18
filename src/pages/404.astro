@@ -1,0 +1,47 @@
+---
+import { Icon } from "astro-icon/components";
+import PageLayout from "../layouts/PageLayout.astro";
+import { SERVICES } from "../data/services";
+import { SITE } from "../data/site";
+import { withBase } from "../lib/url";
+---
+
+<PageLayout
+	title={`Page Not Found | ${SITE.name}`}
+	description="The page you're looking for doesn't exist. Book a Bangalore taxi, airport transfer, or outstation cab from our homepage."
+	path="/404"
+	noindex
+	showCtaBand={false}
+>
+	<section class="py-20 px-4 text-center">
+		<div class="max-w-xl mx-auto space-y-6">
+			<Icon name="lucide:map-pin-off" class="h-16 w-16 mx-auto text-orange-500" />
+			<h1 class="text-4xl font-bold text-foreground">Wrong turn!</h1>
+			<p class="text-lg text-muted-foreground">
+				This page doesn't exist — but your cab is still just a click away.
+			</p>
+			<a
+				href={withBase("/book/")}
+				class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold px-8 py-3.5 hover:scale-105 transition-all duration-300"
+			>
+				<Icon name="lucide:car" class="h-5 w-5" />
+				Book a Cab
+			</a>
+			<div class="pt-6">
+				<p class="text-sm text-muted-foreground mb-3">Or jump to a service:</p>
+				<div class="flex flex-wrap justify-center gap-3">
+					{
+						SERVICES.map((service) => (
+							<a
+								href={withBase(service.path)}
+								class="rounded-full border px-4 py-1.5 text-sm hover:border-orange-500 hover:text-orange-500 transition-colors"
+							>
+								{service.name}
+							</a>
+						))
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+</PageLayout>

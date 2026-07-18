@@ -1,6 +1,15 @@
 ---
 import { Icon } from "astro-icon/components";
 import { TESTIMONIALS, initials } from "../data/testimonials";
+import { withBase } from "../lib/url";
+
+interface Props {
+	limit?: number;
+	showAllLink?: boolean;
+}
+
+const { limit, showAllLink = false } = Astro.props;
+const testimonials = limit ? TESTIMONIALS.slice(0, limit) : TESTIMONIALS;
 ---
 
 <section
@@ -24,7 +33,7 @@ import { TESTIMONIALS, initials } from "../data/testimonials";
 
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 			{
-				TESTIMONIALS.map((testimonial, index) => (
+				testimonials.map((testimonial, index) => (
 					<article
 						class="rounded-lg border-2 bg-card text-card-foreground hover:shadow-2xl transition-all duration-500 hover:scale-105 animate-slide-up hover:border-blue-200 dark:hover:border-blue-800"
 						style={`animation-delay: ${index * 100}ms`}
@@ -71,5 +80,19 @@ import { TESTIMONIALS, initials } from "../data/testimonials";
 				))
 			}
 		</div>
+
+		{
+			showAllLink && (
+				<div class="text-center mt-8">
+					<a
+						href={withBase("/reviews/")}
+						class="inline-flex items-center gap-2 text-orange-500 font-semibold hover:underline"
+					>
+						Read all customer reviews
+						<Icon name="lucide:arrow-right" class="h-4 w-4" />
+					</a>
+				</div>
+			)
+		}
 	</div>
 </section>

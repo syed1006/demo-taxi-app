@@ -1,0 +1,240 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FareTable from "../components/FareTable.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import PackageCard from "../components/PackageCard.astro";
+import RouteCard from "../components/RouteCard.astro";
+import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import type { Route } from "../data/route-types";
+import { ROUTES, routeBySlug, routePath } from "../data/routes";
+import { PACKAGES } from "../data/packages";
+import { fareTableFor, formatINR } from "../lib/fare";
+
+export function getStaticPaths() {
+	return ROUTES.map((route) => ({
+		params: { slug: route.slug },
+		props: { route },
+	}));
+}
+
+interface Props {
+	route: Route;
+}
+
+const { route } = Astro.props;
+const path = routePath(route.slug);
+const sedan = route.fares.sedan;
+const priceHook = sedan.oneWay
+	? `₹${sedan.oneWay.toLocaleString("en-IN")} One-Way`
+	: `Round Trip ₹${sedan.roundTrip.toLocaleString("en-IN")}`;
+
+const title = `Bangalore to ${route.name} Taxi — ${priceHook} | ${route.distanceKm} km`;
+const description = `Book a Bangalore to ${route.name} cab: ${
+	sedan.oneWay ? `Sedan ${formatINR(sedan.oneWay)} one-way, ` : ""
+}${formatINR(sedan.roundTrip)} round trip. ${route.distanceKm} km, ~${route.durationHrs} hrs. Verified drivers, fuel included. Call +91 70227 62929.`;
+
+const fareRows = fareTableFor(route.fares, route.days).map((row) => ({
+	label: row.label,
+	capacity: row.capacity,
+	values: [
+		row.oneWay ? `${formatINR(row.oneWay)}${row.verified ? "" : "*"}` : "—",
+		`${formatINR(row.roundTrip)}${row.verified ? "" : "*"}`,
+	],
+	highlight: row.classId === "sedan",
+}));
+
+const hasDerived = fareTableFor(route.fares, route.days).some((r) => !r.verified);
+
+const relatedRoutes = route.relatedRoutes
+	.map((slug) => ROUTES.find((r) => r.slug === slug))
+	.filter((r): r is Route => Boolean(r));
+
+const packages = route.packageSlugs
+	.map((slug) => PACKAGES.find((p) => p.slug === slug))
+	.filter((p): p is NonNullable<typeof p> => Boolean(p));
+
+const waMessage = `Hi! I'd like to book a Bangalore to ${route.name} taxi (Sedan ${
+	sedan.oneWay ? `${formatINR(sedan.oneWay)} one-way` : `${formatINR(sedan.roundTrip)} round trip`
+}).`;
+const bookHref = `/book/?type=outstation&drop=${encodeURIComponent(route.name)}`;
+---
+
+<PageLayout
+	{title}
+	{description}
+	{path}
+	ogImage={route.image}
+	trail={[
+		{ name: "Outstation Cabs", href: "/outstation-cabs-bangalore/" },
+		{ name: `Bangalore to ${route.name}` },
+	]}
+	{waMessage}
+	{bookHref}
+	ctaTitle={`Ready for ${route.name}?`}
+>
+	<PageHero
+		title={`Bangalore to ${route.name} Taxi`}
+		subtitle={route.summary}
+		chips={[
+			{ icon: "lucide:map-pin", label: `${route.distanceKm} km` },
+			{ icon: "lucide:clock", label: `~${route.durationHrs} hrs` },
+			{
+				icon: "lucide:wallet",
+				label: sedan.oneWay
+					? `From ${formatINR(sedan.oneWay)}`
+					: `RT ${formatINR(sedan.roundTrip)}`,
+			},
+			{ icon: "lucide:star", label: `${route.rating}★` },
+		]}
+		{bookHref}
+		bookLabel={`Book ${route.name} Taxi`}
+		{waMessage}
+	/>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-5xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+				Bangalore to {route.name} Cab Fare
+			</h2>
+			<FareTable
+				caption={`Bangalore to ${route.name} taxi fares by vehicle`}
+				columns={["One-way", "Round trip"]}
+				rows={fareRows}
+				footnotes={[
+					"Fuel and driver bata included. Tolls, parking and inter-state permits extra at actuals.",
+					`Round trip includes up to ${300 * route.days} km${route.days > 1 ? ` across ${route.days} days` : ""}; extra km at standard per-km rates.`,
+					...(hasDerived
+						? ["*Fare derived from the sedan rate — exact quote confirmed on WhatsApp before booking."]
+						: []),
+				]}
+			/>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-gray-100 dark:from-slate-900 dark:to-gray-900">
+		<div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-10 items-start">
+			<div class:list={[route.image ? "md:col-span-3" : "md:col-span-5"]}>
+				<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-4">
+					The Bangalore–{route.name} Drive
+				</h2>
+				{
+					route.intro.map((paragraph) => (
+						<p class="text-muted-foreground leading-relaxed mb-4">{paragraph}</p>
+					))
+				}
+			</div>
+			{
+				route.image && (
+					<div class="md:col-span-2">
+						<Image
+							src={route.image}
+							alt={`${route.name} — taxi trip from Bangalore`}
+							widths={[400, 800]}
+							sizes="(min-width: 768px) 400px, 100vw"
+							format="webp"
+							quality={78}
+							loading="lazy"
+							class="rounded-xl w-full h-64 md:h-80 object-cover"
+						/>
+					</div>
+				)
+			}
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-5xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8">
+				Top Places to Visit in {route.name}
+			</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+				{
+					route.sights.map((sight) => (
+						<div class="rounded-lg border bg-card p-4 flex gap-3">
+							<Icon
+								name="lucide:map-pin"
+								class="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5"
+							/>
+							<div>
+								<h3 class="font-semibold text-foreground">{sight.name}</h3>
+								<p class="text-sm text-muted-foreground">{sight.blurb}</p>
+							</div>
+						</div>
+					))
+				}
+			</div>
+
+			<h2 class="text-2xl font-bold text-foreground mt-12 mb-4">Travel Tips</h2>
+			<ul class="space-y-3">
+				{
+					route.travelTips.map((tip) => (
+						<li class="flex gap-2 text-muted-foreground">
+							<Icon
+								name="lucide:lightbulb"
+								class="h-5 w-5 text-yellow-500 flex-shrink-0 mt-0.5"
+							/>
+							{tip}
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	{
+		packages.length > 0 && (
+			<section class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800">
+				<div class="max-w-5xl mx-auto">
+					<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-2">
+						Prefer a Fixed Itinerary?
+					</h2>
+					<p class="text-muted-foreground mb-8">
+						Our {route.name} tour packages bundle the cab, sightseeing
+						transfers and driver bata into one fixed price.
+					</p>
+					<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+						{packages.map((pkg) => (
+							<PackageCard pkg={pkg} />
+						))}
+					</div>
+				</div>
+			</section>
+		)
+	}
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center">
+				Bangalore to {route.name} — FAQs
+			</h2>
+			<FaqAccordion faqs={route.faqs} emitSchema group="route-faq" />
+		</div>
+	</section>
+
+	{
+		relatedRoutes.length > 0 && (
+			<section class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-gray-100 dark:from-slate-900 dark:to-gray-900">
+				<div class="max-w-7xl mx-auto">
+					<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8">
+						Similar Trips from Bangalore
+					</h2>
+					<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+						{relatedRoutes.map((related) => (
+							<RouteCard route={related} />
+						))}
+					</div>
+				</div>
+			</section>
+		)
+	}
+
+	<ServiceSchema
+		serviceType={`Bangalore to ${route.name} taxi`}
+		description={description}
+		{path}
+		price={sedan.oneWay ?? sedan.roundTrip}
+	/>
+</PageLayout>

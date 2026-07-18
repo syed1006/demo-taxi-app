@@ -1,20 +1,24 @@
 ---
 import { Icon } from "astro-icon/components";
 import { SITE } from "../data/site";
-import { BOOKING_TYPES } from "../data/booking-types";
+import { SERVICES, VEHICLE_PAGES } from "../data/services";
+import { ROUTES, routePath } from "../data/routes";
+import { withBase } from "../lib/url";
 
 const year = new Date().getFullYear();
 
-const quickLinks = [
-	{ name: "About Us", href: "#hero" },
-	{ name: "Our Services", href: "#booking-types" },
-	{ name: "Pricing", href: "#pricing-cards" },
-	{ name: "Reviews", href: "#testimonials" },
-	{ name: "FAQ", href: "#faq" },
-	{ name: "Contact", href: "#booking-form" },
-];
+const topRoutes = [...ROUTES]
+	.sort((a, b) => Number(b.popular) - Number(a.popular))
+	.slice(0, 10);
 
-const services = BOOKING_TYPES.filter((type) => type.id !== "driver-only");
+const companyLinks = [
+	{ name: "About Us", href: "/about/" },
+	{ name: "Customer Reviews", href: "/reviews/" },
+	{ name: "FAQs", href: "/faq/" },
+	{ name: "Contact", href: "/contact/" },
+	{ name: "Terms & Cancellation", href: "/terms/" },
+	{ name: "Privacy Policy", href: "/privacy/" },
+];
 ---
 
 <footer class="bg-gradient-to-br from-gray-900 to-gray-800 text-white">
@@ -34,59 +38,7 @@ const services = BOOKING_TYPES.filter((type) => type.id !== "driver-only");
 					Your trusted ride partner across Bangalore. Safe, reliable, and
 					affordable taxi service available 24/7.
 				</p>
-				<div class="flex space-x-4">
-					<a
-						href={SITE.instagram}
-						target="_blank"
-						rel="noopener"
-						class="text-gray-300 hover:text-orange-300 transition-colors"
-						aria-label="Follow us on Instagram"
-					>
-						<Icon name="lucide:instagram" class="h-5 w-5" />
-					</a>
-				</div>
-			</div>
-
-			<nav class="space-y-6" aria-label="Quick links">
-				<h2 class="text-xl font-semibold text-orange-300">Quick Links</h2>
-				<ul class="space-y-3">
-					{
-						quickLinks.map((link) => (
-							<li>
-								<a
-									href={link.href}
-									class="text-gray-300 hover:text-orange-300 transition-colors"
-								>
-									{link.name}
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</nav>
-
-			<nav class="space-y-6" aria-label="Services">
-				<h2 class="text-xl font-semibold text-orange-300">Our Services</h2>
-				<ul class="space-y-3">
-					{
-						services.map((service) => (
-							<li>
-								<a
-									href="#booking-form"
-									data-booking-type={service.id}
-									class="text-gray-300 hover:text-orange-300 transition-colors"
-								>
-									{service.name}
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</nav>
-
-			<div class="space-y-6">
-				<h2 class="text-xl font-semibold text-orange-300">Contact Us</h2>
-				<address class="space-y-4 not-italic">
+				<address class="space-y-3 not-italic">
 					<a
 						href={`tel:${SITE.phoneE164}`}
 						class="flex items-center space-x-3 text-gray-300 hover:text-orange-300 transition-colors"
@@ -112,12 +64,91 @@ const services = BOOKING_TYPES.filter((type) => type.id !== "driver-only");
 							{SITE.address.region} {SITE.address.postalCode}
 						</span>
 					</div>
-					<div class="flex items-center space-x-3 text-gray-300">
-						<Icon name="lucide:clock" class="h-5 w-5 text-orange-400" />
-						<span>24/7 Available</span>
-					</div>
 				</address>
+				<a
+					href={SITE.instagram}
+					target="_blank"
+					rel="noopener"
+					class="inline-flex text-gray-300 hover:text-orange-300 transition-colors"
+					aria-label="Follow us on Instagram"
+				>
+					<Icon name="lucide:instagram" class="h-5 w-5" />
+				</a>
 			</div>
+
+			<nav class="space-y-6" aria-label="Services">
+				<h2 class="text-xl font-semibold text-orange-300">Our Services</h2>
+				<ul class="space-y-3">
+					{
+						SERVICES.map((service) => (
+							<li>
+								<a
+									href={withBase(service.path)}
+									class="text-gray-300 hover:text-orange-300 transition-colors"
+								>
+									{service.name}
+								</a>
+							</li>
+						))
+					}
+					{
+						VEHICLE_PAGES.slice(0, 4).map((vehicle) => (
+							<li>
+								<a
+									href={withBase(vehicle.path)}
+									class="text-gray-300 hover:text-orange-300 transition-colors"
+								>
+									{vehicle.name}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+
+			<nav class="space-y-6" aria-label="Popular routes">
+				<h2 class="text-xl font-semibold text-orange-300">Popular Routes</h2>
+				<ul class="space-y-3">
+					{
+						topRoutes.map((route) => (
+							<li>
+								<a
+									href={withBase(routePath(route.slug))}
+									class="text-gray-300 hover:text-orange-300 transition-colors"
+								>
+									Bangalore to {route.name} Taxi
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+
+			<nav class="space-y-6" aria-label="Company">
+				<h2 class="text-xl font-semibold text-orange-300">Company</h2>
+				<ul class="space-y-3">
+					{
+						companyLinks.map((link) => (
+							<li>
+								<a
+									href={withBase(link.href)}
+									class="text-gray-300 hover:text-orange-300 transition-colors"
+								>
+									{link.name}
+								</a>
+							</li>
+						))
+					}
+					<li>
+						<a
+							href={withBase("/book/")}
+							class="inline-flex items-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold px-5 py-2.5 mt-2 transition-colors"
+						>
+							Book a Cab Now
+						</a>
+					</li>
+				</ul>
+			</nav>
 		</div>
 	</div>
 

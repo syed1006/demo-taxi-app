@@ -1,0 +1,105 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BookingForm from "../components/BookingForm.astro";
+import { SITE, waLink } from "../data/site";
+import { withBase } from "../lib/url";
+import logo from "../assets/logo.webp";
+
+const steps = [
+	{
+		icon: "lucide:clipboard-list",
+		title: "Fill the form",
+		desc: "Takes under a minute — no account, no payment.",
+	},
+	{
+		icon: "lucide:message-circle",
+		title: "Send on WhatsApp",
+		desc: "Your details open pre-filled in WhatsApp. Just hit send.",
+	},
+	{
+		icon: "lucide:car",
+		title: "We confirm your ride",
+		desc: "Fare and driver details confirmed before pickup.",
+	},
+];
+---
+
+<BaseLayout
+	title={`Book a Cab Online — Instant WhatsApp Confirmation | ${SITE.name}`}
+	description="Book your Bangalore taxi in 60 seconds. No advance payment — fare confirmed on WhatsApp before your ride. Airport, outstation, hourly rentals & tour packages."
+	path="/book/"
+>
+	{/* Slim header: no nav, no distractions — logo home link + phone only. */}
+	<header class="border-b border-border bg-background">
+		<div
+			class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between"
+		>
+			<a href={withBase("/")} class="flex items-center gap-3" aria-label={`${SITE.name} home`}>
+				<Image
+					src={logo}
+					alt={`${SITE.name} logo`}
+					height={80}
+					densities={[1, 2]}
+					loading="eager"
+					class="h-10 w-auto"
+				/>
+			</a>
+			<a
+				href={`tel:${SITE.phoneE164}`}
+				class="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-orange-500 transition-colors"
+			>
+				<Icon name="lucide:phone" class="h-4 w-4 text-orange-500" />
+				{SITE.phoneDisplay}
+			</a>
+		</div>
+	</header>
+
+	<main>
+		<BookingForm />
+
+		<section class="pb-16 px-4 sm:px-6 lg:px-8">
+			<div class="max-w-4xl mx-auto">
+				<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+					{
+						steps.map((step, index) => (
+							<div class="text-center p-6 rounded-lg border bg-card">
+								<div class="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center text-white font-bold">
+									{index + 1}
+								</div>
+								<Icon
+									name={step.icon}
+									class="h-6 w-6 mx-auto mb-2 text-orange-500"
+								/>
+								<h2 class="font-semibold text-foreground mb-1">{step.title}</h2>
+								<p class="text-sm text-muted-foreground">{step.desc}</p>
+							</div>
+						))
+					}
+				</div>
+
+				<p class="text-center mt-8 text-muted-foreground text-sm">
+					Prefer to talk? Call
+					<a href={`tel:${SITE.phoneE164}`} class="text-orange-500 font-semibold">
+						{SITE.phoneDisplay}
+					</a>
+					or
+					<a
+						href={waLink("Hi! I'd like to book a cab. Can you help me?")}
+						target="_blank"
+						rel="noopener"
+						class="text-green-600 dark:text-green-400 font-semibold"
+					>
+						message us on WhatsApp
+					</a>
+					— we answer 24/7.
+				</p>
+			</div>
+		</section>
+	</main>
+
+	<footer class="border-t border-border py-6 text-center text-sm text-muted-foreground">
+		<a href={withBase("/")} class="hover:text-orange-500">← Back to {SITE.name}</a>
+	</footer>
+</BaseLayout>

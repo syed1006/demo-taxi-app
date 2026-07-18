@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { SITE } from "../data/site";
+import { withBase } from "../lib/url";
 import cityBg from "../assets/bg/city-bg.webp";
 
 const features = [
@@ -74,21 +75,27 @@ const features = [
 			</div>
 
 			<div class="space-y-3 sm:space-y-4">
-				<h1
+				<p
 					class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight"
 				>
 					<span class="block animate-slide-in-left">{SITE.shortName}</span>
 					<span class="block text-orange-300 animate-slide-in-right"
 						>{SITE.tagline}</span
 					>
+				</p>
+
+				<h1
+					class="text-lg sm:text-xl md:text-2xl font-semibold text-white/95 max-w-3xl mx-auto animate-fade-in-up delay-300 px-4"
+				>
+					Taxi Service in Bangalore — Airport, Outstation, Local & Tours
 				</h1>
 
 				<p
-					class="text-base sm:text-lg md:text-xl text-white/85 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-400 px-4"
+					class="text-base sm:text-lg text-white/85 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-400 px-4"
 				>
-					Ride with Comfort, Ride with Care — your trusted taxi service in
-					Bangalore. Airport transfers, hourly rentals, outstation trips and
-					more. Let us take the wheel, so you can relax and enjoy the ride.
+					Ride with Comfort, Ride with Care. Airport transfers from ₹799,
+					outstation trips from ₹12/km, hourly rentals and fixed-price tour
+					packages — fares confirmed on WhatsApp before you ride.
 				</p>
 			</div>
 
@@ -96,7 +103,7 @@ const features = [
 				class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up delay-500"
 			>
 				<a
-					href="#booking-form"
+					href={withBase("/book/")}
 					class="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl rounded-full shadow-2xl hover:shadow-orange-500/25 hover:scale-105 transition-all duration-300 border-2 border-orange-400 animate-pulse-glow"
 				>
 					Book Your Ride Now

@@ -1,0 +1,70 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import { Icon } from "astro-icon/components";
+import { FAQS, FAQ_CATEGORIES } from "../data/faq";
+import { SITE } from "../data/site";
+
+const path = "/faq/";
+const title = `FAQs — Booking, Pricing & Trips | ${SITE.name}`;
+const description =
+	"Everything about booking a cab with Bangalore Urban Cabs: fares, payments, airport pickups, outstation billing, driver bata, cancellations and more.";
+---
+
+<PageLayout
+	{title}
+	{description}
+	{path}
+	trail={[{ name: "FAQs" }]}
+	ctaTitle="Still have a question?"
+>
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			<div class="text-center mb-12">
+				<Icon
+					name="lucide:help-circle"
+					class="h-12 w-12 mx-auto mb-4 text-orange-500"
+				/>
+				<h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+					Frequently Asked Questions
+				</h1>
+				<p class="text-lg text-muted-foreground">
+					Everything you need to know about riding with {SITE.name}.
+				</p>
+			</div>
+
+			{
+				FAQ_CATEGORIES.map((category) => {
+					const items = FAQS.filter((faq) => faq.category === category.id);
+					if (items.length === 0) return null;
+					return (
+						<div class="mb-12">
+							<h2 class="text-2xl font-bold text-foreground mb-6">
+								{category.label}
+							</h2>
+							<FaqAccordion
+								faqs={items}
+								group={`faq-${category.id}`}
+								openFirst={false}
+							/>
+						</div>
+					);
+				})
+			}
+		</div>
+	</section>
+
+	{/* One FAQPage schema for the whole page. */}
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "FAQPage",
+			mainEntity: FAQS.map((faq) => ({
+				"@type": "Question",
+				name: faq.question,
+				acceptedAnswer: { "@type": "Answer", text: faq.answer },
+			})),
+		})}
+	/>
+</PageLayout>

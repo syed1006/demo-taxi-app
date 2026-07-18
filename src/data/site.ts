@@ -3,7 +3,7 @@ export const SITE = {
 	shortName: "BangaloreUrbanCabs",
 	tagline: "ನಮ್ಮ ಸೇವೆ",
 	url: "https://bangaloreurbancabs.com",
-	title: "Bangalore Urban Cabs — Taxi, Airport Transfer & Outstation Cabs in Bangalore",
+	title: "Bangalore Urban Cabs — Taxi, Airport & Outstation Cab Booking",
 	description:
 		"Book reliable taxis in Bangalore — airport transfers, hourly rentals, outstation trips & corporate travel. 24/7 service with verified drivers. Call +91 70227 62929.",
 	// The one canonical phone number. wa.me requires the country code with no

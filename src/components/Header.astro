@@ -2,13 +2,14 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { SITE } from "../data/site";
+import { withBase } from "../lib/url";
 import logo from "../assets/logo.webp";
 
 const navItems = [
-	{ name: "Home", href: "#hero" },
-	{ name: "Services", href: "#booking-types" },
-	{ name: "Pricing", href: "#pricing-cards" },
-	{ name: "Book Now", href: "#booking-form" },
+	{ name: "Airport", href: withBase("/airport-taxi-bangalore/") },
+	{ name: "Outstation", href: withBase("/outstation-cabs-bangalore/") },
+	{ name: "Tour Packages", href: withBase("/tour-packages/") },
+	{ name: "Tempo Traveller", href: withBase("/tempo-traveller-hire-bangalore/") },
 ];
 ---
 
@@ -17,7 +18,7 @@ const navItems = [
 >
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="flex items-center justify-between h-20">
-			<a href="#hero" class="flex items-center gap-3" aria-label={`${SITE.name} — back to top`}>
+			<a href={withBase("/")} class="flex items-center gap-3" aria-label={`${SITE.name} — home`}>
 				<Image
 					src={logo}
 					alt={`${SITE.name} logo`}
@@ -59,7 +60,7 @@ const navItems = [
 					<Icon name="lucide:moon" class="h-5 w-5 hidden dark:block" />
 				</button>
 				<a
-					href="#booking-form"
+					href={withBase("/book/")}
 					class="inline-flex items-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold px-6 py-2.5 transition-colors"
 				>
 					Book Now
@@ -118,7 +119,7 @@ const navItems = [
 					<span>{SITE.phoneDisplay}</span>
 				</a>
 				<a
-					href="#booking-form"
+					href={withBase("/book/")}
 					class="block w-full text-center rounded-md bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold px-6 py-3 transition-colors"
 				>
 					Book Now

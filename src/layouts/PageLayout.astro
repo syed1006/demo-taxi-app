@@ -1,0 +1,55 @@
+---
+import type { ImageMetadata } from "astro";
+import BaseLayout from "./BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Breadcrumbs, { type Crumb } from "../components/Breadcrumbs.astro";
+import StickyBookBar from "../components/StickyBookBar.astro";
+import CtaBand from "../components/CtaBand.astro";
+
+interface Props {
+	title: string;
+	description: string;
+	path: string;
+	ogImage?: ImageMetadata;
+	noindex?: boolean;
+	trail?: Crumb[];
+	waMessage?: string;
+	bookHref?: string;
+	ctaTitle?: string;
+	/** Set false for pages that provide their own closing CTA (e.g. /book/). */
+	showCtaBand?: boolean;
+}
+
+const {
+	title,
+	description,
+	path,
+	ogImage,
+	noindex,
+	trail,
+	waMessage,
+	bookHref,
+	ctaTitle,
+	showCtaBand = true,
+} = Astro.props;
+---
+
+<BaseLayout {title} {description} {path} {ogImage} {noindex}>
+	<Header />
+	<div class="pt-20 pb-14 md:pb-0">
+		{
+			trail && (
+				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+					<Breadcrumbs trail={trail} />
+				</div>
+			)
+		}
+		<main>
+			<slot />
+			{showCtaBand && <CtaBand title={ctaTitle} bookHref={bookHref} waMessage={waMessage} />}
+		</main>
+	</div>
+	<Footer />
+	<StickyBookBar waMessage={waMessage} bookHref={bookHref} />
+</BaseLayout>

@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import type { Vehicle } from "../data/vehicles";
+import { withBase } from "../lib/url";
 
 interface Props {
 	vehicle: Vehicle;
@@ -204,8 +205,7 @@ const carouselId = `carousel-${vehicle.id}`;
 				</ul>
 
 				<a
-					href="#booking-form"
-					data-cab-type={vehicle.name}
+					href={withBase(`/book/?cab=${encodeURIComponent(vehicle.name)}`)}
 					class="btn block w-full text-center rounded-md border bg-background font-semibold py-3 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-all duration-300 hover:shadow-lg"
 				>
 					Select {vehicle.name}

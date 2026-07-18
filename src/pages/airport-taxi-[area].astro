@@ -1,0 +1,180 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FareTable from "../components/FareTable.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import { Icon } from "astro-icon/components";
+import type { AirportArea } from "../data/route-types";
+import { AIRPORT_AREAS } from "../data/airport-areas";
+import { RATE_CARD, VEHICLE_CLASS_IDS } from "../data/rate-card";
+import { airportFare, formatINR } from "../lib/fare";
+import { withBase } from "../lib/url";
+
+export function getStaticPaths() {
+	return AIRPORT_AREAS.filter((area) => area.dedicatedPage).map((area) => ({
+		params: { area: area.slug },
+		props: { area },
+	}));
+}
+
+interface Props {
+	area: AirportArea;
+}
+
+const { area } = Astro.props;
+const path = `/airport-taxi-${area.slug}/`;
+const sedanFare = area.fares.sedan;
+
+const title = `${area.name} to Bangalore Airport Taxi — ${formatINR(sedanFare)} | ${area.durationRange}`;
+const description = `Airport taxi from ${area.name}: Sedan ${formatINR(sedanFare)}, Innova Crysta ${formatINR(
+	area.fares["innova-crysta"] ?? airportFare("innova-crysta", area.distanceKm)
+)}. ${area.distanceKm} km to Kempegowda Airport, flight tracking, 24/7. Call +91 70227 62929.`;
+
+const fareRows = VEHICLE_CLASS_IDS.map((id) => {
+	const rates = RATE_CARD[id];
+	const fare = area.fares[id] ?? airportFare(id, area.distanceKm);
+	return {
+		label: rates.label,
+		capacity: rates.capacity,
+		values: [formatINR(fare)],
+		highlight: id === "sedan",
+	};
+});
+
+const relatedAreas = AIRPORT_AREAS.filter(
+	(other) =>
+		other.slug !== area.slug && (other.zone === area.zone || other.dedicatedPage)
+).slice(0, 4);
+
+const waMessage = `Hi! I'd like to book an airport taxi from ${area.name} (Sedan ${formatINR(sedanFare)}).`;
+const bookHref = `/book/?type=airport&pickup=${encodeURIComponent(area.name)}`;
+---
+
+<PageLayout
+	{title}
+	{description}
+	{path}
+	trail={[
+		{ name: "Airport Taxi", href: "/airport-taxi-bangalore/" },
+		{ name: `${area.name} to Airport` },
+	]}
+	{waMessage}
+	{bookHref}
+	ctaTitle={`Flying out of ${area.name}?`}
+>
+	<PageHero
+		title={`${area.name} to Kempegowda Airport Taxi`}
+		subtitle={`Fixed-fare airport transfers between ${area.name} and Bangalore Airport — both directions, day or night, with flight tracking on every pickup.`}
+		chips={[
+			{ icon: "lucide:wallet", label: `Sedan ${formatINR(sedanFare)}` },
+			{ icon: "lucide:map-pin", label: `${area.distanceKm} km` },
+			{ icon: "lucide:clock", label: area.durationRange },
+		]}
+		{bookHref}
+		bookLabel="Book Airport Taxi"
+		{waMessage}
+	/>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+				{area.name} ⇄ Airport Fares
+			</h2>
+			<FareTable
+				caption={`${area.name} to Bangalore airport taxi fares`}
+				columns={["One-way fare"]}
+				rows={fareRows}
+				footnotes={[
+					"Same fare in both directions — airport pickup or drop.",
+					"Tolls and airport parking extra at actuals. No night surge, ever.",
+				]}
+			/>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800">
+		<div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+			<div>
+				<h2 class="text-2xl font-bold text-foreground mb-4">
+					Pickup coverage in {area.name}
+				</h2>
+				<p class="text-muted-foreground mb-4">
+					We pick up from every corner of {area.name}, including:
+				</p>
+				<ul class="space-y-2">
+					{
+						area.neighbourhoods.map((neighbourhood) => (
+							<li class="flex gap-2 text-foreground">
+								<Icon
+									name="lucide:map-pin"
+									class="h-4 w-4 text-orange-500 flex-shrink-0 mt-1"
+								/>
+								{neighbourhood}
+							</li>
+						))
+					}
+				</ul>
+			</div>
+			<div>
+				<h2 class="text-2xl font-bold text-foreground mb-4">Route notes</h2>
+				<ul class="space-y-3">
+					{
+						area.notes.map((note) => (
+							<li class="flex gap-2 text-muted-foreground">
+								<Icon
+									name="lucide:route"
+									class="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5"
+								/>
+								{note}
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center">
+				{area.name} Airport Taxi FAQs
+			</h2>
+			<FaqAccordion faqs={area.faqs} emitSchema group="area-faq" />
+
+			<p class="text-sm text-muted-foreground text-center mt-8">
+				Other areas:
+				{
+					relatedAreas.map((other, index) => (
+						<>
+							{other.dedicatedPage ? (
+								<a
+									href={withBase(`/airport-taxi-${other.slug}/`)}
+									class="text-orange-500 hover:underline"
+								>
+									{other.name}
+								</a>
+							) : (
+								<a
+									href={withBase("/airport-taxi-bangalore/")}
+									class="text-orange-500 hover:underline"
+								>
+									{other.name}
+								</a>
+							)}
+							{index < relatedAreas.length - 1 ? " · " : ""}
+						</>
+					))
+				}
+				· <a href={withBase("/airport-taxi-bangalore/")} class="text-orange-500 hover:underline">All areas</a>
+			</p>
+		</div>
+	</section>
+
+	<ServiceSchema
+		serviceType={`${area.name} to Bangalore airport taxi`}
+		description={description}
+		{path}
+		price={sedanFare}
+	/>
+</PageLayout>

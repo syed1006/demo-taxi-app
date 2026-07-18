@@ -1,0 +1,44 @@
+---
+import { Icon } from "astro-icon/components";
+import { SITE, waLink } from "../data/site";
+import { withBase } from "../lib/url";
+
+interface Props {
+	waMessage?: string;
+	bookHref?: string;
+}
+
+const {
+	waMessage = "Hi! I'd like to book a cab. Can you help me?",
+	bookHref = "/book/",
+} = Astro.props;
+---
+
+<div
+	class="fixed bottom-0 inset-x-0 z-50 grid grid-cols-3 md:hidden border-t border-border bg-background/95 backdrop-blur-md shadow-[0_-4px_12px_rgba(0,0,0,0.08)]"
+	aria-label="Quick booking actions"
+>
+	<a
+		href={`tel:${SITE.phoneE164}`}
+		class="flex items-center justify-center gap-2 py-3.5 text-sm font-semibold text-foreground"
+	>
+		<Icon name="lucide:phone" class="h-4 w-4 text-blue-500" />
+		Call
+	</a>
+	<a
+		href={waLink(waMessage)}
+		target="_blank"
+		rel="noopener"
+		class="flex items-center justify-center gap-2 py-3.5 text-sm font-semibold text-green-600 dark:text-green-400 border-x border-border"
+	>
+		<Icon name="lucide:message-circle" class="h-4 w-4" />
+		WhatsApp
+	</a>
+	<a
+		href={withBase(bookHref)}
+		class="flex items-center justify-center gap-2 py-3.5 text-sm font-bold bg-gradient-to-r from-orange-500 to-red-500 text-white"
+	>
+		<Icon name="lucide:car" class="h-4 w-4" />
+		Book
+	</a>
+</div>
