@@ -14,7 +14,7 @@ const testimonials = limit ? TESTIMONIALS.slice(0, limit) : TESTIMONIALS;
 
 <section
 	id="testimonials"
-	class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950 overflow-hidden"
+	class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-950 dark:to-red-950 overflow-hidden"
 >
 	<div class="max-w-7xl mx-auto">
 		<div class="text-center mb-12 sm:mb-16">
@@ -35,14 +35,14 @@ const testimonials = limit ? TESTIMONIALS.slice(0, limit) : TESTIMONIALS;
 			{
 				testimonials.map((testimonial, index) => (
 					<article
-						class="rounded-lg border-2 bg-card text-card-foreground hover:shadow-2xl transition-all duration-500 hover:scale-105 animate-slide-up hover:border-blue-200 dark:hover:border-blue-800"
+						class="rounded-lg border-2 bg-card text-card-foreground hover:shadow-2xl transition-all duration-500 hover:scale-105 animate-slide-up hover:border-orange-200 dark:hover:border-orange-800"
 						style={`animation-delay: ${index * 100}ms`}
 					>
 						<div class="p-4 sm:p-6">
 							<div class="flex items-center mb-3 sm:mb-4">
 								<Icon
 									name="lucide:quote"
-									class="h-6 w-6 sm:h-8 sm:w-8 text-blue-500 mr-2 sm:mr-3"
+									class="h-6 w-6 sm:h-8 sm:w-8 text-orange-400 mr-2 sm:mr-3"
 								/>
 								<div class="flex" aria-label={`${testimonial.rating} out of 5 stars`}>
 									{Array.from({ length: testimonial.rating }).map((_, i) => (
@@ -61,7 +61,7 @@ const testimonials = limit ? TESTIMONIALS.slice(0, limit) : TESTIMONIALS;
 
 							<div class="flex items-center">
 								<div
-									class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 text-white flex items-center justify-center font-semibold text-sm sm:text-base mr-3 sm:mr-4"
+									class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-orange-400 to-red-600 text-white flex items-center justify-center font-semibold text-sm sm:text-base mr-3 sm:mr-4"
 									aria-hidden="true"
 								>
 									{initials(testimonial.name)}

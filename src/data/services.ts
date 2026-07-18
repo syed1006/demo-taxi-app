@@ -30,7 +30,7 @@ export const SERVICES: ServicePage[] = [
 			"Hi! I want to book an airport taxi in Bangalore. Please share the details.",
 		icon: "lucide:plane",
 		bookingType: "airport",
-		color: "from-purple-500 to-violet-600",
+		color: "from-red-600 to-red-800",
 		popular: true,
 	},
 	{
@@ -56,7 +56,7 @@ export const SERVICES: ServicePage[] = [
 			"Hi! I want to book an hourly cab rental in Bangalore. Please share availability.",
 		icon: "lucide:clock",
 		bookingType: "hourly",
-		color: "from-green-500 to-emerald-600",
+		color: "from-orange-400 to-orange-600",
 		popular: true,
 	},
 	{
@@ -69,7 +69,7 @@ export const SERVICES: ServicePage[] = [
 			"Hi! I want to book a tour package from Bangalore. Please share the options.",
 		icon: "lucide:camera",
 		bookingType: "tour",
-		color: "from-pink-500 to-rose-600",
+		color: "from-pink-600 to-red-800",
 		popular: true,
 	},
 	{
@@ -82,7 +82,7 @@ export const SERVICES: ServicePage[] = [
 			"Hi! I'd like to discuss corporate cab services for my company.",
 		icon: "lucide:briefcase",
 		bookingType: "corporate",
-		color: "from-gray-600 to-gray-800",
+		color: "from-stone-600 to-stone-800",
 		popular: false,
 	},
 	{
@@ -95,7 +95,7 @@ export const SERVICES: ServicePage[] = [
 			"Hi! I want to hire a driver for my own car in Bangalore. Please share the details.",
 		icon: "lucide:user",
 		bookingType: "driver-only",
-		color: "from-amber-500 to-orange-600",
+		color: "from-orange-300 to-orange-500",
 		popular: false,
 	},
 ];

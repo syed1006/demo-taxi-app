@@ -2,10 +2,20 @@
 import type { Route } from "./route-types";
 
 import goaImg from "../assets/destinations/goa.webp";
+import tirupatiImg from "../assets/destinations/tirupati.webp";
+import pondicherryImg from "../assets/destinations/pondicherry.webp";
+import kodaikanalImg from "../assets/destinations/kodaikanal.webp";
+import gokarnaImg from "../assets/destinations/gokarna.webp";
+import hampiImg from "../assets/destinations/hampi.webp";
+import udupiImg from "../assets/destinations/udupi.webp";
+import sakleshpurImg from "../assets/destinations/sakleshpur.webp";
+import velloreImg from "../assets/destinations/vellore.webp";
+import salemImg from "../assets/destinations/salem.webp";
 
 export const ROUTES_EXTENDED: Route[] = [
 	{
 		slug: "tirupati",
+		image: tirupatiImg,
 		name: "Tirupati",
 		category: "spiritual",
 		distanceKm: 250,
@@ -82,6 +92,7 @@ export const ROUTES_EXTENDED: Route[] = [
 	},
 	{
 		slug: "pondicherry",
+		image: pondicherryImg,
 		name: "Pondicherry",
 		category: "beach",
 		distanceKm: 310,
@@ -161,6 +172,7 @@ export const ROUTES_EXTENDED: Route[] = [
 	},
 	{
 		slug: "kodaikanal",
+		image: kodaikanalImg,
 		name: "Kodaikanal",
 		category: "hills",
 		distanceKm: 465,
@@ -241,6 +253,7 @@ export const ROUTES_EXTENDED: Route[] = [
 	},
 	{
 		slug: "gokarna",
+		image: gokarnaImg,
 		name: "Gokarna",
 		category: "beach",
 		distanceKm: 485,
@@ -402,6 +415,7 @@ export const ROUTES_EXTENDED: Route[] = [
 	},
 	{
 		slug: "hampi",
+		image: hampiImg,
 		name: "Hampi",
 		category: "heritage",
 		distanceKm: 340,
@@ -482,6 +496,7 @@ export const ROUTES_EXTENDED: Route[] = [
 	},
 	{
 		slug: "udupi",
+		image: udupiImg,
 		name: "Udupi",
 		category: "spiritual",
 		distanceKm: 405,
@@ -558,6 +573,7 @@ export const ROUTES_EXTENDED: Route[] = [
 	},
 	{
 		slug: "sakleshpur",
+		image: sakleshpurImg,
 		name: "Sakleshpur",
 		category: "hills",
 		distanceKm: 220,
@@ -633,6 +649,7 @@ export const ROUTES_EXTENDED: Route[] = [
 	},
 	{
 		slug: "vellore",
+		image: velloreImg,
 		name: "Vellore",
 		category: "spiritual",
 		distanceKm: 215,
@@ -708,6 +725,7 @@ export const ROUTES_EXTENDED: Route[] = [
 	},
 	{
 		slug: "salem",
+		image: salemImg,
 		name: "Salem",
 		category: "city",
 		distanceKm: 215,

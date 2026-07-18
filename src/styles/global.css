@@ -2,54 +2,90 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Karnataka heritage palette: kempu (kumkum red) + haladi (turmeric gold)
+   on warm sandalwood neutrals — light mode is Mysore-silk cream, dark mode
+   warm charcoal. */
 :root {
-	--background: 0 0% 100%;
-	--foreground: 240 10% 3.9%;
-	--card: 0 0% 100%;
-	--card-foreground: 240 10% 3.9%;
-	--popover: 0 0% 100%;
-	--popover-foreground: 240 10% 3.9%;
-	--primary: 240 9% 10%;
-	--primary-foreground: 0 0% 98%;
-	--secondary: 240 4.8% 95.9%;
-	--secondary-foreground: 240 5.9% 10%;
-	--muted: 240 4.8% 95.9%;
-	--muted-foreground: 240 3.8% 46.1%;
-	--accent: 240 4.8% 95.9%;
-	--accent-foreground: 240 5.9% 10%;
-	--destructive: 0 84.2% 60.2%;
-	--destructive-foreground: 0 0% 98%;
-	--border: 240 5.9% 90%;
-	--input: 240 5.9% 90%;
-	--ring: 240 10% 3.9%;
+	--background: 40 45% 98%;
+	--foreground: 20 18% 12%;
+	--card: 40 40% 99%;
+	--card-foreground: 20 18% 12%;
+	--popover: 40 40% 99%;
+	--popover-foreground: 20 18% 12%;
+	--primary: 9 67% 45%;
+	--primary-foreground: 40 45% 98%;
+	--secondary: 38 30% 93%;
+	--secondary-foreground: 20 18% 15%;
+	--muted: 38 30% 93%;
+	--muted-foreground: 24 10% 42%;
+	--accent: 38 30% 91%;
+	--accent-foreground: 20 18% 15%;
+	--destructive: 0 72% 42%;
+	--destructive-foreground: 40 45% 98%;
+	--border: 35 22% 86%;
+	--input: 35 22% 86%;
+	--ring: 9 67% 45%;
 	--radius: 0.5rem;
 }
 
 .dark {
-	--background: 240 10% 3.9%;
-	--foreground: 0 0% 98%;
-	--card: 240 10% 3.9%;
-	--card-foreground: 0 0% 98%;
-	--popover: 240 10% 3.9%;
-	--popover-foreground: 0 0% 98%;
-	--primary: 0 0% 98%;
-	--primary-foreground: 240 5.9% 10%;
-	--secondary: 240 3.7% 15.9%;
-	--secondary-foreground: 0 0% 98%;
-	--muted: 240 3.7% 15.9%;
-	--muted-foreground: 240 5% 64.9%;
-	--accent: 240 3.7% 15.9%;
-	--accent-foreground: 0 0% 98%;
-	--destructive: 0 62.8% 30.6%;
-	--destructive-foreground: 0 0% 98%;
-	--border: 240 3.7% 15.9%;
-	--input: 240 3.7% 15.9%;
-	--ring: 240 4.9% 83.9%;
+	--background: 20 14% 7%;
+	--foreground: 38 30% 92%;
+	--card: 20 12% 9%;
+	--card-foreground: 38 30% 92%;
+	--popover: 20 12% 9%;
+	--popover-foreground: 38 30% 92%;
+	--primary: 14 72% 58%;
+	--primary-foreground: 20 14% 7%;
+	--secondary: 20 10% 15%;
+	--secondary-foreground: 38 30% 92%;
+	--muted: 20 10% 15%;
+	--muted-foreground: 30 12% 62%;
+	--accent: 20 10% 17%;
+	--accent-foreground: 38 30% 92%;
+	--destructive: 0 62% 45%;
+	--destructive-foreground: 38 30% 92%;
+	--border: 20 10% 18%;
+	--input: 20 10% 18%;
+	--ring: 14 72% 58%;
 }
 
 @theme inline {
 	--font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system,
 		"Segoe UI", Roboto, sans-serif;
+	--font-display: "Fraunces Variable", Georgia, "Times New Roman", serif;
+
+	/* Heritage remap of the brand scales: `orange` = kempu/turmeric
+	   (300–400 gold, 500+ kumkum red), `red` = Mysore maroon,
+	   `pink` = wine. Existing utility classes re-skin automatically. */
+	--color-orange-50: #fbf4ea;
+	--color-orange-100: #f6e8d4;
+	--color-orange-200: #edd3a9;
+	--color-orange-300: #efc14d;
+	--color-orange-400: #dfa02e;
+	--color-orange-500: #be3a26;
+	--color-orange-600: #a32d1b;
+	--color-orange-700: #862315;
+	--color-orange-800: #691b10;
+	--color-orange-900: #4f150d;
+	--color-orange-950: #360d08;
+
+	--color-red-50: #faf0ef;
+	--color-red-100: #f4dfdd;
+	--color-red-200: #e8c2be;
+	--color-red-300: #d69a93;
+	--color-red-400: #bc655c;
+	--color-red-500: #a62b36;
+	--color-red-600: #8c2129;
+	--color-red-700: #6f1a20;
+	--color-red-800: #571419;
+	--color-red-900: #401013;
+	--color-red-950: #2a0a0c;
+
+	--color-pink-400: #a85477;
+	--color-pink-500: #883053;
+	--color-pink-600: #6e1f3c;
+	--color-pink-950: #2e0f1c;
 	--color-background: hsl(var(--background));
 	--color-foreground: hsl(var(--foreground));
 	--color-card: hsl(var(--card));
@@ -92,6 +128,14 @@
 		color: hsl(var(--foreground));
 		font-family: var(--font-sans);
 		overflow-x: hidden;
+	}
+
+	/* Headings in a serif display face — the "Mysore silk label" look. */
+	h1,
+	h2,
+	h3 {
+		font-family: var(--font-display);
+		letter-spacing: -0.01em;
 	}
 
 	/* Prevent horizontal overflow */
@@ -254,10 +298,10 @@
 @keyframes pulse-glow {
 	0%,
 	100% {
-		box-shadow: 0 0 20px rgba(251, 146, 60, 0.4);
+		box-shadow: 0 0 20px rgba(190, 58, 38, 0.35);
 	}
 	50% {
-		box-shadow: 0 0 30px rgba(251, 146, 60, 0.6);
+		box-shadow: 0 0 30px rgba(190, 58, 38, 0.55);
 	}
 }
 
@@ -430,7 +474,7 @@ input:focus-visible,
 select:focus-visible,
 textarea:focus-visible,
 summary:focus-visible {
-	outline: 2px solid #f97316;
+	outline: 2px solid #be3a26;
 	outline-offset: 2px;
 	border-radius: 4px;
 }

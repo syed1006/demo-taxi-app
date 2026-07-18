@@ -54,7 +54,7 @@ export const BOOKING_TYPES: BookingType[] = [
 		description: "Business travel",
 		icon: "lucide:briefcase",
 		popular: false,
-		color: "from-gray-600 to-gray-800",
+		color: "from-stone-600 to-stone-800",
 	},
 	{
 		id: "driver-only",

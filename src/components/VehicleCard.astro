@@ -106,43 +106,43 @@ const detailsPath = VEHICLE_PAGES.find((entry) => entry.cab === vehicle.name)?.p
 			<div class="space-y-4">
 				<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 					<div
-						class="bg-blue-50 dark:bg-blue-950 rounded-lg p-3 border border-blue-200 dark:border-blue-800"
+						class="bg-secondary rounded-lg p-3 border border-border"
 					>
 						<div class="flex items-center justify-between mb-1">
 							<div class="flex items-center space-x-2">
-								<Icon name="lucide:plane" class="h-4 w-4 text-blue-600" />
+								<Icon name="lucide:plane" class="h-4 w-4 text-orange-500" />
 								<span
-									class="text-sm font-medium text-blue-700 dark:text-blue-300"
+									class="text-sm font-medium text-muted-foreground"
 									>Airport</span
 								>
 							</div>
-							<span class="text-lg font-bold text-blue-600"
+							<span class="text-lg font-bold text-orange-600 dark:text-orange-400"
 								>{vehicle.pricing.airport}</span
 							>
 						</div>
-						<p class="text-xs text-blue-600/80 dark:text-blue-400/80">
+						<p class="text-xs text-muted-foreground">
 							One way pickup/drop
 						</p>
 					</div>
 
 					{
 						vehicle.pricing.hourly4 !== "Not Available" && (
-							<div class="bg-green-50 dark:bg-green-950 rounded-lg p-3 border border-green-200 dark:border-green-800">
+							<div class="bg-secondary rounded-lg p-3 border border-border">
 								<div class="flex items-center justify-between mb-1">
 									<div class="flex items-center space-x-2">
 										<Icon
 											name="lucide:clock"
-											class="h-4 w-4 text-green-600"
+											class="h-4 w-4 text-orange-500"
 										/>
-										<span class="text-sm font-medium text-green-700 dark:text-green-300">
+										<span class="text-sm font-medium text-muted-foreground">
 											4 Hour
 										</span>
 									</div>
-									<span class="text-lg font-bold text-green-600">
+									<span class="text-lg font-bold text-orange-600 dark:text-orange-400">
 										{vehicle.pricing.hourly4}
 									</span>
 								</div>
-								<p class="text-xs text-green-600/80 dark:text-green-400/80">
+								<p class="text-xs text-muted-foreground">
 									40km included
 								</p>
 							</div>
@@ -151,22 +151,22 @@ const detailsPath = VEHICLE_PAGES.find((entry) => entry.cab === vehicle.name)?.p
 
 					{
 						vehicle.pricing.hourly8 !== "Not Available" && (
-							<div class="bg-purple-50 dark:bg-purple-950 rounded-lg p-3 border border-purple-200 dark:border-purple-800">
+							<div class="bg-secondary rounded-lg p-3 border border-border">
 								<div class="flex items-center justify-between mb-1">
 									<div class="flex items-center space-x-2">
 										<Icon
 											name="lucide:clock"
-											class="h-4 w-4 text-purple-600"
+											class="h-4 w-4 text-orange-500"
 										/>
-										<span class="text-sm font-medium text-purple-700 dark:text-purple-300">
+										<span class="text-sm font-medium text-muted-foreground">
 											8 Hour
 										</span>
 									</div>
-									<span class="text-lg font-bold text-purple-600">
+									<span class="text-lg font-bold text-orange-600 dark:text-orange-400">
 										{vehicle.pricing.hourly8}
 									</span>
 								</div>
-								<p class="text-xs text-purple-600/80 dark:text-purple-400/80">
+								<p class="text-xs text-muted-foreground">
 									80km included
 								</p>
 							</div>
@@ -174,21 +174,21 @@ const detailsPath = VEHICLE_PAGES.find((entry) => entry.cab === vehicle.name)?.p
 					}
 
 					<div
-						class="bg-orange-50 dark:bg-orange-950 rounded-lg p-3 border border-orange-200 dark:border-orange-800"
+						class="bg-secondary rounded-lg p-3 border border-border"
 					>
 						<div class="flex items-center justify-between mb-1">
 							<div class="flex items-center space-x-2">
-								<Icon name="lucide:map-pin" class="h-4 w-4 text-orange-600" />
+								<Icon name="lucide:map-pin" class="h-4 w-4 text-orange-500" />
 								<span
-									class="text-sm font-medium text-orange-700 dark:text-orange-300"
+									class="text-sm font-medium text-muted-foreground"
 									>Outstation</span
 								>
 							</div>
-							<span class="text-lg font-bold text-orange-600"
+							<span class="text-lg font-bold text-orange-600 dark:text-orange-400"
 								>₹{vehicle.pricing.outstation}/km</span
 							>
 						</div>
-						<p class="text-xs text-orange-600/80 dark:text-orange-400/80">
+						<p class="text-xs text-muted-foreground">
 							+ Driver bata: {vehicle.pricing.driverBata}
 						</p>
 					</div>

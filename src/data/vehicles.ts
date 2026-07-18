@@ -49,7 +49,7 @@ export const VEHICLE_CATEGORIES: Record<string, VehicleCategory> = {
 		title: "Economy",
 		description: "Budget-friendly options for everyday travel",
 		icon: "lucide:car",
-		gradient: "from-green-500 to-emerald-600",
+		gradient: "from-orange-400 to-orange-600",
 		vehicles: [
 			{
 				id: "sedan",
@@ -72,7 +72,7 @@ export const VEHICLE_CATEGORIES: Record<string, VehicleCategory> = {
 				icon: "lucide:users",
 				images: [etios, siftDezire, amaze],
 				popular: true,
-				color: "from-blue-500 to-cyan-600",
+				color: "from-orange-500 to-red-600",
 			},
 		],
 	},
@@ -111,7 +111,7 @@ export const VEHICLE_CATEGORIES: Record<string, VehicleCategory> = {
 		title: "Premium",
 		description: "Enhanced comfort with premium vehicles",
 		icon: "lucide:star",
-		gradient: "from-purple-500 to-violet-600",
+		gradient: "from-red-600 to-red-800",
 		vehicles: [
 			{
 				id: "prime-sedan",
@@ -134,7 +134,7 @@ export const VEHICLE_CATEGORIES: Record<string, VehicleCategory> = {
 				icon: "lucide:star",
 				images: [ciaz, nissanSunny, city],
 				popular: false,
-				color: "from-purple-500 to-violet-600",
+				color: "from-red-600 to-red-800",
 			},
 			{
 				id: "premium-suv",
@@ -157,7 +157,7 @@ export const VEHICLE_CATEGORIES: Record<string, VehicleCategory> = {
 				icon: "lucide:luggage",
 				images: [fortuner, innovaCrysta, fortunerBlack],
 				popular: true,
-				color: "from-indigo-500 to-purple-600",
+				color: "from-red-700 to-pink-600",
 			},
 		],
 	},
@@ -165,7 +165,7 @@ export const VEHICLE_CATEGORIES: Record<string, VehicleCategory> = {
 		title: "Luxury",
 		description: "Premium luxury vehicles for special occasions",
 		icon: "lucide:crown",
-		gradient: "from-amber-500 to-yellow-600",
+		gradient: "from-orange-300 to-orange-500",
 		vehicles: [
 			{
 				id: "premium-luxury",
@@ -188,7 +188,7 @@ export const VEHICLE_CATEGORIES: Record<string, VehicleCategory> = {
 				icon: "lucide:crown",
 				images: [audi, bmw, mercedes],
 				popular: false,
-				color: "from-yellow-500 to-amber-600",
+				color: "from-orange-300 to-orange-500",
 			},
 		],
 	},
@@ -196,7 +196,7 @@ export const VEHICLE_CATEGORIES: Record<string, VehicleCategory> = {
 		title: "Group Travel",
 		description: "Large capacity vehicles for big groups",
 		icon: "lucide:bus",
-		gradient: "from-indigo-500 to-blue-600",
+		gradient: "from-pink-600 to-red-800",
 		vehicles: [
 			{
 				id: "tempo-traveller",
@@ -219,7 +219,7 @@ export const VEHICLE_CATEGORIES: Record<string, VehicleCategory> = {
 				icon: "lucide:bus",
 				images: [traveller],
 				popular: false,
-				color: "from-indigo-500 to-blue-600",
+				color: "from-pink-600 to-red-800",
 			},
 		],
 	},

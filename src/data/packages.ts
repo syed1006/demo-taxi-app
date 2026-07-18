@@ -8,6 +8,10 @@ import coorgImg from "../assets/destinations/coorg.webp";
 import ootyImg from "../assets/destinations/ooty.webp";
 import chickmagaluruImg from "../assets/destinations/chickmagaluru.webp";
 import waynadImg from "../assets/destinations/waynad.webp";
+import tirupatiImg from "../assets/destinations/tirupati.webp";
+import pondicherryImg from "../assets/destinations/pondicherry.webp";
+import kodaikanalImg from "../assets/destinations/kodaikanal.webp";
+import hampiImg from "../assets/destinations/hampi.webp";
 
 export const COMMON_INCLUSIONS: string[] = [
 	"Fuel charges",
@@ -241,6 +245,7 @@ export const PACKAGES: TourPackage[] = [
 	},
 	{
 		slug: "tirupati-darshan-1-day",
+		image: tirupatiImg,
 		name: "Bangalore to Tirupati Darshan 1-Day Package",
 		shortName: "Tirupati 1-Day",
 		durationDays: 1,
@@ -307,6 +312,7 @@ export const PACKAGES: TourPackage[] = [
 	},
 	{
 		slug: "tirupati-2-days",
+		image: tirupatiImg,
 		name: "Tirupati 2-Day Package (1 Night Stay)",
 		shortName: "Tirupati 2-Day",
 		durationDays: 2,
@@ -1087,6 +1093,7 @@ export const PACKAGES: TourPackage[] = [
 	},
 	{
 		slug: "pondicherry-2-days",
+		image: pondicherryImg,
 		name: "Bangalore to Pondicherry 2-Day Package",
 		shortName: "Pondicherry 2-Day",
 		durationDays: 2,
@@ -1163,6 +1170,7 @@ export const PACKAGES: TourPackage[] = [
 	},
 	{
 		slug: "kodaikanal-3-days",
+		image: kodaikanalImg,
 		name: "Bangalore to Kodaikanal 3-Day Package",
 		shortName: "Kodaikanal 3-Day",
 		durationDays: 3,
@@ -1251,6 +1259,7 @@ export const PACKAGES: TourPackage[] = [
 	},
 	{
 		slug: "hampi-2-days",
+		image: hampiImg,
 		name: "Bangalore to Hampi 2-Day Package",
 		shortName: "Hampi 2-Day",
 		durationDays: 2,

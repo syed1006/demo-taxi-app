@@ -4,6 +4,7 @@ import TrustStrip from "../components/TrustStrip.astro";
 import { Icon } from "astro-icon/components";
 import { SITE } from "../data/site";
 import { SERVICES } from "../data/services";
+import { IMAGE_CREDITS } from "../data/image-credits";
 import { withBase } from "../lib/url";
 
 const path = "/about/";
@@ -71,7 +72,7 @@ const pillars = [
 		</div>
 	</section>
 
-	<section class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800">
+	<section class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-stone-900 dark:to-stone-950">
 		<div class="max-w-5xl mx-auto">
 			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8">
 				What we stand on
@@ -107,6 +108,33 @@ const pillars = [
 					))
 				}
 			</div>
+		</div>
+	</section>
+
+	<section class="py-10 px-4 sm:px-6 lg:px-8 border-t border-border">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-lg font-semibold text-foreground mb-3">Photo credits</h2>
+			<p class="text-sm text-muted-foreground mb-4">
+				Some destination photographs are by generous contributors on Wikimedia
+				Commons, used under their open licenses:
+			</p>
+			<ul class="text-xs text-muted-foreground space-y-1.5">
+				{
+					IMAGE_CREDITS.map((credit) => (
+						<li>
+							<a
+								href={credit.sourceUrl}
+								target="_blank"
+								rel="noopener"
+								class="hover:text-orange-500 underline underline-offset-2"
+							>
+								{credit.subject}
+							</a>{" "}
+							— {credit.author}, {credit.license}
+						</li>
+					))
+				}
+			</ul>
 		</div>
 	</section>
 </PageLayout>
