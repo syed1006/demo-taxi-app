@@ -13,3 +13,16 @@ export const PACKAGES: TourPackage[] = (
 	...pkg,
 	image: optionalContentImage(pkg.image),
 }));
+
+/**
+ * Card/hero display title: geographic and route-like, not catalogue-like.
+ * "Bangalore to Mysore 1-Day Tour Package" -> "Bangalore to Mysore 1-Day";
+ * names without "Bangalore" get the "Bangalore to" prefix.
+ */
+export function packageTitle(pkg: TourPackage): string {
+	const stripped = pkg.name
+		.replace(/\s*(Tour\s+)?Package/i, "")
+		.replace(/\s{2,}/g, " ")
+		.trim();
+	return /bangalore/i.test(stripped) ? stripped : `Bangalore to ${stripped}`;
+}

@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import type { TourPackage } from "../data/route-types";
+import { packageTitle } from "../data/packages";
 import { formatINR } from "../lib/fare";
 import { withBase } from "../lib/url";
 
@@ -58,7 +59,7 @@ const duration =
 		</div>
 		<div class="p-4 flex flex-col flex-1 space-y-2">
 			<h3 class="font-bold text-foreground group-hover:text-orange-500 transition-colors leading-snug line-clamp-2">
-				{pkg.shortName}
+				{packageTitle(pkg)}
 			</h3>
 			<p class="text-xs text-muted-foreground">
 				{pkg.sightsCovered.length} places covered

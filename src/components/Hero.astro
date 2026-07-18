@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { SITE, waLink } from "../data/site";
-import { PACKAGES } from "../data/packages";
+import { PACKAGES, packageTitle } from "../data/packages";
 import { formatINR } from "../lib/fare";
 import { withBase } from "../lib/url";
 import cityBg from "../assets/bg/city-bg.webp";
@@ -11,11 +11,12 @@ import cityBg from "../assets/bg/city-bg.webp";
 // directly. Popular packages lead; every slide books in one tap.
 const featured = [...PACKAGES]
 	.sort((a, b) => Number(b.popular) - Number(a.popular))
-	.slice(0, 6)
+	.slice(0, 10)
 	.map((pkg) => {
 		const sedanPrice = pkg.prices.find((p) => p.vehicle === "sedan")?.price;
 		return {
 			pkg,
+			title: packageTitle(pkg),
 			sedanPrice,
 			duration:
 				pkg.durationNights > 0
@@ -69,7 +70,7 @@ const featured = [...PACKAGES]
 					class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide rounded-2xl"
 				>
 					{
-						featured.map(({ pkg, sedanPrice, duration, highlights, waMessage }, index) => (
+						featured.map(({ pkg, title, sedanPrice, duration, highlights, waMessage }, index) => (
 							<div class="w-full flex-shrink-0 snap-center px-1 py-2">
 								<div class="bg-white/15 backdrop-blur-md border border-white/25 rounded-2xl p-6 sm:p-10 shadow-2xl">
 									{pkg.image ? (
@@ -88,10 +89,10 @@ const featured = [...PACKAGES]
 											<Icon name="lucide:map" class="h-8 w-8 text-white" />
 										</div>
 									)}
-									<h2 class="text-2xl sm:text-4xl font-bold text-white mb-1">
-										{pkg.shortName}
+									<h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 text-balance">
+										{title}
 										{sedanPrice && (
-											<span class="block sm:inline text-orange-300 text-xl sm:text-3xl sm:ml-2">
+											<span class="block text-orange-300 text-xl sm:text-2xl md:text-3xl">
 												from {formatINR(sedanPrice)}
 											</span>
 										)}
