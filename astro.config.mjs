@@ -16,6 +16,7 @@ export default defineConfig({
 	trailingSlash: "ignore",
 	integrations: [
 		sitemap({
+			filter: (page) => !page.includes("/logo-preview"),
 			serialize(item) {
 				const url = new URL(item.url);
 				const p = url.pathname;

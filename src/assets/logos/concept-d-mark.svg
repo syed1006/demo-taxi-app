@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<defs><clipPath id="dm"><rect x="4" y="4" width="112" height="112" rx="26"/></clipPath></defs>
+<g clip-path="url(#dm)">
+  <rect x="4" y="4" width="112" height="56" fill="#EFC14D"/>
+  <rect x="4" y="60" width="112" height="56" fill="#BE3A26"/>
+  <path d="M-10,124 C34,96 46,64 40,30 C38,18 42,8 52,0 L74,0 C60,12 56,22 58,34 C64,72 46,104 6,130 Z" fill="#1C1917" opacity="0.92"/>
+  <path d="M32,116 C56,92 62,60 58,30 C56,16 62,6 70,0" fill="none" stroke="#FBF4EA" stroke-width="3" stroke-dasharray="8 8"/>
+</g>
+
+<g transform="translate(46,78) scale(0.5)">
+  <path d="M6,36 C6,30 10,27 18,25 L30,13 C34,9 42,7 52,7 L70,9 C78,10 84,15 88,20 L98,24 C104,26 108,29 108,34 L108,38 C108,40 106,42 104,42 L96,42 A10,10 0 0 0 76,42 L38,42 A10,10 0 0 0 18,42 L10,42 C8,42 6,40 6,38 Z" fill="#FBF4EA"/>
+  
+  <circle cx="28" cy="42" r="8" fill="#1C1917"/><circle cx="28" cy="42" r="3.5" fill="#d8d3cc"/>
+  <circle cx="86" cy="42" r="8" fill="#1C1917"/><circle cx="86" cy="42" r="3.5" fill="#d8d3cc"/>
+</g></svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<circle cx="60" cy="60" r="56" fill="#6F1A20"/>
+<circle cx="60" cy="60" r="50" fill="none" stroke="#EFC14D" stroke-width="2"/>
+<circle cx="60" cy="60" r="45" fill="none" stroke="#EFC14D" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="60" y="62" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="bold" font-size="36" fill="#EFC14D">BUC</text>
+
+<g transform="translate(42,74) scale(0.32)">
+  <path d="M6,36 C6,30 10,27 18,25 L30,13 C34,9 42,7 52,7 L70,9 C78,10 84,15 88,20 L98,24 C104,26 108,29 108,34 L108,38 C108,40 106,42 104,42 L96,42 A10,10 0 0 0 76,42 L38,42 A10,10 0 0 0 18,42 L10,42 C8,42 6,40 6,38 Z" fill="#EFC14D"/>
+  
+  <circle cx="28" cy="42" r="8" fill="#1C1917"/><circle cx="28" cy="42" r="3.5" fill="#d8d3cc"/>
+  <circle cx="86" cy="42" r="8" fill="#1C1917"/><circle cx="86" cy="42" r="3.5" fill="#d8d3cc"/>
+</g></svg>

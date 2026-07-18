@@ -1,0 +1,120 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../data/site";
+
+import aLockup from "../assets/logos/concept-a-lockup.svg?raw";
+import aMark from "../assets/logos/concept-a-mark.svg?raw";
+import bLockup from "../assets/logos/concept-b-lockup.svg?raw";
+import bMark from "../assets/logos/concept-b-mark.svg?raw";
+import cLockup from "../assets/logos/concept-c-lockup.svg?raw";
+import cMark from "../assets/logos/concept-c-mark.svg?raw";
+import dLockup from "../assets/logos/concept-d-lockup.svg?raw";
+import dMark from "../assets/logos/concept-d-mark.svg?raw";
+
+// Internal brand-review page: not linked anywhere, noindex, out of sitemap.
+const concepts = [
+	{
+		id: "A",
+		name: "Gopura Badge",
+		why: "Gold stepped temple-tower on a kempu→maroon field, cab beneath — the most heritage-forward mark; reads beautifully as an app icon.",
+		lockup: aLockup,
+		mark: aMark,
+	},
+	{
+		id: "B",
+		name: "Turmeric Sun",
+		why: "Kempu cab against a rising haladi sun — cleanest and friendliest; modern travel-brand energy inside the heritage palette.",
+		lockup: bLockup,
+		mark: bMark,
+	},
+	{
+		id: "C",
+		name: "Zari Seal",
+		why: "Maroon roundel with double gold zari rings and a BUC serif monogram — the most premium/formal; strong on invoices and cards.",
+		lockup: cLockup,
+		mark: cMark,
+	},
+	{
+		id: "D",
+		name: "Kempu-Haladi Road",
+		why: "The Kannada flag's gold-over-red field with a highway winding through — the boldest, most literal Karnataka statement.",
+		lockup: dLockup,
+		mark: dMark,
+	},
+];
+---
+
+<BaseLayout
+	title={`Logo Concepts — Internal Review | ${SITE.name}`}
+	description="Internal brand review: four Karnataka-heritage logo concepts for Bangalore Urban Cabs."
+	path="/logo-preview/"
+	noindex
+>
+	<main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+		<p
+			class="text-xs font-bold uppercase tracking-widest text-orange-500 mb-2"
+		>
+			Internal review — not linked from the site
+		</p>
+		<h1 class="text-3xl sm:text-4xl font-bold text-foreground mb-3">
+			Logo Concepts
+		</h1>
+		<p class="text-muted-foreground max-w-2xl mb-10">
+			Four directions in the heritage identity. Each shows the header lockup on
+			light and dark, and the square mark at app-icon, favicon and browser-tab
+			sizes. Toggle the site's dark mode (header button) to see how each
+			behaves in context.
+		</p>
+
+		<div class="space-y-10">
+			{
+				concepts.map((concept) => (
+					<section class="rounded-xl border-2 bg-card overflow-hidden">
+						<div class="flex items-baseline gap-4 p-5 pb-2">
+							<span class="flex-none w-10 h-10 rounded-full bg-orange-500 text-white font-bold text-xl flex items-center justify-center translate-y-1.5">
+								{concept.id}
+							</span>
+							<div>
+								<h2 class="text-2xl font-bold text-foreground">
+									{concept.name}
+								</h2>
+								<p class="text-sm text-muted-foreground max-w-2xl">
+									{concept.why}
+								</p>
+							</div>
+						</div>
+
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-5">
+							<div class="rounded-lg border p-6 flex items-center justify-center bg-[#FBF7F0] text-[#1C1917] [&_svg]:w-full [&_svg]:max-w-[380px] [&_svg]:h-auto">
+								<Fragment set:html={concept.lockup} />
+							</div>
+							<div class="rounded-lg border border-stone-700 p-6 flex items-center justify-center bg-[#1C1917] text-[#FBF4EA] [&_svg]:w-full [&_svg]:max-w-[380px] [&_svg]:h-auto">
+								<Fragment set:html={concept.lockup} />
+							</div>
+							<div class="md:col-span-2 flex flex-wrap items-center gap-8 px-1 pt-1">
+								<span class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+									App icon &amp; favicon
+								</span>
+								<span class="[&_svg]:w-[72px] [&_svg]:h-[72px]">
+									<Fragment set:html={concept.mark} />
+								</span>
+								<span class="[&_svg]:w-8 [&_svg]:h-8">
+									<Fragment set:html={concept.mark} />
+								</span>
+								<span class="[&_svg]:w-4 [&_svg]:h-4">
+									<Fragment set:html={concept.mark} />
+								</span>
+							</div>
+						</div>
+					</section>
+				))
+			}
+		</div>
+
+		<p class="text-sm text-muted-foreground mt-10 max-w-2xl">
+			Source files live in <code>src/assets/logos/</code> (mark + lockup per
+			concept, pure SVG). Once a concept is chosen it replaces the header logo,
+			favicons, manifest icons and the social-share image sitewide.
+		</p>
+	</main>
+</BaseLayout>
