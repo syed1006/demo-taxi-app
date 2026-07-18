@@ -1,0 +1,202 @@
+{
+	"economy": {
+		"title": "Economy",
+		"description": "Budget-friendly options for everyday travel",
+		"icon": "lucide:car",
+		"gradient": "from-orange-400 to-orange-600",
+		"vehicles": [
+			{
+				"id": "sedan",
+				"name": "Sedan",
+				"subtitle": "4+1 Seater",
+				"description": "Toyota Etios, Swift Dzire, Honda Xcent, Honda Amaze",
+				"pricing": {
+					"airport": "starting at ₹799",
+					"hourly4": "₹1,200",
+					"hourly8": "₹2,200",
+					"outstation": "12",
+					"driverBata": "₹400"
+				},
+				"features": [
+					"4+1 passengers",
+					"AC Sedan",
+					"Comfortable seating",
+					"Luggage space"
+				],
+				"icon": "lucide:users",
+				"images": [
+					"cars/etios.webp",
+					"cars/sift-dezire.webp",
+					"cars/amaze.webp"
+				],
+				"popular": true,
+				"color": "from-orange-500 to-red-600"
+			}
+		]
+	},
+	"suv": {
+		"title": "SUV",
+		"description": "Spacious vehicles for groups and families",
+		"icon": "lucide:luggage",
+		"gradient": "from-orange-500 to-red-600",
+		"vehicles": [
+			{
+				"id": "suv",
+				"name": "SUV",
+				"subtitle": "6+1 to 7+1 Seater",
+				"description": "Maruti Ertiga, Toyota Innova, Kia Carens, Toyota Rumion",
+				"pricing": {
+					"airport": "₹1,499",
+					"hourly4": "₹1,600-1,900",
+					"hourly8": "₹2,800-3,200",
+					"outstation": "16-18",
+					"driverBata": "₹500"
+				},
+				"features": [
+					"6+1 to 7+1 passengers",
+					"Spacious SUV",
+					"Large luggage space",
+					"Group travel"
+				],
+				"icon": "lucide:luggage",
+				"images": [
+					"cars/innova.webp",
+					"cars/ertiga.webp",
+					"cars/kia-carrens.webp"
+				],
+				"popular": true,
+				"color": "from-orange-500 to-red-600"
+			}
+		]
+	},
+	"premium": {
+		"title": "Premium",
+		"description": "Enhanced comfort with premium vehicles",
+		"icon": "lucide:star",
+		"gradient": "from-red-600 to-red-800",
+		"vehicles": [
+			{
+				"id": "prime-sedan",
+				"name": "Prime Sedan",
+				"subtitle": "4+1 Seater",
+				"description": "Maruti Ciaz, Platinum Etios, Nissan Sunny, Honda City",
+				"pricing": {
+					"airport": "starting at ₹999",
+					"hourly4": "₹1,300",
+					"hourly8": "₹2,400",
+					"outstation": "13-14",
+					"driverBata": "₹500"
+				},
+				"features": [
+					"4+1 passengers",
+					"Premium sedan",
+					"Enhanced comfort",
+					"Premium interiors"
+				],
+				"icon": "lucide:star",
+				"images": [
+					"cars/ciaz.webp",
+					"cars/nissan-sunny.webp",
+					"cars/city.webp"
+				],
+				"popular": false,
+				"color": "from-red-600 to-red-800"
+			},
+			{
+				"id": "premium-suv",
+				"name": "Premium SUV",
+				"subtitle": "6+1 to 7+1 Seater",
+				"description": "Maruti Ertiga, Mahindra Marazzo, Toyota Rumion",
+				"pricing": {
+					"airport": "₹1,999-₹2,499",
+					"hourly4": "₹1,999-₹2,499",
+					"hourly8": "₹3,400-₹4,800",
+					"outstation": "19-24",
+					"driverBata": "₹600"
+				},
+				"features": [
+					"6+1 passengers",
+					"Premium SUV",
+					"Spacious interior",
+					"Comfort ride"
+				],
+				"icon": "lucide:luggage",
+				"images": [
+					"cars/fortuner.webp",
+					"cars/innova-crysta.webp",
+					"cars/fortuner-black.webp"
+				],
+				"popular": true,
+				"color": "from-red-700 to-pink-600"
+			}
+		]
+	},
+	"luxury": {
+		"title": "Luxury",
+		"description": "Premium luxury vehicles for special occasions",
+		"icon": "lucide:crown",
+		"gradient": "from-orange-300 to-orange-500",
+		"vehicles": [
+			{
+				"id": "premium-luxury",
+				"name": "Premium Luxury",
+				"subtitle": "4+1 Seater",
+				"description": "BMW 3 Series, Audi A4, Mercedes C-Class, Jaguar XE",
+				"pricing": {
+					"airport": "₹2,999-3,999",
+					"hourly4": "Not Available",
+					"hourly8": "₹5,999-7,999",
+					"outstation": "25-35",
+					"driverBata": "₹800"
+				},
+				"features": [
+					"4+1 passengers",
+					"Luxury sedan",
+					"Premium experience",
+					"VIP treatment"
+				],
+				"icon": "lucide:crown",
+				"images": [
+					"cars/audi.webp",
+					"cars/bmw.webp",
+					"cars/mercedes.webp"
+				],
+				"popular": false,
+				"color": "from-orange-300 to-orange-500"
+			}
+		]
+	},
+	"group": {
+		"title": "Group Travel",
+		"description": "Large capacity vehicles for big groups",
+		"icon": "lucide:bus",
+		"gradient": "from-pink-600 to-red-800",
+		"vehicles": [
+			{
+				"id": "tempo-traveller",
+				"name": "Tempo Traveller",
+				"subtitle": "12+1 Seater",
+				"description": "Spacious tempo traveller for large groups and events",
+				"pricing": {
+					"airport": "₹3,200-₹4,000",
+					"hourly4": "Not Available",
+					"hourly8": "₹4,199",
+					"outstation": "20-29",
+					"driverBata": "₹600"
+				},
+				"features": [
+					"12+1 passengers",
+					"Large group travel",
+					"Event transportation",
+					"Ample luggage space"
+				],
+				"icon": "lucide:bus",
+				"images": [
+					"cars/traveller.webp"
+				],
+				"popular": false,
+				"color": "from-pink-600 to-red-800"
+			}
+		]
+	}
+}

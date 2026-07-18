@@ -1,8 +1,10 @@
 /**
  * Master rate card — every rupee figure on the site derives from here or
- * from a hand-verified figure in routes/packages/airport data. Keep this in
- * sync with src/data/vehicles.ts display strings.
+ * from a hand-verified figure in routes/packages/airport data. The numbers
+ * live in content/rate-card.json (editable from /admin/); keep them in sync
+ * with the display strings in content/vehicles.json.
  */
+import rateCardJson from "./content/rate-card.json";
 
 export type VehicleClassId = "sedan" | "suv" | "innova-crysta" | "tempo-traveller";
 
@@ -24,59 +26,6 @@ export interface ClassRates {
 	sedanMultiplier: number;
 }
 
-export const RATE_CARD: Record<VehicleClassId, ClassRates> = {
-	sedan: {
-		label: "Sedan",
-		capacity: "4+1",
-		bookingFormValue: "Sedan",
-		outstationPerKm: 12,
-		oneWayPerKm: 18,
-		driverBataPerDay: 400,
-		airportBase: 799,
-		hourly4: 1200,
-		hourly8: 2200,
-		minKmPerDay: 300,
-		sedanMultiplier: 1,
-	},
-	suv: {
-		label: "SUV (Innova / Ertiga)",
-		capacity: "6+1 / 7+1",
-		bookingFormValue: "SUV",
-		outstationPerKm: 17,
-		oneWayPerKm: 24,
-		driverBataPerDay: 500,
-		airportBase: 1499,
-		hourly4: 1800,
-		hourly8: 3000,
-		minKmPerDay: 300,
-		sedanMultiplier: 1.4,
-	},
-	"innova-crysta": {
-		label: "Innova Crysta",
-		capacity: "6+1 / 7+1",
-		bookingFormValue: "Premium SUV",
-		outstationPerKm: 21,
-		oneWayPerKm: 30,
-		driverBataPerDay: 600,
-		airportBase: 1999,
-		hourly4: 2199,
-		hourly8: 3999,
-		minKmPerDay: 300,
-		sedanMultiplier: 1.75,
-	},
-	"tempo-traveller": {
-		label: "Tempo Traveller (12+1)",
-		capacity: "12+1",
-		bookingFormValue: "Tempo Traveller",
-		outstationPerKm: 24,
-		oneWayPerKm: 34,
-		driverBataPerDay: 600,
-		airportBase: 3200,
-		hourly4: null,
-		hourly8: 4199,
-		minKmPerDay: 300,
-		sedanMultiplier: 2.05,
-	},
-};
+export const RATE_CARD = rateCardJson as Record<VehicleClassId, ClassRates>;
 
 export const VEHICLE_CLASS_IDS = Object.keys(RATE_CARD) as VehicleClassId[];

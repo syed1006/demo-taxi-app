@@ -1,0 +1,592 @@
+[
+	{
+		"slug": "whitefield",
+		"name": "Whitefield",
+		"zone": "east",
+		"distanceKm": 45,
+		"durationRange": "75–105 min",
+		"fares": {
+			"sedan": 899
+		},
+		"neighbourhoods": [
+			"ITPL",
+			"Kadugodi",
+			"Hoodi",
+			"Brookefield",
+			"Varthur",
+			"Whitefield Main Road"
+		],
+		"notes": [
+			"Most Whitefield airport runs go via Budigere Cross (NH-648) or Hennur Road, skipping city traffic almost entirely.",
+			"Avoid the ORR Marathahalli–KR Puram stretch between 6–10 PM; if you must travel then, add 20–30 minutes.",
+			"For early-morning flights (pickups between 3–6 AM) the roads are clear and the trip usually takes about 75 minutes."
+		],
+		"faqs": [
+			{
+				"question": "How early should I leave Whitefield for a 6 AM flight?",
+				"answer": "Leave by 3:00–3:15 AM. Pre-dawn roads make it roughly a 75-minute drive via Budigere Cross, which lands you at departures around 4:30 AM — the 90-minute buffer domestic airlines recommend."
+			},
+			{
+				"question": "Which route will the driver take from ITPL or Brookefield?",
+				"answer": "Usually Whitefield–Hoskote Road to Budigere Cross and onto the airport road, or via Hennur if you're on the Kadugodi side. Drivers pick live based on traffic; both avoid Silk Board-style choke points."
+			},
+			{
+				"question": "Do you do airport pickups to Whitefield at midnight or later?",
+				"answer": "Yes, we run 24/7. Share your flight number when booking — we track the arrival and the driver is waiting even if the flight is delayed."
+			},
+			{
+				"question": "Is the ₹899 fare fixed, or surge-priced?",
+				"answer": "It's a fixed day-and-night fare for a sedan from anywhere in Whitefield to KIA. Tolls are extra at actuals; there's no surge, ever."
+			}
+		],
+		"dedicatedPage": true
+	},
+	{
+		"slug": "electronic-city",
+		"name": "Electronic City",
+		"zone": "south",
+		"distanceKm": 55,
+		"durationRange": "90–120 min",
+		"fares": {
+			"sedan": 1099
+		},
+		"neighbourhoods": [
+			"Phase 1",
+			"Phase 2",
+			"Neeladri Nagar",
+			"Hosa Road",
+			"Chandapura"
+		],
+		"notes": [
+			"Two main corridors: the elevated expressway to Silk Board then ORR–Hebbal, or NICE Road towards Tumkur Road joining the airport highway — our drivers choose based on live traffic.",
+			"Between 5–10 PM the Silk Board–ORR corridor crawls; in peak hours we default to NICE Road even though it's a few kilometres longer.",
+			"This is the longest common airport run in Bangalore — allow the full 2 hours in the evening peak, closer to 90 minutes early morning."
+		],
+		"faqs": [
+			{
+				"question": "How early should I leave Electronic City for a 9 AM flight?",
+				"answer": "By 5:45–6:00 AM. The morning build-up on Hosur Road starts after 7 AM, so an early start keeps it to about 95 minutes and gives you a proper check-in buffer."
+			},
+			{
+				"question": "Will the driver take NICE Road, and who pays that toll?",
+				"answer": "In the evening peak, yes — NICE Road is usually 30–40 minutes faster than Silk Board. All tolls, NICE Road included, are billed at actuals on top of the ₹1,099 sedan fare."
+			},
+			{
+				"question": "Do you cover Chandapura and Hosa Road at the same fare?",
+				"answer": "Yes — Phase 1, Phase 2, Neeladri Nagar, Hosa Road and Chandapura are all covered at the flat Electronic City fare."
+			},
+			{
+				"question": "Can I book a cab from the airport to Electronic City for a late-night arrival?",
+				"answer": "Absolutely. We monitor your flight and the driver meets you at arrivals with a name board. Night drops via NICE Road are quick — often under 90 minutes."
+			}
+		],
+		"dedicatedPage": true
+	},
+	{
+		"slug": "koramangala",
+		"name": "Koramangala",
+		"zone": "central",
+		"distanceKm": 40,
+		"durationRange": "70–100 min",
+		"fares": {
+			"sedan": 799
+		},
+		"neighbourhoods": [
+			"Koramangala 1st–8th Blocks",
+			"Ejipura",
+			"ST Bed Layout",
+			"Jakkasandra"
+		],
+		"notes": [
+			"The usual run is Inner Ring Road → Domlur → Mekhri Circle → Hebbal flyover and onto the elevated airport expressway.",
+			"Evening peak (5–9 PM) on Inner Ring Road and at Hebbal adds 20–30 minutes; early mornings take just over an hour."
+		],
+		"faqs": [
+			{
+				"question": "How early should I leave Koramangala for a 7 AM flight?",
+				"answer": "Leave by 4:15–4:30 AM. At that hour the run via Inner Ring Road and Hebbal takes about 65–70 minutes, putting you at the terminal 90 minutes before departure."
+			},
+			{
+				"question": "Is pickup from any block the same fare?",
+				"answer": "Yes — all eight blocks plus Ejipura, ST Bed and Jakkasandra fall under the flat ₹799 sedan fare to KIA."
+			},
+			{
+				"question": "What if my flight lands at 1 AM — will a cab really show up?",
+				"answer": "Yes. Airport pickups run round the clock, we track the flight, and night-time drops to Koramangala typically take barely an hour on empty roads."
+			}
+		],
+		"dedicatedPage": true
+	},
+	{
+		"slug": "hsr-layout",
+		"name": "HSR Layout",
+		"zone": "south",
+		"distanceKm": 45,
+		"durationRange": "80–110 min",
+		"fares": {
+			"sedan": 899
+		},
+		"neighbourhoods": [
+			"Sector 1–7",
+			"Agara",
+			"Bommanahalli",
+			"Haralur Road"
+		],
+		"notes": [
+			"Standard route is Agara → Inner Ring Road / Koramangala → Mekhri Circle → Hebbal; the ORR–Marathahalli alternative helps when the city side is jammed.",
+			"The 27th Main and Agara junction area slows sharply between 6–9 PM; add 25 minutes if departing in that window."
+		],
+		"faqs": [
+			{
+				"question": "How early should I leave HSR for a 6:30 AM flight?",
+				"answer": "By 3:30 AM. Pre-dawn, the drive is about 80 minutes via Inner Ring Road and Hebbal, which gets you to check-in with the standard buffer intact."
+			},
+			{
+				"question": "Are all seven sectors charged the same ₹899?",
+				"answer": "Yes — Sectors 1 through 7, plus Agara, Bommanahalli and the Haralur Road side, are all one flat sedan fare."
+			},
+			{
+				"question": "Evening flight around 8 PM — when should I book the pickup?",
+				"answer": "Ask for a 4:30–5:00 PM pickup. Evening peak through Koramangala and Hebbal makes this a 100–110 minute run; earlier beats the worst of it."
+			},
+			{
+				"question": "Can I get an SUV instead of a sedan for extra luggage?",
+				"answer": "Yes — SUVs and Innovas are available on the same route; the fare differs by vehicle class. Tell us your luggage count on WhatsApp and we'll recommend the right car."
+			}
+		],
+		"dedicatedPage": true
+	},
+	{
+		"slug": "indiranagar",
+		"name": "Indiranagar",
+		"zone": "central",
+		"distanceKm": 35,
+		"durationRange": "60–90 min",
+		"fares": {
+			"sedan": 799
+		},
+		"neighbourhoods": [
+			"100 Feet Road",
+			"Defence Colony",
+			"Domlur",
+			"Old Airport Road",
+			"HAL 2nd Stage",
+			"Jeevanbheemanagar"
+		],
+		"notes": [
+			"One of the smoothest central pickups: straight up through Ulsoor/Old Madras Road to Hebbal and onto the elevated expressway.",
+			"100 Feet Road and CMH Road crawl between 6–9 PM; drivers loop via Swami Vivekananda Road metro side when needed."
+		],
+		"faqs": [
+			{
+				"question": "How early should I leave Indiranagar for an 8 AM flight?",
+				"answer": "By 5:30 AM. Morning traffic is light until about 7 AM, so the run to KIA takes roughly an hour, landing you at the terminal 90 minutes ahead."
+			},
+			{
+				"question": "Is the fare the same from Domlur or Old Airport Road?",
+				"answer": "Yes — the whole Indiranagar belt including Domlur, HAL 2nd Stage and Jeevanbheemanagar is a flat ₹799 by sedan."
+			},
+			{
+				"question": "Do you offer meet-and-greet for arrivals into Indiranagar homes?",
+				"answer": "Yes — for airport pickups the driver waits at the arrivals exit with a name board, helps with luggage, and we track your flight so delays never strand you."
+			}
+		],
+		"dedicatedPage": true
+	},
+	{
+		"slug": "yelahanka",
+		"name": "Yelahanka",
+		"zone": "north",
+		"distanceKm": 15,
+		"durationRange": "25–40 min",
+		"fares": {
+			"sedan": 799
+		},
+		"neighbourhoods": [
+			"Yelahanka New Town",
+			"Judicial Layout",
+			"Attur",
+			"Kogilu",
+			"Jakkur"
+		],
+		"notes": [
+			"Yelahanka is the closest zone to KIA we serve — flat ₹799 and usually 25–40 minutes door to gate.",
+			"The route joins NH-44 (the airport highway) almost immediately, so even peak-hour delays rarely add more than 10–15 minutes."
+		],
+		"faqs": [
+			{
+				"question": "How early should I leave Yelahanka for a 6 AM flight?",
+				"answer": "A 4:15 AM pickup is comfortable — the drive is 25–30 minutes at that hour, and you're at departures well before the 90-minute mark."
+			},
+			{
+				"question": "Why is the fare ₹799 when Yelahanka is so close?",
+				"answer": "₹799 is our minimum airport fare for a sedan — it covers the driver's dead mileage to reach you and the return. It's still the cheapest fixed airport fare on our card."
+			},
+			{
+				"question": "Do you cover Jakkur and Kogilu under the Yelahanka fare?",
+				"answer": "Yes — New Town, Judicial Layout, Attur, Kogilu and Jakkur all fall in the same flat-fare zone."
+			}
+		],
+		"dedicatedPage": true
+	},
+	{
+		"slug": "hebbal",
+		"name": "Hebbal",
+		"zone": "north",
+		"distanceKm": 25,
+		"durationRange": "40–60 min",
+		"fares": {
+			"sedan": 799
+		},
+		"neighbourhoods": [
+			"Kempapura",
+			"Manyata Tech Park",
+			"Sahakara Nagar",
+			"Kodigehalli",
+			"Byatarayanapura"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	},
+	{
+		"slug": "marathahalli",
+		"name": "Marathahalli",
+		"zone": "east",
+		"distanceKm": 40,
+		"durationRange": "70–100 min",
+		"fares": {
+			"sedan": 799
+		},
+		"neighbourhoods": [
+			"Marathahalli Bridge",
+			"Kundalahalli",
+			"Doddanekundi",
+			"AECS Layout",
+			"Munnekolala"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	},
+	{
+		"slug": "jayanagar",
+		"name": "Jayanagar",
+		"zone": "south",
+		"distanceKm": 45,
+		"durationRange": "80–110 min",
+		"fares": {
+			"sedan": 899
+		},
+		"neighbourhoods": [
+			"Jayanagar 3rd Block",
+			"Jayanagar 4th Block",
+			"Jayanagar 9th Block",
+			"Tilak Nagar",
+			"South End Circle"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	},
+	{
+		"slug": "jp-nagar",
+		"name": "JP Nagar",
+		"zone": "south",
+		"distanceKm": 48,
+		"durationRange": "85–115 min",
+		"fares": {
+			"sedan": 999
+		},
+		"neighbourhoods": [
+			"JP Nagar 2nd Phase",
+			"JP Nagar 5th Phase",
+			"JP Nagar 7th Phase",
+			"Sarakki",
+			"Puttenahalli"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	},
+	{
+		"slug": "btm-layout",
+		"name": "BTM Layout",
+		"zone": "south",
+		"distanceKm": 46,
+		"durationRange": "80–110 min",
+		"fares": {
+			"sedan": 999
+		},
+		"neighbourhoods": [
+			"BTM 1st Stage",
+			"BTM 2nd Stage",
+			"Madiwala",
+			"NS Palya",
+			"Bilekahalli"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	},
+	{
+		"slug": "malleshwaram",
+		"name": "Malleshwaram",
+		"zone": "central",
+		"distanceKm": 35,
+		"durationRange": "60–85 min",
+		"fares": {
+			"sedan": 799
+		},
+		"neighbourhoods": [
+			"Sampige Road",
+			"Margosa Road",
+			"Sadashivanagar",
+			"Seshadripuram",
+			"18th Cross"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	},
+	{
+		"slug": "rajajinagar",
+		"name": "Rajajinagar",
+		"zone": "west",
+		"distanceKm": 38,
+		"durationRange": "65–90 min",
+		"fares": {
+			"sedan": 799
+		},
+		"neighbourhoods": [
+			"Rajajinagar 1st Block",
+			"Basaveshwaranagar",
+			"Mahalakshmi Layout",
+			"Dr. Rajkumar Road",
+			"West of Chord Road"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	},
+	{
+		"slug": "banashankari",
+		"name": "Banashankari",
+		"zone": "south",
+		"distanceKm": 50,
+		"durationRange": "85–115 min",
+		"fares": {
+			"sedan": 999
+		},
+		"neighbourhoods": [
+			"Banashankari 2nd Stage",
+			"Banashankari 3rd Stage",
+			"Kathriguppe",
+			"Padmanabhanagar",
+			"Kumaraswamy Layout"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	},
+	{
+		"slug": "basavanagudi",
+		"name": "Basavanagudi",
+		"zone": "central",
+		"distanceKm": 45,
+		"durationRange": "80–105 min",
+		"fares": {
+			"sedan": 899
+		},
+		"neighbourhoods": [
+			"Gandhi Bazaar",
+			"Bull Temple Road",
+			"NR Colony",
+			"Hanumanthanagar",
+			"Shankarapuram"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	},
+	{
+		"slug": "mg-road",
+		"name": "MG Road",
+		"zone": "central",
+		"distanceKm": 35,
+		"durationRange": "60–90 min",
+		"fares": {
+			"sedan": 799
+		},
+		"neighbourhoods": [
+			"Brigade Road",
+			"Church Street",
+			"Residency Road",
+			"Shivajinagar",
+			"Richmond Town"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	},
+	{
+		"slug": "majestic",
+		"name": "Majestic",
+		"zone": "central",
+		"distanceKm": 35,
+		"durationRange": "60–90 min",
+		"fares": {
+			"sedan": 799
+		},
+		"neighbourhoods": [
+			"Gandhinagar",
+			"Chickpet",
+			"KR Market",
+			"Cottonpet",
+			"Anand Rao Circle"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	},
+	{
+		"slug": "kr-puram",
+		"name": "KR Puram",
+		"zone": "east",
+		"distanceKm": 35,
+		"durationRange": "60–85 min",
+		"fares": {
+			"sedan": 799
+		},
+		"neighbourhoods": [
+			"Ramamurthy Nagar",
+			"TC Palya",
+			"Devasandra",
+			"Basavanapura",
+			"Medahalli"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	},
+	{
+		"slug": "sarjapur-road",
+		"name": "Sarjapur Road",
+		"zone": "east",
+		"distanceKm": 52,
+		"durationRange": "90–120 min",
+		"fares": {
+			"sedan": 1099
+		},
+		"neighbourhoods": [
+			"Kaikondrahalli",
+			"Doddakannelli",
+			"Harlur",
+			"Kasavanahalli",
+			"Carmelaram"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	},
+	{
+		"slug": "bellandur",
+		"name": "Bellandur",
+		"zone": "east",
+		"distanceKm": 48,
+		"durationRange": "85–115 min",
+		"fares": {
+			"sedan": 999
+		},
+		"neighbourhoods": [
+			"Kadubeesanahalli",
+			"Panathur",
+			"Iblur",
+			"Kariyammana Agrahara",
+			"Green Glen Layout"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	},
+	{
+		"slug": "bannerghatta-road",
+		"name": "Bannerghatta Road",
+		"zone": "south",
+		"distanceKm": 55,
+		"durationRange": "95–125 min",
+		"fares": {
+			"sedan": 1099
+		},
+		"neighbourhoods": [
+			"Arekere",
+			"Hulimavu",
+			"Gottigere",
+			"Kalena Agrahara",
+			"Bannerghatta"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	},
+	{
+		"slug": "vijayanagar",
+		"name": "Vijayanagar",
+		"zone": "west",
+		"distanceKm": 42,
+		"durationRange": "75–100 min",
+		"fares": {
+			"sedan": 899
+		},
+		"neighbourhoods": [
+			"Attiguppe",
+			"Chandra Layout",
+			"RPC Layout",
+			"Hosahalli",
+			"Nagarbhavi"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	},
+	{
+		"slug": "rt-nagar",
+		"name": "RT Nagar",
+		"zone": "north",
+		"distanceKm": 28,
+		"durationRange": "45–70 min",
+		"fares": {
+			"sedan": 799
+		},
+		"neighbourhoods": [
+			"Ganganagar",
+			"Sultanpalya",
+			"Matadahalli",
+			"Anand Nagar",
+			"HBR Layout"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	},
+	{
+		"slug": "kengeri",
+		"name": "Kengeri",
+		"zone": "west",
+		"distanceKm": 55,
+		"durationRange": "95–125 min",
+		"fares": {
+			"sedan": 1099
+		},
+		"neighbourhoods": [
+			"Kengeri Satellite Town",
+			"Rajarajeshwari Nagar",
+			"Kommaghatta",
+			"Mailasandra",
+			"Gnana Bharathi"
+		],
+		"notes": [],
+		"faqs": [],
+		"dedicatedPage": false
+	}
+]

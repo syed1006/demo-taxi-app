@@ -1,27 +1,31 @@
-export const SITE = {
-	name: "Bangalore Urban Cabs",
-	shortName: "BangaloreUrbanCabs",
-	tagline: "ನಮ್ಮ ಸೇವೆ",
-	url: "https://bangaloreurbancabs.com",
-	title: "Bangalore Urban Cabs — Taxi, Airport & Outstation Cab Booking",
-	description:
-		"Book reliable taxis in Bangalore — airport transfers, hourly rentals, outstation trips & corporate travel. 24/7 service with verified drivers. Call +91 70227 62929.",
+import siteJson from "./content/site.json";
+
+export interface SiteInfo {
+	name: string;
+	shortName: string;
+	tagline: string;
+	url: string;
+	title: string;
+	description: string;
 	// The one canonical phone number. wa.me requires the country code with no
 	// "+"; tel: requires full E.164.
-	phoneDisplay: "+91 70227 62929",
-	phoneE164: "+917022762929",
-	whatsapp: "917022762929",
-	email: "info@bangaloreurbancabs.com",
-	instagram: "https://www.instagram.com/bangalore_urban_cabs/",
+	phoneDisplay: string;
+	phoneE164: string;
+	whatsapp: string;
+	email: string;
+	instagram: string;
 	address: {
-		street: "RMV 2nd Stage, Bhoopasandra",
-		locality: "Bengaluru",
-		region: "Karnataka",
-		postalCode: "560094",
-		country: "IN",
-	},
-	rating: "4.8",
-} as const;
+		street: string;
+		locality: string;
+		region: string;
+		postalCode: string;
+		country: string;
+	};
+	rating: string;
+}
+
+// Business identity/contact data lives in content/site.json (editable from /admin/).
+export const SITE: SiteInfo = siteJson;
 
 export const waLink = (text: string): string =>
 	`https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(text)}`;

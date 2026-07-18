@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../data/site";
+
+// Owner-only content admin. Not linked from the site, noindex, excluded
+// from the sitemap. Contains no secrets: it's a static page that talks to
+// the GitHub API with a token the owner pastes (stored only in their
+// browser). Without a valid token it can do nothing.
+---
+
+<BaseLayout
+	title={`Site Admin | ${SITE.name}`}
+	description="Owner dashboard: edit routes, tour packages, fares and photos. Changes publish to the live site through GitHub."
+	path="/admin/"
+	noindex
+>
+	<main class="flex min-h-screen flex-col">
+		<h1 class="sr-only">Bangalore Urban Cabs — Site Admin</h1>
+		<div id="admin-app" class="flex flex-1 flex-col"></div>
+		<noscript>
+			<p class="mx-auto max-w-xl px-4 py-14 text-center">
+				The admin needs JavaScript — enable it and reload.
+			</p>
+		</noscript>
+	</main>
+</BaseLayout>
+
+<script>
+	import "../scripts/admin/main";
+</script>
