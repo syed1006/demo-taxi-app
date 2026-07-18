@@ -28,8 +28,10 @@ const companyLinks = [
 
 <footer class="bg-gradient-to-br from-stone-900 to-stone-950 text-white">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-			<div class="space-y-6">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+			{/* Brand block spans 2 of 6 — "BangaloreUrbanCabs" is one long word
+			    and overflows a 1/5 column on laptops. */}
+			<div class="space-y-6 lg:col-span-2">
 				<div class="flex items-center space-x-3">
 					<div class="bg-gradient-to-r from-orange-500 to-red-500 rounded-full p-2">
 						<Icon name="lucide:car" class="h-8 w-8 text-white" />
