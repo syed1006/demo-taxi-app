@@ -476,7 +476,8 @@ export function viewRoutes(): HTMLElement {
 		el(
 			"div",
 			{ class: "flex items-center gap-3 rounded-lg border bg-card p-3" },
-			thumb(route.image),
+			// Names beat thumbnails for width on phones.
+			thumb(route.image, "hidden sm:block h-14 w-20"),
 			el(
 				"div",
 				{ class: "min-w-0 flex-1" },
@@ -674,7 +675,7 @@ export function viewPackages(): HTMLElement {
 		return el(
 			"div",
 			{ class: "flex items-center gap-3 rounded-lg border bg-card p-3" },
-			thumb(pkg.image),
+			thumb(pkg.image, "hidden sm:block h-14 w-20"),
 			el(
 				"div",
 				{ class: "min-w-0 flex-1" },

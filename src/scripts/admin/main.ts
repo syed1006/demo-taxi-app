@@ -185,8 +185,9 @@ async function start(token: string) {
 }
 
 let activeTab = TABS[0];
-const viewHost = el("div", { class: "mx-auto w-full max-w-6xl flex-1 px-4 py-6 pb-28 sm:px-6" });
-const tabsNav = el("nav", { class: "mx-auto flex w-full max-w-6xl flex-wrap gap-1 px-4 sm:px-6" });
+const viewHost = el("div", { class: "mx-auto w-full max-w-6xl flex-1 px-4 py-6 pb-40 sm:px-6 sm:pb-28" });
+// One swipeable row on phones, wraps on wider screens.
+const tabsNav = el("nav", { class: "scrollbar-hide mx-auto flex w-full max-w-6xl gap-1 overflow-x-auto px-4 sm:flex-wrap sm:overflow-visible sm:px-6" });
 const publishBar = el("div", {
 	class: "fixed inset-x-0 bottom-0 z-40 border-t bg-card/95 backdrop-blur",
 });
@@ -206,11 +207,11 @@ function renderShell() {
 				"div",
 				{ class: "mx-auto flex w-full max-w-6xl flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 sm:px-6" },
 				el("p", { class: "font-bold text-foreground" }, "Bangalore Urban Cabs ", el("span", { class: "text-orange-600 dark:text-orange-400" }, "Admin")),
-				badge(`${ADMIN_REPO}@${ADMIN_BRANCH}`),
+				el("span", { class: "hidden sm:inline-flex" }, badge(`${ADMIN_REPO}@${ADMIN_BRANCH}`)),
 				DEPLOYS ? null : badge("test branch — no auto-deploy", "warn"),
 				el("span", { class: "flex-1" }),
-				el("a", { href: `${import.meta.env.BASE_URL}`, class: "text-sm font-semibold text-orange-600 hover:underline dark:text-orange-400" }, "View site →"),
-				el("span", { class: "text-sm text-muted-foreground" }, `@${app.login}`),
+				el("a", { href: `${import.meta.env.BASE_URL}`, class: "py-2 text-sm font-semibold text-orange-600 hover:underline dark:text-orange-400" }, "View site →"),
+				el("span", { class: "hidden text-sm text-muted-foreground sm:inline" }, `@${app.login}`),
 				el(
 					"button",
 					{
@@ -257,7 +258,7 @@ function refreshChrome() {
 			return el(
 				"button",
 				{
-					class: `relative rounded-t-lg px-3 py-2 text-sm font-semibold cursor-pointer ${
+					class: `relative flex-none whitespace-nowrap rounded-t-lg px-3 py-2 text-sm font-semibold cursor-pointer ${
 						tab === activeTab
 							? "border border-b-0 bg-background text-orange-600 dark:text-orange-400"
 							: "text-muted-foreground hover:text-foreground"
@@ -284,11 +285,15 @@ function refreshChrome() {
 	publishBar.replaceChildren(
 		el(
 			"div",
-			{ class: "mx-auto flex w-full max-w-6xl flex-wrap items-center gap-3 px-4 py-3 sm:px-6" },
-			el("span", { class: "h-2.5 w-2.5 flex-none animate-pulse rounded-full bg-orange-500" }),
-			el("p", { class: "min-w-0 flex-1 truncate text-sm text-foreground" }, el("strong", {}, "Unpublished changes: "), parts.join(", ")),
-			el("button", { class: `${cx.btn} ${cx.btnGhost}`, onclick: discardAll }, "Discard"),
-			el("button", { class: `${cx.btn} ${cx.btnPrimary}`, onclick: openPublishModal }, "Review & publish")
+			{ class: "mx-auto flex w-full max-w-6xl flex-wrap items-center gap-x-3 gap-y-2 px-4 py-3 sm:px-6" },
+			el(
+				"p",
+				{ class: "flex min-w-0 basis-full items-center gap-2 text-sm text-foreground sm:basis-0 sm:flex-1" },
+				el("span", { class: "h-2.5 w-2.5 flex-none animate-pulse rounded-full bg-orange-500" }),
+				el("span", { class: "truncate" }, el("strong", {}, "Unpublished: "), parts.join(", "))
+			),
+			el("button", { class: `${cx.btn} ${cx.btnGhost} flex-1 sm:flex-none`, onclick: discardAll }, "Discard"),
+			el("button", { class: `${cx.btn} ${cx.btnPrimary} flex-1 sm:flex-none`, onclick: openPublishModal }, "Review & publish")
 		)
 	);
 }
