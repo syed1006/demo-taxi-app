@@ -4,7 +4,8 @@ import PageHero from "../../components/PageHero.astro";
 import PackageCard from "../../components/PackageCard.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
 import ServiceSchema from "../../components/seo/ServiceSchema.astro";
-import { PACKAGES } from "../../data/packages";
+import ItemListSchema from "../../components/seo/ItemListSchema.astro";
+import { PACKAGES, packageTitle } from "../../data/packages";
 import { waLink } from "../../data/site";
 import type { FaqItem } from "../../data/faq";
 
@@ -119,5 +120,12 @@ const faqs: FaqItem[] = [
 		description={description}
 		{path}
 		price={3399}
+	/>
+	<ItemListSchema
+		name="Tour Packages from Bangalore"
+		items={PACKAGES.map((pkg) => ({
+			name: packageTitle(pkg),
+			path: `/tour-packages/${pkg.slug}/`,
+		}))}
 	/>
 </PageLayout>

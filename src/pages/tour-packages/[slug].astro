@@ -1,4 +1,5 @@
 ---
+import { getImage } from "astro:assets";
 import PageLayout from "../../layouts/PageLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import FareTable from "../../components/FareTable.astro";
@@ -59,12 +60,18 @@ const related = pkg.relatedPackages
 const waMessage = `Hi! I'd like to book the ${pkg.name} (Sedan ${formatINR(sedanPrice)}).`;
 const bookHref = `/book/?type=tour&package=${encodeURIComponent(pkg.slug)}`;
 
+const ogImg = pkg.image
+	? await getImage({ src: pkg.image, width: 1200, format: "jpeg" })
+	: null;
+
 const tripSchema = {
 	"@context": "https://schema.org",
 	"@type": "TouristTrip",
 	name: pkg.name,
 	description: pkg.overview[0],
 	url: `${SITE.url}${path}`,
+	...(ogImg ? { image: new URL(ogImg.src, SITE.url).href } : {}),
+	touristType: ["Family", "Couple", "Group"],
 	provider: { "@id": `${SITE.url}/#business` },
 	itinerary: {
 		"@type": "ItemList",
@@ -75,9 +82,11 @@ const tripSchema = {
 		})),
 	},
 	offers: {
-		"@type": "Offer",
-		price: String(sedanPrice),
+		"@type": "AggregateOffer",
+		lowPrice: String(sedanPrice),
+		highPrice: String(Math.max(...pkg.prices.map((entry) => entry.price))),
 		priceCurrency: "INR",
+		offerCount: pkg.prices.length,
 	},
 };
 ---

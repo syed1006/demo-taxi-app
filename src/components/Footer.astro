@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components";
 import { SITE } from "../data/site";
 import { SERVICES, VEHICLE_PAGES } from "../data/services";
 import { ROUTES, routePath } from "../data/routes";
+import { PACKAGES, packageTitle } from "../data/packages";
 import { withBase } from "../lib/url";
 
 const year = new Date().getFullYear();
@@ -10,6 +11,10 @@ const year = new Date().getFullYear();
 const topRoutes = [...ROUTES]
 	.sort((a, b) => Number(b.popular) - Number(a.popular))
 	.slice(0, 10);
+
+const topPackages = [...PACKAGES]
+	.sort((a, b) => Number(b.popular) - Number(a.popular))
+	.slice(0, 8);
 
 const companyLinks = [
 	{ name: "About Us", href: "/about/" },
@@ -23,7 +28,7 @@ const companyLinks = [
 
 <footer class="bg-gradient-to-br from-stone-900 to-stone-950 text-white">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
 			<div class="space-y-6">
 				<div class="flex items-center space-x-3">
 					<div class="bg-gradient-to-r from-orange-500 to-red-500 rounded-full p-2">
@@ -103,6 +108,32 @@ const companyLinks = [
 							</li>
 						))
 					}
+				</ul>
+			</nav>
+
+			<nav class="space-y-6" aria-label="Tour packages">
+				<h2 class="text-xl font-semibold text-orange-300">Tour Packages</h2>
+				<ul class="space-y-3">
+					{
+						topPackages.map((pkg) => (
+							<li>
+								<a
+									href={withBase(`/tour-packages/${pkg.slug}/`)}
+									class="text-stone-300 hover:text-orange-300 transition-colors"
+								>
+									{packageTitle(pkg)}
+								</a>
+							</li>
+						))
+					}
+					<li>
+						<a
+							href={withBase("/tour-packages/")}
+							class="font-semibold text-orange-300 hover:text-orange-200 transition-colors"
+						>
+							All {PACKAGES.length} Tour Packages →
+						</a>
+					</li>
 				</ul>
 			</nav>
 

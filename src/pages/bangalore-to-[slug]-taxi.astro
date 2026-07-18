@@ -236,5 +236,9 @@ const bookHref = `/book/?type=outstation&drop=${encodeURIComponent(route.name)}`
 		description={description}
 		{path}
 		price={sedan.oneWay ?? sedan.roundTrip}
+		priceHigh={Math.max(
+			...fareTableFor(route.fares, route.days).map((row) => row.roundTrip)
+		)}
+		image={route.image}
 	/>
 </PageLayout>

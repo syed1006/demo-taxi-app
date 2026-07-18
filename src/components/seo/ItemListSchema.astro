@@ -1,0 +1,26 @@
+---
+import { SITE } from "../../data/site";
+
+interface Props {
+	name: string;
+	/** Site-relative paths; names should match the linked page's subject. */
+	items: { name: string; path: string }[];
+}
+
+const { name, items } = Astro.props;
+
+const schema = {
+	"@context": "https://schema.org",
+	"@type": "ItemList",
+	name,
+	numberOfItems: items.length,
+	itemListElement: items.map((item, index) => ({
+		"@type": "ListItem",
+		position: index + 1,
+		name: item.name,
+		url: `${SITE.url}${item.path}`,
+	})),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

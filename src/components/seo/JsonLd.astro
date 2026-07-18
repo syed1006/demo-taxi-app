@@ -1,9 +1,13 @@
 ---
 import { SITE } from "../../data/site";
+import { SERVICES } from "../../data/services";
 
 // Sitewide business entity. Per-page schema (FAQPage, BreadcrumbList,
 // Service, TouristTrip) is emitted by the components that render the
 // corresponding visible content, referencing this @id.
+// No aggregateRating on purpose: self-serving ratings without third-party
+// review markup risk a manual action — real Google Business Profile
+// reviews are the legitimate path to stars.
 const business = {
 	"@context": "https://schema.org",
 	"@type": ["LocalBusiness", "TaxiService"],
@@ -14,6 +18,7 @@ const business = {
 	telephone: SITE.phoneE164,
 	email: SITE.email,
 	image: `${SITE.url}/og.png`,
+	logo: `${SITE.url}/android-chrome-512x512.png`,
 	address: {
 		"@type": "PostalAddress",
 		streetAddress: SITE.address.street,
@@ -22,10 +27,15 @@ const business = {
 		postalCode: SITE.address.postalCode,
 		addressCountry: SITE.address.country,
 	},
-	areaServed: {
-		"@type": "City",
-		name: "Bengaluru",
+	geo: {
+		"@type": "GeoCoordinates",
+		latitude: 13.0417,
+		longitude: 77.5755,
 	},
+	areaServed: [
+		{ "@type": "City", name: "Bengaluru" },
+		{ "@type": "State", name: "Karnataka" },
+	],
 	openingHoursSpecification: {
 		"@type": "OpeningHoursSpecification",
 		dayOfWeek: [
@@ -39,6 +49,28 @@ const business = {
 		],
 		opens: "00:00",
 		closes: "23:59",
+	},
+	currenciesAccepted: "INR",
+	paymentAccepted: "Cash, UPI, Credit Card, Debit Card",
+	knowsLanguage: ["en", "kn", "hi"],
+	contactPoint: {
+		"@type": "ContactPoint",
+		contactType: "customer service",
+		telephone: SITE.phoneE164,
+		availableLanguage: ["en", "kn", "hi"],
+		areaServed: "IN",
+	},
+	hasOfferCatalog: {
+		"@type": "OfferCatalog",
+		name: "Cab services",
+		itemListElement: SERVICES.map((service) => ({
+			"@type": "Offer",
+			itemOffered: {
+				"@type": "Service",
+				name: service.name,
+				url: `${SITE.url}${service.path}`,
+			},
+		})),
 	},
 	sameAs: [SITE.instagram],
 	priceRange: "₹₹",

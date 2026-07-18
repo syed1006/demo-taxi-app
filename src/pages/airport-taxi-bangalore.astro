@@ -4,6 +4,7 @@ import PageHero from "../components/PageHero.astro";
 import FareTable from "../components/FareTable.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
 import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import ItemListSchema from "../components/seo/ItemListSchema.astro";
 import { Icon } from "astro-icon/components";
 import { AIRPORT_AREAS } from "../data/airport-areas";
 import { RATE_CARD, VEHICLE_CLASS_IDS } from "../data/rate-card";
@@ -231,5 +232,12 @@ const dedicatedAreas = AIRPORT_AREAS.filter((area) => area.dedicatedPage);
 		description={description}
 		{path}
 		price={799}
+	/>
+	<ItemListSchema
+		name="Bangalore Airport Taxi by Area"
+		items={AIRPORT_AREAS.filter((area) => area.dedicatedPage).map((area) => ({
+			name: `${area.name} Airport Taxi`,
+			path: `/airport-taxi-${area.slug}/`,
+		}))}
 	/>
 </PageLayout>

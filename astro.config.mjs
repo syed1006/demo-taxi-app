@@ -28,9 +28,9 @@ export default defineConfig({
 					p === "/book/"
 				)
 					item.priority = 0.9;
-				else if (p.startsWith("/bangalore-to-")) item.priority = 0.8;
-				else if (p.startsWith("/tour-packages/") || p.startsWith("/airport-taxi-"))
-					item.priority = 0.7;
+				else if (p.startsWith("/bangalore-to-") || p.startsWith("/tour-packages/"))
+					item.priority = 0.8;
+				else if (p.startsWith("/airport-taxi-")) item.priority = 0.7;
 				else item.priority = 0.4;
 				return item;
 			},

@@ -1,4 +1,6 @@
 ---
+import { getImage } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import { SITE } from "../../data/site";
 
 interface Props {
@@ -7,9 +9,32 @@ interface Props {
 	path: string;
 	/** Lowest advertised price, INR. */
 	price?: number;
+	/** Highest advertised price, INR — emits an AggregateOffer price range. */
+	priceHigh?: number;
+	image?: ImageMetadata;
 }
 
-const { serviceType, description, path, price } = Astro.props;
+const { serviceType, description, path, price, priceHigh, image } = Astro.props;
+
+const img = image
+	? await getImage({ src: image, width: 1200, format: "jpeg" })
+	: null;
+
+const offers =
+	price && priceHigh && priceHigh > price
+		? {
+				"@type": "AggregateOffer",
+				lowPrice: String(price),
+				highPrice: String(priceHigh),
+				priceCurrency: "INR",
+			}
+		: price
+			? {
+					"@type": "Offer",
+					price: String(price),
+					priceCurrency: "INR",
+				}
+			: null;
 
 const schema = {
 	"@context": "https://schema.org",
@@ -19,15 +44,8 @@ const schema = {
 	url: `${SITE.url}${path}`,
 	provider: { "@id": `${SITE.url}/#business` },
 	areaServed: { "@type": "City", name: "Bengaluru" },
-	...(price
-		? {
-				offers: {
-					"@type": "Offer",
-					price: String(price),
-					priceCurrency: "INR",
-				},
-			}
-		: {}),
+	...(img ? { image: new URL(img.src, SITE.url).href } : {}),
+	...(offers ? { offers } : {}),
 };
 ---
 

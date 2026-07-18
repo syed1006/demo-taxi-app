@@ -5,8 +5,9 @@ import FareTable from "../components/FareTable.astro";
 import RouteCard from "../components/RouteCard.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
 import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import ItemListSchema from "../components/seo/ItemListSchema.astro";
 import { Icon } from "astro-icon/components";
-import { ROUTES } from "../data/routes";
+import { ROUTES, routePath } from "../data/routes";
 import { RATE_CARD, VEHICLE_CLASS_IDS } from "../data/rate-card";
 import { formatINR } from "../lib/fare";
 import type { FaqItem } from "../data/faq";
@@ -209,5 +210,12 @@ const faqs: FaqItem[] = [
 		description={description}
 		{path}
 		price={12}
+	/>
+	<ItemListSchema
+		name="Outstation Taxi Routes from Bangalore"
+		items={ROUTES.map((route) => ({
+			name: `Bangalore to ${route.name} Taxi`,
+			path: routePath(route.slug),
+		}))}
 	/>
 </PageLayout>

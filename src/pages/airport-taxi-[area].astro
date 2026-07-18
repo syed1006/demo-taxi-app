@@ -176,5 +176,10 @@ const bookHref = `/book/?type=airport&pickup=${encodeURIComponent(area.name)}`;
 		description={description}
 		{path}
 		price={sedanFare}
+		priceHigh={Math.max(
+			...VEHICLE_CLASS_IDS.map(
+				(id) => area.fares[id] ?? airportFare(id, area.distanceKm)
+			)
+		)}
 	/>
 </PageLayout>
