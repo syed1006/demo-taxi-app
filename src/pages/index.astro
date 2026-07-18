@@ -6,6 +6,7 @@ import Hero from "../components/Hero.astro";
 import BookingTypeCards from "../components/BookingTypeCards.astro";
 import Pricing from "../components/Pricing.astro";
 import RouteCard from "../components/RouteCard.astro";
+import PackageCard from "../components/PackageCard.astro";
 import Destinations from "../components/Destinations.astro";
 import SocialProof from "../components/SocialProof.astro";
 import Testimonials from "../components/Testimonials.astro";
@@ -14,11 +15,29 @@ import Footer from "../components/Footer.astro";
 import ContactFloat from "../components/ContactFloat.astro";
 import StickyBookBar from "../components/StickyBookBar.astro";
 import { ROUTES } from "../data/routes";
+import { PACKAGES } from "../data/packages";
 import { withBase } from "../lib/url";
 
 const popularRoutes = [...ROUTES]
 	.sort((a, b) => Number(b.popular) - Number(a.popular) || b.rating - a.rating)
 	.slice(0, 8);
+
+// Packages are the top seller — they lead the page.
+const featuredPackages = [...PACKAGES]
+	.sort((a, b) => Number(b.popular) - Number(a.popular))
+	.slice(0, 8);
+
+const packageListSchema = {
+	"@context": "https://schema.org",
+	"@type": "ItemList",
+	name: "Popular Tour Packages from Bangalore",
+	itemListElement: featuredPackages.map((pkg, index) => ({
+		"@type": "ListItem",
+		position: index + 1,
+		name: pkg.name,
+		url: new URL(withBase(`/tour-packages/${pkg.slug}/`), Astro.site).href,
+	})),
+};
 ---
 
 <BaseLayout path="/">
@@ -26,6 +45,41 @@ const popularRoutes = [...ROUTES]
 	<ContactFloat desktopOnly />
 	<main class="pb-14 md:pb-0">
 		<Hero />
+
+		<section
+			class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-background"
+			aria-labelledby="tour-packages-heading"
+		>
+			<div class="max-w-7xl mx-auto">
+				<div class="text-center mb-12">
+					<h2
+						id="tour-packages-heading"
+						class="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4"
+					>
+						Tour Packages from Bangalore
+					</h2>
+					<p class="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
+						Curated itineraries at hard prices — car, driver, fuel and
+						sightseeing transfers included. Pick a package and go.
+					</p>
+				</div>
+
+				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+					{featuredPackages.map((pkg) => <PackageCard pkg={pkg} />)}
+				</div>
+
+				<div class="text-center mt-10">
+					<a
+						href={withBase("/tour-packages/")}
+						class="inline-flex items-center gap-2 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 transition-all duration-300 shadow-lg"
+					>
+						See all {PACKAGES.length} tour packages & prices
+						<Icon name="lucide:arrow-right" class="h-4 w-4" />
+					</a>
+				</div>
+			</div>
+		</section>
+
 		<BookingTypeCards />
 		<Pricing />
 
@@ -70,4 +124,9 @@ const popularRoutes = [...ROUTES]
 	</main>
 	<Footer />
 	<StickyBookBar />
+	<script
+		type="application/ld+json"
+		is:inline
+		set:html={JSON.stringify(packageListSchema)}
+	/>
 </BaseLayout>

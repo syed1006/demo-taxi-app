@@ -2,9 +2,29 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { SITE, waLink } from "../data/site";
-import { SERVICES } from "../data/services";
+import { PACKAGES } from "../data/packages";
+import { formatINR } from "../lib/fare";
 import { withBase } from "../lib/url";
 import cityBg from "../assets/bg/city-bg.webp";
+
+// Tour packages are the highest-demand product: the hero sells them
+// directly. Popular packages lead; every slide books in one tap.
+const featured = [...PACKAGES]
+	.sort((a, b) => Number(b.popular) - Number(a.popular))
+	.slice(0, 6)
+	.map((pkg) => {
+		const sedanPrice = pkg.prices.find((p) => p.vehicle === "sedan")?.price;
+		return {
+			pkg,
+			sedanPrice,
+			duration:
+				pkg.durationNights > 0
+					? `${pkg.durationDays} Days / ${pkg.durationNights} Night${pkg.durationNights > 1 ? "s" : ""}`
+					: "1-Day Trip",
+			highlights: pkg.sightsCovered.slice(0, 3).join(" · "),
+			waMessage: `Hi! I'd like to book the ${pkg.name}${sedanPrice ? ` (Sedan ${formatINR(sedanPrice)})` : ""}.`,
+		};
+	});
 ---
 
 <section
@@ -39,39 +59,52 @@ import cityBg from "../assets/bg/city-bg.webp";
 			</p>
 
 			<h1 class="text-base sm:text-lg font-semibold text-white/90 max-w-2xl mx-auto">
-				Taxi Service in Bangalore — Airport, Outstation, Local & Tours
+				Tour Packages &amp; Taxi Service in Bangalore — Airport, Outstation &amp; Local Cabs
 			</h1>
 
-			{/* Service slider: each slide is a directly bookable service. */}
+			{/* Package slider: each slide is a directly bookable tour. */}
 			<div class="relative">
 				<div
 					id="hero-slider"
 					class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide rounded-2xl"
 				>
 					{
-						SERVICES.map((service) => (
+						featured.map(({ pkg, sedanPrice, duration, highlights, waMessage }, index) => (
 							<div class="w-full flex-shrink-0 snap-center px-1 py-2">
 								<div class="bg-white/15 backdrop-blur-md border border-white/25 rounded-2xl p-6 sm:p-10 shadow-2xl">
-									<div
-										class={`w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${service.color} flex items-center justify-center shadow-lg`}
-									>
-										<Icon
-											name={service.icon}
-											class="h-7 w-7 sm:h-8 sm:w-8 text-white"
+									{pkg.image ? (
+										<Image
+											src={pkg.image}
+											alt={pkg.shortName}
+											width={128}
+											height={128}
+											format="webp"
+											quality={75}
+											loading={index === 0 ? "eager" : "lazy"}
+											class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full object-cover border-2 border-white/40 shadow-lg"
 										/>
-									</div>
+									) : (
+										<div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full bg-gradient-to-r from-orange-400 to-red-600 flex items-center justify-center shadow-lg">
+											<Icon name="lucide:map" class="h-8 w-8 text-white" />
+										</div>
+									)}
 									<h2 class="text-2xl sm:text-4xl font-bold text-white mb-1">
-										{service.name}
-										<span class="block sm:inline text-orange-300 text-xl sm:text-3xl sm:ml-2">
-											{service.priceHook}
-										</span>
+										{pkg.shortName}
+										{sedanPrice && (
+											<span class="block sm:inline text-orange-300 text-xl sm:text-3xl sm:ml-2">
+												from {formatINR(sedanPrice)}
+											</span>
+										)}
 									</h2>
+									<p class="text-white font-semibold text-sm sm:text-base mb-1">
+										{duration} · {pkg.sightsCovered.length} places · {pkg.includedKm} km included
+									</p>
 									<p class="text-white/85 text-sm sm:text-base mb-6 max-w-xl mx-auto">
-										{service.description}
+										{highlights}
 									</p>
 									<div class="flex flex-col sm:flex-row items-center justify-center gap-3">
 										<a
-											href={waLink(service.waMessage)}
+											href={waLink(waMessage)}
 											target="_blank"
 											rel="noopener"
 											class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-3.5 text-lg rounded-full shadow-xl hover:scale-105 transition-all duration-300"
@@ -88,10 +121,10 @@ import cityBg from "../assets/bg/city-bg.webp";
 										</a>
 									</div>
 									<a
-										href={withBase(service.path)}
+										href={withBase(`/tour-packages/${pkg.slug}/`)}
 										class="inline-block mt-4 text-sm text-white/75 hover:text-white underline underline-offset-4"
 									>
-										See {service.name.toLowerCase()} fares →
+										Full itinerary &amp; prices →
 									</a>
 								</div>
 							</div>
@@ -103,7 +136,7 @@ import cityBg from "../assets/bg/city-bg.webp";
 					type="button"
 					data-hero-nav="-1"
 					class="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 items-center justify-center w-11 h-11 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-sm border border-white/30 text-white transition-colors"
-					aria-label="Previous service"
+					aria-label="Previous package"
 				>
 					<Icon name="lucide:chevron-left" class="h-5 w-5" />
 				</button>
@@ -111,14 +144,14 @@ import cityBg from "../assets/bg/city-bg.webp";
 					type="button"
 					data-hero-nav="1"
 					class="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 items-center justify-center w-11 h-11 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-sm border border-white/30 text-white transition-colors"
-					aria-label="Next service"
+					aria-label="Next package"
 				>
 					<Icon name="lucide:chevron-right" class="h-5 w-5" />
 				</button>
 
 				<div class="flex justify-center gap-2 mt-4" id="hero-dots">
 					{
-						SERVICES.map((service, index) => (
+						featured.map(({ pkg }, index) => (
 							<button
 								type="button"
 								data-hero-dot={index}
@@ -126,12 +159,21 @@ import cityBg from "../assets/bg/city-bg.webp";
 									"h-2.5 rounded-full transition-all duration-300",
 									index === 0 ? "w-6 bg-white" : "w-2.5 bg-white/50",
 								]}
-								aria-label={`Go to ${service.name}`}
+								aria-label={`Go to ${pkg.shortName}`}
 							/>
 						))
 					}
 				</div>
 			</div>
+
+			<p class="text-sm text-white/85">
+				Also:
+				<a href={withBase("/airport-taxi-bangalore/")} class="font-semibold text-white underline underline-offset-4 hover:text-orange-200">Airport taxi from ₹799</a>
+				·
+				<a href={withBase("/outstation-cabs-bangalore/")} class="font-semibold text-white underline underline-offset-4 hover:text-orange-200">Outstation cabs</a>
+				·
+				<a href={withBase("/hourly-cab-rental-bangalore/")} class="font-semibold text-white underline underline-offset-4 hover:text-orange-200">Hourly rental</a>
+			</p>
 
 			<div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-2">
 				{
