@@ -150,18 +150,22 @@ const featured = [...PACKAGES]
 					<Icon name="lucide:chevron-right" class="h-5 w-5" />
 				</button>
 
-				<div class="flex justify-center gap-2 mt-4" id="hero-dots">
+				<div class="flex justify-center gap-1 mt-4" id="hero-dots">
 					{
 						featured.map(({ pkg }, index) => (
 							<button
 								type="button"
 								data-hero-dot={index}
-								class:list={[
-									"h-2.5 rounded-full transition-all duration-300",
-									index === 0 ? "w-6 bg-white" : "w-2.5 bg-white/50",
-								]}
+								class="dot-btn flex h-6 w-7 items-center justify-center"
 								aria-label={`Go to ${pkg.shortName}`}
-							/>
+							>
+								<span
+									class:list={[
+										"h-2.5 rounded-full transition-all duration-300",
+										index === 0 ? "w-6 bg-white" : "w-2.5 bg-white/50",
+									]}
+								/>
+							</button>
 						))
 					}
 				</div>
@@ -215,10 +219,12 @@ const featured = [...PACKAGES]
 
 		const paint = () => {
 			for (const [i, dot] of dots.entries()) {
-				dot.classList.toggle("w-6", i === index);
-				dot.classList.toggle("bg-white", i === index);
-				dot.classList.toggle("w-2.5", i !== index);
-				dot.classList.toggle("bg-white/50", i !== index);
+				// The visual dot is the inner span; the button is the hit area.
+				const visual = dot.firstElementChild as HTMLElement;
+				visual.classList.toggle("w-6", i === index);
+				visual.classList.toggle("bg-white", i === index);
+				visual.classList.toggle("w-2.5", i !== index);
+				visual.classList.toggle("bg-white/50", i !== index);
 			}
 		};
 

@@ -479,9 +479,10 @@ summary:focus-visible {
 	border-radius: 4px;
 }
 
-/* Touch targets on mobile */
+/* Touch targets on mobile. Carousel dots (.dot-btn) opt out — they are
+   secondary to swiping and 10 of them at 44px would overflow a phone. */
 @media (max-width: 768px) {
-	button,
+	button:not(.dot-btn),
 	.btn {
 		min-height: 44px;
 		min-width: 44px;
