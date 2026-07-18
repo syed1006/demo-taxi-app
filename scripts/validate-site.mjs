@@ -7,6 +7,9 @@ import { readdirSync, readFileSync, existsSync, statSync } from "node:fs";
 import path from "node:path";
 
 const dist = process.argv[2] ?? "dist";
+// Test deploys build under a base path (see astro.config.mjs); links must
+// carry the prefix in the HTML but resolve against dist/ without it.
+const base = (process.env.ASTRO_BASE ?? "").replace(/\/+$/, "");
 const errors = [];
 const warnings = [];
 
@@ -70,7 +73,15 @@ for (const file of pages) {
 		const url = match[1].split("#")[0].split("?")[0];
 		if (!url || url === "/") continue;
 		if (url.startsWith("//")) continue;
-		const clean = decodeURIComponent(url);
+		let clean = decodeURIComponent(url);
+		if (base) {
+			if (clean !== base && !clean.startsWith(`${base}/`)) {
+				errors.push(`${rel}: link missing base prefix ${base}: ${url}`);
+				continue;
+			}
+			clean = clean.slice(base.length) || "/";
+			if (clean === "/") continue;
+		}
 		const candidates = [
 			path.join(dist, clean),
 			path.join(dist, clean, "index.html"),
