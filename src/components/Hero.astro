@@ -1,31 +1,70 @@
 ---
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import { Icon } from "astro-icon/components";
 import { SITE, waLink } from "../data/site";
 import { PACKAGES, packageTitle } from "../data/packages";
+import { SERVICES } from "../data/services";
 import { formatINR } from "../lib/fare";
 import { withBase } from "../lib/url";
 import cityBg from "../assets/bg/city-bg.webp";
 
-// Tour packages are the highest-demand product: the hero sells them
-// directly. Popular packages lead; every slide books in one tap.
-const featured = [...PACKAGES]
+interface Slide {
+	title: string;
+	priceLine?: string;
+	metaLine?: string;
+	description: string;
+	waMessage: string;
+	href: string;
+	linkLabel: string;
+	image?: ImageMetadata;
+	icon?: string;
+	color?: string;
+}
+
+const packageSlide = (pkg: (typeof PACKAGES)[number]): Slide => {
+	const sedanPrice = pkg.prices.find((p) => p.vehicle === "sedan")?.price;
+	return {
+		title: packageTitle(pkg),
+		priceLine: sedanPrice ? `from ${formatINR(sedanPrice)}` : undefined,
+		metaLine: `${
+			pkg.durationNights > 0
+				? `${pkg.durationDays} Days / ${pkg.durationNights} Night${pkg.durationNights > 1 ? "s" : ""}`
+				: "1-Day Trip"
+		} · ${pkg.sightsCovered.length} places · ${pkg.includedKm} km included`,
+		description: pkg.sightsCovered.slice(0, 3).join(" · "),
+		waMessage: `Hi! I'd like to book the ${pkg.name}${sedanPrice ? ` (Sedan ${formatINR(sedanPrice)})` : ""}.`,
+		href: `/tour-packages/${pkg.slug}/`,
+		linkLabel: "Full itinerary & prices →",
+		image: pkg.image,
+	};
+};
+
+const serviceSlide = (id: string): Slide => {
+	const service = SERVICES.find((s) => s.id === id)!;
+	return {
+		title: service.name,
+		priceLine: service.priceHook,
+		description: service.description,
+		waMessage: service.waMessage,
+		href: service.path,
+		linkLabel: "See fares & details →",
+		icon: service.icon,
+		color: service.color,
+	};
+};
+
+// Packages sell first, but airport & outstation are bookable straight from
+// the hero too — slides 2 and 3, after the strongest package.
+const rankedPackages = [...PACKAGES]
 	.sort((a, b) => Number(b.popular) - Number(a.popular))
-	.slice(0, 10)
-	.map((pkg) => {
-		const sedanPrice = pkg.prices.find((p) => p.vehicle === "sedan")?.price;
-		return {
-			pkg,
-			title: packageTitle(pkg),
-			sedanPrice,
-			duration:
-				pkg.durationNights > 0
-					? `${pkg.durationDays} Days / ${pkg.durationNights} Night${pkg.durationNights > 1 ? "s" : ""}`
-					: "1-Day Trip",
-			highlights: pkg.sightsCovered.slice(0, 3).join(" · "),
-			waMessage: `Hi! I'd like to book the ${pkg.name}${sedanPrice ? ` (Sedan ${formatINR(sedanPrice)})` : ""}.`,
-		};
-	});
+	.slice(0, 10);
+const slides: Slide[] = [
+	packageSlide(rankedPackages[0]),
+	serviceSlide("airport"),
+	serviceSlide("outstation"),
+	...rankedPackages.slice(1).map(packageSlide),
+];
 ---
 
 <section
@@ -60,23 +99,23 @@ const featured = [...PACKAGES]
 			</p>
 
 			<h1 class="text-base sm:text-lg font-semibold text-white/90 max-w-2xl mx-auto">
-				Tour Packages &amp; Taxi Service in Bangalore — Airport, Outstation &amp; Local Cabs
+				Taxi Service in Bangalore — Airport, Outstation, Local &amp; Tour Packages
 			</h1>
 
-			{/* Package slider: each slide is a directly bookable tour. */}
+			{/* Slider: bookable tours plus airport & outstation, one tap each. */}
 			<div class="relative">
 				<div
 					id="hero-slider"
 					class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide rounded-2xl"
 				>
 					{
-						featured.map(({ pkg, title, sedanPrice, duration, highlights, waMessage }, index) => (
+						slides.map((slide, index) => (
 							<div class="w-full flex-shrink-0 snap-center px-1 py-2">
 								<div class="bg-white/15 backdrop-blur-md border border-white/25 rounded-2xl p-6 sm:p-10 shadow-2xl">
-									{pkg.image ? (
+									{slide.image ? (
 										<Image
-											src={pkg.image}
-											alt={pkg.shortName}
+											src={slide.image}
+											alt={slide.title}
 											width={128}
 											height={128}
 											format="webp"
@@ -85,27 +124,34 @@ const featured = [...PACKAGES]
 											class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full object-cover border-2 border-white/40 shadow-lg"
 										/>
 									) : (
-										<div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full bg-gradient-to-r from-orange-400 to-red-600 flex items-center justify-center shadow-lg">
-											<Icon name="lucide:map" class="h-8 w-8 text-white" />
+										<div
+											class={`w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full bg-gradient-to-r ${slide.color ?? "from-orange-400 to-red-600"} flex items-center justify-center shadow-lg`}
+										>
+											<Icon
+												name={slide.icon ?? "lucide:map"}
+												class="h-8 w-8 text-white"
+											/>
 										</div>
 									)}
 									<h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 text-balance">
-										{title}
-										{sedanPrice && (
+										{slide.title}
+										{slide.priceLine && (
 											<span class="block text-orange-300 text-xl sm:text-2xl md:text-3xl">
-												from {formatINR(sedanPrice)}
+												{slide.priceLine}
 											</span>
 										)}
 									</h2>
-									<p class="text-white font-semibold text-sm sm:text-base mb-1">
-										{duration} · {pkg.sightsCovered.length} places · {pkg.includedKm} km included
-									</p>
+									{slide.metaLine && (
+										<p class="text-white font-semibold text-sm sm:text-base mb-1">
+											{slide.metaLine}
+										</p>
+									)}
 									<p class="text-white/85 text-sm sm:text-base mb-6 max-w-xl mx-auto">
-										{highlights}
+										{slide.description}
 									</p>
 									<div class="flex flex-col sm:flex-row items-center justify-center gap-3">
 										<a
-											href={waLink(waMessage)}
+											href={waLink(slide.waMessage)}
 											target="_blank"
 											rel="noopener"
 											class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-3.5 text-lg rounded-full shadow-xl hover:scale-105 transition-all duration-300"
@@ -122,10 +168,10 @@ const featured = [...PACKAGES]
 										</a>
 									</div>
 									<a
-										href={withBase(`/tour-packages/${pkg.slug}/`)}
+										href={withBase(slide.href)}
 										class="inline-block mt-4 text-sm text-white/75 hover:text-white underline underline-offset-4"
 									>
-										Full itinerary &amp; prices →
+										{slide.linkLabel}
 									</a>
 								</div>
 							</div>
@@ -137,7 +183,7 @@ const featured = [...PACKAGES]
 					type="button"
 					data-hero-nav="-1"
 					class="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 items-center justify-center w-11 h-11 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-sm border border-white/30 text-white transition-colors"
-					aria-label="Previous package"
+					aria-label="Previous slide"
 				>
 					<Icon name="lucide:chevron-left" class="h-5 w-5" />
 				</button>
@@ -145,19 +191,19 @@ const featured = [...PACKAGES]
 					type="button"
 					data-hero-nav="1"
 					class="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 items-center justify-center w-11 h-11 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-sm border border-white/30 text-white transition-colors"
-					aria-label="Next package"
+					aria-label="Next slide"
 				>
 					<Icon name="lucide:chevron-right" class="h-5 w-5" />
 				</button>
 
 				<div class="flex justify-center gap-1 mt-4" id="hero-dots">
 					{
-						featured.map(({ pkg }, index) => (
+						slides.map((slide, index) => (
 							<button
 								type="button"
 								data-hero-dot={index}
-								class="dot-btn flex h-6 w-7 items-center justify-center"
-								aria-label={`Go to ${pkg.shortName}`}
+								class="dot-btn flex h-6 w-6 items-center justify-center"
+								aria-label={`Go to ${slide.title}`}
 							>
 								<span
 									class:list={[
@@ -173,11 +219,11 @@ const featured = [...PACKAGES]
 
 			<p class="text-sm text-white/85">
 				Also:
-				<a href={withBase("/airport-taxi-bangalore/")} class="font-semibold text-white underline underline-offset-4 hover:text-orange-200">Airport taxi from ₹799</a>
-				·
-				<a href={withBase("/outstation-cabs-bangalore/")} class="font-semibold text-white underline underline-offset-4 hover:text-orange-200">Outstation cabs</a>
-				·
 				<a href={withBase("/hourly-cab-rental-bangalore/")} class="font-semibold text-white underline underline-offset-4 hover:text-orange-200">Hourly rental</a>
+				·
+				<a href={withBase("/corporate-cab-services-bangalore/")} class="font-semibold text-white underline underline-offset-4 hover:text-orange-200">Corporate cabs</a>
+				·
+				<a href={withBase("/hire-driver-bangalore/")} class="font-semibold text-white underline underline-offset-4 hover:text-orange-200">Hire a driver</a>
 			</p>
 
 			<div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-2">
@@ -256,9 +302,10 @@ const featured = [...PACKAGES]
 		slider.addEventListener("pointerleave", () => (paused = false));
 
 		if (!reducedMotion) {
+			// Unhurried rotation — enough time to actually read a card.
 			setInterval(() => {
 				if (!paused && document.visibilityState === "visible") goTo(index + 1);
-			}, 4500);
+			}, 8000);
 		}
 	}
 </script>
