@@ -12,6 +12,7 @@ const navItems = [
 	{ name: "Outstation", href: withBase("/outstation-cabs-bangalore/") },
 	{ name: "Tour Packages", href: withBase("/tour-packages/") },
 	{ name: "Tempo Traveller", href: withBase("/tempo-traveller-hire-bangalore/") },
+	{ name: "Guides", href: withBase("/guides/") },
 ];
 ---
 
@@ -32,12 +33,12 @@ const navItems = [
 				<span class="sr-only">{SITE.name}</span>
 			</a>
 
-			<nav class="hidden md:flex items-center space-x-8" aria-label="Main">
+			<nav class="hidden md:flex items-center space-x-4 lg:space-x-8" aria-label="Main">
 				{
 					navItems.map((item) => (
 						<a
 							href={item.href}
-							class="text-foreground hover:text-orange-500 transition-colors duration-200 font-medium"
+							class="whitespace-nowrap text-sm lg:text-base text-foreground hover:text-orange-500 transition-colors duration-200 font-medium"
 						>
 							{item.name}
 						</a>
@@ -45,10 +46,11 @@ const navItems = [
 				}
 			</nav>
 
-			<div class="hidden md:flex items-center space-x-4">
+			<div class="hidden md:flex items-center space-x-2 lg:space-x-4">
+				{/* Number shows only on wide screens so five nav items fit. */}
 				<a
 					href={`tel:${SITE.phoneE164}`}
-					class="flex items-center space-x-2 text-sm text-muted-foreground hover:text-orange-500 transition-colors"
+					class="hidden xl:flex items-center space-x-2 text-sm text-muted-foreground hover:text-orange-500 transition-colors"
 				>
 					<Icon name="lucide:phone" class="h-4 w-4" />
 					<span>{SITE.phoneDisplay}</span>
@@ -65,7 +67,7 @@ const navItems = [
 					href={waLink(headerWaMessage)}
 					target="_blank"
 					rel="noopener"
-					class="inline-flex items-center gap-2 rounded-md bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2.5 transition-colors"
+					class="inline-flex items-center gap-2 whitespace-nowrap rounded-md bg-green-500 hover:bg-green-600 text-white font-semibold px-4 lg:px-6 py-2.5 transition-colors"
 				>
 					<Icon name="lucide:message-circle" class="h-4 w-4" />
 					Book Now
