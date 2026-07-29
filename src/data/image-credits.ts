@@ -70,4 +70,11 @@ export const IMAGE_CREDITS: ImageCredit[] = [
 		license: "CC BY-SA 4.0",
 		sourceUrl: "https://commons.wikimedia.org/wiki/File:Yercaud_lake_view.jpg",
 	},
+	{
+		subject: "Kotilingeshwara Temple, Kolar",
+		author: "Ramesh Kumar R",
+		license: "CC BY-SA 4.0",
+		sourceUrl:
+			"https://commons.wikimedia.org/wiki/File:Kotilingeshwara_Temple.jpg",
+	},
 ];

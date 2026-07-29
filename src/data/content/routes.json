@@ -995,7 +995,9 @@
 			"tirupati",
 			"salem"
 		],
-		"packageSlugs": [],
+		"packageSlugs": [
+			"chennai-2-days"
+		],
 		"popular": true,
 		"rating": 4.4,
 		"homepageRail": "extended"

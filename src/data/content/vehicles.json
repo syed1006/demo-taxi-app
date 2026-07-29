@@ -131,41 +131,6 @@
 			}
 		]
 	},
-	"luxury": {
-		"title": "Luxury",
-		"description": "Premium luxury vehicles for special occasions",
-		"icon": "lucide:crown",
-		"gradient": "from-orange-300 to-orange-500",
-		"vehicles": [
-			{
-				"id": "premium-luxury",
-				"name": "Premium Luxury",
-				"subtitle": "4+1 Seater",
-				"description": "BMW 3 Series, Audi A4, Mercedes C-Class, Jaguar XE",
-				"pricing": {
-					"airport": "₹2,999-3,999",
-					"hourly4": "Not Available",
-					"hourly8": "₹5,999-7,999",
-					"outstation": "25-35",
-					"driverBata": "₹800"
-				},
-				"features": [
-					"4+1 passengers",
-					"Luxury sedan",
-					"Premium experience",
-					"VIP treatment"
-				],
-				"icon": "lucide:crown",
-				"images": [
-					"cars/audi.webp",
-					"cars/bmw.webp",
-					"cars/mercedes.webp"
-				],
-				"popular": false,
-				"color": "from-orange-300 to-orange-500"
-			}
-		]
-	},
 	"group": {
 		"title": "Group Travel",
 		"description": "Large capacity vehicles for big groups",

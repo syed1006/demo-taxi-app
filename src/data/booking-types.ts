@@ -9,9 +9,9 @@ export interface BookingType {
 
 export const BOOKING_TYPES: BookingType[] = [
 	{
-		id: "point-to-point",
-		name: "Point to Point",
-		description: "Direct pickup to drop",
+		id: "one-way-drop",
+		name: "One-Way Drop",
+		description: "Direct pickup to drop — city or outstation",
 		icon: "lucide:map-pin",
 		popular: true,
 		color: "from-blue-500 to-cyan-600",

@@ -7,13 +7,13 @@ import { withBase } from "../lib/url";
 // One tap to book: every journey type goes straight to WhatsApp or a call.
 const cards = [
 	{
-		name: "Point to Point",
-		priceHook: "in-city drops",
+		name: "One-Way Drop",
+		priceHook: "city & outstation drops",
 		icon: "lucide:map-pin",
 		color: "from-orange-500 to-red-600",
 		popular: true,
 		waMessage:
-			"Hi! I want to book a point-to-point cab in Bangalore. Please share the fare.",
+			"Hi! I want to book a one-way drop from Bangalore. Please share the fare.",
 		path: null,
 	},
 	...SERVICES.map((service) => ({

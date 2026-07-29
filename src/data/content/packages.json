@@ -333,7 +333,7 @@
 		"prices": [
 			{
 				"vehicle": "sedan",
-				"price": 4000
+				"price": 3800
 			},
 			{
 				"vehicle": "suv",
@@ -368,7 +368,7 @@
 		],
 		"faqs": [
 			{
-				"question": "What does the ₹4,000 price include?",
+				"question": "What does the ₹3,800 price include?",
 				"answer": "Car, fuel, driver bata, tolls and parking for the full 6 AM – 6 PM day in a 4+1 sedan (₹5,500 for a 7+1). Hilltop entry fees and meals are extra."
 			},
 			{
@@ -526,6 +526,7 @@
 		"durationDays": 1,
 		"durationNights": 0,
 		"routeSlugs": [],
+		"image": "destinations/kotilingeshwara.webp",
 		"overview": [
 			"A devotional day trip east to Kammasandra in Kolar district, home of the Kotilingeshwara temple — its 33-metre (108-ft) Shiva linga is among the tallest anywhere, watched over by a 35-ft Nandi and surrounded by lakhs of smaller lingas installed by devotees over the decades. The 6 AM pickup gets you there for a calm mid-morning darshan before the day-trip crowds.",
 			"The price is all-inclusive on the car side — fuel, driver bata, tolls and parking — so your only spends are the temple offerings, any seva you book and lunch at Kolar on the way back. It's an easy, restful day: about two and a half hours each way with the whole afternoon at your pace."
@@ -892,8 +893,129 @@
 			}
 		],
 		"relatedPackages": [
+			"chennai-2-days",
 			"tirupati-darshan-1-day",
 			"pondicherry-2-days"
+		],
+		"popular": false
+	},
+	{
+		"slug": "chennai-2-days",
+		"name": "Bangalore to Chennai 2-Day Round Trip Package",
+		"shortName": "Chennai 2-Day",
+		"durationDays": 2,
+		"durationNights": 1,
+		"routeSlugs": [
+			"chennai"
+		],
+		"image": "destinations/chennai.webp",
+		"overview": [
+			"A cab that waits on you, not the other way around: a 6 AM pickup, the ~345 km run down NH-48 with breakfast and lunch halts of your choice, and the same car and driver at your disposal in Chennai until you head home the next day. It suits family functions, hospital visits, university admissions, temple darshans and business trips equally — any plan where a train timetable is more constraint than convenience.",
+			"The price covers the car, fuel and the driver's bata for both days, with 700 km included — enough for the round trip plus local running inside Chennai. Tolls, parking and the Tamil Nadu state permit are at actuals, the hotel is your own booking, and a drop after 10 PM on the return adds ₹400 driver bata. Want a sightseeing slant? Add a Kanchipuram temple halt en route at no extra cost within the included kilometres."
+		],
+		"itinerary": [
+			{
+				"day": 1,
+				"title": "Bangalore → Chennai (via NH-48)",
+				"stops": [
+					{
+						"time": "6:00 AM",
+						"place": "Pickup from your home / hotel",
+						"note": "Breakfast halt on the highway"
+					},
+					{
+						"time": "10:30 AM",
+						"place": "Optional halt: Kanchipuram temples",
+						"note": "Ekambareswarar & Kamakshi Amman — adds about 2 hours"
+					},
+					{
+						"time": "1:30 PM",
+						"place": "Arrive Chennai · lunch & check-in",
+						"note": "The car and driver stay with you"
+					},
+					{
+						"time": "3:30 PM",
+						"place": "Your errands or sights, at your pace",
+						"note": "Marina Beach, Kapaleeshwarar Temple, San Thome Basilica"
+					}
+				]
+			},
+			{
+				"day": 2,
+				"title": "Chennai at your pace → Bangalore",
+				"stops": [
+					{
+						"time": "Morning",
+						"place": "Your function / darshan / appointments",
+						"note": "Car and driver on call all day"
+					},
+					{
+						"time": "3:00 PM",
+						"place": "Depart Chennai",
+						"note": "Later starts are fine — a drop after 10 PM adds ₹400 bata"
+					},
+					{
+						"time": "9:30 PM",
+						"place": "Drop back home in Bangalore"
+					}
+				]
+			}
+		],
+		"prices": [
+			{
+				"vehicle": "sedan",
+				"price": 9900
+			}
+		],
+		"includedKm": 700,
+		"extraKmRate": {
+			"sedan": 12,
+			"suv": 17,
+			"innova-crysta": 21,
+			"tempo-traveller": 24
+		},
+		"inclusions": [
+			"Car, fuel & driver for the full itinerary",
+			"Driver bata for both days",
+			"Pickup & drop anywhere in Bangalore",
+			"Local use of the car in Chennai (within included km)",
+			"Applicable taxes"
+		],
+		"exclusions": [
+			"Tolls, parking & Tamil Nadu state permit at actuals (billed separately)",
+			"Hotels & meals",
+			"Entry tickets, if any",
+			"Drop after 10 PM: additional driver bata ₹400"
+		],
+		"sightsCovered": [
+			"Kanchipuram Temples (optional en-route halt)",
+			"Marina Beach",
+			"Kapaleeshwarar Temple, Mylapore",
+			"San Thome Basilica",
+			"Fort St. George"
+		],
+		"faqs": [
+			{
+				"question": "What does the ₹9,900 price include?",
+				"answer": "The sedan, fuel and driver bata for both days with 700 km included — the round trip plus comfortable local running in Chennai. Tolls, parking and the TN state permit are billed at actuals; hotel and meals are your own."
+			},
+			{
+				"question": "Can we use the car inside Chennai on both days?",
+				"answer": "Yes — that's the point of the package. The car and driver stay with you for local temple visits, hospital runs or family functions, all within the included kilometres."
+			},
+			{
+				"question": "We only need a drop to Chennai — is there a one-way option?",
+				"answer": "Yes. A one-way Bangalore to Chennai sedan drop is ₹6,200 — see our Bangalore to Chennai taxi page or ask on WhatsApp and we'll quote your exact plan."
+			},
+			{
+				"question": "How long is the drive?",
+				"answer": "About 345 km on NH-48 — six to seven hours door to door with a meal halt. A 6 AM start beats both cities' traffic and has you in Chennai just after lunch."
+			}
+		],
+		"relatedPackages": [
+			"tirupati-2-days",
+			"pondicherry-2-days",
+			"mysore-1-day-tour"
 		],
 		"popular": false
 	},
@@ -1702,22 +1824,10 @@
 		"prices": [
 			{
 				"vehicle": "sedan",
-				"price": 12399
-			},
-			{
-				"vehicle": "suv",
-				"price": 17699
-			},
-			{
-				"vehicle": "innova-crysta",
-				"price": 22299
-			},
-			{
-				"vehicle": "tempo-traveller",
-				"price": 26099
+				"price": 12900
 			}
 		],
-		"includedKm": 850,
+		"includedKm": 900,
 		"extraKmRate": {
 			"sedan": 12,
 			"suv": 17,
@@ -1725,18 +1835,17 @@
 			"tempo-traveller": 24
 		},
 		"inclusions": [
-			"Fuel charges",
-			"Driver bata (allowance)",
+			"Car, fuel & driver for the full itinerary",
+			"Driver bata for all 3 days",
 			"Pickup & drop anywhere in Bangalore",
 			"All sightseeing transfers as per itinerary",
-			"Vehicle & driver at your disposal for the full itinerary",
 			"Applicable taxes"
 		],
 		"exclusions": [
-			"Tolls & parking at actuals",
-			"Inter-state permit fees (Tamil Nadu ₹500–1,500 / Kerala ₹500–3,000 / Andhra Pradesh ₹500–2,500 / Goa ₹2,500–3,500 depending on vehicle)",
+			"Tolls & parking at actuals (billed separately)",
+			"Hotels & meals",
 			"Entry tickets & guide fees",
-			"Meals & accommodation",
+			"Drop after 10 PM: additional driver bata ₹400",
 			"AC is switched off on steep ghat climbs for safety"
 		],
 		"sightsCovered": [
@@ -2452,6 +2561,7 @@
 			}
 		],
 		"relatedPackages": [
+			"chennai-2-days",
 			"tirupati-2-days",
 			"kodaikanal-3-days"
 		],

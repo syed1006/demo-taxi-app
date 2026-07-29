@@ -120,11 +120,6 @@ export const VEHICLE_PAGES: VehiclePageEntry[] = [
 		path: "/tempo-traveller-hire-bangalore/",
 		cab: "Tempo Traveller",
 	},
-	{
-		name: "Luxury Car Rental",
-		path: "/luxury-car-rental-bangalore/",
-		cab: "Premium Luxury",
-	},
 ];
 
 export const serviceById = (id: string): ServicePage => {

@@ -158,38 +158,6 @@ export async function getStaticPaths() {
 				},
 			],
 		},
-		{
-			slug: "luxury-car-rental-bangalore",
-			classId: null,
-			h1: "Luxury Car Rental in Bangalore",
-			title: "Luxury Car Rental Bangalore — BMW, Audi & Mercedes with Driver",
-			description:
-				"Rent a chauffeur-driven luxury car in Bangalore: BMW 3 Series, Audi A4, Mercedes C-Class. Airport from ₹2,999, weddings & events. Call +91 70227 62929.",
-			intro: [
-				"Some occasions call for more than a cab. Our luxury line — BMW 3 Series, Audi A4, Mercedes C-Class and Jaguar XE — comes with professionally groomed chauffeurs for weddings, VIP airport pickups, film shoots and board-level client travel.",
-				"Luxury bookings are curated: tell us the occasion, date and hours on WhatsApp and we confirm the exact car, decked as you need it (wedding ribbons and flowers on request). Airport transfers start at ₹2,999; 8-hour event packages from ₹5,999.",
-			],
-			bestFor: [
-				"Weddings & receptions (decorated cars)",
-				"VIP airport pickups",
-				"Corporate board-level travel",
-				"Shoots, launches & special events",
-			],
-			faqs: [
-				{
-					question: "Which luxury car models are available?",
-					answer: "BMW 3 Series, Audi A4, Mercedes C-Class and Jaguar XE, subject to date availability. Confirm your date early — wedding season weekends book out weeks ahead.",
-				},
-				{
-					question: "Can the car be decorated for a wedding?",
-					answer: "Yes — ribbon-and-flower decoration is available on request at a small extra cost. Share your theme on WhatsApp and we'll coordinate with the decorator.",
-				},
-				{
-					question: "Is self-drive available for luxury cars?",
-					answer: "No — all our luxury rentals are chauffeur-driven. That keeps insurance clean and lets you enjoy the day.",
-				},
-			],
-		},
 	];
 
 	const vehicleFor = (slug: string): Vehicle => {
@@ -203,7 +171,7 @@ export async function getStaticPaths() {
 			case "tempo-traveller-hire-bangalore":
 				return VEHICLE_CATEGORIES.group.vehicles[0];
 			default:
-				return VEHICLE_CATEGORIES.luxury.vehicles[0];
+				throw new Error(`No fleet vehicle mapped for page: ${slug}`);
 		}
 	};
 
@@ -372,8 +340,7 @@ const waMessage = `Hi! I'd like to book a ${def.vehicle.name} in Bangalore.`;
 				<a href={withBase("/sedan-taxi-bangalore/")} class="text-orange-500 hover:underline">Sedan</a> ·
 				<a href={withBase("/suv-taxi-bangalore/")} class="text-orange-500 hover:underline">SUV</a> ·
 				<a href={withBase("/innova-crysta-rental-bangalore/")} class="text-orange-500 hover:underline">Innova Crysta</a> ·
-				<a href={withBase("/tempo-traveller-hire-bangalore/")} class="text-orange-500 hover:underline">Tempo Traveller</a> ·
-				<a href={withBase("/luxury-car-rental-bangalore/")} class="text-orange-500 hover:underline">Luxury</a>
+				<a href={withBase("/tempo-traveller-hire-bangalore/")} class="text-orange-500 hover:underline">Tempo Traveller</a>
 			</p>
 		</div>
 	</section>
