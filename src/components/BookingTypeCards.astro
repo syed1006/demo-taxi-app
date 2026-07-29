@@ -6,15 +6,37 @@ import { withBase } from "../lib/url";
 
 // One tap to book: every journey type goes straight to WhatsApp or a call.
 // One-Way Drop leads the SERVICES registry, so it stays the first card.
-const cards = SERVICES.map((service) => ({
-	name: service.name,
-	priceHook: service.priceHook,
-	icon: service.icon,
-	color: service.color,
-	popular: service.popular,
-	waMessage: service.waMessage,
-	path: service.path,
-}));
+// The catch-all custom-quote card closes the grid so nobody bounces just
+// because their plan isn't listed.
+const cards: {
+	name: string;
+	priceHook: string;
+	icon: string;
+	color: string;
+	popular: boolean;
+	waMessage: string;
+	path: string | null;
+}[] = [
+	...SERVICES.map((service) => ({
+		name: service.name,
+		priceHook: service.priceHook,
+		icon: service.icon,
+		color: service.color,
+		popular: service.popular,
+		waMessage: service.waMessage,
+		path: service.path as string | null,
+	})),
+	{
+		name: "Something Else?",
+		priceHook: "custom quote in minutes",
+		icon: "lucide:sparkles",
+		color: "from-orange-300 to-orange-500",
+		popular: false,
+		waMessage:
+			"Hi! I have a trip plan that's not listed on your site — can you give me a custom quote? My plan: ",
+		path: null,
+	},
+];
 ---
 
 <section

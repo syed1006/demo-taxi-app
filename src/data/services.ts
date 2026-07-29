@@ -77,7 +77,7 @@ export const SERVICES: ServicePage[] = [
 		name: "Tour Packages",
 		path: "/tour-packages/",
 		description: "Fixed-price sightseeing trips — Mysore, Coorg, Ooty & more",
-		priceHook: "from ₹3,399",
+		priceHook: "from ₹3,800",
 		waMessage:
 			"Hi! I want to book a tour package from Bangalore. Please share the options.",
 		icon: "lucide:camera",
