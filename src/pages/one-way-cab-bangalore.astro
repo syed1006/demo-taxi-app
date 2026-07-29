@@ -1,0 +1,221 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FareTable from "../components/FareTable.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import ItemListSchema from "../components/seo/ItemListSchema.astro";
+import { Icon } from "astro-icon/components";
+import { ROUTES, routePath } from "../data/routes";
+import { RATE_CARD, VEHICLE_CLASS_IDS } from "../data/rate-card";
+import { formatINR } from "../lib/fare";
+import { withBase } from "../lib/url";
+import type { FaqItem } from "../data/faq";
+
+const path = "/one-way-cab-bangalore/";
+const title = "One Way Cab Bangalore — Drop Taxi from ₹18/km | Fixed Fares";
+const description =
+	"Book a one-way cab from Bangalore — pay only one side. Sedan drop taxi ₹18/km, fixed fares to Mysore ₹2,799, Chennai ₹6,200 & 15+ cities. Call +91 70227 62929.";
+
+// Per-km one-way rates straight from the rate card.
+const rateRows = VEHICLE_CLASS_IDS.map((id) => {
+	const rates = RATE_CARD[id];
+	return {
+		label: rates.label,
+		capacity: rates.capacity,
+		values: [`${formatINR(rates.oneWayPerKm)}/km`],
+		highlight: id === "sedan",
+	};
+});
+
+// Every corridor with a quoted one-way sedan fare, nearest first.
+const oneWayRoutes = ROUTES.filter((route) => route.fares.sedan.oneWay).sort(
+	(a, b) => a.distanceKm - b.distanceKm
+);
+const minFare = Math.min(...oneWayRoutes.map((r) => r.fares.sedan.oneWay!));
+const maxFare = Math.max(...oneWayRoutes.map((r) => r.fares.sedan.oneWay!));
+
+const faqs: FaqItem[] = [
+	{
+		question: "What exactly is a one-way cab?",
+		answer: "You pay only for the direction you travel — the fare covers your drop and the car returns empty at our cost. It's the cheapest way to relocate, catch a train or flight in another city, or travel when you don't need the cab to wait.",
+	},
+	{
+		question: "How is the one-way fare calculated?",
+		answer: "One-way trips bill at a higher per-km rate than round trips (₹18/km for a sedan vs ₹12/km) because the car comes back empty — but you still save 30–40% versus paying a round trip you don't use. Popular corridors have fixed fares listed above, driver bata and fuel included.",
+	},
+	{
+		question: "Do you pick up from other cities back to Bangalore?",
+		answer: "Yes — most corridors run both directions. A Mysore to Bangalore drop costs the same as Bangalore to Mysore. Tell us your pickup city on WhatsApp and we'll confirm a car and time.",
+	},
+	{
+		question: "Are tolls and driver bata included in one-way fares?",
+		answer: "Driver bata and fuel are included in the fixed fares listed here. Tolls and inter-state permits (for Tamil Nadu, Andhra Pradesh or Kerala drops) are at actuals — the driver shows the receipts.",
+	},
+	{
+		question: "Can I book a one-way drop within Bangalore city?",
+		answer: "Absolutely — point-to-point city drops are our bread and butter, day or night. Share pickup and drop on WhatsApp and we'll quote a fixed fare in minutes.",
+	},
+];
+---
+
+<PageLayout
+	{title}
+	{description}
+	{path}
+	trail={[{ name: "One-Way Cab" }]}
+	waMessage="Hi! I want to book a one-way drop from Bangalore. Please share the fare."
+	bookHref="/book/?type=one-way-drop"
+	ctaTitle="Pay for one side, not two"
+>
+	<PageHero
+		title="One-Way Cab from Bangalore (Drop Taxi)"
+		subtitle="Going one direction only? Pay one direction only. Fixed drop fares to 15+ cities, city-to-city and in-city drops, 24/7 — no return charges, no hidden costs."
+		chips={[
+			{ icon: "lucide:wallet", label: "Sedan ₹18/km" },
+			{ icon: "lucide:map-pin", label: `Drops from ${formatINR(minFare)}` },
+			{ icon: "lucide:clock", label: "24/7 service" },
+		]}
+		bookHref="/book/?type=one-way-drop"
+		bookLabel="Book One-Way Drop"
+		waMessage="Hi! I want to book a one-way drop from Bangalore. Please share the fare."
+	/>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-5xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-4">
+				One-Way Rates per Kilometre
+			</h2>
+			<p class="text-muted-foreground mb-6 max-w-3xl">
+				One-way drops bill by distance travelled, one side only. The per-km
+				rate is higher than a round trip because the car returns empty — you
+				still save 30–40% versus booking a round trip you don't need.
+			</p>
+			<FareTable
+				caption="One-way drop rates by vehicle"
+				columns={["One-way rate"]}
+				rows={rateRows}
+				footnotes={[
+					"Driver bata included on fixed corridor fares below; tolls and inter-state permits at actuals.",
+					"Minimum billing applies on short outstation drops — confirmed upfront on WhatsApp.",
+				]}
+			/>
+		</div>
+	</section>
+
+	<section
+		class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-stone-900 dark:to-stone-950"
+	>
+		<div class="max-w-5xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-2">
+				Fixed One-Way Drop Fares from Bangalore
+			</h2>
+			<p class="text-muted-foreground mb-8">
+				Sedan fares, fuel and driver bata included. Every corridor also runs
+				the reverse direction at the same fare.
+			</p>
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+				{
+					oneWayRoutes.map((route) => (
+						<a
+							href={withBase(routePath(route.slug))}
+							class="group rounded-lg border bg-card p-4 transition-all hover:border-orange-300 hover:shadow-md dark:hover:border-orange-800"
+						>
+							<div class="flex items-center justify-between mb-1">
+								<h3 class="font-semibold text-foreground group-hover:text-orange-500 transition-colors">
+									Bangalore → {route.name}
+								</h3>
+								<span class="font-bold text-orange-600 dark:text-orange-400">
+									{formatINR(route.fares.sedan.oneWay!)}
+								</span>
+							</div>
+							<p class="text-xs text-muted-foreground">
+								{route.distanceKm} km · ~{route.durationHrs} hrs ·
+								<span class="font-semibold text-orange-500"> fares & details →</span>
+							</p>
+						</a>
+					))
+				}
+			</div>
+			<p class="text-sm text-muted-foreground mt-6">
+				Headed somewhere not listed?
+				<a
+					href={withBase("/book/?type=one-way-drop")}
+					class="font-semibold text-orange-500 hover:underline"
+				>
+					Ask for a quote</a
+				> — if there's a road, we drop there. Airport drops have their own
+				<a
+					href={withBase("/airport-taxi-bangalore/")}
+					class="font-semibold text-orange-500 hover:underline"
+				>
+					fixed airport fares</a
+				>.
+			</p>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+				When a One-Way Cab Wins
+			</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+				{
+					[
+						{
+							icon: "lucide:train-front",
+							title: "Catching a train or flight in another city",
+							desc: "Drop straight to Mysore or Chennai stations — no waiting charges, no return fare.",
+						},
+						{
+							icon: "lucide:home",
+							title: "Relocation & house-shifting days",
+							desc: "Family travels comfortably one way while the movers handle the truck.",
+						},
+						{
+							icon: "lucide:graduation-cap",
+							title: "College admissions & hostel drops",
+							desc: "Luggage-heavy, one-direction trips are exactly what drop taxis are for.",
+						},
+						{
+							icon: "lucide:users",
+							title: "Guests heading home after functions",
+							desc: "Send guests back to their city in a dedicated cab, paying one side only.",
+						},
+					].map((useCase) => (
+						<div class="rounded-lg border bg-card p-5">
+							<Icon name={useCase.icon} class="h-7 w-7 text-orange-500 mb-2" />
+							<h3 class="font-semibold text-foreground mb-1">{useCase.title}</h3>
+							<p class="text-sm text-muted-foreground">{useCase.desc}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-stone-900 dark:to-stone-950">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center">
+				One-Way Cab FAQs
+			</h2>
+			<FaqAccordion faqs={faqs} emitSchema group="oneway-faq" />
+		</div>
+	</section>
+
+	<ServiceSchema
+		serviceType="One-way drop taxi from Bangalore"
+		description={description}
+		{path}
+		price={minFare}
+		priceHigh={maxFare}
+	/>
+	<ItemListSchema
+		name="One-Way Drop Fares from Bangalore"
+		items={oneWayRoutes.map((route) => ({
+			name: `Bangalore to ${route.name} One-Way Cab`,
+			path: routePath(route.slug),
+		}))}
+	/>
+</PageLayout>

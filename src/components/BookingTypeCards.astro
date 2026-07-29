@@ -5,27 +5,16 @@ import { SITE, waLink } from "../data/site";
 import { withBase } from "../lib/url";
 
 // One tap to book: every journey type goes straight to WhatsApp or a call.
-const cards = [
-	{
-		name: "One-Way Drop",
-		priceHook: "city & outstation drops",
-		icon: "lucide:map-pin",
-		color: "from-orange-500 to-red-600",
-		popular: true,
-		waMessage:
-			"Hi! I want to book a one-way drop from Bangalore. Please share the fare.",
-		path: null,
-	},
-	...SERVICES.map((service) => ({
-		name: service.name,
-		priceHook: service.priceHook,
-		icon: service.icon,
-		color: service.color,
-		popular: service.popular,
-		waMessage: service.waMessage,
-		path: service.path,
-	})),
-];
+// One-Way Drop leads the SERVICES registry, so it stays the first card.
+const cards = SERVICES.map((service) => ({
+	name: service.name,
+	priceHook: service.priceHook,
+	icon: service.icon,
+	color: service.color,
+	popular: service.popular,
+	waMessage: service.waMessage,
+	path: service.path,
+}));
 ---
 
 <section

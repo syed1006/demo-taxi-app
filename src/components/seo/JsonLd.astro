@@ -75,6 +75,19 @@ const business = {
 	sameAs: [SITE.instagram],
 	priceRange: "₹₹",
 };
+
+// Names the site for brand queries and sitelinks.
+const website = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	"@id": `${SITE.url}/#website`,
+	name: SITE.name,
+	alternateName: SITE.shortName,
+	url: SITE.url,
+	inLanguage: "en-IN",
+	publisher: { "@id": `${SITE.url}/#business` },
+};
 ---
 
 <script type="application/ld+json" set:html={JSON.stringify(business)} />
+<script type="application/ld+json" set:html={JSON.stringify(website)} />

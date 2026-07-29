@@ -21,6 +21,19 @@ export interface ServicePage {
 
 export const SERVICES: ServicePage[] = [
 	{
+		id: "one-way",
+		name: "One-Way Drop",
+		path: "/one-way-cab-bangalore/",
+		description: "Pay only one side — city or outstation drop taxis",
+		priceHook: "from ₹18/km",
+		waMessage:
+			"Hi! I want to book a one-way drop from Bangalore. Please share the fare.",
+		icon: "lucide:map-pin",
+		bookingType: "one-way-drop",
+		color: "from-orange-500 to-red-600",
+		popular: true,
+	},
+	{
 		id: "airport",
 		name: "Airport Taxi",
 		path: "/airport-taxi-bangalore/",

@@ -33,7 +33,11 @@ const durationLabel =
 		? `${pkg.durationDays} Days / ${pkg.durationNights} Nights`
 		: "1 Day";
 
-const title = `${pkg.name} — ${formatINR(sedanPrice)} (Sedan)`;
+// Long package names drop the "(Sedan)" suffix to stay inside Google's
+// ~75-char title display limit.
+const fullTitle = `${pkg.name} — ${formatINR(sedanPrice)} (Sedan)`;
+const title =
+	fullTitle.length > 75 ? `${pkg.name} — ${formatINR(sedanPrice)}` : fullTitle;
 const description = `${pkg.shortName} by cab from Bangalore: Sedan ${formatINR(sedanPrice)}, ${durationLabel}, ${pkg.sightsCovered.length} places, ${pkg.includedKm} km included. Fixed price, verified drivers. Call +91 70227 62929.`;
 
 const priceRows = pkg.prices.map((entry) => {
