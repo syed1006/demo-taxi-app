@@ -24,7 +24,21 @@ function* htmlFiles(dir) {
 const pages = [...htmlFiles(dist)];
 const seen = { title: new Map(), description: new Map(), h1: new Map(), canonical: new Map() };
 
-const get = (html, regex) => html.match(regex)?.[1]?.trim() ?? null;
+// Decode the common entities so length checks measure what users see
+// ("&amp;" is one character in the SERP, not five).
+const decode = (s) =>
+	s
+		.replace(/&amp;/g, "&")
+		.replace(/&#38;/g, "&")
+		.replace(/&quot;/g, '"')
+		.replace(/&#39;/g, "'")
+		.replace(/&lt;/g, "<")
+		.replace(/&gt;/g, ">");
+
+const get = (html, regex) => {
+	const value = html.match(regex)?.[1]?.trim();
+	return value ? decode(value) : null;
+};
 
 for (const file of pages) {
 	const rel = "/" + path.relative(dist, file).replace(/index\.html$/, "").replace(/\.html$/, "");

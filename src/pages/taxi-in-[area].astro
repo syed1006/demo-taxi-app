@@ -1,0 +1,195 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import { Icon } from "astro-icon/components";
+import { AIRPORT_AREAS } from "../data/airport-areas";
+import { LOCALITIES, type Locality } from "../data/localities";
+import type { AirportArea } from "../data/route-types";
+import { RATE_CARD } from "../data/rate-card";
+import { ROUTES, routePath } from "../data/routes";
+import { formatINR } from "../lib/fare";
+import { withBase } from "../lib/url";
+
+export function getStaticPaths() {
+	return LOCALITIES.map((locality) => {
+		const area = AIRPORT_AREAS.find((a) => a.slug === locality.slug);
+		if (!area)
+			throw new Error(`No airport area matches locality "${locality.slug}"`);
+		return { params: { area: locality.slug }, props: { locality, area } };
+	});
+}
+
+interface Props {
+	locality: Locality;
+	area: AirportArea;
+}
+
+const { locality, area } = Astro.props;
+const path = `/taxi-in-${locality.slug}/`;
+const airportFareSedan = area.fares.sedan;
+
+// Longer area names drop "Local," to stay inside the ~75-char display limit.
+const fullTitle = `Taxi Service in ${locality.name}, Bangalore — Local, Airport & Outstation`;
+const title =
+	fullTitle.length > 75
+		? `Taxi Service in ${locality.name}, Bangalore — Airport & Outstation`
+		: fullTitle;
+const description = `24/7 taxi in ${locality.name}: airport transfers ${formatINR(airportFareSedan)}, hourly rentals from ${formatINR(RATE_CARD.sedan.hourly4 ?? 1200)}, outstation cabs & one-way drops from your doorstep. No surge. Call +91 70227 62929.`;
+
+const waMessage = `Hi! I need a taxi in ${locality.name}. Please share the details.`;
+
+const services = [
+	{
+		icon: "lucide:plane",
+		title: "Airport transfers",
+		desc: `${locality.name} ⇄ Kempegowda Airport at a fixed ${formatINR(airportFareSedan)} by sedan — flight tracking, ${area.durationRange} typical.`,
+		href: `/airport-taxi-${area.slug}/`,
+		linkLabel: `${locality.name} airport fares →`,
+	},
+	{
+		icon: "lucide:clock",
+		title: "Hourly rentals",
+		desc: `Car + driver at your disposal: ${formatINR(RATE_CARD.sedan.hourly4 ?? 1200)} for 4h/40km, ${formatINR(RATE_CARD.sedan.hourly8)} for 8h/80km. Errands, meetings, functions.`,
+		href: "/hourly-cab-rental-bangalore/",
+		linkLabel: "Hourly packages →",
+	},
+	{
+		icon: "lucide:mountain",
+		title: "Outstation & day trips",
+		desc: `Mysore, Coorg, Tirupati and 20+ routes — every trip starts with a doorstep pickup in ${locality.name} at no extra cost.`,
+		href: "/outstation-cabs-bangalore/",
+		linkLabel: "Routes & fares →",
+	},
+	{
+		icon: "lucide:map-pin",
+		title: "One-way drops",
+		desc: "Pay one side only — in-city drops or fixed-fare drops to 20 cities. The cheapest way to travel one direction.",
+		href: "/one-way-cab-bangalore/",
+		linkLabel: "One-way fares →",
+	},
+];
+
+const dayTrips = ["nandi-hills", "mysore", "coorg", "tirupati"]
+	.map((slug) => ROUTES.find((r) => r.slug === slug))
+	.filter((r): r is NonNullable<typeof r> => Boolean(r));
+---
+
+<PageLayout
+	{title}
+	{description}
+	{path}
+	trail={[{ name: `Taxi in ${locality.name}` }]}
+	{waMessage}
+	ctaTitle={`Need a cab in ${locality.name} right now?`}
+>
+	<PageHero
+		title={`Taxi Service in ${locality.name}, Bangalore`}
+		subtitle={`Local rides, airport transfers, hourly rentals and outstation trips — picked up at your door anywhere in ${locality.name}, 24 hours a day.`}
+		chips={[
+			{ icon: "lucide:plane", label: `Airport ${formatINR(airportFareSedan)}` },
+			{ icon: "lucide:clock", label: "24/7 · no surge" },
+			{ icon: "lucide:shield-check", label: "Verified drivers" },
+		]}
+		bookLabel="Book on WhatsApp"
+		{waMessage}
+	/>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto space-y-4">
+			{locality.intro.map((para) => (
+				<p class="text-muted-foreground leading-relaxed">{para}</p>
+			))}
+		</div>
+	</section>
+
+	<section
+		class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-stone-900 dark:to-stone-950"
+		aria-labelledby={`services-${locality.slug}`}
+	>
+		<div class="max-w-5xl mx-auto">
+			<h2
+				id={`services-${locality.slug}`}
+				class="text-2xl sm:text-3xl font-bold text-foreground mb-8"
+			>
+				Every Ride You Need in {locality.name}
+			</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+				{
+					services.map((service) => (
+						<div class="rounded-lg border bg-card p-5">
+							<Icon name={service.icon} class="h-7 w-7 text-orange-500 mb-2" />
+							<h3 class="font-semibold text-foreground mb-1">{service.title}</h3>
+							<p class="text-sm text-muted-foreground mb-3">{service.desc}</p>
+							<a
+								href={withBase(service.href)}
+								class="text-sm font-semibold text-orange-500 hover:underline"
+							>
+								{service.linkLabel}
+							</a>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-4">
+				Neighbourhoods We Cover
+			</h2>
+			<p class="text-muted-foreground mb-5">
+				Anywhere in and around {locality.name} — including:
+			</p>
+			<div class="flex flex-wrap gap-2 mb-10">
+				{
+					area.neighbourhoods.map((hood) => (
+						<span class="rounded-full border bg-card px-3 py-1.5 text-sm text-foreground">
+							{hood}
+						</span>
+					))
+				}
+			</div>
+
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-4">
+				Weekend Trips that Start at Your Door
+			</h2>
+			<div class="flex flex-wrap gap-2">
+				{
+					dayTrips.map((route) => (
+						<a
+							href={withBase(routePath(route.slug))}
+							class="rounded-full border-2 border-orange-500 px-4 py-1.5 text-sm font-semibold text-orange-600 dark:text-orange-400 transition-colors hover:bg-orange-500 hover:text-white"
+						>
+							{locality.name} → {route.name}
+						</a>
+					))
+				}
+				<a
+					href={withBase("/tour-packages/")}
+					class="rounded-full bg-orange-500 px-4 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-orange-600"
+				>
+					All tour packages →
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-50 dark:from-stone-900 dark:to-stone-950">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center">
+				{locality.name} Taxi FAQs
+			</h2>
+			<FaqAccordion faqs={locality.faqs} emitSchema group={`local-${locality.slug}`} />
+		</div>
+	</section>
+
+	<ServiceSchema
+		serviceType={`Taxi service in ${locality.name}, Bangalore`}
+		description={description}
+		{path}
+		price={airportFareSedan}
+	/>
+</PageLayout>

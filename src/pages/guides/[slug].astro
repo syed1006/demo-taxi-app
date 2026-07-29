@@ -1,0 +1,208 @@
+---
+import { getCollection, render } from "astro:content";
+import { Image, getImage } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import PageLayout from "../../layouts/PageLayout.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import { SITE } from "../../data/site";
+import { optionalContentImage } from "../../data/images";
+import { withBase } from "../../lib/url";
+
+export async function getStaticPaths() {
+	const guides = await getCollection("guides");
+	return guides.map((guide) => ({
+		params: { slug: guide.id },
+		props: { guide },
+	}));
+}
+
+const { guide } = Astro.props;
+const { Content } = await render(guide);
+
+const path = `/guides/${guide.id}/`;
+const hero = optionalContentImage(guide.data.heroImage);
+const shortTitle = guide.data.title.split(/[:?]/)[0].trim();
+const words = guide.body?.split(/\s+/).length ?? 0;
+const readMinutes = Math.max(2, Math.round(words / 200));
+const updatedISO = guide.data.updated.toISOString().split("T")[0];
+const updatedDisplay = guide.data.updated.toLocaleDateString("en-IN", {
+	day: "numeric",
+	month: "long",
+	year: "numeric",
+});
+const waMessage = `Hi! I read your "${shortTitle}" guide — please help me plan this trip.`;
+
+const ogImg = hero
+	? await getImage({ src: hero, width: 1200, format: "jpeg" })
+	: null;
+const articleSchema = {
+	"@context": "https://schema.org",
+	"@type": "Article",
+	headline: guide.data.title,
+	description: guide.data.description,
+	...(ogImg ? { image: new URL(ogImg.src, SITE.url).href } : {}),
+	datePublished: updatedISO,
+	dateModified: updatedISO,
+	inLanguage: "en-IN",
+	mainEntityOfPage: `${SITE.url}${path}`,
+	author: { "@id": `${SITE.url}/#business` },
+	publisher: { "@id": `${SITE.url}/#business` },
+};
+---
+
+<PageLayout
+	title={guide.data.title}
+	description={guide.data.description}
+	{path}
+	ogImage={hero}
+	trail={[{ name: "Travel Guides", href: "/guides/" }, { name: shortTitle }]}
+	{waMessage}
+	ctaTitle="Ready to make the trip?"
+>
+	<article class="px-4 sm:px-6 lg:px-8 py-8">
+		<div class="max-w-3xl mx-auto">
+			<header class="mb-8">
+				<h1 class="text-3xl sm:text-4xl font-bold text-foreground mb-4 text-balance">
+					{guide.data.title}
+				</h1>
+				<p class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
+					<span class="inline-flex items-center gap-1.5">
+						<Icon name="lucide:refresh-cw" class="h-4 w-4 text-orange-500" />
+						Updated {updatedDisplay}
+					</span>
+					<span class="inline-flex items-center gap-1.5">
+						<Icon name="lucide:clock" class="h-4 w-4 text-orange-500" />
+						{readMinutes} min read
+					</span>
+					<span class="inline-flex items-center gap-1.5">
+						<Icon name="lucide:badge-check" class="h-4 w-4 text-orange-500" />
+						By the {SITE.name} driver team
+					</span>
+				</p>
+			</header>
+
+			{
+				hero && (
+					<Image
+						src={hero}
+						alt={shortTitle}
+						widths={[640, 1024, 1400]}
+						sizes="(min-width: 830px) 768px, 100vw"
+						format="webp"
+						quality={78}
+						loading="eager"
+						fetchpriority="high"
+						class="mb-8 aspect-[16/9] w-full rounded-xl border object-cover"
+					/>
+				)
+			}
+
+			<div class="guide-prose">
+				<Content />
+			</div>
+
+			<aside class="mt-10 rounded-xl border-2 border-orange-200 dark:border-orange-900 bg-card p-6">
+				<h2 class="text-lg font-bold text-foreground mb-3">
+					Plan this trip in one tap
+				</h2>
+				<ul class="space-y-2">
+					{
+						guide.data.relatedLinks.map((link) => (
+							<li>
+								<a
+									href={withBase(link.href)}
+									class="inline-flex items-center gap-2 font-semibold text-orange-600 dark:text-orange-400 hover:underline"
+								>
+									<Icon name="lucide:arrow-right" class="h-4 w-4 flex-none" />
+									{link.label}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</aside>
+
+			{
+				guide.data.faqs.length > 0 && (
+					<section class="mt-10">
+						<h2 class="text-2xl font-bold text-foreground mb-6">
+							Quick answers
+						</h2>
+						<FaqAccordion
+							faqs={guide.data.faqs}
+							emitSchema
+							group={`guide-${guide.id}`}
+						/>
+					</section>
+				)
+			}
+		</div>
+	</article>
+
+	<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+</PageLayout>
+
+<style is:global>
+	.guide-prose {
+		color: hsl(var(--foreground) / 0.88);
+	}
+	.guide-prose h2 {
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: hsl(var(--foreground));
+		margin: 2.25rem 0 0.75rem;
+	}
+	.guide-prose h3 {
+		font-size: 1.2rem;
+		font-weight: 700;
+		color: hsl(var(--foreground));
+		margin: 1.75rem 0 0.5rem;
+	}
+	.guide-prose p {
+		margin: 0 0 1rem;
+		line-height: 1.75;
+	}
+	.guide-prose a {
+		color: hsl(var(--primary));
+		font-weight: 600;
+		text-decoration: underline;
+		text-underline-offset: 3px;
+	}
+	.guide-prose ul,
+	.guide-prose ol {
+		margin: 0 0 1rem;
+		padding-left: 1.5rem;
+		line-height: 1.7;
+	}
+	.guide-prose ul {
+		list-style: disc;
+	}
+	.guide-prose ol {
+		list-style: decimal;
+	}
+	.guide-prose li {
+		margin-bottom: 0.4rem;
+	}
+	.guide-prose strong {
+		color: hsl(var(--foreground));
+	}
+	.guide-prose blockquote {
+		margin: 1.5rem 0;
+		border-left: 3px solid hsl(var(--primary));
+		padding-left: 1rem;
+		font-weight: 600;
+		color: hsl(var(--foreground));
+	}
+	.guide-prose table {
+		display: block;
+		overflow-x: auto;
+		margin: 0 0 1rem;
+		border-collapse: collapse;
+	}
+	.guide-prose th,
+	.guide-prose td {
+		border: 1px solid hsl(var(--border));
+		padding: 0.5rem 0.75rem;
+		text-align: left;
+	}
+</style>
