@@ -89,7 +89,7 @@
 		"distanceKm": 40,
 		"durationRange": "70–100 min",
 		"fares": {
-			"sedan": 799
+			"sedan": 899
 		},
 		"neighbourhoods": [
 			"Koramangala 1st–8th Blocks",
@@ -108,7 +108,7 @@
 			},
 			{
 				"question": "Is pickup from any block the same fare?",
-				"answer": "Yes — all eight blocks plus Ejipura, ST Bed and Jakkasandra fall under the flat ₹799 sedan fare to KIA."
+				"answer": "Yes — all eight blocks plus Ejipura, ST Bed and Jakkasandra fall under the flat ₹899 sedan fare to KIA."
 			},
 			{
 				"question": "What if my flight lands at 1 AM — will a cab really show up?",
@@ -163,7 +163,7 @@
 		"distanceKm": 35,
 		"durationRange": "60–90 min",
 		"fares": {
-			"sedan": 799
+			"sedan": 899
 		},
 		"neighbourhoods": [
 			"100 Feet Road",
@@ -184,7 +184,7 @@
 			},
 			{
 				"question": "Is the fare the same from Domlur or Old Airport Road?",
-				"answer": "Yes — the whole Indiranagar belt including Domlur, HAL 2nd Stage and Jeevanbheemanagar is a flat ₹799 by sedan."
+				"answer": "Yes — the whole Indiranagar belt including Domlur, HAL 2nd Stage and Jeevanbheemanagar is a flat ₹899 by sedan."
 			},
 			{
 				"question": "Do you offer meet-and-greet for arrivals into Indiranagar homes?",
@@ -200,7 +200,7 @@
 		"distanceKm": 15,
 		"durationRange": "25–40 min",
 		"fares": {
-			"sedan": 799
+			"sedan": 899
 		},
 		"neighbourhoods": [
 			"Yelahanka New Town",
@@ -210,7 +210,7 @@
 			"Jakkur"
 		],
 		"notes": [
-			"Yelahanka is the closest zone to KIA we serve — flat ₹799 and usually 25–40 minutes door to gate.",
+			"Yelahanka is the closest zone to KIA we serve — flat ₹899 and usually 25–40 minutes door to gate.",
 			"The route joins NH-44 (the airport highway) almost immediately, so even peak-hour delays rarely add more than 10–15 minutes."
 		],
 		"faqs": [
@@ -219,8 +219,8 @@
 				"answer": "A 4:15 AM pickup is comfortable — the drive is 25–30 minutes at that hour, and you're at departures well before the 90-minute mark."
 			},
 			{
-				"question": "Why is the fare ₹799 when Yelahanka is so close?",
-				"answer": "₹799 is our minimum airport fare for a sedan — it covers the driver's dead mileage to reach you and the return. It's still the cheapest fixed airport fare on our card."
+				"question": "Why is the fare ₹899 when Yelahanka is so close?",
+				"answer": "₹899 is our minimum airport fare for a sedan — it covers the driver's dead mileage to reach you and the return. It's still the cheapest fixed airport fare on our card."
 			},
 			{
 				"question": "Do you cover Jakkur and Kogilu under the Yelahanka fare?",
@@ -236,7 +236,7 @@
 		"distanceKm": 25,
 		"durationRange": "40–60 min",
 		"fares": {
-			"sedan": 799
+			"sedan": 899
 		},
 		"neighbourhoods": [
 			"Kempapura",
@@ -256,7 +256,7 @@
 		"distanceKm": 40,
 		"durationRange": "70–100 min",
 		"fares": {
-			"sedan": 799
+			"sedan": 899
 		},
 		"neighbourhoods": [
 			"Marathahalli Bridge",
@@ -336,7 +336,7 @@
 		"distanceKm": 35,
 		"durationRange": "60–85 min",
 		"fares": {
-			"sedan": 799
+			"sedan": 899
 		},
 		"neighbourhoods": [
 			"Sampige Road",
@@ -356,7 +356,7 @@
 		"distanceKm": 38,
 		"durationRange": "65–90 min",
 		"fares": {
-			"sedan": 799
+			"sedan": 899
 		},
 		"neighbourhoods": [
 			"Rajajinagar 1st Block",
@@ -416,7 +416,7 @@
 		"distanceKm": 35,
 		"durationRange": "60–90 min",
 		"fares": {
-			"sedan": 799
+			"sedan": 899
 		},
 		"neighbourhoods": [
 			"Brigade Road",
@@ -436,7 +436,7 @@
 		"distanceKm": 35,
 		"durationRange": "60–90 min",
 		"fares": {
-			"sedan": 799
+			"sedan": 899
 		},
 		"neighbourhoods": [
 			"Gandhinagar",
@@ -456,7 +456,7 @@
 		"distanceKm": 35,
 		"durationRange": "60–85 min",
 		"fares": {
-			"sedan": 799
+			"sedan": 899
 		},
 		"neighbourhoods": [
 			"Ramamurthy Nagar",
@@ -556,7 +556,7 @@
 		"distanceKm": 28,
 		"durationRange": "45–70 min",
 		"fares": {
-			"sedan": 799
+			"sedan": 899
 		},
 		"neighbourhoods": [
 			"Ganganagar",

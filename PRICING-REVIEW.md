@@ -199,7 +199,7 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 
 | Vehicle | One-way fare |
 | --- | --- |
-| Sedan 4+1 seater | from ₹799 |
+| Sedan 4+1 seater | from ₹899 |
 | SUV (Innova / Ertiga) 6+1 / 7+1 seater | from ₹1,499 |
 | Innova Crysta 6+1 / 7+1 seater | from ₹1,999 |
 | Tempo Traveller (12+1) 12+1 seater | from ₹3,200 |
@@ -226,7 +226,7 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 
 | Vehicle | One-way fare |
 | --- | --- |
-| Sedan 4+1 seater | ₹799 |
+| Sedan 4+1 seater | ₹899 |
 | SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹1,499 |
 | Innova Crysta 6+1 / 7+1 seater | ₹1,999 |
 | Tempo Traveller (12+1) 12+1 seater | ₹3,200 |
@@ -235,7 +235,7 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 
 | Vehicle | One-way fare |
 | --- | --- |
-| Sedan 4+1 seater | ₹799 |
+| Sedan 4+1 seater | ₹899 |
 | SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹1,499 |
 | Innova Crysta 6+1 / 7+1 seater | ₹1,999 |
 | Tempo Traveller (12+1) 12+1 seater | ₹3,200 |
@@ -253,7 +253,7 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 
 | Vehicle | One-way fare |
 | --- | --- |
-| Sedan 4+1 seater | ₹799 |
+| Sedan 4+1 seater | ₹899 |
 | SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹1,499 |
 | Innova Crysta 6+1 / 7+1 seater | ₹1,999 |
 | Tempo Traveller (12+1) 12+1 seater | ₹3,200 |

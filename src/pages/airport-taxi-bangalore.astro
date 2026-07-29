@@ -13,9 +13,9 @@ import { withBase } from "../lib/url";
 import type { FaqItem } from "../data/faq";
 
 const path = "/airport-taxi-bangalore/";
-const title = "Bangalore Airport Taxi — Pickup & Drop from ₹799 | 24/7";
+const title = "Bangalore Airport Taxi — Pickup & Drop from ₹899 | 24/7";
 const description =
-	"Kempegowda Airport taxi from anywhere in Bangalore: Sedan from ₹799, Innova Crysta from ₹1,999. Flight tracking, 24/7 pickups, no advance payment. Call +91 70227 62929.";
+	"Kempegowda Airport taxi from anywhere in Bangalore: Sedan from ₹899, Innova Crysta from ₹1,999. Flight tracking, 24/7 pickups, no advance payment. Call +91 70227 62929.";
 
 const baseRows = VEHICLE_CLASS_IDS.map((id) => {
 	const rates = RATE_CARD[id];
@@ -61,7 +61,7 @@ const usps = [
 const faqs: FaqItem[] = [
 	{
 		question: "How much is a taxi from Bangalore city to Kempegowda Airport?",
-		answer: "Sedan airport transfers start at ₹799 for pickups within ~40 km of the airport (most of central and north Bangalore). Farther areas like Electronic City or Bannerghatta Road cost slightly more — exact fares are listed per area above and confirmed before booking.",
+		answer: "Sedan airport transfers start at ₹899 for pickups within ~40 km of the airport (most of central and north Bangalore). Farther areas like Electronic City or Bannerghatta Road cost slightly more — exact fares are listed per area above and confirmed before booking.",
 	},
 	{
 		question: "Do you charge extra for late-night airport pickups?",
@@ -97,7 +97,7 @@ const dedicatedAreas = AIRPORT_AREAS.filter((area) => area.dedicatedPage);
 		title="Bangalore Airport Taxi (Kempegowda International)"
 		subtitle="Pickup and drop between any Bangalore neighbourhood and KIA — fixed fares, flight tracking, and drivers who show up early. 24 hours a day."
 		chips={[
-			{ icon: "lucide:wallet", label: "From ₹799" },
+			{ icon: "lucide:wallet", label: "From ₹899" },
 			{ icon: "lucide:plane", label: "Flight tracking" },
 			{ icon: "lucide:clock", label: "24/7 service" },
 		]}
@@ -231,7 +231,7 @@ const dedicatedAreas = AIRPORT_AREAS.filter((area) => area.dedicatedPage);
 		serviceType="Bangalore airport taxi service"
 		description={description}
 		{path}
-		price={799}
+		price={899}
 	/>
 	<ItemListSchema
 		name="Bangalore Airport Taxi by Area"

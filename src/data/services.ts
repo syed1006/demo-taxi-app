@@ -9,7 +9,7 @@ export interface ServicePage {
 	name: string;
 	path: string;
 	description: string;
-	/** SERP/CTA price hook, e.g. "from ₹799". */
+	/** SERP/CTA price hook, e.g. "from ₹899". */
 	priceHook: string;
 	/** Pre-filled WhatsApp message for direct booking. */
 	waMessage: string;
@@ -25,7 +25,7 @@ export const SERVICES: ServicePage[] = [
 		name: "Airport Taxi",
 		path: "/airport-taxi-bangalore/",
 		description: "Kempegowda Airport pickup & drop, flight tracking, 24/7",
-		priceHook: "from ₹799",
+		priceHook: "from ₹899",
 		waMessage:
 			"Hi! I want to book an airport taxi in Bangalore. Please share the details.",
 		icon: "lucide:plane",
