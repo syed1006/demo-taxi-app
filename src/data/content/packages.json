@@ -10,46 +10,61 @@
 		],
 		"image": "destinations/mysore-palace.webp",
 		"overview": [
-			"Mysore is the most-booked day trip out of Bangalore, and for good reason — in a single well-planned day you cover Srirangapatna's island fort, the Amba Vilas Palace with its gilded durbar hall, the Chamundi Hills viewpoint and the dancing musical fountain at Brindavan Gardens. Our driver handles the Mysore Road expressway run both ways so you spend your energy on the sights, not the driving.",
-			"The pace is full but comfortable: an early start, an unhurried two hours inside the palace, a proper lunch break at a restaurant of your choice, and the evening timed so you catch the fountain show before the drive home. It suits families with kids, first-time visitors to Karnataka and couples who want a packed day without an overnight bag."
+			"The classic Mysore day out, done properly: a 6 AM start puts you at Srirangapatna before the crowds — the Jama Masjid where Tipu Sultan prayed, the island fort's Sri Ranganathaswamy temple, the frescoed Daria Daulat Bagh and the family Gumbaz — with the Payana vintage-car museum on the way into Mysore. After lunch you get an unhurried two hours inside the Amba Vilas Palace, the zoo's walk-through enclosures, and the Brindavan Gardens musical fountain to close the evening before the expressway run home.",
+			"It's a full 6 AM – 10 PM day covering eight places, and the price is genuinely all-inclusive: driver bata, tolls and parking are in the bill, so the only extras are your meals and entry tickets. One planning note — Mysore Zoo stays closed on Tuesdays, so on Tuesday departures we swap in the Chamundi Hills viewpoint instead."
 		],
 		"itinerary": [
 			{
 				"day": 1,
-				"title": "Bangalore → Srirangapatna → Mysore → Bangalore",
+				"title": "Bangalore → Srirangapatna → Mysore → Bangalore (6 AM – 10 PM)",
 				"stops": [
 					{
-						"time": "6:30 AM",
+						"time": "6:00 AM",
 						"place": "Pickup from your home / hotel in Bangalore",
-						"note": "Breakfast stop on Mysore Road expressway"
+						"note": "Breakfast stop on the Mysore Road expressway"
 					},
 					{
-						"time": "9:00 AM",
-						"place": "Srirangapatna",
-						"note": "Ranganathaswamy Temple, Tipu Sultan's Summer Palace & Gumbaz"
+						"time": "8:30 AM",
+						"place": "Tipu Sultan Masjid (Jama Masjid), Srirangapatna",
+						"note": "Twin-minaret mosque inside the island fort"
 					},
 					{
-						"time": "11:00 AM",
-						"place": "Mysore Palace",
-						"note": "Allow around 2 hours inside; guides available at the gate"
+						"time": "9:15 AM",
+						"place": "Sri Ranganathaswamy Temple",
+						"note": "One of the largest Vishnu temples in Karnataka"
 					},
 					{
-						"time": "1:30 PM",
+						"time": "10:00 AM",
+						"place": "Daria Daulat Bagh",
+						"note": "Tipu's teak summer palace and its battle murals"
+					},
+					{
+						"time": "10:45 AM",
+						"place": "Tipu Sultan Gumbaz",
+						"note": "Mausoleum of Tipu, Hyder Ali and the royal family"
+					},
+					{
+						"time": "11:30 AM",
+						"place": "Payana Car Museum",
+						"note": "Vintage & classic car collection on the Mysore road"
+					},
+					{
+						"time": "1:00 PM",
 						"place": "Lunch in Mysore",
-						"note": "Try an authentic Mysore thali or the famous Mylari dosa"
+						"note": "Try a Mysore thali or the famous Mylari dosa"
 					},
 					{
-						"time": "3:00 PM",
-						"place": "Chamundi Hills",
-						"note": "Chamundeshwari Temple and the Nandi statue viewpoint"
+						"time": "2:15 PM",
+						"place": "Mysore Palace",
+						"note": "Allow around 2 hours; guides available at the gate"
 					},
 					{
-						"time": "5:00 PM",
-						"place": "St. Philomena's Cathedral",
-						"note": "Neo-Gothic church, quick photo stop"
+						"time": "4:30 PM",
+						"place": "Mysore Zoo",
+						"note": "Closed on Tuesdays — we swap in Chamundi Hills instead"
 					},
 					{
-						"time": "6:30 PM",
+						"time": "6:45 PM",
 						"place": "Brindavan Gardens",
 						"note": "Musical fountain show after sunset"
 					},
@@ -63,19 +78,11 @@
 		"prices": [
 			{
 				"vehicle": "sedan",
-				"price": 3999
+				"price": 5800
 			},
 			{
 				"vehicle": "suv",
-				"price": 5699
-			},
-			{
-				"vehicle": "innova-crysta",
-				"price": 7199
-			},
-			{
-				"vehicle": "tempo-traveller",
-				"price": 8399
+				"price": 8000
 			}
 		],
 		"includedKm": 300,
@@ -86,44 +93,44 @@
 			"tempo-traveller": 24
 		},
 		"inclusions": [
-			"Fuel charges",
+			"Car, fuel & driver for the full itinerary",
 			"Driver bata (allowance)",
+			"Tolls & parking charges",
 			"Pickup & drop anywhere in Bangalore",
 			"All sightseeing transfers as per itinerary",
-			"Vehicle & driver at your disposal for the full itinerary",
 			"Applicable taxes"
 		],
 		"exclusions": [
-			"Tolls & parking at actuals",
-			"Inter-state permit fees (Tamil Nadu ₹500–1,500 / Kerala ₹500–3,000 / Andhra Pradesh ₹500–2,500 / Goa ₹2,500–3,500 depending on vehicle)",
 			"Entry tickets & guide fees",
-			"Meals & accommodation",
-			"AC is switched off on steep ghat climbs for safety"
+			"Meals",
+			"Drop after 10 PM: additional driver bata ₹400"
 		],
 		"sightsCovered": [
-			"Srirangapatna Ranganathaswamy Temple",
-			"Tipu Sultan's Summer Palace",
+			"Tipu Sultan Masjid (Jama Masjid), Srirangapatna",
+			"Sri Ranganathaswamy Temple",
+			"Daria Daulat Bagh",
+			"Tipu Sultan Gumbaz",
+			"Payana Car Museum",
 			"Mysore Palace",
-			"Chamundi Hills",
-			"St. Philomena's Cathedral",
+			"Mysore Zoo",
 			"Brindavan Gardens"
 		],
 		"faqs": [
 			{
-				"question": "Is the pickup time flexible?",
-				"answer": "Yes. 6:30 AM works best because the palace and gardens both close in the evening, but we can start earlier or later — just tell us on WhatsApp and we'll re-plan the stops around your timing."
+				"question": "What exactly does the ₹5,800 price include?",
+				"answer": "Everything to do with the car: fuel, driver bata, tolls and parking for the full 6 AM – 10 PM itinerary in a 4+1 sedan (₹8,000 for a 7+1). Your only extras are meals and monument entry tickets."
 			},
 			{
-				"question": "Are Mysore Palace entry tickets included in the price?",
-				"answer": "No — entry tickets and guide fees at all monuments are payable directly by you. The palace ticket is inexpensive; our driver will drop you right at the gate."
+				"question": "What happens if we get back after 10 PM?",
+				"answer": "An additional driver bata of ₹400 applies for a drop after 10 PM. The itinerary is paced to have you home by 10 if you stick to the stop timings."
 			},
 			{
-				"question": "Can we skip a stop or add one, like the Mysore Zoo?",
-				"answer": "Absolutely. The car is yours for the day within the 300 km cap. Mysore Zoo, Karanji Lake or the Railway Museum can replace any stop — mention it to the driver in the morning."
+				"question": "Is Mysore Zoo open every day?",
+				"answer": "The zoo is closed on Tuesdays. If you travel on a Tuesday we swap that slot for the Chamundi Hills viewpoint and Nandi statue — tell the driver your preference in the morning."
 			},
 			{
-				"question": "What if we return after 10 PM or cross 300 km?",
-				"answer": "Nothing changes for a normal day like this itinerary. If you add detours beyond 300 km, extra kilometres are billed at ₹12/km for a sedan — you'll always know before you commit."
+				"question": "Can we skip a stop or change the order?",
+				"answer": "Absolutely — the car is yours for the day within the 300 km cap. Skip the museum for more palace time, or trade Brindavan for an early return; just tell the driver in the morning."
 			}
 		],
 		"relatedPackages": [
@@ -142,13 +149,13 @@
 		"routeSlugs": [],
 		"image": "destinations/bangalore-palace.webp",
 		"overview": [
-			"See the best of namma Bengaluru in one relaxed day — the Tudor-style Bangalore Palace, the hilltop calm of the ISKCON temple, Tipu Sultan's Summer Palace in the old pete, the 240-year-old Lalbagh Botanical Garden and the granite monolith of the Bull Temple. Between the big sights you drive past Vidhana Soudha, Cubbon Park and the UB City skyline, so you leave with a real feel for the city.",
-			"This package suits visiting parents, out-of-town guests, relocating families sizing up neighbourhoods, and NRIs on a short trip home. The routing is built around Bangalore traffic — north-side sights in the morning, the garden district after lunch — so you spend the day at the places, not between them."
+			"See the best of namma Bengaluru in one relaxed 8 AM – 8 PM loop — the hilltop calm of the ISKCON temple, the Tudor turrets of Bangalore Palace, a Vidhana Soudha photo stop, Cubbon Park's green mile, Tipu Sultan's teak-pillared summer palace, the granite monolith at the Bull Temple, 240-year-old Lalbagh, and an evening stroll down MG Road and Church Street as the lights come on.",
+			"The routing is built around Bangalore traffic — north-side sights in the morning, the garden district after lunch, MG Road last. Driver bata, tolls and parking are all included in the price; meals and entry tickets are the only extras, and a drop after 8 PM adds ₹400 driver bata."
 		],
 		"itinerary": [
 			{
 				"day": 1,
-				"title": "Full-day Bangalore sightseeing",
+				"title": "Full-day Bangalore sightseeing (8 AM – 8 PM)",
 				"stops": [
 					{
 						"time": "8:00 AM",
@@ -165,33 +172,39 @@
 						"note": "Audio-guide tour of the Wodeyar residence"
 					},
 					{
-						"time": "12:30 PM",
-						"place": "Vidhana Soudha & Cubbon Park",
-						"note": "Drive-past and photo stop"
+						"time": "12:15 PM",
+						"place": "Vidhana Soudha",
+						"note": "Photo stop at the seat of the state legislature"
 					},
 					{
-						"time": "1:15 PM",
+						"time": "12:45 PM",
+						"place": "Cubbon Park",
+						"note": "Short walk under the rain trees"
+					},
+					{
+						"time": "1:30 PM",
 						"place": "Lunch break",
 						"note": "MTR, Vidyarthi Bhavan or a restaurant of your choice"
 					},
 					{
 						"time": "2:45 PM",
 						"place": "Tipu Sultan's Summer Palace",
-						"note": "Teak-pillared 18th-century palace in the old city"
+						"note": "Teak-pillared 18th-century palace in the old pete"
 					},
 					{
 						"time": "3:45 PM",
-						"place": "Bull Temple & Dodda Ganapathi, Basavanagudi"
+						"place": "Bull Temple, Basavanagudi",
+						"note": "Granite Nandi carved from a single boulder"
 					},
 					{
 						"time": "4:45 PM",
 						"place": "Lalbagh Botanical Garden",
-						"note": "Glass House, lake and the Lalbagh rock"
+						"note": "Glasshouse, lake and the ancient rock outcrop"
 					},
 					{
 						"time": "6:30 PM",
 						"place": "MG Road & Church Street",
-						"note": "Optional shopping / coffee stop before drop"
+						"note": "Evening stroll, coffee and shopping"
 					},
 					{
 						"time": "8:00 PM",
@@ -203,19 +216,11 @@
 		"prices": [
 			{
 				"vehicle": "sedan",
-				"price": 3399
+				"price": 3800
 			},
 			{
 				"vehicle": "suv",
-				"price": 4899
-			},
-			{
-				"vehicle": "innova-crysta",
-				"price": 6199
-			},
-			{
-				"vehicle": "tempo-traveller",
-				"price": 7199
+				"price": 4700
 			}
 		],
 		"includedKm": 250,
@@ -226,19 +231,17 @@
 			"tempo-traveller": 24
 		},
 		"inclusions": [
-			"Fuel charges",
+			"Car, fuel & driver for the full itinerary",
 			"Driver bata (allowance)",
+			"Tolls & parking charges",
 			"Pickup & drop anywhere in Bangalore",
 			"All sightseeing transfers as per itinerary",
-			"Vehicle & driver at your disposal for the full itinerary",
 			"Applicable taxes"
 		],
 		"exclusions": [
-			"Tolls & parking at actuals",
-			"Inter-state permit fees (Tamil Nadu ₹500–1,500 / Kerala ₹500–3,000 / Andhra Pradesh ₹500–2,500 / Goa ₹2,500–3,500 depending on vehicle)",
 			"Entry tickets & guide fees",
-			"Meals & accommodation",
-			"AC is switched off on steep ghat climbs for safety"
+			"Meals",
+			"Drop after 8 PM: additional driver bata ₹400"
 		],
 		"sightsCovered": [
 			"ISKCON Temple",
@@ -252,20 +255,20 @@
 		],
 		"faqs": [
 			{
-				"question": "Can we customise the list of places?",
-				"answer": "Yes — this is a private cab, not a bus tour. Swap in Wonderla, Art of Living Ashram, Commercial Street shopping or a visit to relatives; we'll adjust the route as long as it fits the day and the 250 km cap."
+				"question": "What does the ₹3,800 price cover?",
+				"answer": "The car, fuel, driver bata, tolls and parking for the full 8 AM – 8 PM day in a 4+1 sedan (₹4,700 for a 7+1). Meals and entry tickets are the only things you pay on top."
 			},
 			{
-				"question": "Is this good for elderly parents?",
-				"answer": "Very much so. Every sight has drop-off points close to the entrance, walking is optional at most stops, and the driver waits at each place so there's no rushing."
+				"question": "What if we finish after 8 PM?",
+				"answer": "A drop after 8 PM adds ₹400 driver bata. If you want a longer evening on Church Street, just plan for it."
 			},
 			{
-				"question": "Do you provide a guide?",
-				"answer": "The driver knows the city well and handles all the logistics, but he is not a licensed guide. Bangalore Palace has audio guides included with the ticket, and guides are available at Tipu's palace."
+				"question": "Can we swap in Wonderla, the airport or a mall?",
+				"answer": "Within the included kilometres, yes — the car is at your disposal. Tell the driver what matters most to you and he'll re-order the loop around traffic."
 			},
 			{
-				"question": "Can we start from the airport and end at a hotel?",
-				"answer": "Yes. Airport pickup with a city darshan before hotel check-in is a popular option for transit visitors — the extra airport kilometres simply count within your 250 km allowance."
+				"question": "Where should we plan lunch?",
+				"answer": "The classic move is MTR or Vidyarthi Bhavan for a Bangalore-style meal between the morning and afternoon halves — the driver can suggest options near wherever you are at 1 PM."
 			}
 		],
 		"relatedPackages": [
@@ -286,52 +289,43 @@
 		],
 		"image": "destinations/nandi-hills.webp",
 		"overview": [
-			"This is Bangalore's favourite pre-dawn escape done properly: watch the sun rise over a sea of clouds from Tipu's hilltop fort at Nandi Hills, explore the 1,000-year-old Bhoga Nandeeshwara temple at the base of the hill, and end the day at the 112-ft Adiyogi statue at the Isha Foundation centre near Chikkaballapur — staying on for the spectacular Adiyogi Divya Darshanam light show after sunset.",
-			"Because Nandi Hills demands a 4 AM start and Adiyogi is best after dark, doing both by cab is far easier than self-driving on no sleep. The package suits friends' groups, couples and photographers; the afternoon has a built-in lull for a long lunch or a vineyard stop, so it never feels like a forced march."
+			"Hill fortress, ancient temple and a 112-ft Adiyogi in one 6 AM – 6 PM day. You climb Nandi Hills' forty hairpin bends for the viewpoints and Tipu's summer lodge while the air is still cool, walk the 9th-century Sri Bhoga Nandeeshwara temple complex in the base village, and finish at the towering Adiyogi at Sadhguru Sannidhi, Chikkaballapur.",
+			"Driver bata, tolls and parking are all included — entry fees and meals are the only extras. Want the evening Adiyogi light show? Staying past the 6 PM drop adds ₹400 driver bata; and if sunrise at Tipu's Drop is the goal, ask for a 4:30 AM pickup instead when you book."
 		],
 		"itinerary": [
 			{
 				"day": 1,
-				"title": "Sunrise at Nandi Hills, sunset with Adiyogi",
+				"title": "Bangalore → Nandi Hills → Chikkaballapur → Bangalore (6 AM – 6 PM)",
 				"stops": [
 					{
-						"time": "4:00 AM",
-						"place": "Pickup from your home in Bangalore",
-						"note": "Gates at Nandi Hills open around dawn; carry a light jacket"
+						"time": "6:00 AM",
+						"place": "Pickup from your home / hotel",
+						"note": "Ask for 4:30 AM if you want the sunrise at Tipu's Drop"
 					},
 					{
-						"time": "5:45 AM",
-						"place": "Nandi Hills summit",
-						"note": "Sunrise point, Tipu's Drop, Yoga Nandeeshwara Temple"
+						"time": "7:30 AM",
+						"place": "Nandi Hills",
+						"note": "Tipu's Drop, summer lodge and the hilltop temple"
 					},
 					{
-						"time": "8:30 AM",
-						"place": "Breakfast near Nandi cross",
-						"note": "Local favourites serve hot idli-vada from early morning"
-					},
-					{
-						"time": "9:30 AM",
-						"place": "Bhoga Nandeeshwara Temple, Nandi village",
-						"note": "Chola-era temple complex at the foot of the hills"
+						"time": "10:30 AM",
+						"place": "Sri Bhoga Nandeeshwara Temple",
+						"note": "9th-century Dravidian complex in the base village"
 					},
 					{
 						"time": "12:30 PM",
-						"place": "Lunch & rest stop",
-						"note": "Chikkaballapur town or a vineyard tour en route (optional)"
+						"place": "Lunch, Chikkaballapur",
+						"note": "Local tiffin rooms or a highway restaurant"
 					},
 					{
-						"time": "3:30 PM",
-						"place": "Adiyogi statue, Isha Foundation Chikkaballapur",
-						"note": "Darshan, Naga pratishtha and the pond walkway"
+						"time": "1:45 PM",
+						"place": "Adiyogi — Isha Foundation",
+						"note": "112-ft Adiyogi at Sadhguru Sannidhi"
 					},
 					{
-						"time": "7:00 PM",
-						"place": "Adiyogi Divya Darshanam light & sound show",
-						"note": "Show days/timings vary; we confirm before booking"
-					},
-					{
-						"time": "9:30 PM",
-						"place": "Drop back home in Bangalore"
+						"time": "6:00 PM",
+						"place": "Drop back home in Bangalore",
+						"note": "Stay for the light show on request (post-6 PM bata applies)"
 					}
 				]
 			}
@@ -339,19 +333,11 @@
 		"prices": [
 			{
 				"vehicle": "sedan",
-				"price": 3399
+				"price": 4000
 			},
 			{
 				"vehicle": "suv",
-				"price": 4899
-			},
-			{
-				"vehicle": "innova-crysta",
-				"price": 6199
-			},
-			{
-				"vehicle": "tempo-traveller",
-				"price": 7199
+				"price": 5500
 			}
 		],
 		"includedKm": 250,
@@ -362,49 +348,277 @@
 			"tempo-traveller": 24
 		},
 		"inclusions": [
-			"Fuel charges",
+			"Car, fuel & driver for the full itinerary",
 			"Driver bata (allowance)",
+			"Tolls & parking charges",
 			"Pickup & drop anywhere in Bangalore",
 			"All sightseeing transfers as per itinerary",
-			"Vehicle & driver at your disposal for the full itinerary",
 			"Applicable taxes"
 		],
 		"exclusions": [
-			"Tolls & parking at actuals",
-			"Inter-state permit fees (Tamil Nadu ₹500–1,500 / Kerala ₹500–3,000 / Andhra Pradesh ₹500–2,500 / Goa ₹2,500–3,500 depending on vehicle)",
 			"Entry tickets & guide fees",
-			"Meals & accommodation",
-			"AC is switched off on steep ghat climbs for safety"
+			"Meals",
+			"AC stays off on the Nandi Hills climb for safety",
+			"Drop after 6 PM: additional driver bata ₹400"
 		],
 		"sightsCovered": [
-			"Nandi Hills sunrise point",
-			"Tipu's Drop",
-			"Yoga Nandeeshwara Temple",
-			"Bhoga Nandeeshwara Temple",
-			"Adiyogi statue (Isha Foundation Chikkaballapur)",
-			"Adiyogi Divya Darshanam light show"
+			"Nandi Hills",
+			"Sri Bhoga Nandeeshwara Temple",
+			"Adiyogi — Isha Foundation, Chikkaballapur"
 		],
 		"faqs": [
 			{
-				"question": "Is the 4 AM pickup really necessary?",
-				"answer": "For sunrise, yes — Nandi Hills' entry gate queues up before dawn on weekends and the summit road closes to late arrivals once parking fills. If you'd rather skip sunrise, we can start at 7 AM and reorder the day."
+				"question": "What does the ₹4,000 price include?",
+				"answer": "Car, fuel, driver bata, tolls and parking for the full 6 AM – 6 PM day in a 4+1 sedan (₹5,500 for a 7+1). Hilltop entry fees and meals are extra."
 			},
 			{
-				"question": "Is the Adiyogi light show on every day?",
-				"answer": "The Divya Darshanam show generally runs on weekend evenings and special days, and timings shift with season. Tell us your date and we'll confirm the schedule before you book."
+				"question": "Can we stay for the Adiyogi light show?",
+				"answer": "Yes — the Divya Darshanam show runs after sunset. Staying past the 6 PM drop adds ₹400 driver bata; tell the driver by afternoon so he plans the return."
 			},
 			{
-				"question": "Does the cab wait the whole day, even during the afternoon break?",
-				"answer": "Yes. The vehicle and driver stay with you for the entire itinerary — the long lunch stop is your time to rest after the early start."
+				"question": "Is this doable for sunrise at Nandi Hills?",
+				"answer": "With the standard 6 AM start you reach the top around 7:30, after sunrise but still in the best morning light. For sunrise proper, book a 4:30 AM pickup — same price, same day plan."
 			},
 			{
-				"question": "Can we add Skandagiri or a vineyard visit?",
-				"answer": "A vineyard tour near Nandi slots in easily after breakfast. Skandagiri is a trek with its own pre-booking and timing, so it needs to replace the Nandi sunrise rather than add to it — ask us and we'll plan it out."
+				"question": "Why is the AC off on the climb?",
+				"answer": "The final hill section is a steep 40-hairpin climb; switching the AC off for those few minutes keeps the engine cool and safe, as on all ghat roads."
 			}
 		],
 		"relatedPackages": [
-			"bangalore-city-darshan-1-day",
+			"lepakshi-nandi-hills-adiyogi-1-day",
+			"kotilingeshwara-1-day",
+			"bangalore-city-darshan-1-day"
+		],
+		"popular": false
+	},
+	{
+		"slug": "lepakshi-nandi-hills-adiyogi-1-day",
+		"name": "Bangalore to Lepakshi + Nandi Hills + Adiyogi 1-Day Package",
+		"shortName": "Lepakshi + Nandi + Adiyogi",
+		"durationDays": 1,
+		"durationNights": 0,
+		"routeSlugs": [
+			"lepakshi",
+			"nandi-hills",
+			"adiyogi-chikkaballapur"
+		],
+		"image": "destinations/lepakshi-temple.webp",
+		"overview": [
+			"The grand north-of-Bangalore circuit in a single 6 AM – 8 PM day: sunrise-country views from Nandi Hills, the 9th-century Sri Bhoga Nandeeshwara temple at its base, then across the Andhra border to Lepakshi — the Veerabhadra temple with its famous hanging pillar, the giant monolithic Nandi and the Jatayu theme park — before swinging back through Chikkaballapur for the 112-ft Adiyogi to end the day.",
+			"Six places, two states, one fixed price that includes driver bata, tolls and parking. Entry tickets and meals are the only extras, and a drop after 8 PM adds ₹400 driver bata. Carry a photo ID — Lepakshi sits just across the Andhra Pradesh border."
+		],
+		"itinerary": [
+			{
+				"day": 1,
+				"title": "Bangalore → Nandi Hills → Lepakshi → Adiyogi → Bangalore (6 AM – 8 PM)",
+				"stops": [
+					{
+						"time": "6:00 AM",
+						"place": "Pickup from your home / hotel",
+						"note": "Breakfast en route on NH-44"
+					},
+					{
+						"time": "7:30 AM",
+						"place": "Nandi Hills",
+						"note": "Viewpoints and Tipu's summer lodge in the morning cool"
+					},
+					{
+						"time": "10:00 AM",
+						"place": "Sri Bhoga Nandeeshwara Temple",
+						"note": "9th-century temple complex in the base village"
+					},
+					{
+						"time": "12:15 PM",
+						"place": "Lepakshi Veerabhadra Temple",
+						"note": "Vijayanagara frescoes and the hanging pillar; lunch after"
+					},
+					{
+						"time": "2:45 PM",
+						"place": "Lepakshi Monolithic Nandi",
+						"note": "Giant granite Nandi a kilometre before the temple"
+					},
+					{
+						"time": "3:15 PM",
+						"place": "Jatayu Theme Park",
+						"note": "Landmark Jatayu sculpture from the Ramayana"
+					},
+					{
+						"time": "5:30 PM",
+						"place": "Adiyogi — Isha Foundation, Chikkaballapur",
+						"note": "112-ft Adiyogi at Sadhguru Sannidhi"
+					},
+					{
+						"time": "8:00 PM",
+						"place": "Drop back home in Bangalore"
+					}
+				]
+			}
+		],
+		"prices": [
+			{
+				"vehicle": "sedan",
+				"price": 5800
+			},
+			{
+				"vehicle": "suv",
+				"price": 8000
+			}
+		],
+		"includedKm": 350,
+		"extraKmRate": {
+			"sedan": 12,
+			"suv": 17,
+			"innova-crysta": 21,
+			"tempo-traveller": 24
+		},
+		"inclusions": [
+			"Car, fuel & driver for the full itinerary",
+			"Driver bata (allowance)",
+			"Tolls & parking charges",
+			"Pickup & drop anywhere in Bangalore",
+			"All sightseeing transfers as per itinerary",
+			"Applicable taxes"
+		],
+		"exclusions": [
+			"Entry tickets & guide fees",
+			"Meals",
+			"Inter-state permit, if levied (Lepakshi is just across the Andhra border)",
+			"AC stays off on the Nandi Hills climb for safety",
+			"Drop after 8 PM: additional driver bata ₹400"
+		],
+		"sightsCovered": [
+			"Nandi Hills",
+			"Sri Bhoga Nandeeshwara Temple",
+			"Lepakshi Veerabhadra Temple & Hanging Pillar",
+			"Lepakshi Monolithic Nandi",
+			"Jatayu Theme Park",
+			"Adiyogi — Isha Foundation, Chikkaballapur"
+		],
+		"faqs": [
+			{
+				"question": "What does the ₹5,800 price include?",
+				"answer": "Car, fuel, driver bata, tolls and parking for the full 6 AM – 8 PM day in a 4+1 sedan (₹8,000 for a 7+1). Entry tickets and meals are the only extras."
+			},
+			{
+				"question": "Do we need anything special to cross into Andhra Pradesh?",
+				"answer": "Just carry a photo ID. Lepakshi is only 12–15 km past the border on good roads; if any inter-state permit is levied for the vehicle it's billed at actuals — usually a small amount."
+			},
+			{
+				"question": "Is one day really enough for all six places?",
+				"answer": "Yes, with the 6 AM start. The loop is roughly 300 km with short hops between sights, and the itinerary above has been road-tested — you're back in Bangalore by 8 PM."
+			},
+			{
+				"question": "What if we want to stay for the Adiyogi light show?",
+				"answer": "The show runs after sunset. Staying for it pushes the drop past 8 PM, which adds ₹400 driver bata — tell the driver by afternoon and he'll re-pace the day."
+			}
+		],
+		"relatedPackages": [
+			"nandi-hills-adiyogi-1-day",
+			"kotilingeshwara-1-day",
 			"mysore-1-day-tour"
+		],
+		"popular": false
+	},
+	{
+		"slug": "kotilingeshwara-1-day",
+		"name": "Bangalore to Kotilingeshwara 1-Day Package",
+		"shortName": "Kotilingeshwara 1-Day",
+		"durationDays": 1,
+		"durationNights": 0,
+		"routeSlugs": [],
+		"overview": [
+			"A devotional day trip east to Kammasandra in Kolar district, home of the Kotilingeshwara temple — its 33-metre (108-ft) Shiva linga is among the tallest anywhere, watched over by a 35-ft Nandi and surrounded by lakhs of smaller lingas installed by devotees over the decades. The 6 AM pickup gets you there for a calm mid-morning darshan before the day-trip crowds.",
+			"The price is all-inclusive on the car side — fuel, driver bata, tolls and parking — so your only spends are the temple offerings, any seva you book and lunch at Kolar on the way back. It's an easy, restful day: about two and a half hours each way with the whole afternoon at your pace."
+		],
+		"itinerary": [
+			{
+				"day": 1,
+				"title": "Bangalore → Kotilingeshwara (Kolar) → Bangalore",
+				"stops": [
+					{
+						"time": "6:00 AM",
+						"place": "Pickup from your home / hotel",
+						"note": "Breakfast stop on NH-75 towards Kolar"
+					},
+					{
+						"time": "8:45 AM",
+						"place": "Kotilingeshwara Temple, Kammasandra",
+						"note": "108-ft Shiva linga, 35-ft Nandi and lakhs of votive lingas"
+					},
+					{
+						"time": "12:30 PM",
+						"place": "Lunch at Kolar"
+					},
+					{
+						"time": "2:00 PM",
+						"place": "Optional stop of your choice",
+						"note": "Kolaramma Temple or a KGF drive-past, within included km"
+					},
+					{
+						"time": "5:30 PM",
+						"place": "Drop back home in Bangalore"
+					}
+				]
+			}
+		],
+		"prices": [
+			{
+				"vehicle": "sedan",
+				"price": 4000
+			},
+			{
+				"vehicle": "suv",
+				"price": 5500
+			}
+		],
+		"includedKm": 250,
+		"extraKmRate": {
+			"sedan": 12,
+			"suv": 17,
+			"innova-crysta": 21,
+			"tempo-traveller": 24
+		},
+		"inclusions": [
+			"Car, fuel & driver for the full itinerary",
+			"Driver bata (allowance)",
+			"Tolls & parking charges",
+			"Pickup & drop anywhere in Bangalore",
+			"All sightseeing transfers as per itinerary",
+			"Applicable taxes"
+		],
+		"exclusions": [
+			"Entry tickets & guide fees",
+			"Meals",
+			"Temple offerings & seva charges",
+			"Drop after 6 PM: additional driver bata ₹400"
+		],
+		"sightsCovered": [
+			"Kotilingeshwara Temple",
+			"108-ft Shiva Linga & 35-ft Nandi",
+			"Lakhs of votive lingas on the temple grounds"
+		],
+		"faqs": [
+			{
+				"question": "What does the ₹4,000 price include?",
+				"answer": "Car, fuel, driver bata, tolls and parking for the full day in a 4+1 sedan (₹5,500 for a 7+1). Temple offerings, seva bookings and meals are the only extras."
+			},
+			{
+				"question": "How far is Kotilingeshwara from Bangalore?",
+				"answer": "About 100 km east via NH-75 — two and a half hours each way. With the 6 AM pickup you're at the temple by about 8:45 AM, well before the midday rush."
+			},
+			{
+				"question": "Can we install a linga in our name?",
+				"answer": "Yes — that's the temple's tradition. Devotees can sponsor and install a linga through the temple counter; enquire there for the current seva details."
+			},
+			{
+				"question": "Can we add another stop on the way back?",
+				"answer": "Within the 250 included kilometres, gladly — the Kolaramma Temple in Kolar town or a drive past the KGF mining country are the usual picks."
+			}
+		],
+		"relatedPackages": [
+			"nandi-hills-adiyogi-1-day",
+			"lepakshi-nandi-hills-adiyogi-1-day",
+			"bangalore-city-darshan-1-day"
 		],
 		"popular": false
 	},
@@ -624,19 +838,11 @@
 		"prices": [
 			{
 				"vehicle": "sedan",
-				"price": 8499
+				"price": 8600
 			},
 			{
 				"vehicle": "suv",
-				"price": 12099
-			},
-			{
-				"vehicle": "innova-crysta",
-				"price": 15299
-			},
-			{
-				"vehicle": "tempo-traveller",
-				"price": 17899
+				"price": 12800
 			}
 		],
 		"includedKm": 600,
@@ -647,20 +853,17 @@
 			"tempo-traveller": 24
 		},
 		"inclusions": [
-			"Fuel charges",
-			"Driver bata (allowance)",
+			"Car, fuel & driver for the full itinerary",
+			"Driver bata for both days",
 			"Pickup & drop anywhere in Bangalore",
 			"All sightseeing transfers as per itinerary",
-			"Vehicle & driver at your disposal for the full itinerary",
 			"Applicable taxes"
 		],
 		"exclusions": [
-			"Tolls & parking at actuals",
-			"Inter-state permit fees (Tamil Nadu ₹500–1,500 / Kerala ₹500–3,000 / Andhra Pradesh ₹500–2,500 / Goa ₹2,500–3,500 depending on vehicle)",
-			"Entry tickets & guide fees",
-			"Meals & accommodation",
-			"AC is switched off on steep ghat climbs for safety",
-			"Tirumala darshan / seva tickets (book directly on the TTD portal)"
+			"Tolls, parking & Andhra Pradesh state permit at actuals (billed separately)",
+			"Hotels & meals",
+			"Darshan tickets (we can guide you on booking)",
+			"Drop after 10 PM: additional driver bata ₹400"
 		],
 		"sightsCovered": [
 			"Kanipakam Vinayaka Temple",
@@ -705,85 +908,85 @@
 		],
 		"image": "destinations/coorg.webp",
 		"overview": [
-			"Two days in the Scotland of India: the gilded Namdroling Monastery at Bylakuppe, elephants at Dubare camp, the bamboo island of Nisargadhama, sunset from Raja's Seat, and a misty morning at Abbey Falls before the drive home. The route packs Kushalnagar's sights into the journey in, so you waste no daylight backtracking.",
-			"It's the classic first Coorg trip — right for couples, families and small friends' groups who want coffee-estate air without a long leave application. The pace leaves room for a lazy homestay evening in Madikeri, and everything on the itinerary can flex around your breakfast-to-sunset preferences."
+			"Two days that cover the whole of Coorg's greatest hits — nine places, from the golden prayer halls of the Namdroling Monastery at Bylakuppe to the very source of the Kaveri at Talakaveri. Day one works the Kushalnagar belt: the monastery, the bamboo island of Kaveri Nisargadhama, elephants at Dubare and a Raja's Seat sunset over Madikeri's valleys.",
+			"Day two goes high and holy: an early 4x4 run up the Mandalpatti viewpoint, the plunge of Abbey Falls, Omkareshwara temple in Madikeri town, and the Triveni Sangama at Bhagamandala on the way up to Talakaveri. The price covers the car, fuel and two days of driver bata; tolls, parking, stay and the Mandalpatti jeep are at actuals."
 		],
 		"itinerary": [
 			{
 				"day": 1,
-				"title": "Bangalore → Kushalnagar sights → Madikeri",
+				"title": "Bangalore → Bylakuppe → Kushalnagar → Madikeri",
 				"stops": [
 					{
-						"time": "6:00 AM",
-						"place": "Pickup from your home in Bangalore",
-						"note": "Breakfast at a highway favourite near Channarayapatna"
+						"time": "5:30 AM",
+						"place": "Pickup from your home / hotel",
+						"note": "5–6 AM start; breakfast on the Mysore road"
 					},
 					{
 						"time": "11:00 AM",
-						"place": "Namdroling Monastery (Golden Temple), Bylakuppe",
-						"note": "One of the largest Tibetan settlements in India"
+						"place": "Golden Temple (Namdroling Monastery), Bylakuppe",
+						"note": "Tibetan monastery with three gilded Buddhas"
 					},
 					{
 						"time": "1:00 PM",
-						"place": "Lunch at Kushalnagar"
+						"place": "Lunch, Kushalnagar"
 					},
 					{
 						"time": "2:15 PM",
+						"place": "Kaveri Nisargadhama",
+						"note": "Bamboo island park on the river — deer and hanging bridge"
+					},
+					{
+						"time": "3:45 PM",
 						"place": "Dubare Elephant Camp",
-						"note": "Boat crossing; elephant interaction slots are morning-biased, we can flip this to day 2"
+						"note": "River crossing by boat; elephant interaction till 4:30"
 					},
 					{
-						"time": "4:00 PM",
-						"place": "Cauvery Nisargadhama",
-						"note": "Bamboo groves and hanging bridge over the Cauvery"
+						"time": "5:45 PM",
+						"place": "Raja's Seat, Madikeri",
+						"note": "Sunset point over the Western Ghats valleys"
 					},
 					{
-						"time": "5:30 PM",
-						"place": "Madikeri check-in",
-						"note": "Hotel/homestay booked by you or on request"
-					},
-					{
-						"time": "6:15 PM",
-						"place": "Raja's Seat",
-						"note": "Sunset over the Western Ghats, overnight in Madikeri"
+						"time": "7:00 PM",
+						"place": "Check-in at your Madikeri hotel",
+						"note": "Stay is your own arrangement — ask us for suggestions"
 					}
 				]
 			},
 			{
 				"day": 2,
-				"title": "Madikeri sights → Bangalore",
+				"title": "Mandalpatti → Abbey Falls → Talakaveri → Bangalore",
 				"stops": [
 					{
-						"time": "8:30 AM",
+						"time": "7:00 AM",
+						"place": "Mandalpatti viewpoint",
+						"note": "Local 4x4 jeep for the final stretch (at actuals); short trek"
+					},
+					{
+						"time": "10:00 AM",
 						"place": "Abbey Falls",
-						"note": "Best light and thinnest crowds in the morning"
+						"note": "Waterfall in a coffee estate, best after the monsoon"
 					},
 					{
-						"time": "10:15 AM",
+						"time": "11:30 AM",
 						"place": "Omkareshwara Temple",
-						"note": "Unusual Indo-Islamic style Shiva temple"
+						"note": "17th-century Shiva temple in Madikeri town"
 					},
 					{
-						"time": "11:15 AM",
-						"place": "Madikeri Fort & Palace"
+						"time": "1:00 PM",
+						"place": "Lunch, Madikeri"
 					},
 					{
-						"time": "12:30 PM",
-						"place": "Lunch in Madikeri",
-						"note": "Try Coorgi pandi curry & akki roti"
+						"time": "2:30 PM",
+						"place": "Bhagamandala (Triveni Sangama)",
+						"note": "Confluence of the Kaveri, Kannike and Sujyoti"
 					},
 					{
-						"time": "2:00 PM",
-						"place": "Coffee & spice estate stop",
-						"note": "Pick up fresh Coorg coffee and homemade chocolates"
+						"time": "3:30 PM",
+						"place": "Talakaveri",
+						"note": "Source of the Kaveri on Brahmagiri hill"
 					},
 					{
-						"time": "3:00 PM",
-						"place": "Depart for Bangalore",
-						"note": "Tea break en route"
-					},
-					{
-						"time": "9:30 PM",
+						"time": "10:00 PM",
 						"place": "Drop back home in Bangalore"
 					}
 				]
@@ -792,19 +995,11 @@
 		"prices": [
 			{
 				"vehicle": "sedan",
-				"price": 8499
+				"price": 8600
 			},
 			{
 				"vehicle": "suv",
-				"price": 12099
-			},
-			{
-				"vehicle": "innova-crysta",
-				"price": 15299
-			},
-			{
-				"vehicle": "tempo-traveller",
-				"price": 17899
+				"price": 12800
 			}
 		],
 		"includedKm": 600,
@@ -815,46 +1010,46 @@
 			"tempo-traveller": 24
 		},
 		"inclusions": [
-			"Fuel charges",
-			"Driver bata (allowance)",
+			"Car, fuel & driver for the full itinerary",
+			"Driver bata for both days",
 			"Pickup & drop anywhere in Bangalore",
 			"All sightseeing transfers as per itinerary",
-			"Vehicle & driver at your disposal for the full itinerary",
 			"Applicable taxes"
 		],
 		"exclusions": [
-			"Tolls & parking at actuals",
-			"Inter-state permit fees (Tamil Nadu ₹500–1,500 / Kerala ₹500–3,000 / Andhra Pradesh ₹500–2,500 / Goa ₹2,500–3,500 depending on vehicle)",
-			"Entry tickets & guide fees",
-			"Meals & accommodation",
+			"Tolls & parking at actuals (billed separately)",
+			"Hotels & meals",
+			"Entry tickets, boating & the Mandalpatti local jeep at actuals",
+			"Drop after 10 PM: additional driver bata ₹400",
 			"AC is switched off on steep ghat climbs for safety"
 		],
 		"sightsCovered": [
-			"Namdroling Monastery (Golden Temple)",
+			"Golden Temple (Namdroling Monastery), Bylakuppe",
+			"Kaveri Nisargadhama",
 			"Dubare Elephant Camp",
-			"Cauvery Nisargadhama",
 			"Raja's Seat",
-			"Abbey Falls",
 			"Omkareshwara Temple",
-			"Madikeri Fort",
-			"Coffee & spice estates"
+			"Abbey Falls",
+			"Mandalpatti Viewpoint",
+			"Bhagamandala (Triveni Sangama)",
+			"Talakaveri"
 		],
 		"faqs": [
 			{
-				"question": "Is the hotel or homestay included?",
-				"answer": "No — stay is excluded so you can pick your own budget and style, from Madikeri hotels to estate homestays. We're happy to suggest options we've had good guest feedback on; you book directly."
+				"question": "What does the ₹8,600 price include?",
+				"answer": "The car, fuel and driver bata for both days in a 4+1 sedan (₹12,800 for a 7+1), with pickup and drop anywhere in Bangalore. Tolls, parking, your hotel, meals, entry fees and the Mandalpatti jeep are at actuals."
 			},
 			{
-				"question": "Can we add Mandalpatti viewpoint?",
-				"answer": "Yes, on day 2 morning — but the final stretch is a rough track where only local 4x4 jeeps are allowed. Our cab drops you at the jeep point; the jeep charge (around ₹1,500–2,000 per jeep) is payable there."
+				"question": "Why can't our cab drive up to Mandalpatti?",
+				"answer": "The last stretch is a rough forest track restricted to local 4x4 jeeps. Our driver drops you at the jeep point; the shared or private jeep fare there is paid directly."
 			},
 			{
-				"question": "What does an extra day in Coorg cost?",
-				"answer": "Roughly ₹4,500–5,000 more on a sedan (an extra day of driver bata, night halt and up to 300 km), and proportionately more for bigger vehicles. Tell us on WhatsApp and we'll quote the exact figure."
+				"question": "Is the hotel included?",
+				"answer": "No — you book your own stay in Madikeri (or ask us and we'll suggest driver-friendly options at your budget). Keeping the stay out keeps the package price honest."
 			},
 			{
-				"question": "Is the drive okay for people prone to motion sickness?",
-				"answer": "The highway run is smooth; only the last 30-odd km from Kushalnagar to Madikeri is winding. Sitting in front, taking the tablet before Kushalnagar and our driver's easy pace on the curves handle it well."
+				"question": "How late do we get back on day two?",
+				"answer": "Leaving Talakaveri by about 4 PM has you home around 10 PM. A drop after 10 PM adds ₹400 driver bata, so the driver will pace the day accordingly."
 			}
 		],
 		"relatedPackages": [
@@ -1888,19 +2083,11 @@
 		"prices": [
 			{
 				"vehicle": "sedan",
-				"price": 8499
+				"price": 8600
 			},
 			{
 				"vehicle": "suv",
-				"price": 12099
-			},
-			{
-				"vehicle": "innova-crysta",
-				"price": 15299
-			},
-			{
-				"vehicle": "tempo-traveller",
-				"price": 17899
+				"price": 12800
 			}
 		],
 		"includedKm": 600,
@@ -1911,20 +2098,18 @@
 			"tempo-traveller": 24
 		},
 		"inclusions": [
-			"Fuel charges",
-			"Driver bata (allowance)",
+			"Car, fuel & driver for the full itinerary",
+			"Driver bata for both days",
 			"Pickup & drop anywhere in Bangalore",
 			"All sightseeing transfers as per itinerary",
-			"Vehicle & driver at your disposal for the full itinerary",
 			"Applicable taxes"
 		],
 		"exclusions": [
-			"Tolls & parking at actuals",
-			"Inter-state permit fees (Tamil Nadu ₹500–1,500 / Kerala ₹500–3,000 / Andhra Pradesh ₹500–2,500 / Goa ₹2,500–3,500 depending on vehicle)",
-			"Entry tickets & guide fees",
-			"Meals & accommodation",
-			"AC is switched off on steep ghat climbs for safety",
-			"Local jeep charges for the Jhari Falls off-road stretch"
+			"Tolls & parking at actuals (billed separately)",
+			"Hotels & meals",
+			"Entry tickets & local jeep charges at actuals",
+			"Drop after 10 PM: additional driver bata ₹400",
+			"AC is switched off on steep ghat climbs for safety"
 		],
 		"sightsCovered": [
 			"Chennakeshava Temple, Belur",
