@@ -41,10 +41,14 @@ const packageSlide = (pkg: (typeof PACKAGES)[number]): Slide => {
 
 // The hero sells tour packages only; airport/outstation/hourly get the
 // quick-links row below the slider instead of slides of their own.
-const slides: Slide[] = [...PACKAGES]
-	.sort((a, b) => Number(b.popular) - Number(a.popular))
-	.slice(0, 10)
-	.map(packageSlide);
+// Rotation runs in duration order — every 1-day tour, then 2-day, then
+// 3-day — with popular packages leading inside each group.
+const GROUP_CAPS: Record<number, number> = { 1: 6, 2: 4, 3: 2 };
+const byDuration = (days: number) =>
+	PACKAGES.filter((pkg) => pkg.durationDays === days)
+		.sort((a, b) => Number(b.popular) - Number(a.popular))
+		.slice(0, GROUP_CAPS[days] ?? 0);
+const slides: Slide[] = [1, 2, 3].flatMap(byDuration).map(packageSlide);
 ---
 
 <section
