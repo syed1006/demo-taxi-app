@@ -31,6 +31,10 @@ A 16th-century Vijayanagara temple just across the Andhra border with India's mo
 
 ## 3. Hogenakkal Falls — 130 km, the raw one
 
+![Hogenakkal Falls](../../assets/destinations/hogenakkal-falls.webp)
+
+*Hogenakkal — the "Niagara of India", best just after the monsoon.*
+
 The Kaveri crashes through a granite gorge on the Tamil Nadu border; coracle rides drift you right to the spray. Best July–October when the river is full. [Route details →](/bangalore-to-hogenakkal-taxi/)
 
 ## 4. Shivanasamudra — 135 km, twin waterfalls
@@ -42,6 +46,10 @@ Gaganachukki and Bharachukki — two huge falls on one river island, at their th
 Palace, Chamundi Hills, Srirangapatna, the zoo, Brindavan's fountains — the deepest single destination on this list, now 90 minutes away by expressway. Do it as a [packed one-day tour](/tour-packages/mysore-1-day-tour/) or read the [road guide](/guides/bangalore-to-mysore-road-guide/) and go at your own pace.
 
 ## 6. Chikmagalur — 245 km, coffee and peaks
+
+![Chikmagalur coffee country](../../assets/destinations/chickmagaluru.webp)
+
+*Chikmagalur — coffee estates rolling into the Baba Budangiri range.*
 
 Coffee estates, Mullayanagiri (Karnataka's highest peak) and waterfall trails. This one wants an overnight — the [2-day package](/tour-packages/chikmagalur-2-days/) covers the car for ₹8,600. [Route details →](/bangalore-to-chikmagalur-taxi/)
 

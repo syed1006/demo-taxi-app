@@ -1013,9 +1013,155 @@
 			}
 		],
 		"relatedPackages": [
+			"chennai-3-days",
 			"tirupati-2-days",
 			"pondicherry-2-days",
 			"mysore-1-day-tour"
+		],
+		"popular": false
+	},
+	{
+		"slug": "chennai-3-days",
+		"name": "Bangalore to Chennai 3-Day Round Trip Package",
+		"shortName": "Chennai 3-Day",
+		"durationDays": 3,
+		"durationNights": 2,
+		"routeSlugs": [
+			"chennai"
+		],
+		"image": "destinations/kapaleeshwarar-temple.webp",
+		"overview": [
+			"The unhurried version of our Chennai round trip: three days, two nights, and the same car and driver on call the whole time. It fits the trips a 2-day dash can't — weddings and family functions that run long, hospital consultations with follow-ups, admissions season, or simply Chennai with enough time for Marina Beach at sunrise and a Mahabalipuram excursion.",
+			"The price covers the car, fuel and the driver's bata for all three days with 900 km included — the round trip plus generous local running. Tolls, parking and the Tamil Nadu state permit are at actuals, hotels are your own booking, and a drop after 10 PM on the return adds ₹400 bata. Day two is deliberately unscripted: it's yours, with the classic Chennai + Mahabalipuram loop below as the default if sightseeing is the plan."
+		],
+		"itinerary": [
+			{
+				"day": 1,
+				"title": "Bangalore → Chennai (via NH-48)",
+				"stops": [
+					{
+						"time": "6:00 AM",
+						"place": "Pickup from your home / hotel",
+						"note": "Breakfast halt on the highway"
+					},
+					{
+						"time": "10:30 AM",
+						"place": "Optional halt: Kanchipuram temples",
+						"note": "Ekambareswarar & Kamakshi Amman — adds about 2 hours"
+					},
+					{
+						"time": "1:30 PM",
+						"place": "Arrive Chennai · lunch & check-in"
+					},
+					{
+						"time": "4:00 PM",
+						"place": "Marina Beach & the Lighthouse",
+						"note": "Evening walk on India's longest urban beach"
+					}
+				]
+			},
+			{
+				"day": 2,
+				"title": "Your day — function, work or the Mahabalipuram loop",
+				"stops": [
+					{
+						"time": "Morning",
+						"place": "Kapaleeshwarar Temple, Mylapore",
+						"note": "Grand Dravidian gopuram; San Thome Basilica is 10 minutes away"
+					},
+					{
+						"time": "11:00 AM",
+						"place": "Optional: Mahabalipuram excursion",
+						"note": "Shore Temple & Pancha Rathas, 60 km down the ECR coast road"
+					},
+					{
+						"time": "Evening",
+						"place": "Return to Chennai",
+						"note": "Or keep the car for your own engagements all day"
+					}
+				]
+			},
+			{
+				"day": 3,
+				"title": "Chennai at your pace → Bangalore",
+				"stops": [
+					{
+						"time": "Morning",
+						"place": "Fort St. George / last errands",
+						"note": "Car and driver on call"
+					},
+					{
+						"time": "2:00 PM",
+						"place": "Depart Chennai",
+						"note": "Later starts fine — after 10 PM drop adds ₹400 bata"
+					},
+					{
+						"time": "9:00 PM",
+						"place": "Drop back home in Bangalore"
+					}
+				]
+			}
+		],
+		"prices": [
+			{
+				"vehicle": "sedan",
+				"price": 12900
+			},
+			{
+				"vehicle": "suv",
+				"price": 17800
+			}
+		],
+		"includedKm": 900,
+		"extraKmRate": {
+			"sedan": 12,
+			"suv": 17,
+			"innova-crysta": 21,
+			"tempo-traveller": 24
+		},
+		"inclusions": [
+			"Car, fuel & driver for the full itinerary",
+			"Driver bata for all 3 days",
+			"Pickup & drop anywhere in Bangalore",
+			"All sightseeing transfers as per itinerary",
+			"Applicable taxes"
+		],
+		"exclusions": [
+			"Tolls, parking & Tamil Nadu state permit at actuals (billed separately)",
+			"Hotels & meals",
+			"Entry tickets & guide fees",
+			"Drop after 10 PM: additional driver bata ₹400"
+		],
+		"sightsCovered": [
+			"Marina Beach & Lighthouse",
+			"Kapaleeshwarar Temple, Mylapore",
+			"San Thome Basilica",
+			"Fort St. George",
+			"Mahabalipuram Shore Temple (optional excursion)",
+			"Kanchipuram Temples (optional en-route halt)"
+		],
+		"faqs": [
+			{
+				"question": "What does the ₹12,900 price include?",
+				"answer": "Car, fuel and driver bata for all three days in a 4+1 sedan (₹17,800 for a 7+1 SUV), with 900 km included — the round trip plus local Chennai running and even the Mahabalipuram loop. Tolls, parking and the TN permit are at actuals."
+			},
+			{
+				"question": "Is day two really free-form?",
+				"answer": "Completely. Wedding guests use it for the function, patients for appointments, families for Mahabalipuram. The driver plans around whatever your day looks like."
+			},
+			{
+				"question": "Is Mahabalipuram worth the excursion?",
+				"answer": "Emphatically — the 7th-century Shore Temple and the rock-cut Pancha Rathas are UNESCO-listed, and the East Coast Road drive is the prettiest stretch of the trip. Budget about five hours door to door."
+			},
+			{
+				"question": "We only need two days — is there a shorter version?",
+				"answer": "Yes, the Chennai 2-Day Round Trip at ₹9,900 runs the same formula with one night. And a plain one-way drop to Chennai is ₹6,200 if you're not coming back."
+			}
+		],
+		"relatedPackages": [
+			"chennai-2-days",
+			"tirupati-2-days",
+			"pondicherry-2-days"
 		],
 		"popular": false
 	},
@@ -1365,163 +1511,9 @@
 		"popular": false
 	},
 	{
-		"slug": "ooty-2-days",
-		"name": "Bangalore to Ooty 2-Day Package",
-		"shortName": "Ooty 2-Day",
-		"durationDays": 2,
-		"durationNights": 1,
-		"routeSlugs": [
-			"ooty"
-		],
-		"image": "destinations/ooty.webp",
-		"overview": [
-			"The Queen of Hill Stations in a weekend: drive through Bandipur's forest corridor (elephant and deer sightings from the car are common), spend the afternoon boating on Ooty Lake and wandering the Government Botanical Garden, then take on Doddabetta — the highest point in the Nilgiris — a tea factory tour and Pykara's lake and falls the next morning.",
-			"Two days is tight but genuinely workable for Ooty if the timings are respected, especially the Bandipur forest gate that closes to night traffic. Our drivers plan around it as a matter of routine. Best for couples and families with school-age kids who want maximum hill station per day of leave."
-		],
-		"itinerary": [
-			{
-				"day": 1,
-				"title": "Bangalore → Bandipur → Ooty",
-				"stops": [
-					{
-						"time": "5:30 AM",
-						"place": "Pickup from your home in Bangalore",
-						"note": "Breakfast on Mysore Road"
-					},
-					{
-						"time": "10:00 AM",
-						"place": "Bandipur forest drive",
-						"note": "Keep cameras ready — spotted deer and elephants are regulars"
-					},
-					{
-						"time": "12:30 PM",
-						"place": "Reach Ooty, lunch & hotel check-in",
-						"note": "Hotel booked by you or on request"
-					},
-					{
-						"time": "2:30 PM",
-						"place": "Ooty Lake",
-						"note": "Boating and the lakeside amusements"
-					},
-					{
-						"time": "4:30 PM",
-						"place": "Government Botanical Garden",
-						"note": "Overnight in Ooty; carry woollens year-round"
-					}
-				]
-			},
-			{
-				"day": 2,
-				"title": "Doddabetta & Pykara → Bangalore",
-				"stops": [
-					{
-						"time": "8:00 AM",
-						"place": "Doddabetta Peak",
-						"note": "Highest point in the Nilgiris at 2,637 m"
-					},
-					{
-						"time": "9:45 AM",
-						"place": "Tea Factory & Tea Museum",
-						"note": "See leaf-to-cup processing; buy fresh Nilgiri tea"
-					},
-					{
-						"time": "11:00 AM",
-						"place": "Pykara Lake & Falls",
-						"note": "Via the shooting-spot meadows"
-					},
-					{
-						"time": "1:00 PM",
-						"place": "Lunch in Ooty"
-					},
-					{
-						"time": "2:30 PM",
-						"place": "Depart for Bangalore",
-						"note": "Must cross Bandipur before the 9 PM forest gate closure"
-					},
-					{
-						"time": "11:00 PM",
-						"place": "Drop back home in Bangalore"
-					}
-				]
-			}
-		],
-		"prices": [
-			{
-				"vehicle": "sedan",
-				"price": 8499
-			},
-			{
-				"vehicle": "suv",
-				"price": 12099
-			},
-			{
-				"vehicle": "innova-crysta",
-				"price": 15299
-			},
-			{
-				"vehicle": "tempo-traveller",
-				"price": 17899
-			}
-		],
-		"includedKm": 600,
-		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
-			"innova-crysta": 21,
-			"tempo-traveller": 24
-		},
-		"inclusions": [
-			"Fuel charges",
-			"Driver bata (allowance)",
-			"Pickup & drop anywhere in Bangalore",
-			"All sightseeing transfers as per itinerary",
-			"Vehicle & driver at your disposal for the full itinerary",
-			"Applicable taxes"
-		],
-		"exclusions": [
-			"Tolls & parking at actuals",
-			"Inter-state permit fees (Tamil Nadu ₹500–1,500 / Kerala ₹500–3,000 / Andhra Pradesh ₹500–2,500 / Goa ₹2,500–3,500 depending on vehicle)",
-			"Entry tickets & guide fees",
-			"Meals & accommodation",
-			"AC is switched off on steep ghat climbs for safety"
-		],
-		"sightsCovered": [
-			"Bandipur forest drive",
-			"Ooty Lake",
-			"Government Botanical Garden",
-			"Doddabetta Peak",
-			"Tea Factory & Museum",
-			"Pykara Lake & Falls"
-		],
-		"faqs": [
-			{
-				"question": "Why does the return start at 2:30 PM on day 2?",
-				"answer": "The Bandipur–Mudumalai forest highway is closed to traffic from 9 PM to 6 AM. Leaving Ooty by mid-afternoon clears the forest comfortably before the gate; a later start would force the much longer Nice-road-free detour."
-			},
-			{
-				"question": "Can we ride the Nilgiri toy train?",
-				"answer": "Yes — the popular Ooty–Coonoor stretch can be slotted into day 2 morning. Book seats in advance on IRCTC (they sell out early); the cab meets you at Coonoor station and continues the sightseeing from there."
-			},
-			{
-				"question": "Is the hotel included, and where should we stay?",
-				"answer": "Accommodation is excluded — anything near Charring Cross or the lake keeps you central. We'll happily suggest options guests have liked; you book directly."
-			},
-			{
-				"question": "Will the ghat roads trouble kids or elderly travellers?",
-				"answer": "The climb from Bandipur to Ooty is the classic 36-hairpin ghat. Our drivers take it slow and steady, and a front seat plus a motion-sickness tablet before the climb sorts out most travellers. AC is off on the steep sections for safety."
-			}
-		],
-		"relatedPackages": [
-			"ooty-mysore-3-days",
-			"mysore-ooty-coorg-4-days",
-			"kodaikanal-3-days"
-		],
-		"popular": true
-	},
-	{
 		"slug": "ooty-mysore-3-days",
-		"name": "Ooty + Mysore 3-Day Package",
-		"shortName": "Ooty + Mysore",
+		"name": "Mysore + Ooty 3-Day Package",
+		"shortName": "Mysore + Ooty",
 		"durationDays": 3,
 		"durationNights": 2,
 		"routeSlugs": [
@@ -1530,8 +1522,8 @@
 		],
 		"image": "destinations/ooty.webp",
 		"overview": [
-			"Two of South India's greatest hits in one loop: royal Mysore on day one — Srirangapatna, the Palace, Chamundi Hills — then over the Bandipur forest and up the 36-hairpin ghat to Ooty for a full hill-station day of Doddabetta, tea gardens, the lake and the Botanical Garden before the run home. Because Mysore sits exactly on the Ooty road, you see both without a wasted kilometre.",
-			"The 3-day pacing turns what would be two rushed trips into one comfortable circuit — a night in Mysore (catch the Palace illumination on Sundays and holidays) and a night in Ooty. Ideal for visiting relatives, first-timers to Karnataka–Tamil Nadu, and families mixing heritage with hills."
+			"Karnataka's royal city and Tamil Nadu's queen of hill stations in one unhurried 5–6 AM to late-night loop — fourteen places across three days. Day one is Mysore done properly: Srirangapatna's island fort, two hours inside the Amba Vilas Palace, the Chamundi Hills viewpoint and the Brindavan Gardens fountain show. Then you climb: through Bandipur's forests and up the 36-hairpin Masinagudi ghat to Ooty's tea country for two days of gardens, lakes, viewpoints and toy-train scenery around Coonoor.",
+			"The price covers the car, fuel and the driver's bata for all three days; tolls, parking, the Tamil Nadu permit, your hotels and entry tickets stay outside the bill, and a drop after 10 PM on the last night adds ₹400 bata. One planning note our drivers insist on: the Bandipur forest stretch closes to traffic from 9 PM to 6 AM, so the itinerary is paced to cross it in daylight both ways."
 		],
 		"itinerary": [
 			{
@@ -1539,32 +1531,34 @@
 				"title": "Bangalore → Srirangapatna → Mysore",
 				"stops": [
 					{
-						"time": "7:00 AM",
-						"place": "Pickup from your home in Bangalore",
-						"note": "Breakfast on the expressway"
+						"time": "5:30 AM",
+						"place": "Pickup from your home / hotel",
+						"note": "5–6 AM start; breakfast on the Mysore expressway"
 					},
 					{
-						"time": "9:30 AM",
-						"place": "Srirangapatna",
-						"note": "Ranganathaswamy Temple & Tipu's Summer Palace"
+						"time": "9:00 AM",
+						"place": "Sri Ranganathaswamy Temple, Srirangapatna",
+						"note": "Tipu's island fort town"
 					},
 					{
-						"time": "11:30 AM",
-						"place": "Mysore Palace"
+						"time": "11:00 AM",
+						"place": "Mysore Palace",
+						"note": "Allow two hours; guides at the gate"
 					},
 					{
-						"time": "1:30 PM",
-						"place": "Lunch & hotel check-in in Mysore",
-						"note": "Hotel booked by you or on request"
+						"time": "2:30 PM",
+						"place": "Chamundi Hills",
+						"note": "Chamundeshwari temple and the Nandi viewpoint"
 					},
 					{
-						"time": "3:30 PM",
-						"place": "Chamundi Hills & Nandi statue"
+						"time": "4:30 PM",
+						"place": "St. Philomena's Cathedral",
+						"note": "Neo-Gothic photo stop"
 					},
 					{
-						"time": "6:00 PM",
-						"place": "Mysore Palace illumination / Devaraja Market walk",
-						"note": "Illumination on Sundays & public holidays; overnight in Mysore"
+						"time": "6:30 PM",
+						"place": "Brindavan Gardens",
+						"note": "Musical fountain after sunset; overnight in Mysore"
 					}
 				]
 			},
@@ -1574,61 +1568,56 @@
 				"stops": [
 					{
 						"time": "7:00 AM",
-						"place": "Depart Mysore after breakfast"
+						"place": "Drive via Bandipur Tiger Reserve",
+						"note": "Daylight forest crossing — deer and elephant sightings are common"
 					},
 					{
-						"time": "9:00 AM",
-						"place": "Bandipur forest drive",
-						"note": "Morning is prime time for wildlife sightings from the car"
+						"time": "11:00 AM",
+						"place": "Ooty Botanical Gardens",
+						"note": "150-year-old terraced gardens"
 					},
 					{
-						"time": "11:30 AM",
-						"place": "Reach Ooty via the 36-hairpin Kalhatti ghat",
-						"note": "AC off on the climb"
-					},
-					{
-						"time": "12:30 PM",
-						"place": "Lunch & hotel check-in in Ooty"
+						"time": "1:00 PM",
+						"place": "Lunch, Ooty town"
 					},
 					{
 						"time": "2:30 PM",
-						"place": "Ooty Lake boating"
+						"place": "Ooty Lake",
+						"note": "Boating at your pace"
 					},
 					{
 						"time": "4:30 PM",
-						"place": "Government Botanical Garden",
+						"place": "Rose Garden & Tea Factory Museum",
 						"note": "Overnight in Ooty"
 					}
 				]
 			},
 			{
 				"day": 3,
-				"title": "Ooty peaks & tea country → Bangalore",
+				"title": "Doddabetta → Coonoor → Bangalore",
 				"stops": [
 					{
 						"time": "8:00 AM",
-						"place": "Doddabetta Peak"
+						"place": "Doddabetta Peak",
+						"note": "Highest point in the Nilgiris, 2,637 m"
 					},
 					{
-						"time": "9:45 AM",
-						"place": "Tea Factory & Tea Museum"
-					},
-					{
-						"time": "11:00 AM",
-						"place": "Rose Garden",
-						"note": "Or Coonoor's Sim's Park as an alternative"
+						"time": "10:00 AM",
+						"place": "Pykara Lake & Falls",
+						"note": "Wenlock Downs 9th Mile shooting point en route"
 					},
 					{
 						"time": "12:30 PM",
-						"place": "Lunch in Ooty"
+						"place": "Sim's Park & Dolphin's Nose, Coonoor",
+						"note": "Lunch in Coonoor"
 					},
 					{
-						"time": "2:00 PM",
+						"time": "2:30 PM",
 						"place": "Depart for Bangalore",
-						"note": "Crossing Bandipur well before the 9 PM closure"
+						"note": "Daylight Bandipur crossing; dinner halt near Mysore"
 					},
 					{
-						"time": "10:30 PM",
+						"time": "10:00 PM",
 						"place": "Drop back home in Bangalore"
 					}
 				]
@@ -1637,19 +1626,11 @@
 		"prices": [
 			{
 				"vehicle": "sedan",
-				"price": 12399
+				"price": 12900
 			},
 			{
 				"vehicle": "suv",
-				"price": 17699
-			},
-			{
-				"vehicle": "innova-crysta",
-				"price": 22299
-			},
-			{
-				"vehicle": "tempo-traveller",
-				"price": 26099
+				"price": 17800
 			}
 		],
 		"includedKm": 850,
@@ -1660,52 +1641,54 @@
 			"tempo-traveller": 24
 		},
 		"inclusions": [
-			"Fuel charges",
-			"Driver bata (allowance)",
+			"Car, fuel & driver for the full itinerary",
+			"Driver bata for all 3 days",
 			"Pickup & drop anywhere in Bangalore",
 			"All sightseeing transfers as per itinerary",
-			"Vehicle & driver at your disposal for the full itinerary",
 			"Applicable taxes"
 		],
 		"exclusions": [
-			"Tolls & parking at actuals",
-			"Inter-state permit fees (Tamil Nadu ₹500–1,500 / Kerala ₹500–3,000 / Andhra Pradesh ₹500–2,500 / Goa ₹2,500–3,500 depending on vehicle)",
+			"Tolls, parking & Tamil Nadu state permit at actuals (billed separately)",
+			"Hotels & meals",
 			"Entry tickets & guide fees",
-			"Meals & accommodation",
+			"Drop after 10 PM: additional driver bata ₹400",
 			"AC is switched off on steep ghat climbs for safety"
 		],
 		"sightsCovered": [
-			"Srirangapatna",
+			"Sri Ranganathaswamy Temple, Srirangapatna",
 			"Mysore Palace",
 			"Chamundi Hills",
-			"Devaraja Market",
+			"St. Philomena's Cathedral",
+			"Brindavan Gardens",
 			"Bandipur forest drive",
+			"Ooty Botanical Gardens",
 			"Ooty Lake",
-			"Government Botanical Garden",
+			"Rose Garden",
+			"Tea Factory Museum",
 			"Doddabetta Peak",
-			"Tea Factory & Museum",
-			"Rose Garden"
+			"Pykara Lake & Falls",
+			"Sim's Park, Coonoor",
+			"Dolphin's Nose Viewpoint"
 		],
 		"faqs": [
 			{
-				"question": "Are hotels in Mysore and Ooty included?",
-				"answer": "No — one night in Mysore and one in Ooty are booked by you (or we can suggest options on request). Keeping stays out of the price lets you choose your own comfort level in each city."
+				"question": "What does the ₹12,900 price include?",
+				"answer": "The car, fuel and driver bata for all three days in a 4+1 sedan (₹17,800 for a 7+1 SUV), with pickup and drop anywhere in Bangalore. Tolls, parking, the Tamil Nadu permit, hotels, meals and entry tickets are at actuals."
 			},
 			{
-				"question": "Can we reverse the loop and do Ooty first?",
-				"answer": "Yes, though we recommend Mysore first: it front-loads the light sightseeing, puts the forest crossing in daylight both ways, and saves the cool hill mornings for Ooty."
+				"question": "Why does the driver insist on crossing Bandipur before dark?",
+				"answer": "The forest highway through Bandipur Tiger Reserve closes to traffic from 9 PM to 6 AM for wildlife safety. The itinerary is paced to cross in daylight both ways — it's also when you actually spot animals."
 			},
 			{
-				"question": "Is Brindavan Gardens part of this package?",
-				"answer": "It's not in the default plan since day 1 evening goes to the Palace illumination, but it can replace that slot — the gardens are 20 km from Mysore city and the fountain show runs after sunset."
+				"question": "Is the Ooty climb hard on passengers?",
+				"answer": "The Masinagudi route has 36 hairpins; anyone prone to motion sickness should sit in front. On the steepest stretches the AC goes off briefly — standard ghat practice on every vehicle."
 			},
 			{
-				"question": "How much driving is this per day?",
-				"answer": "Day 1 is about 150 km, day 2 around 160 km with the ghat climb, and day 3 is the long one at roughly 290 km back to Bangalore. All within the 850 km package allowance for the standard itinerary."
+				"question": "Can we swap Coonoor for more time in Ooty?",
+				"answer": "Of course — the car is yours within the included kilometres. Many families trade Dolphin's Nose for the toy train between Ooty and Coonoor (book train tickets ahead in season) and we pick you up at the other end."
 			}
 		],
 		"relatedPackages": [
-			"ooty-2-days",
 			"mysore-ooty-coorg-4-days",
 			"mysore-1-day-tour"
 		],
@@ -2405,9 +2388,332 @@
 			}
 		],
 		"relatedPackages": [
+			"wayanad-3-days",
 			"coorg-2-days",
-			"ooty-2-days",
-			"chikmagalur-2-days"
+			"chikmagalur-2-days",
+			"ooty-mysore-3-days"
+		],
+		"popular": false
+	},
+	{
+		"slug": "wayanad-3-days",
+		"name": "Bangalore to Wayanad 3-Day Package (Kerala)",
+		"shortName": "Wayanad 3-Day",
+		"durationDays": 3,
+		"durationNights": 2,
+		"routeSlugs": [
+			"wayanad"
+		],
+		"image": "destinations/banasura-sagar-dam.webp",
+		"overview": [
+			"Three days in Kerala's green attic: prehistoric petroglyphs inside the Edakkal Caves, India's largest earthen dam at Banasura Sagar, waterfalls, spice country and a forest crossing through Bandipur and Muthanga where elephant sightings are routine. Wayanad rewards the extra day — the 2-day version always leaves someone wanting the cave climb or the dam boat ride they had to skip.",
+			"The price covers the car, fuel and driver bata for all three days. Tolls, parking and the Kerala state permit are at actuals, hotels and meals are your own, and a post-10 PM drop on the last night adds ₹400 bata. As with every Wayanad run, the forest stretch closes 9 PM–6 AM, so both crossings happen in daylight — which is exactly when you want them anyway."
+		],
+		"itinerary": [
+			{
+				"day": 1,
+				"title": "Bangalore → Bandipur & Muthanga forests → Kalpetta",
+				"stops": [
+					{
+						"time": "5:30 AM",
+						"place": "Pickup from your home / hotel",
+						"note": "5–6 AM start; breakfast on the Mysore road"
+					},
+					{
+						"time": "11:00 AM",
+						"place": "Bandipur–Muthanga forest crossing",
+						"note": "Drive-through sanctuary stretch — cameras ready"
+					},
+					{
+						"time": "1:00 PM",
+						"place": "Lunch, Sultan Bathery"
+					},
+					{
+						"time": "3:00 PM",
+						"place": "Pookode Lake",
+						"note": "Freshwater lake ringed by evergreen forest"
+					},
+					{
+						"time": "5:00 PM",
+						"place": "Lakkidi Viewpoint",
+						"note": "The 'gateway of Wayanad' churam views; overnight Kalpetta"
+					}
+				]
+			},
+			{
+				"day": 2,
+				"title": "Edakkal Caves → Karapuzha → Soochipara Falls",
+				"stops": [
+					{
+						"time": "8:00 AM",
+						"place": "Edakkal Caves",
+						"note": "45-minute climb to Stone Age carvings — go early, queues build"
+					},
+					{
+						"time": "12:00 PM",
+						"place": "Karapuzha Dam",
+						"note": "Lunch nearby"
+					},
+					{
+						"time": "2:30 PM",
+						"place": "Soochipara (Sentinel Rock) Falls",
+						"note": "Short forest walk down to the plunge pool"
+					},
+					{
+						"time": "5:30 PM",
+						"place": "Chembra tea estates viewpoint",
+						"note": "Overnight Kalpetta / Meppadi"
+					}
+				]
+			},
+			{
+				"day": 3,
+				"title": "Banasura Sagar → Bangalore",
+				"stops": [
+					{
+						"time": "8:00 AM",
+						"place": "Banasura Sagar Dam",
+						"note": "India's largest earthen dam; optional speed-boating on the reservoir"
+					},
+					{
+						"time": "11:30 AM",
+						"place": "Kuruva Island (seasonal)",
+						"note": "River-delta bamboo island — closed in the monsoon"
+					},
+					{
+						"time": "1:30 PM",
+						"place": "Lunch & depart",
+						"note": "Daylight forest crossing back"
+					},
+					{
+						"time": "9:30 PM",
+						"place": "Drop back home in Bangalore"
+					}
+				]
+			}
+		],
+		"prices": [
+			{
+				"vehicle": "sedan",
+				"price": 12900
+			},
+			{
+				"vehicle": "suv",
+				"price": 17800
+			}
+		],
+		"includedKm": 800,
+		"extraKmRate": {
+			"sedan": 12,
+			"suv": 17,
+			"innova-crysta": 21,
+			"tempo-traveller": 24
+		},
+		"inclusions": [
+			"Car, fuel & driver for the full itinerary",
+			"Driver bata for all 3 days",
+			"Pickup & drop anywhere in Bangalore",
+			"All sightseeing transfers as per itinerary",
+			"Applicable taxes"
+		],
+		"exclusions": [
+			"Tolls, parking & Kerala state permit at actuals (billed separately)",
+			"Hotels & meals",
+			"Entry tickets & guide fees",
+			"Drop after 10 PM: additional driver bata ₹400",
+			"AC is switched off on steep ghat climbs for safety"
+		],
+		"sightsCovered": [
+			"Edakkal Caves",
+			"Banasura Sagar Dam",
+			"Pookode Lake",
+			"Lakkidi Viewpoint",
+			"Soochipara Falls",
+			"Karapuzha Dam",
+			"Kuruva Island (seasonal)",
+			"Chembra tea estates",
+			"Bandipur–Muthanga forest drive"
+		],
+		"faqs": [
+			{
+				"question": "What does the ₹12,900 price include?",
+				"answer": "Car, fuel and driver bata for all three days in a 4+1 sedan (₹17,800 for a 7+1 SUV). Tolls, parking, the Kerala permit, hotels, meals and entry or boating tickets are at actuals."
+			},
+			{
+				"question": "Why can't we drive back late on the last night?",
+				"answer": "The Bandipur forest highway closes 9 PM to 6 AM for wildlife protection, so the return is planned to cross by evening — leaving Wayanad after lunch has you home around 9:30 PM."
+			},
+			{
+				"question": "Is the Edakkal Caves climb manageable?",
+				"answer": "It's a steady 45-minute uphill walk plus ladders inside — fine for most fitness levels, harder with toddlers or knee trouble. Go first thing in the morning: it's cooler and the entry queue is shortest."
+			},
+			{
+				"question": "When is Kuruva Island open?",
+				"answer": "Roughly October to May — the forest department closes it during the monsoon when the river runs high. If it's shut, Thirunelli Temple or a spice-plantation walk slots into the same morning."
+			}
+		],
+		"relatedPackages": [
+			"wayanad-2-days",
+			"coorg-2-days",
+			"mysore-coorg-3-days"
+		],
+		"popular": false
+	},
+	{
+		"slug": "mangalore-udupi-3-days",
+		"name": "Bangalore to Mangalore + Udupi 3-Day Package",
+		"shortName": "Mangalore + Udupi",
+		"durationDays": 3,
+		"durationNights": 2,
+		"routeSlugs": [
+			"udupi"
+		],
+		"image": "destinations/st-marys-island.webp",
+		"overview": [
+			"The Karnataka coast in one clean loop: down the Shiradi Ghat to Mangalore's temples and beaches, up the coastal highway to Udupi for the Sri Krishna Matha and its legendary prasada lunch, then out to Malpe and the surreal hexagonal basalt columns of St. Mary's Islands. Three days is the honest minimum — the coast punishes rushed itineraries with its distances.",
+			"The price covers the car, fuel and driver bata for all three days; tolls, parking and any permits are at actuals, and hotels, meals and the St. Mary's ferry are your own. Time it October to May: the ferry to the islands stops running in monsoon seas, and the coast is at its blue-sky best in winter."
+		],
+		"itinerary": [
+			{
+				"day": 1,
+				"title": "Bangalore → Shiradi Ghat → Mangalore",
+				"stops": [
+					{
+						"time": "5:30 AM",
+						"place": "Pickup from your home / hotel",
+						"note": "5–6 AM start; breakfast near Hassan"
+					},
+					{
+						"time": "12:30 PM",
+						"place": "Arrive Mangalore · lunch",
+						"note": "Try neer dosa and coastal fish curry"
+					},
+					{
+						"time": "2:30 PM",
+						"place": "Kadri Manjunath Temple",
+						"note": "1,000-year-old temple with bronze Lokeshwara"
+					},
+					{
+						"time": "4:00 PM",
+						"place": "Kudroli Gokarnanatheshwara Temple"
+					},
+					{
+						"time": "5:30 PM",
+						"place": "Panambur Beach sunset",
+						"note": "Overnight Mangalore"
+					}
+				]
+			},
+			{
+				"day": 2,
+				"title": "Mangalore → Udupi → Malpe → St. Mary's Islands",
+				"stops": [
+					{
+						"time": "8:00 AM",
+						"place": "Drive up the coastal highway",
+						"note": "60 km of backwater-and-palm scenery"
+					},
+					{
+						"time": "9:30 AM",
+						"place": "Sri Krishna Matha, Udupi",
+						"note": "Darshan through the Kanakana Kindi window; prasada lunch at the matha"
+					},
+					{
+						"time": "1:30 PM",
+						"place": "Malpe Beach & ferry to St. Mary's Islands",
+						"note": "Ferry tickets at actuals; sails only in calm season"
+					},
+					{
+						"time": "5:30 PM",
+						"place": "Kaup Lighthouse Beach sunset",
+						"note": "Overnight Udupi"
+					}
+				]
+			},
+			{
+				"day": 3,
+				"title": "Udupi → Bangalore",
+				"stops": [
+					{
+						"time": "8:30 AM",
+						"place": "Tannirbhavi Beach or Udupi bazaar",
+						"note": "Last coastal morning at your pace"
+					},
+					{
+						"time": "11:30 AM",
+						"place": "Depart for Bangalore",
+						"note": "Lunch on the ghat road"
+					},
+					{
+						"time": "8:30 PM",
+						"place": "Drop back home in Bangalore"
+					}
+				]
+			}
+		],
+		"prices": [
+			{
+				"vehicle": "sedan",
+				"price": 12900
+			},
+			{
+				"vehicle": "suv",
+				"price": 17800
+			}
+		],
+		"includedKm": 900,
+		"extraKmRate": {
+			"sedan": 12,
+			"suv": 17,
+			"innova-crysta": 21,
+			"tempo-traveller": 24
+		},
+		"inclusions": [
+			"Car, fuel & driver for the full itinerary",
+			"Driver bata for all 3 days",
+			"Pickup & drop anywhere in Bangalore",
+			"All sightseeing transfers as per itinerary",
+			"Applicable taxes"
+		],
+		"exclusions": [
+			"Tolls, parking & permits (if any) at actuals (billed separately)",
+			"Hotels & meals",
+			"Entry tickets & guide fees",
+			"Drop after 10 PM: additional driver bata ₹400",
+			"AC is switched off on steep ghat climbs for safety"
+		],
+		"sightsCovered": [
+			"St. Mary's Islands",
+			"Malpe Beach",
+			"Sri Krishna Matha, Udupi",
+			"Kaup Lighthouse Beach",
+			"Kadri Manjunath Temple",
+			"Kudroli Gokarnanatheshwara Temple",
+			"Panambur Beach",
+			"Tannirbhavi Beach"
+		],
+		"faqs": [
+			{
+				"question": "What does the ₹12,900 price include?",
+				"answer": "Car, fuel and driver bata for all three days in a 4+1 sedan (₹17,800 for a 7+1 SUV), with 900 km included covering the full coastal loop. Tolls, parking, hotels, meals and the St. Mary's ferry are at actuals."
+			},
+			{
+				"question": "When do the St. Mary's Islands ferries run?",
+				"answer": "Roughly October to May, sea conditions permitting — the service suspends during the monsoon. Ferries leave from Malpe beach through the afternoon; the island visit itself takes about two hours."
+			},
+			{
+				"question": "How is the Shiradi Ghat road?",
+				"answer": "Much improved and fully doable in a sedan; it's still a proper Western Ghats descent, so the AC goes off briefly on the steepest climbs as standard practice."
+			},
+			{
+				"question": "Can we add Murudeshwar or Gokarna?",
+				"answer": "Not inside three days without turning the trip into a driving marathon — those sit another 100+ km up the coast. Ask us for a custom 4-day coastal quote instead and we'll price it same-day."
+			}
+		],
+		"relatedPackages": [
+			"coorg-2-days",
+			"wayanad-3-days",
+			"chennai-3-days"
 		],
 		"popular": false
 	},
@@ -2496,19 +2802,11 @@
 		"prices": [
 			{
 				"vehicle": "sedan",
-				"price": 9699
+				"price": 8600
 			},
 			{
 				"vehicle": "suv",
-				"price": 13799
-			},
-			{
-				"vehicle": "innova-crysta",
-				"price": 17399
-			},
-			{
-				"vehicle": "tempo-traveller",
-				"price": 20299
+				"price": 12800
 			}
 		],
 		"includedKm": 700,
@@ -2519,19 +2817,17 @@
 			"tempo-traveller": 24
 		},
 		"inclusions": [
-			"Fuel charges",
-			"Driver bata (allowance)",
+			"Car, fuel & driver for the full itinerary",
+			"Driver bata for both days",
 			"Pickup & drop anywhere in Bangalore",
 			"All sightseeing transfers as per itinerary",
-			"Vehicle & driver at your disposal for the full itinerary",
 			"Applicable taxes"
 		],
 		"exclusions": [
-			"Tolls & parking at actuals",
-			"Inter-state permit fees (Tamil Nadu ₹500–1,500 / Kerala ₹500–3,000 / Andhra Pradesh ₹500–2,500 / Goa ₹2,500–3,500 depending on vehicle)",
+			"Tolls, parking & Tamil Nadu state permit at actuals (billed separately)",
+			"Hotels & meals",
 			"Entry tickets & guide fees",
-			"Meals & accommodation",
-			"AC is switched off on steep ghat climbs for safety"
+			"Drop after 10 PM: additional driver bata ₹400"
 		],
 		"sightsCovered": [
 			"Gingee Fort",
@@ -2744,8 +3040,8 @@
 			}
 		],
 		"relatedPackages": [
-			"ooty-2-days",
-			"pondicherry-2-days"
+			"pondicherry-2-days",
+			"ooty-mysore-3-days"
 		],
 		"popular": false
 	},

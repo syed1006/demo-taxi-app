@@ -77,4 +77,32 @@ export const IMAGE_CREDITS: ImageCredit[] = [
 		sourceUrl:
 			"https://commons.wikimedia.org/wiki/File:Kotilingeshwara_Temple.jpg",
 	},
+	{
+		subject: "Kapaleeshwarar Temple, Chennai",
+		author: "Nigel's Europe & beyond",
+		license: "CC BY-SA 2.0",
+		sourceUrl:
+			"https://commons.wikimedia.org/wiki/File:Kapaleeshwarar_Temple,_Chennai,_India_(14386074341).jpg",
+	},
+	{
+		subject: "St. Mary's Islands, Malpe",
+		author: "Subhashish Panigrahi",
+		license: "CC BY-SA 3.0",
+		sourceUrl:
+			"https://commons.wikimedia.org/wiki/File:St._Mary%27s_Islands,_Malpe_beach,_Karnataka_02.jpg",
+	},
+	{
+		subject: "Banasura Sagar Dam, Wayanad",
+		author: "Athulvis",
+		license: "CC BY-SA 4.0",
+		sourceUrl:
+			"https://commons.wikimedia.org/wiki/File:Banasura_sagar_dam_22.jpg",
+	},
+	{
+		subject: "Kempegowda International Airport Terminal 2",
+		author: "Sameer2905",
+		license: "CC BY-SA 4.0",
+		sourceUrl:
+			"https://commons.wikimedia.org/wiki/File:Terminal_2_Departure_of_Kempegowda_International_Airport.jpg",
+	},
 ];

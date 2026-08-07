@@ -193,6 +193,21 @@ const articleSchema = {
 		font-weight: 600;
 		color: hsl(var(--foreground));
 	}
+	.guide-prose img {
+		width: 100%;
+		height: auto;
+		border-radius: 0.75rem;
+		border: 1px solid hsl(var(--border));
+		margin: 1.5rem 0 0.5rem;
+	}
+	/* An italic line right after an image reads as its caption. */
+	.guide-prose p:has(> img) + p > em:only-child {
+		display: block;
+		font-size: 0.85rem;
+		font-style: normal;
+		color: hsl(var(--muted-foreground));
+		margin-top: -0.25rem;
+	}
 	.guide-prose table {
 		display: block;
 		overflow-x: auto;

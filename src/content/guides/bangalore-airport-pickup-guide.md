@@ -2,6 +2,7 @@
 title: "Bangalore Airport Pickup Guide: Where to Meet Your Driver at KIA"
 description: "Landing at Kempegowda International? Exactly where your cab driver waits, how flight tracking works, what late-night arrivals should expect, and what the transfer costs."
 updated: 2026-07-29
+heroImage: "destinations/kia-airport-terminal.webp"
 order: 3
 relatedLinks:
   - { label: "Bangalore airport taxi — fares by area", href: "/airport-taxi-bangalore/" }

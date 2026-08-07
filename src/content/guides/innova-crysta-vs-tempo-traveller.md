@@ -30,7 +30,15 @@ The trap to avoid is the middle: eight people "adjusting" in a Crysta works for 
 
 ## Comfort: different kinds of good
 
+![Toyota Innova Crysta](../../assets/cars/innova-crysta.webp)
+
+*The Innova Crysta — captain seats, quiet cabin, and the best ghat manners in the fleet.*
+
 The **Crysta** is the premium experience — soft captain seats in the middle row, quiet cabin, rear AC vents, and highway stability that makes 300 km days feel short. It's what we send for client-facing travel and comfort-first family holidays.
+
+![12+1 Tempo Traveller](../../assets/cars/traveller.webp)
+
+*The 12+1 Tempo Traveller — one vehicle for the whole group, luggage bay included.*
 
 The **Tempo Traveller** wins on *space per person*: proper aisle to stretch into, pushback seats, and room for the party to actually feel like a party. On overnight starts, people genuinely sleep. Music system and ducted AC are standard on our units.
 

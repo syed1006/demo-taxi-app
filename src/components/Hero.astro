@@ -4,7 +4,6 @@ import type { ImageMetadata } from "astro";
 import { Icon } from "astro-icon/components";
 import { SITE, waLink } from "../data/site";
 import { PACKAGES, packageTitle } from "../data/packages";
-import { SERVICES } from "../data/services";
 import { formatINR } from "../lib/fare";
 import { withBase } from "../lib/url";
 import cityBg from "../assets/bg/city-bg.webp";
@@ -40,31 +39,12 @@ const packageSlide = (pkg: (typeof PACKAGES)[number]): Slide => {
 	};
 };
 
-const serviceSlide = (id: string): Slide => {
-	const service = SERVICES.find((s) => s.id === id)!;
-	return {
-		title: service.name,
-		priceLine: service.priceHook,
-		description: service.description,
-		waMessage: service.waMessage,
-		href: service.path,
-		linkLabel: "See fares & details →",
-		icon: service.icon,
-		color: service.color,
-	};
-};
-
-// Packages sell first, but airport & outstation are bookable straight from
-// the hero too — slides 2 and 3, after the strongest package.
-const rankedPackages = [...PACKAGES]
+// The hero sells tour packages only; airport/outstation/hourly get the
+// quick-links row below the slider instead of slides of their own.
+const slides: Slide[] = [...PACKAGES]
 	.sort((a, b) => Number(b.popular) - Number(a.popular))
-	.slice(0, 10);
-const slides: Slide[] = [
-	packageSlide(rankedPackages[0]),
-	serviceSlide("airport"),
-	serviceSlide("outstation"),
-	...rankedPackages.slice(1).map(packageSlide),
-];
+	.slice(0, 10)
+	.map(packageSlide);
 ---
 
 <section
@@ -219,11 +199,13 @@ const slides: Slide[] = [
 
 			<p class="text-sm text-white/85">
 				Also:
+				<a href={withBase("/airport-taxi-bangalore/")} class="font-semibold text-white underline underline-offset-4 hover:text-orange-200">Airport pickup &amp; drop from ₹899</a>
+				·
+				<a href={withBase("/outstation-cabs-bangalore/")} class="font-semibold text-white underline underline-offset-4 hover:text-orange-200">Outstation cabs</a>
+				·
 				<a href={withBase("/hourly-cab-rental-bangalore/")} class="font-semibold text-white underline underline-offset-4 hover:text-orange-200">Hourly rental</a>
 				·
-				<a href={withBase("/corporate-cab-services-bangalore/")} class="font-semibold text-white underline underline-offset-4 hover:text-orange-200">Corporate cabs</a>
-				·
-				<a href={withBase("/hire-driver-bangalore/")} class="font-semibold text-white underline underline-offset-4 hover:text-orange-200">Hire a driver</a>
+				<a href={withBase("/one-way-cab-bangalore/")} class="font-semibold text-white underline underline-offset-4 hover:text-orange-200">One-way drops</a>
 			</p>
 
 			<div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-2">

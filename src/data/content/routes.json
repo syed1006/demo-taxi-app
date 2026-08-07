@@ -729,7 +729,6 @@
 			"kodaikanal"
 		],
 		"packageSlugs": [
-			"ooty-2-days",
 			"ooty-mysore-3-days",
 			"mysore-ooty-coorg-4-days"
 		],
@@ -822,7 +821,8 @@
 			"mysore"
 		],
 		"packageSlugs": [
-			"wayanad-2-days"
+			"wayanad-2-days",
+			"wayanad-3-days"
 		],
 		"popular": false,
 		"rating": 4.5,
@@ -996,7 +996,8 @@
 			"salem"
 		],
 		"packageSlugs": [
-			"chennai-2-days"
+			"chennai-2-days",
+			"chennai-3-days"
 		],
 		"popular": true,
 		"rating": 4.4,
@@ -1621,7 +1622,9 @@
 			"chikmagalur",
 			"coorg"
 		],
-		"packageSlugs": [],
+		"packageSlugs": [
+			"mangalore-udupi-3-days"
+		],
 		"popular": false,
 		"rating": 4.5,
 		"homepageRail": null
