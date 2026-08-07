@@ -30,7 +30,9 @@ const packageSlide = (pkg: (typeof PACKAGES)[number]): Slide => {
 			pkg.durationNights > 0
 				? `${pkg.durationDays} Days / ${pkg.durationNights} Night${pkg.durationNights > 1 ? "s" : ""}`
 				: "1-Day Trip"
-		} · ${pkg.sightsCovered.length} places · ${pkg.includedKm} km included`,
+		} · ${pkg.sightsCovered.length} places${
+			pkg.hideIncludedKm ? "" : ` · ${pkg.includedKm} km included`
+		}`,
 		description: pkg.sightsCovered.slice(0, 3).join(" · "),
 		waMessage: `Hi! I'd like to book the ${pkg.name}${sedanPrice ? ` (Sedan ${formatINR(sedanPrice)})` : ""}.`,
 		href: `/tour-packages/${pkg.slug}/`,

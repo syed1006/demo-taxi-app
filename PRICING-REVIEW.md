@@ -264,42 +264,36 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹3,800 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹4,700 | ₹17/km |
-
-### /tour-packages/chennai-2-days/
-
-| Vehicle | Package price | Extra km |
-| --- | --- | --- |
-| Sedan 4+1 seater | ₹9,900 | ₹12/km |
+| Sedan 4+1 seater | ₹3,800 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹4,700 | ₹18/km |
 
 ### /tour-packages/chennai-3-days/
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹12,900 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹17,800 | ₹17/km |
+| Sedan 4+1 seater | ₹12,900 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹17,800 | ₹18/km |
 
 ### /tour-packages/chikmagalur-2-days/
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹8,600 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹12,800 | ₹17/km |
+| Sedan 4+1 seater | ₹8,600 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹12,800 | ₹18/km |
 
 ### /tour-packages/coorg-2-days/
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹8,600 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹12,800 | ₹17/km |
+| Sedan 4+1 seater | ₹8,600 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹12,800 | ₹18/km |
 
 ### /tour-packages/coorg-3-days/
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹11,799 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹16,899 | ₹17/km |
+| Sedan 4+1 seater | ₹11,799 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹16,899 | ₹18/km |
 | Innova Crysta 6+1 / 7+1 seater | ₹21,299 | ₹21/km |
 | Tempo Traveller (12+1) 12+1 seater | ₹24,799 | ₹24/km |
 
@@ -307,8 +301,8 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹10,299 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹14,699 | ₹17/km |
+| Sedan 4+1 seater | ₹10,299 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹14,699 | ₹18/km |
 | Innova Crysta 6+1 / 7+1 seater | ₹18,499 | ₹21/km |
 | Tempo Traveller (12+1) 12+1 seater | ₹21,599 | ₹24/km |
 
@@ -316,8 +310,8 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹14,199 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹20,199 | ₹17/km |
+| Sedan 4+1 seater | ₹14,199 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹20,199 | ₹18/km |
 | Innova Crysta 6+1 / 7+1 seater | ₹25,499 | ₹21/km |
 | Tempo Traveller (12+1) 12+1 seater | ₹29,799 | ₹24/km |
 
@@ -325,42 +319,42 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹4,000 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹5,500 | ₹17/km |
+| Sedan 4+1 seater | ₹4,000 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹5,500 | ₹18/km |
 
 ### /tour-packages/lepakshi-nandi-hills-adiyogi-1-day/
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹5,800 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹8,000 | ₹17/km |
+| Sedan 4+1 seater | ₹5,800 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹8,000 | ₹18/km |
 
 ### /tour-packages/mangalore-udupi-3-days/
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹12,900 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹17,800 | ₹17/km |
+| Sedan 4+1 seater | ₹12,900 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹17,800 | ₹18/km |
 
 ### /tour-packages/mysore-1-day-tour/
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹5,800 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹8,000 | ₹17/km |
+| Sedan 4+1 seater | ₹5,800 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹8,000 | ₹18/km |
 
 ### /tour-packages/mysore-coorg-3-days/
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹12,900 | ₹12/km |
+| Sedan 4+1 seater | ₹12,900 | ₹13/km |
 
 ### /tour-packages/mysore-ooty-coorg-4-days/
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹16,299 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹23,299 | ₹17/km |
+| Sedan 4+1 seater | ₹16,299 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹23,299 | ₹18/km |
 | Innova Crysta 6+1 / 7+1 seater | ₹29,399 | ₹21/km |
 | Tempo Traveller (12+1) 12+1 seater | ₹34,299 | ₹24/km |
 
@@ -368,45 +362,36 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹3,800 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹5,500 | ₹17/km |
+| Sedan 4+1 seater | ₹3,800 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹5,500 | ₹18/km |
 
 ### /tour-packages/ooty-mysore-3-days/
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹12,900 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹17,800 | ₹17/km |
+| Sedan 4+1 seater | ₹12,900 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹17,800 | ₹18/km |
 
 ### /tour-packages/pondicherry-2-days/
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹8,600 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹12,800 | ₹17/km |
+| Sedan 4+1 seater | ₹8,600 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹12,800 | ₹18/km |
 
 ### /tour-packages/tirupati-2-days/
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹8,600 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹12,800 | ₹17/km |
-
-### /tour-packages/tirupati-darshan-1-day/
-
-| Vehicle | Package price | Extra km |
-| --- | --- | --- |
-| Sedan 4+1 seater | ₹6,999 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹9,899 | ₹17/km |
-| Innova Crysta 6+1 / 7+1 seater | ₹12,499 | ₹21/km |
-| Tempo Traveller (12+1) 12+1 seater | ₹14,599 | ₹24/km |
+| Sedan 4+1 seater | ₹8,600 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹12,800 | ₹18/km |
 
 ### /tour-packages/wayanad-2-days/
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹8,499 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹12,099 | ₹17/km |
+| Sedan 4+1 seater | ₹8,499 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹12,099 | ₹18/km |
 | Innova Crysta 6+1 / 7+1 seater | ₹15,299 | ₹21/km |
 | Tempo Traveller (12+1) 12+1 seater | ₹17,899 | ₹24/km |
 
@@ -414,8 +399,8 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹12,900 | ₹12/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹17,800 | ₹17/km |
+| Sedan 4+1 seater | ₹12,900 | ₹13/km |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹17,800 | ₹18/km |
 
 ## Also verify
 

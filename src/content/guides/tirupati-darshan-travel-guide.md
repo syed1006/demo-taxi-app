@@ -5,9 +5,9 @@ updated: 2026-07-29
 heroImage: "destinations/tirupati.webp"
 order: 7
 relatedLinks:
-  - { label: "Tirupati 1-Day Darshan Package", href: "/tour-packages/tirupati-darshan-1-day/" }
   - { label: "Tirupati 2-Day Package (₹8,600)", href: "/tour-packages/tirupati-2-days/" }
   - { label: "Bangalore to Tirupati taxi", href: "/bangalore-to-tirupati-taxi/" }
+  - { label: "Temples near Bangalore worth a day trip", href: "/guides/temples-near-bangalore-day-trips/" }
 faqs:
   - question: "One day or two days from Bangalore?"
     answer: "With a confirmed Special Entry slot, one long day works: 4 AM start, darshan by afternoon, home by midnight. Without a booked slot, or with elders and kids, take the 2-day plan — unhurried darshan plus Padmavathi temple without the 3 AM alarm."
@@ -33,7 +33,7 @@ Weekend and festival slots sell out well in advance. Book the slot first, then p
 
 ## One day or two?
 
-**The one-day run** (about 250 km each way) works with a 4–5 AM start: NH-75 out through Chittoor district, up the ghat by late morning, darshan in your slot, laddu counter, and back in Bangalore late night. It's a long, satisfying day — our [1-day package](/tour-packages/tirupati-darshan-1-day/) paces it properly.
+**The one-day run** (about 250 km each way) works with a 4–5 AM start: NH-75 out through Chittoor district, up the ghat by late morning, darshan in your slot, laddu counter, and back in Bangalore late night. It's a long, satisfying day — doable with a confirmed slot, and we'll quote it as a [round-trip taxi](/bangalore-to-tirupati-taxi/) or a custom day plan on WhatsApp.
 
 **The two-day version** is kinder: reach by lunch, evening at **Sri Padmavathi Ammavari Temple** in Tiruchanur (customarily visited alongside the main darshan), overnight in Tirupati town, morning darshan slot, unhurried return. That's the [2-day package at ₹8,600](/tour-packages/tirupati-2-days/) — note that tolls, parking and the **Andhra Pradesh state permit** are at actuals on this route.
 

@@ -63,6 +63,10 @@ export interface TourPackage {
 		title: string;
 		stops: { time?: string; place: string; note?: string }[];
 	}[];
+	/** Hide the "N km included" chip/meta on fixed city/day tours. */
+	hideIncludedKm?: boolean;
+	/** Extra photos shown as a strip on the package page. */
+	gallery?: ImageMetadata[];
 	/** HARD prices — every figure goes on the owner verification sheet. */
 	prices: { vehicle: VehicleClassId; price: number }[];
 	includedKm: number;

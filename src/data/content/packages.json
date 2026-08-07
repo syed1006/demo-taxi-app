@@ -10,7 +10,7 @@
 		],
 		"image": "destinations/mysore-palace.webp",
 		"overview": [
-			"The classic Mysore day out, done properly: a 6 AM start puts you at Srirangapatna before the crowds — the Jama Masjid where Tipu Sultan prayed, the island fort's Sri Ranganathaswamy temple, the frescoed Daria Daulat Bagh and the family Gumbaz — with the Payana vintage-car museum on the way into Mysore. After lunch you get an unhurried two hours inside the Amba Vilas Palace, the zoo's walk-through enclosures, and the Brindavan Gardens musical fountain to close the evening before the expressway run home.",
+			"The classic Mysore day out, done properly: a 6 AM start puts you at Srirangapatna before the crowds — the island fort's Sri Ranganathaswamy temple, the frescoed Daria Daulat Bagh and the royal Gumbaz — with the Payana vintage-car museum on the way into Mysore. After lunch you get an unhurried two hours inside the Amba Vilas Palace, the zoo's walk-through enclosures, a photo stop at St. Philomena's Cathedral, and the Brindavan Gardens musical fountain to close the evening before the expressway run home.",
 			"It's a full 6 AM – 10 PM day covering eight places, and the price is genuinely all-inclusive: driver bata, tolls and parking are in the bill, so the only extras are your meals and entry tickets. One planning note — Mysore Zoo stays closed on Tuesdays, so on Tuesday departures we swap in the Chamundi Hills viewpoint instead."
 		],
 		"itinerary": [
@@ -24,17 +24,12 @@
 						"note": "Breakfast stop on the Mysore Road expressway"
 					},
 					{
-						"time": "8:30 AM",
-						"place": "Tipu Sultan Masjid (Jama Masjid), Srirangapatna",
-						"note": "Twin-minaret mosque inside the island fort"
-					},
-					{
-						"time": "9:15 AM",
-						"place": "Sri Ranganathaswamy Temple",
+						"time": "8:45 AM",
+						"place": "Sri Ranganathaswamy Temple, Srirangapatna",
 						"note": "One of the largest Vishnu temples in Karnataka"
 					},
 					{
-						"time": "10:00 AM",
+						"time": "9:45 AM",
 						"place": "Daria Daulat Bagh",
 						"note": "Tipu's teak summer palace and its battle murals"
 					},
@@ -64,7 +59,12 @@
 						"note": "Closed on Tuesdays — we swap in Chamundi Hills instead"
 					},
 					{
-						"time": "6:45 PM",
+						"time": "6:15 PM",
+						"place": "St. Philomena's Cathedral",
+						"note": "Neo-Gothic spires, beautifully lit in the evening"
+					},
+					{
+						"time": "7:00 PM",
 						"place": "Brindavan Gardens",
 						"note": "Musical fountain show after sunset"
 					},
@@ -87,8 +87,8 @@
 		],
 		"includedKm": 300,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -106,13 +106,13 @@
 			"Drop after 10 PM: additional driver bata ₹400"
 		],
 		"sightsCovered": [
-			"Tipu Sultan Masjid (Jama Masjid), Srirangapatna",
 			"Sri Ranganathaswamy Temple",
 			"Daria Daulat Bagh",
 			"Tipu Sultan Gumbaz",
 			"Payana Car Museum",
 			"Mysore Palace",
 			"Mysore Zoo",
+			"St. Philomena's Cathedral",
 			"Brindavan Gardens"
 		],
 		"faqs": [
@@ -130,7 +130,7 @@
 			},
 			{
 				"question": "Can we skip a stop or change the order?",
-				"answer": "Absolutely — the car is yours for the day within the 300 km cap. Skip the museum for more palace time, or trade Brindavan for an early return; just tell the driver in the morning."
+				"answer": "Absolutely — the car is yours for the whole day. Skip the museum for more palace time, or trade Brindavan for an early return; just tell the driver in the morning."
 			}
 		],
 		"relatedPackages": [
@@ -138,7 +138,8 @@
 			"ooty-mysore-3-days",
 			"bangalore-city-darshan-1-day"
 		],
-		"popular": true
+		"popular": true,
+		"hideIncludedKm": true
 	},
 	{
 		"slug": "bangalore-city-darshan-1-day",
@@ -225,8 +226,8 @@
 		],
 		"includedKm": 250,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -275,11 +276,12 @@
 			"mysore-1-day-tour",
 			"nandi-hills-adiyogi-1-day"
 		],
-		"popular": false
+		"popular": false,
+		"hideIncludedKm": true
 	},
 	{
 		"slug": "nandi-hills-adiyogi-1-day",
-		"name": "Nandi Hills Sunrise + Adiyogi 1-Day Package",
+		"name": "Nandi Hills + Adiyogi 1-Day Package",
 		"shortName": "Nandi Hills + Adiyogi",
 		"durationDays": 1,
 		"durationNights": 0,
@@ -342,8 +344,8 @@
 		],
 		"includedKm": 250,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -389,7 +391,11 @@
 			"kotilingeshwara-1-day",
 			"bangalore-city-darshan-1-day"
 		],
-		"popular": false
+		"popular": false,
+		"gallery": [
+			"destinations/nandi-hills.webp",
+			"destinations/isha-foundation.webp"
+		]
 	},
 	{
 		"slug": "lepakshi-nandi-hills-adiyogi-1-day",
@@ -466,8 +472,8 @@
 		],
 		"includedKm": 350,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -574,8 +580,8 @@
 		],
 		"includedKm": 250,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -622,136 +628,6 @@
 			"bangalore-city-darshan-1-day"
 		],
 		"popular": false
-	},
-	{
-		"slug": "tirupati-darshan-1-day",
-		"image": "destinations/tirupati.webp",
-		"name": "Bangalore to Tirupati Darshan 1-Day Package",
-		"shortName": "Tirupati 1-Day",
-		"durationDays": 1,
-		"durationNights": 0,
-		"routeSlugs": [
-			"tirupati"
-		],
-		"overview": [
-			"A same-day darshan of Lord Venkateswara at Tirumala is entirely doable from Bangalore with a disciplined plan — leave in the small hours, reach Tirupati by mid-morning, drive up the ghat road to Tirumala for your darshan slot, and be back home the same night. Our drivers do this run every week and know the ghat road, the queue complex drop points and the return timing cold.",
-			"This package is built for devotees who can't spare an overnight stay: working families, elderly parents accompanied by children, and groups fulfilling a vow. You book your darshan slot on the TTD portal; we plan the entire day's driving around it so the travel never becomes the worry."
-		],
-		"itinerary": [
-			{
-				"day": 1,
-				"title": "Bangalore → Tirumala darshan → Bangalore",
-				"stops": [
-					{
-						"time": "3:00 AM",
-						"place": "Pickup from your home in Bangalore",
-						"note": "Via Hoskote–Chittoor NH-75; AP permit handled en route"
-					},
-					{
-						"time": "6:00 AM",
-						"place": "Breakfast stop near Chittoor"
-					},
-					{
-						"time": "8:30 AM",
-						"place": "Reach Tirupati & drive up to Tirumala",
-						"note": "AC off on the ghat climb for safety"
-					},
-					{
-						"time": "10:00 AM",
-						"place": "Sri Venkateswara Temple darshan",
-						"note": "Timed to the TTD slot you've booked"
-					},
-					{
-						"time": "2:00 PM",
-						"place": "Lunch at Tirumala / Tirupati",
-						"note": "Annaprasadam or a restaurant downhill"
-					},
-					{
-						"time": "3:30 PM",
-						"place": "Sri Padmavathi Ammavari Temple, Tiruchanur",
-						"note": "Customary to visit after Tirumala darshan"
-					},
-					{
-						"time": "5:00 PM",
-						"place": "Depart for Bangalore",
-						"note": "Dinner stop en route"
-					},
-					{
-						"time": "11:00 PM",
-						"place": "Drop back home in Bangalore"
-					}
-				]
-			}
-		],
-		"prices": [
-			{
-				"vehicle": "sedan",
-				"price": 6999
-			},
-			{
-				"vehicle": "suv",
-				"price": 9899
-			},
-			{
-				"vehicle": "innova-crysta",
-				"price": 12499
-			},
-			{
-				"vehicle": "tempo-traveller",
-				"price": 14599
-			}
-		],
-		"includedKm": 550,
-		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
-			"innova-crysta": 21,
-			"tempo-traveller": 24
-		},
-		"inclusions": [
-			"Fuel charges",
-			"Driver bata (allowance)",
-			"Pickup & drop anywhere in Bangalore",
-			"All sightseeing transfers as per itinerary",
-			"Vehicle & driver at your disposal for the full itinerary",
-			"Applicable taxes"
-		],
-		"exclusions": [
-			"Tolls & parking at actuals",
-			"Inter-state permit fees (Tamil Nadu ₹500–1,500 / Kerala ₹500–3,000 / Andhra Pradesh ₹500–2,500 / Goa ₹2,500–3,500 depending on vehicle)",
-			"Entry tickets & guide fees",
-			"Meals & accommodation",
-			"AC is switched off on steep ghat climbs for safety",
-			"Tirumala darshan / seva tickets (book directly on the TTD portal)"
-		],
-		"sightsCovered": [
-			"Sri Venkateswara Temple, Tirumala",
-			"Tirumala ghat road viewpoints",
-			"Sri Padmavathi Ammavari Temple, Tiruchanur"
-		],
-		"faqs": [
-			{
-				"question": "Do you arrange Tirumala darshan tickets?",
-				"answer": "No — darshan and seva tickets must be booked by you on the official TTD portal (tirupatibalaji.ap.gov.in). Once you have a slot, share it with us and we'll time the pickup and the entire day around it."
-			},
-			{
-				"question": "Which darshan slot works best for a one-day trip?",
-				"answer": "A late-morning or early-afternoon slot is ideal with a 3 AM start. Very early slots need a previous-night departure — in that case consider our 2-day Tirupati package instead."
-			},
-			{
-				"question": "Is the Andhra Pradesh permit included?",
-				"answer": "The permit is arranged by us but the fee (₹500–2,500 depending on the vehicle) is charged at actuals, as with tolls and parking."
-			},
-			{
-				"question": "Can senior citizens manage this trip?",
-				"answer": "Yes — the cab takes you right up the ghat road to Tirumala, so there is no climbing involved. For a gentler pace with a night halt, the 2-day package is the more comfortable choice."
-			}
-		],
-		"relatedPackages": [
-			"tirupati-2-days",
-			"mysore-1-day-tour"
-		],
-		"popular": true
 	},
 	{
 		"slug": "tirupati-2-days",
@@ -848,8 +724,8 @@
 		],
 		"includedKm": 600,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -893,130 +769,8 @@
 			}
 		],
 		"relatedPackages": [
-			"chennai-2-days",
-			"tirupati-darshan-1-day",
-			"pondicherry-2-days"
-		],
-		"popular": false
-	},
-	{
-		"slug": "chennai-2-days",
-		"name": "Bangalore to Chennai 2-Day Round Trip Package",
-		"shortName": "Chennai 2-Day",
-		"durationDays": 2,
-		"durationNights": 1,
-		"routeSlugs": [
-			"chennai"
-		],
-		"image": "destinations/chennai.webp",
-		"overview": [
-			"A cab that waits on you, not the other way around: a 6 AM pickup, the ~345 km run down NH-48 with breakfast and lunch halts of your choice, and the same car and driver at your disposal in Chennai until you head home the next day. It suits family functions, hospital visits, university admissions, temple darshans and business trips equally — any plan where a train timetable is more constraint than convenience.",
-			"The price covers the car, fuel and the driver's bata for both days, with 700 km included — enough for the round trip plus local running inside Chennai. Tolls, parking and the Tamil Nadu state permit are at actuals, the hotel is your own booking, and a drop after 10 PM on the return adds ₹400 driver bata. Want a sightseeing slant? Add a Kanchipuram temple halt en route at no extra cost within the included kilometres."
-		],
-		"itinerary": [
-			{
-				"day": 1,
-				"title": "Bangalore → Chennai (via NH-48)",
-				"stops": [
-					{
-						"time": "6:00 AM",
-						"place": "Pickup from your home / hotel",
-						"note": "Breakfast halt on the highway"
-					},
-					{
-						"time": "10:30 AM",
-						"place": "Optional halt: Kanchipuram temples",
-						"note": "Ekambareswarar & Kamakshi Amman — adds about 2 hours"
-					},
-					{
-						"time": "1:30 PM",
-						"place": "Arrive Chennai · lunch & check-in",
-						"note": "The car and driver stay with you"
-					},
-					{
-						"time": "3:30 PM",
-						"place": "Your errands or sights, at your pace",
-						"note": "Marina Beach, Kapaleeshwarar Temple, San Thome Basilica"
-					}
-				]
-			},
-			{
-				"day": 2,
-				"title": "Chennai at your pace → Bangalore",
-				"stops": [
-					{
-						"time": "Morning",
-						"place": "Your function / darshan / appointments",
-						"note": "Car and driver on call all day"
-					},
-					{
-						"time": "3:00 PM",
-						"place": "Depart Chennai",
-						"note": "Later starts are fine — a drop after 10 PM adds ₹400 bata"
-					},
-					{
-						"time": "9:30 PM",
-						"place": "Drop back home in Bangalore"
-					}
-				]
-			}
-		],
-		"prices": [
-			{
-				"vehicle": "sedan",
-				"price": 9900
-			}
-		],
-		"includedKm": 700,
-		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
-			"innova-crysta": 21,
-			"tempo-traveller": 24
-		},
-		"inclusions": [
-			"Car, fuel & driver for the full itinerary",
-			"Driver bata for both days",
-			"Pickup & drop anywhere in Bangalore",
-			"Local use of the car in Chennai (within included km)",
-			"Applicable taxes"
-		],
-		"exclusions": [
-			"Tolls, parking & Tamil Nadu state permit at actuals (billed separately)",
-			"Hotels & meals",
-			"Entry tickets, if any",
-			"Drop after 10 PM: additional driver bata ₹400"
-		],
-		"sightsCovered": [
-			"Kanchipuram Temples (optional en-route halt)",
-			"Marina Beach",
-			"Kapaleeshwarar Temple, Mylapore",
-			"San Thome Basilica",
-			"Fort St. George"
-		],
-		"faqs": [
-			{
-				"question": "What does the ₹9,900 price include?",
-				"answer": "The sedan, fuel and driver bata for both days with 700 km included — the round trip plus comfortable local running in Chennai. Tolls, parking and the TN state permit are billed at actuals; hotel and meals are your own."
-			},
-			{
-				"question": "Can we use the car inside Chennai on both days?",
-				"answer": "Yes — that's the point of the package. The car and driver stay with you for local temple visits, hospital runs or family functions, all within the included kilometres."
-			},
-			{
-				"question": "We only need a drop to Chennai — is there a one-way option?",
-				"answer": "Yes. A one-way Bangalore to Chennai sedan drop is ₹6,200 — see our Bangalore to Chennai taxi page or ask on WhatsApp and we'll quote your exact plan."
-			},
-			{
-				"question": "How long is the drive?",
-				"answer": "About 345 km on NH-48 — six to seven hours door to door with a meal halt. A 6 AM start beats both cities' traffic and has you in Chennai just after lunch."
-			}
-		],
-		"relatedPackages": [
 			"chennai-3-days",
-			"tirupati-2-days",
-			"pondicherry-2-days",
-			"mysore-1-day-tour"
+			"pondicherry-2-days"
 		],
 		"popular": false
 	},
@@ -1114,8 +868,8 @@
 		],
 		"includedKm": 900,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -1154,12 +908,11 @@
 				"answer": "Emphatically — the 7th-century Shore Temple and the rock-cut Pancha Rathas are UNESCO-listed, and the East Coast Road drive is the prettiest stretch of the trip. Budget about five hours door to door."
 			},
 			{
-				"question": "We only need two days — is there a shorter version?",
-				"answer": "Yes, the Chennai 2-Day Round Trip at ₹9,900 runs the same formula with one night. And a plain one-way drop to Chennai is ₹6,200 if you're not coming back."
+				"question": "We don't need all three days — any shorter option?",
+				"answer": "Tell us your dates on WhatsApp and we'll quote a custom shorter version the same day. And if you're not coming back at all, a plain one-way drop to Chennai is ₹6,200 for a sedan."
 			}
 		],
 		"relatedPackages": [
-			"chennai-2-days",
 			"tirupati-2-days",
 			"pondicherry-2-days"
 		],
@@ -1272,8 +1025,8 @@
 		],
 		"includedKm": 600,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -1452,8 +1205,8 @@
 		],
 		"includedKm": 800,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -1635,8 +1388,8 @@
 		],
 		"includedKm": 850,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -1812,8 +1565,8 @@
 		],
 		"includedKm": 900,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -2027,8 +1780,8 @@
 		],
 		"includedKm": 1100,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -2184,8 +1937,8 @@
 		],
 		"includedKm": 600,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -2340,8 +2093,8 @@
 		],
 		"includedKm": 600,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -2504,8 +2257,8 @@
 		],
 		"includedKm": 800,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -2663,8 +2416,8 @@
 		],
 		"includedKm": 900,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -2811,8 +2564,8 @@
 		],
 		"includedKm": 700,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -2857,7 +2610,7 @@
 			}
 		],
 		"relatedPackages": [
-			"chennai-2-days",
+			"chennai-3-days",
 			"tirupati-2-days",
 			"kodaikanal-3-days"
 		],
@@ -2991,8 +2744,8 @@
 		],
 		"includedKm": 1000,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},
@@ -3148,8 +2901,8 @@
 		],
 		"includedKm": 750,
 		"extraKmRate": {
-			"sedan": 12,
-			"suv": 17,
+			"sedan": 13,
+			"suv": 18,
 			"innova-crysta": 21,
 			"tempo-traveller": 24
 		},

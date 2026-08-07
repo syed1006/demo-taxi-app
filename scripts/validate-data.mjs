@@ -186,6 +186,7 @@ for (const p of packages) {
 		if (!Array.isArray(p[k]) || !p[k].every(nonEmpty)) err(`${where}: ${k} must be a list of non-empty lines`);
 	checkFaqList(p.faqs, where);
 	checkImage(p.image, where);
+	for (const g of p.gallery ?? []) checkImage(g, where);
 	for (const s of p.routeSlugs ?? [])
 		if (!routeSlugs.has(s)) err(`${where}: routeSlugs references unknown route "${s}"`);
 	for (const s of p.relatedPackages ?? [])

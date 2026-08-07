@@ -7,7 +7,7 @@ order: 11
 relatedLinks:
   - { label: "Lepakshi + Nandi Hills + Adiyogi 1-Day Package", href: "/tour-packages/lepakshi-nandi-hills-adiyogi-1-day/" }
   - { label: "Kotilingeshwara 1-Day Package (₹4,000)", href: "/tour-packages/kotilingeshwara-1-day/" }
-  - { label: "Tirupati packages", href: "/tour-packages/tirupati-darshan-1-day/" }
+  - { label: "Tirupati 2-Day Package (₹8,600)", href: "/tour-packages/tirupati-2-days/" }
 faqs:
   - question: "Which temple trip is best for a single free day?"
     answer: "The Lepakshi + Nandi Hills + Adiyogi combo covers the most ground — a Vijayanagara masterpiece, a 9th-century Dravidian complex and the 112-ft Adiyogi in one 6 AM to 8 PM loop."
@@ -39,7 +39,7 @@ The 16th-century **Veerabhadra temple** is peak Vijayanagara: India's best-survi
 
 ## Tirupati — 250 km, the pilgrimage
 
-The big one — Sri Venkateswara at Tirumala draws more pilgrims than almost any shrine on Earth, and it rewards planning over spontaneity: darshan slots, dress codes, the 22-km ghat climb. Read the [full Tirupati guide](/guides/tirupati-darshan-travel-guide/) first, then pick the [1-day dash](/tour-packages/tirupati-darshan-1-day/) or the [unhurried 2-day version (₹8,600)](/tour-packages/tirupati-2-days/).
+The big one — Sri Venkateswara at Tirumala draws more pilgrims than almost any shrine on Earth, and it rewards planning over spontaneity: darshan slots, dress codes, the 22-km ghat climb. Read the [full Tirupati guide](/guides/tirupati-darshan-travel-guide/) first, then take the [unhurried 2-day package (₹8,600)](/tour-packages/tirupati-2-days/) — or ask us to pace a one-day dash around your darshan slot.
 
 ## Don't overlook the city itself
 

@@ -1,5 +1,5 @@
 ---
-import { getImage } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import PageLayout from "../../layouts/PageLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import FareTable from "../../components/FareTable.astro";
@@ -38,7 +38,9 @@ const durationLabel =
 const fullTitle = `${pkg.name} — ${formatINR(sedanPrice)} (Sedan)`;
 const title =
 	fullTitle.length > 75 ? `${pkg.name} — ${formatINR(sedanPrice)}` : fullTitle;
-const description = `${pkg.shortName} by cab from Bangalore: Sedan ${formatINR(sedanPrice)}, ${durationLabel}, ${pkg.sightsCovered.length} places, ${pkg.includedKm} km included. Fixed price, verified drivers. Call +91 70227 62929.`;
+const description = `${pkg.shortName} by cab from Bangalore: Sedan ${formatINR(sedanPrice)}, ${durationLabel}, ${pkg.sightsCovered.length} places${
+	pkg.hideIncludedKm ? "" : `, ${pkg.includedKm} km included`
+}. Fixed price, verified drivers. Call +91 70227 62929.`;
 
 const priceRows = pkg.prices.map((entry) => {
 	const rates = RATE_CARD[entry.vehicle];
@@ -114,12 +116,35 @@ const tripSchema = {
 		chips={[
 			{ icon: "lucide:calendar", label: durationLabel },
 			{ icon: "lucide:wallet", label: `From ${formatINR(sedanPrice)}` },
-			{ icon: "lucide:map-pin", label: `${pkg.includedKm} km included` },
+			...(pkg.hideIncludedKm
+				? []
+				: [{ icon: "lucide:map-pin", label: `${pkg.includedKm} km included` }]),
 		]}
 		{bookHref}
 		bookLabel="Book This Package"
 		{waMessage}
 	/>
+
+	{
+		pkg.gallery && pkg.gallery.length > 0 && (
+			<section class="px-4 sm:px-6 lg:px-8 pt-10">
+				<div class="max-w-5xl mx-auto grid grid-cols-2 gap-4">
+					{pkg.gallery.map((photo) => (
+						<Image
+							src={photo}
+							alt={pkg.name}
+							widths={[480, 800]}
+							sizes="(min-width: 1024px) 480px, 50vw"
+							format="webp"
+							quality={75}
+							loading="lazy"
+							class="aspect-[4/3] w-full rounded-xl border object-cover"
+						/>
+					))}
+				</div>
+			</section>
+		)
+	}
 
 	<section class="py-12 px-4 sm:px-6 lg:px-8">
 		<div class="max-w-5xl mx-auto">
@@ -131,8 +156,10 @@ const tripSchema = {
 				columns={["Package price", "Extra km"]}
 				rows={priceRows}
 				footnotes={[
-					`Includes ${pkg.includedKm} km, fuel, driver bata and all sightseeing transfers per the itinerary.`,
-					"Hotels, meals, entry tickets, tolls, parking and permits are not included.",
+					pkg.hideIncludedKm
+						? "Includes fuel, driver bata and all sightseeing transfers for the full day's itinerary."
+						: `Includes ${pkg.includedKm} km, fuel, driver bata and all sightseeing transfers per the itinerary.`,
+					"Full inclusions and exclusions are listed below.",
 				]}
 			/>
 		</div>
