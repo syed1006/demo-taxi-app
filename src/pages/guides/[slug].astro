@@ -19,6 +19,15 @@ export async function getStaticPaths() {
 const { guide } = Astro.props;
 const { Content } = await render(guide);
 
+// Three more guides, continuing from this one's position in the series.
+const allGuides = (await getCollection("guides"))
+	.filter((g) => g.id !== guide.id)
+	.sort((a, b) => a.data.order - b.data.order);
+const moreGuides = [
+	...allGuides.filter((g) => g.data.order > guide.data.order),
+	...allGuides,
+].slice(0, 3);
+
 const path = `/guides/${guide.id}/`;
 const hero = optionalContentImage(guide.data.heroImage);
 const shortTitle = guide.data.title.split(/[:?]/)[0].trim();
@@ -136,6 +145,25 @@ const articleSchema = {
 					</section>
 				)
 			}
+
+			<section class="mt-10 border-t pt-8">
+				<h2 class="text-lg font-bold text-foreground mb-4">More guides</h2>
+				<ul class="space-y-2.5">
+					{
+						moreGuides.map((more) => (
+							<li>
+								<a
+									href={withBase(`/guides/${more.id}/`)}
+									class="inline-flex items-start gap-2 font-semibold text-orange-600 dark:text-orange-400 hover:underline"
+								>
+									<Icon name="lucide:book-open" class="mt-1 h-4 w-4 flex-none" />
+									{more.data.title}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</section>
 		</div>
 	</article>
 

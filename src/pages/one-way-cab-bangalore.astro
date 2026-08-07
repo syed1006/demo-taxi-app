@@ -4,6 +4,7 @@ import PageHero from "../components/PageHero.astro";
 import FareTable from "../components/FareTable.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
 import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import GuideCallout from "../components/GuideCallout.astro";
 import ItemListSchema from "../components/seo/ItemListSchema.astro";
 import { Icon } from "astro-icon/components";
 import { ROUTES, routePath } from "../data/routes";
@@ -203,6 +204,11 @@ const faqs: FaqItem[] = [
 			<FaqAccordion faqs={faqs} emitSchema group="oneway-faq" />
 		</div>
 	</section>
+
+	<GuideCallout
+		href="/guides/one-way-vs-round-trip-cab/"
+		label="One-way vs round trip: which is actually cheaper for your plan?"
+	/>
 
 	<ServiceSchema
 		serviceType="One-way drop taxi from Bangalore"

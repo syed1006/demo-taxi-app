@@ -4,6 +4,7 @@ import PageHero from "../components/PageHero.astro";
 import FareTable from "../components/FareTable.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
 import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import GuideCallout from "../components/GuideCallout.astro";
 import ItemListSchema from "../components/seo/ItemListSchema.astro";
 import { Icon } from "astro-icon/components";
 import { AIRPORT_AREAS } from "../data/airport-areas";
@@ -226,6 +227,11 @@ const dedicatedAreas = AIRPORT_AREAS.filter((area) => area.dedicatedPage);
 			</p>
 		</div>
 	</section>
+
+	<GuideCallout
+		href="/guides/bangalore-airport-pickup-guide/"
+		label="Airport pickup guide: where to meet your driver at KIA"
+	/>
 
 	<ServiceSchema
 		serviceType="Bangalore airport taxi service"

@@ -6,6 +6,7 @@ import FaqAccordion from "../components/FaqAccordion.astro";
 import PackageCard from "../components/PackageCard.astro";
 import RouteCard from "../components/RouteCard.astro";
 import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import GuideCallout from "../components/GuideCallout.astro";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import type { Route } from "../data/route-types";
@@ -47,6 +48,21 @@ const fareRows = fareTableFor(route.fares, route.days).map((row) => ({
 }));
 
 const hasDerived = fareTableFor(route.fares, route.days).some((r) => !r.verified);
+
+// Routes with a matching long-form guide get a pointer to it.
+const GUIDE_BY_ROUTE: Record<string, { href: string; label: string }> = {
+	mysore: { href: "/guides/bangalore-to-mysore-road-guide/", label: "Bangalore to Mysore by road: expressway, tolls & the best stops" },
+	"nandi-hills": { href: "/guides/nandi-hills-sunrise-guide/", label: "Nandi Hills sunrise: timings, entry fee & what to carry" },
+	ooty: { href: "/guides/bangalore-to-ooty-road-guide/", label: "Bangalore to Ooty by road: Bandipur timings & the hairpin climb" },
+	coorg: { href: "/guides/coorg-2-day-itinerary/", label: "Coorg in 2 days: the field-tested itinerary" },
+	tirupati: { href: "/guides/tirupati-darshan-travel-guide/", label: "Tirupati darshan options, timings & travel tips" },
+	chikmagalur: { href: "/guides/coorg-vs-ooty-vs-chikmagalur/", label: "Coorg vs Ooty vs Chikmagalur: picking your hill station" },
+	lepakshi: { href: "/guides/temples-near-bangalore-day-trips/", label: "Famous temples near Bangalore worth a day trip" },
+	"adiyogi-chikkaballapur": { href: "/guides/temples-near-bangalore-day-trips/", label: "Famous temples near Bangalore worth a day trip" },
+	hogenakkal: { href: "/guides/weekend-getaways-from-bangalore/", label: "7 weekend getaways from Bangalore within 300 km" },
+	shivanasamudra: { href: "/guides/weekend-getaways-from-bangalore/", label: "7 weekend getaways from Bangalore within 300 km" },
+};
+const routeGuide = GUIDE_BY_ROUTE[route.slug];
 
 const relatedRoutes = route.relatedRoutes
 	.map((slug) => ROUTES.find((r) => r.slug === slug))
@@ -230,6 +246,8 @@ const bookHref = `/book/?type=outstation&drop=${encodeURIComponent(route.name)}`
 			</section>
 		)
 	}
+
+	{routeGuide && <GuideCallout href={routeGuide.href} label={routeGuide.label} />}
 
 	<ServiceSchema
 		serviceType={`Bangalore to ${route.name} taxi`}

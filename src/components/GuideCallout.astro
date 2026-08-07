@@ -1,0 +1,40 @@
+---
+import { Icon } from "astro-icon/components";
+import { withBase } from "../lib/url";
+
+// A single "read the guide" pointer from a money page to its matching
+// travel guide — internal linking that helps the guides rank and gives
+// undecided visitors somewhere useful to go.
+interface Props {
+	href: string;
+	label: string;
+}
+const { href, label } = Astro.props;
+---
+
+<section class="px-4 sm:px-6 lg:px-8 pb-12">
+	<div class="max-w-4xl mx-auto">
+		<a
+			href={withBase(href)}
+			class="group flex items-center gap-4 rounded-xl border-2 border-dashed border-orange-300 dark:border-orange-800 bg-card p-5 transition-colors hover:border-orange-500"
+		>
+			<span
+				class="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-gradient-to-r from-orange-400 to-red-600"
+			>
+				<Icon name="lucide:book-open" class="h-5 w-5 text-white" />
+			</span>
+			<span class="min-w-0">
+				<span
+					class="block text-xs font-bold uppercase tracking-wider text-orange-500"
+				>
+					From our travel guides
+				</span>
+				<span
+					class="block font-semibold text-foreground group-hover:text-orange-500 transition-colors"
+				>
+					{label} →
+				</span>
+			</span>
+		</a>
+	</div>
+</section>

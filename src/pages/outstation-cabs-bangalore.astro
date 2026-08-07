@@ -5,6 +5,7 @@ import FareTable from "../components/FareTable.astro";
 import RouteCard from "../components/RouteCard.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
 import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import GuideCallout from "../components/GuideCallout.astro";
 import ItemListSchema from "../components/seo/ItemListSchema.astro";
 import { Icon } from "astro-icon/components";
 import { ROUTES, routePath } from "../data/routes";
@@ -204,6 +205,11 @@ const faqs: FaqItem[] = [
 			<FaqAccordion faqs={faqs} emitSchema group="outstation-faq" />
 		</div>
 	</section>
+
+	<GuideCallout
+		href="/guides/bangalore-taxi-fares-explained/"
+		label="Every Bangalore taxi fare explained: per-km rates & driver bata"
+	/>
 
 	<ServiceSchema
 		serviceType="Outstation taxi service from Bangalore"

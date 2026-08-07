@@ -4,6 +4,7 @@ import PageHero from "../components/PageHero.astro";
 import FareTable from "../components/FareTable.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
 import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import GuideCallout from "../components/GuideCallout.astro";
 import { Icon } from "astro-icon/components";
 import { RATE_CARD, VEHICLE_CLASS_IDS } from "../data/rate-card";
 import { formatINR } from "../lib/fare";
@@ -141,6 +142,11 @@ const faqs: FaqItem[] = [
 			<FaqAccordion faqs={faqs} emitSchema group="hourly-faq" />
 		</div>
 	</section>
+
+	<GuideCallout
+		href="/guides/bangalore-taxi-fares-explained/"
+		label="Every Bangalore taxi fare explained: airport, hourly & outstation"
+	/>
 
 	<ServiceSchema
 		serviceType="Hourly car rental with driver in Bangalore"

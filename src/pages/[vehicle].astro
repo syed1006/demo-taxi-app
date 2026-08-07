@@ -5,6 +5,7 @@ import FareTable from "../components/FareTable.astro";
 import RouteCard from "../components/RouteCard.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
 import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import GuideCallout from "../components/GuideCallout.astro";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { VEHICLE_CATEGORIES, type Vehicle } from "../data/vehicles";
@@ -344,6 +345,15 @@ const waMessage = `Hi! I'd like to book a ${def.vehicle.name} in Bangalore.`;
 			</p>
 		</div>
 	</section>
+
+	{
+		["innova-crysta-rental-bangalore", "tempo-traveller-hire-bangalore", "suv-taxi-bangalore"].includes(def.slug) && (
+			<GuideCallout
+				href="/guides/innova-crysta-vs-tempo-traveller/"
+				label="Innova Crysta or Tempo Traveller? Picking the right group vehicle"
+			/>
+		)
+	}
 
 	<ServiceSchema
 		serviceType={`${def.vehicle.name} rental in Bangalore`}
