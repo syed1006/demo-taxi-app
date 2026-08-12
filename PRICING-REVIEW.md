@@ -62,10 +62,10 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 
 | Vehicle | One-way | Round trip |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹6,599 | ₹8,999 |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹9,499* | ₹12,799* |
-| Innova Crysta 6+1 / 7+1 seater | ₹11,999* | ₹16,199* |
-| Tempo Traveller (12+1) 12+1 seater | ₹13,999* | ₹18,899* |
+| Sedan 4+1 seater | ₹6,599 | ₹12,900 |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹9,499* | ₹18,299* |
+| Innova Crysta 6+1 / 7+1 seater | ₹11,999* | ₹22,999* |
+| Tempo Traveller (12+1) 12+1 seater | ₹13,999* | ₹26,899* |
 
 ### /bangalore-to-hogenakkal-taxi/
 
@@ -89,19 +89,19 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 
 | Vehicle | One-way | Round trip |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹2,100 | ₹3,300 |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹3,099* | ₹4,799* |
-| Innova Crysta 6+1 / 7+1 seater | ₹3,899* | ₹5,999* |
-| Tempo Traveller (12+1) 12+1 seater | ₹4,599* | ₹6,999* |
+| Sedan 4+1 seater | ₹3,000 | ₹5,800 |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹4,299* | ₹8,299* |
+| Innova Crysta 6+1 / 7+1 seater | ₹5,499* | ₹10,399* |
+| Tempo Traveller (12+1) 12+1 seater | ₹6,399* | ₹12,099* |
 
 ### /bangalore-to-mysore-taxi/
 
 | Vehicle | One-way | Round trip |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹2,799 | ₹5,100 |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹4,099* | ₹7,299* |
-| Innova Crysta 6+1 / 7+1 seater | ₹5,099* | ₹9,199* |
-| Tempo Traveller (12+1) 12+1 seater | ₹5,999* | ₹10,699* |
+| Sedan 4+1 seater | ₹3,000 | ₹5,800 |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹4,299* | ₹8,299* |
+| Innova Crysta 6+1 / 7+1 seater | ₹5,499* | ₹10,399* |
+| Tempo Traveller (12+1) 12+1 seater | ₹6,399* | ₹12,099* |
 
 ### /bangalore-to-nandi-hills-taxi/
 
@@ -125,10 +125,10 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 
 | Vehicle | One-way | Round trip |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹5,999 | ₹8,299 |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹8,599* | ₹11,899* |
-| Innova Crysta 6+1 / 7+1 seater | ₹10,899* | ₹14,999* |
-| Tempo Traveller (12+1) 12+1 seater | ₹12,699* | ₹17,499* |
+| Sedan 4+1 seater | ₹5,999 | ₹8,600 |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹8,599* | ₹12,299* |
+| Innova Crysta 6+1 / 7+1 seater | ₹10,899* | ₹15,499* |
+| Tempo Traveller (12+1) 12+1 seater | ₹12,699* | ₹18,099* |
 
 ### /bangalore-to-sakleshpur-taxi/
 
@@ -143,10 +143,10 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 
 | Vehicle | One-way | Round trip |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹4,299 | ₹5,599 |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹6,199* | ₹7,999* |
-| Innova Crysta 6+1 / 7+1 seater | ₹7,799* | ₹9,999* |
-| Tempo Traveller (12+1) 12+1 seater | ₹9,099* | ₹11,699* |
+| Sedan 4+1 seater | ₹4,500 | ₹6,500 |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹6,399* | ₹9,199* |
+| Innova Crysta 6+1 / 7+1 seater | ₹8,099* | ₹11,599* |
+| Tempo Traveller (12+1) 12+1 seater | ₹9,499* | ₹13,599* |
 
 ### /bangalore-to-shivanasamudra-taxi/
 
@@ -161,10 +161,10 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 
 | Vehicle | One-way | Round trip |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹4,999 | ₹6,499 |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹7,099* | ₹9,199* |
-| Innova Crysta 6+1 / 7+1 seater | ₹8,999* | ₹11,599* |
-| Tempo Traveller (12+1) 12+1 seater | ₹10,499* | ₹13,599* |
+| Sedan 4+1 seater | ₹5,500 | ₹8,600 |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹7,799* | ₹12,199* |
+| Innova Crysta 6+1 / 7+1 seater | ₹9,899* | ₹15,299* |
+| Tempo Traveller (12+1) 12+1 seater | ₹11,499* | ₹17,899* |
 
 ### /bangalore-to-udupi-taxi/
 
@@ -179,10 +179,10 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 
 | Vehicle | One-way | Round trip |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹4,299 | ₹5,599 |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹6,199* | ₹7,999* |
-| Innova Crysta 6+1 / 7+1 seater | ₹7,799* | ₹9,999* |
-| Tempo Traveller (12+1) 12+1 seater | ₹9,099* | ₹11,699* |
+| Sedan 4+1 seater | ₹4,500 | ₹6,500 |
+| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹6,399* | ₹9,199* |
+| Innova Crysta 6+1 / 7+1 seater | ₹8,099* | ₹11,599* |
+| Tempo Traveller (12+1) 12+1 seater | ₹9,499* | ₹13,599* |
 
 ### /bangalore-to-wayanad-taxi/
 
@@ -292,19 +292,13 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹11,799 | ₹13/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹16,899 | ₹18/km |
-| Innova Crysta 6+1 / 7+1 seater | ₹21,299 | ₹21/km |
-| Tempo Traveller (12+1) 12+1 seater | ₹24,799 | ₹24/km |
+| Sedan 4+1 seater | ₹12,900 | ₹13/km |
 
-### /tour-packages/hampi-2-days/
+### /tour-packages/hampi-3-days/
 
 | Vehicle | Package price | Extra km |
 | --- | --- | --- |
-| Sedan 4+1 seater | ₹10,299 | ₹13/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹14,699 | ₹18/km |
-| Innova Crysta 6+1 / 7+1 seater | ₹18,499 | ₹21/km |
-| Tempo Traveller (12+1) 12+1 seater | ₹21,599 | ₹24/km |
+| Sedan 4+1 seater | ₹12,900 | ₹13/km |
 
 ### /tour-packages/kodaikanal-3-days/
 
@@ -385,15 +379,6 @@ Every rupee figure published on the site. Verify each row; prices marked `*` are
 | --- | --- | --- |
 | Sedan 4+1 seater | ₹8,600 | ₹13/km |
 | SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹12,800 | ₹18/km |
-
-### /tour-packages/wayanad-2-days/
-
-| Vehicle | Package price | Extra km |
-| --- | --- | --- |
-| Sedan 4+1 seater | ₹8,499 | ₹13/km |
-| SUV (Innova / Ertiga) 6+1 / 7+1 seater | ₹12,099 | ₹18/km |
-| Innova Crysta 6+1 / 7+1 seater | ₹15,299 | ₹21/km |
-| Tempo Traveller (12+1) 12+1 seater | ₹17,899 | ₹24/km |
 
 ### /tour-packages/wayanad-3-days/
 

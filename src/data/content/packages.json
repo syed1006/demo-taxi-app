@@ -1188,19 +1188,7 @@
 		"prices": [
 			{
 				"vehicle": "sedan",
-				"price": 11799
-			},
-			{
-				"vehicle": "suv",
-				"price": 16899
-			},
-			{
-				"vehicle": "innova-crysta",
-				"price": 21299
-			},
-			{
-				"vehicle": "tempo-traveller",
-				"price": 24799
+				"price": 12900
 			}
 		],
 		"includedKm": 800,
@@ -1983,168 +1971,7 @@
 			}
 		],
 		"relatedPackages": [
-			"coorg-2-days",
-			"wayanad-2-days"
-		],
-		"popular": false
-	},
-	{
-		"slug": "wayanad-2-days",
-		"name": "Bangalore to Wayanad 2-Day Package",
-		"shortName": "Wayanad 2-Day",
-		"durationDays": 2,
-		"durationNights": 1,
-		"routeSlugs": [
-			"wayanad"
-		],
-		"image": "destinations/waynad.webp",
-		"overview": [
-			"Kerala's green highland district in a weekend: cross the Bandipur–Muthanga wildlife corridor by morning, climb to the neolithic carvings of Edakkal Caves, drift around Karapuzha's backwaters, then spend day two among Pookode Lake's forests, the Lakkidi viewpoint hairpins and the vast curve of Banasura Sagar — India's largest earthen dam. It's a remarkable amount of Kerala for one night away.",
-			"Wayanad rewards early starts, and this plan is built around the forest checkpost timings on both sides. Best for couples and small families; monsoon travellers get the district at its most dramatic, while winter brings mist over the tea. The night halt is at Kalpetta, central to everything."
-		],
-		"itinerary": [
-			{
-				"day": 1,
-				"title": "Bangalore → Muthanga forest → Edakkal → Kalpetta",
-				"stops": [
-					{
-						"time": "5:30 AM",
-						"place": "Pickup from your home in Bangalore",
-						"note": "Breakfast beyond Mysore; Kerala permit at the border"
-					},
-					{
-						"time": "10:00 AM",
-						"place": "Bandipur & Muthanga wildlife corridor drive",
-						"note": "Elephants and deer often visible from the road"
-					},
-					{
-						"time": "12:00 PM",
-						"place": "Lunch at Sulthan Bathery"
-					},
-					{
-						"time": "1:30 PM",
-						"place": "Edakkal Caves",
-						"note": "45-minute uphill walk to neolithic rock carvings; wear grippy shoes"
-					},
-					{
-						"time": "4:30 PM",
-						"place": "Karapuzha Dam & backwaters",
-						"note": "Sunset over the reservoir"
-					},
-					{
-						"time": "6:30 PM",
-						"place": "Kalpetta check-in",
-						"note": "Hotel booked by you or on request; overnight in Kalpetta"
-					}
-				]
-			},
-			{
-				"day": 2,
-				"title": "Pookode, Lakkidi & Banasura Sagar → Bangalore",
-				"stops": [
-					{
-						"time": "8:00 AM",
-						"place": "Pookode Lake",
-						"note": "Forest-ringed freshwater lake, pedal boating"
-					},
-					{
-						"time": "9:30 AM",
-						"place": "Lakkidi Viewpoint & Chain Tree",
-						"note": "Gateway-of-Wayanad views over the Thamarassery ghat"
-					},
-					{
-						"time": "11:00 AM",
-						"place": "Banasura Sagar Dam",
-						"note": "India's largest earthen dam; speed-boating optional"
-					},
-					{
-						"time": "1:00 PM",
-						"place": "Lunch at Kalpetta"
-					},
-					{
-						"time": "2:30 PM",
-						"place": "Depart for Bangalore",
-						"note": "Must clear the Muthanga–Bandipur forest before the 9 PM night ban"
-					},
-					{
-						"time": "11:00 PM",
-						"place": "Drop back home in Bangalore"
-					}
-				]
-			}
-		],
-		"prices": [
-			{
-				"vehicle": "sedan",
-				"price": 8499
-			},
-			{
-				"vehicle": "suv",
-				"price": 12099
-			},
-			{
-				"vehicle": "innova-crysta",
-				"price": 15299
-			},
-			{
-				"vehicle": "tempo-traveller",
-				"price": 17899
-			}
-		],
-		"includedKm": 600,
-		"extraKmRate": {
-			"sedan": 13,
-			"suv": 18,
-			"innova-crysta": 21,
-			"tempo-traveller": 24
-		},
-		"inclusions": [
-			"Fuel charges",
-			"Driver bata (allowance)",
-			"Pickup & drop anywhere in Bangalore",
-			"All sightseeing transfers as per itinerary",
-			"Vehicle & driver at your disposal for the full itinerary",
-			"Applicable taxes"
-		],
-		"exclusions": [
-			"Tolls & parking at actuals",
-			"Inter-state permit fees (Tamil Nadu ₹500–1,500 / Kerala ₹500–3,000 / Andhra Pradesh ₹500–2,500 / Goa ₹2,500–3,500 depending on vehicle)",
-			"Entry tickets & guide fees",
-			"Meals & accommodation",
-			"AC is switched off on steep ghat climbs for safety"
-		],
-		"sightsCovered": [
-			"Muthanga wildlife corridor drive",
-			"Edakkal Caves",
-			"Karapuzha Dam",
-			"Pookode Lake",
-			"Lakkidi Viewpoint",
-			"Chain Tree",
-			"Banasura Sagar Dam"
-		],
-		"faqs": [
-			{
-				"question": "Why the 5:30 AM start?",
-				"answer": "The NH-766 forest stretch through Bandipur and Muthanga is closed from 9 PM to 6 AM, and morning crossings offer the best wildlife sightings and coolest driving. The early start also gets you to Edakkal before the afternoon queue."
-			},
-			{
-				"question": "Is the Kerala inter-state permit included?",
-				"answer": "We arrange the permit; the fee itself (₹500–3,000 depending on vehicle class) is billed at actuals like tolls and parking."
-			},
-			{
-				"question": "Is Edakkal Caves suitable for elderly travellers?",
-				"answer": "It involves a steady 30–45 minute uphill walk plus steep ladders inside — genuinely strenuous. Less mobile guests often relax at a plantation cafe below while the rest climb; we can also swap the stop for Soochipara Falls."
-			},
-			{
-				"question": "Can we add Kuruva Island or Soochipara Falls?",
-				"answer": "One of them fits if you're happy trimming elsewhere — Kuruva (seasonal, closed in high monsoon) suits day 1, Soochipara suits day 2 morning. Extra kilometres beyond 600 bill at the standard per-km rate."
-			}
-		],
-		"relatedPackages": [
-			"wayanad-3-days",
-			"coorg-2-days",
-			"chikmagalur-2-days",
-			"ooty-mysore-3-days"
+			"coorg-2-days"
 		],
 		"popular": false
 	},
@@ -2159,7 +1986,7 @@
 		],
 		"image": "destinations/banasura-sagar-dam.webp",
 		"overview": [
-			"Three days in Kerala's green attic: prehistoric petroglyphs inside the Edakkal Caves, India's largest earthen dam at Banasura Sagar, waterfalls, spice country and a forest crossing through Bandipur and Muthanga where elephant sightings are routine. Wayanad rewards the extra day — the 2-day version always leaves someone wanting the cave climb or the dam boat ride they had to skip.",
+			"Three days in Kerala's green attic: prehistoric petroglyphs inside the Edakkal Caves, India's largest earthen dam at Banasura Sagar, waterfalls, spice country and a forest crossing through Bandipur and Muthanga where elephant sightings are routine. Wayanad rewards three full days — a rushed two-day dash always leaves someone wanting the cave climb or the dam boat ride they had to skip.",
 			"The price covers the car, fuel and driver bata for all three days. Tolls, parking and the Kerala state permit are at actuals, hotels and meals are your own, and a post-10 PM drop on the last night adds ₹400 bata. As with every Wayanad run, the forest stretch closes 9 PM–6 AM, so both crossings happen in daylight — which is exactly when you want them anyway."
 		],
 		"itinerary": [
@@ -2255,7 +2082,7 @@
 				"price": 17800
 			}
 		],
-		"includedKm": 800,
+		"includedKm": 900,
 		"extraKmRate": {
 			"sedan": 13,
 			"suv": 18,
@@ -2306,9 +2133,9 @@
 			}
 		],
 		"relatedPackages": [
-			"wayanad-2-days",
 			"coorg-2-days",
-			"mysore-coorg-3-days"
+			"mysore-coorg-3-days",
+			"mangalore-udupi-3-days"
 		],
 		"popular": false
 	},
@@ -2617,6 +2444,158 @@
 		"popular": false
 	},
 	{
+		"slug": "hampi-3-days",
+		"name": "Bangalore to Hampi 3-Day Package",
+		"shortName": "Hampi 3-Day",
+		"durationDays": 3,
+		"durationNights": 2,
+		"routeSlugs": [
+			"hampi"
+		],
+		"image": "destinations/hampi.webp",
+		"overview": [
+			"Three days among the boulders of the Vijayanagara empire — a UNESCO World Heritage landscape of 1,600-plus monuments scattered across an other-worldly granite terrain. The distance (about 340 km each way) is exactly why Hampi deserves three days: you arrive relaxed, give the ruins a full unhurried day, and still have a morning for the Anegundi side of the river before the drive home.",
+			"The price covers the car, fuel and the driver's bata for all three days with 900 km included. Tolls, parking and permits (if any) are at actuals; hotels, meals, the site entry tickets and the licensed site guides are your own. October to February is prime season — summer afternoons on the open granite are brutal."
+		],
+		"itinerary": [
+			{
+				"day": 1,
+				"title": "Bangalore → Hampi",
+				"stops": [
+					{
+						"time": "5:30 AM",
+						"place": "Pickup from your home / hotel",
+						"note": "5–6 AM start; breakfast near Chitradurga"
+					},
+					{
+						"time": "12:30 PM",
+						"place": "Arrive Hospet / Hampi · lunch & check-in"
+					},
+					{
+						"time": "3:00 PM",
+						"place": "Virupaksha Temple & Hampi Bazaar",
+						"note": "The living temple at the heart of the site"
+					},
+					{
+						"time": "5:30 PM",
+						"place": "Hemakuta Hill sunset",
+						"note": "Boulder-top views over the temple gopuram"
+					}
+				]
+			},
+			{
+				"day": 2,
+				"title": "The full Vijayanagara circuit",
+				"stops": [
+					{
+						"time": "6:00 AM",
+						"place": "Matanga Hill sunrise (optional trek)",
+						"note": "The classic panorama — carry water"
+					},
+					{
+						"time": "9:00 AM",
+						"place": "Vittala Temple & Stone Chariot",
+						"note": "The icon of Hampi; musical pillars"
+					},
+					{
+						"time": "12:00 PM",
+						"place": "Royal Enclosure, Lotus Mahal & Elephant Stables",
+						"note": "Lunch after"
+					},
+					{
+						"time": "3:30 PM",
+						"place": "Queen's Bath & Krishna Temple"
+					},
+					{
+						"time": "5:00 PM",
+						"place": "Coracle ride on the Tungabhadra",
+						"note": "Seasonal, at actuals"
+					}
+				]
+			},
+			{
+				"day": 3,
+				"title": "Anegundi → Bangalore",
+				"stops": [
+					{
+						"time": "8:00 AM",
+						"place": "Anegundi village & Anjanadri Hill",
+						"note": "The quieter mythological side across the river"
+					},
+					{
+						"time": "11:30 AM",
+						"place": "Depart for Bangalore",
+						"note": "Lunch at Chitradurga; fort drive-past"
+					},
+					{
+						"time": "7:30 PM",
+						"place": "Drop back home in Bangalore"
+					}
+				]
+			}
+		],
+		"prices": [
+			{
+				"vehicle": "sedan",
+				"price": 12900
+			}
+		],
+		"includedKm": 900,
+		"extraKmRate": {
+			"sedan": 13,
+			"suv": 18,
+			"innova-crysta": 21,
+			"tempo-traveller": 24
+		},
+		"inclusions": [
+			"Car, fuel & driver for the full itinerary",
+			"Driver bata for all 3 days",
+			"Pickup & drop anywhere in Bangalore",
+			"All sightseeing transfers as per itinerary",
+			"Applicable taxes"
+		],
+		"exclusions": [
+			"Tolls, parking & permits (if any) at actuals (billed separately)",
+			"Hotels & meals",
+			"Site entry tickets, guides & coracle rides",
+			"Drop after 10 PM: additional driver bata ₹400"
+		],
+		"sightsCovered": [
+			"Virupaksha Temple",
+			"Vittala Temple & Stone Chariot",
+			"Hemakuta Hill",
+			"Matanga Hill sunrise",
+			"Royal Enclosure & Lotus Mahal",
+			"Elephant Stables",
+			"Coracle ride on the Tungabhadra",
+			"Anegundi & Anjanadri Hill"
+		],
+		"faqs": [
+			{
+				"question": "What does the ₹12,900 price include?",
+				"answer": "Car, fuel and driver bata for all three days in a 4+1 sedan, with 900 km included — comfortably covering the round trip plus all the site running. Tolls, parking, hotels, meals and entry tickets are at actuals."
+			},
+			{
+				"question": "Why three days and not two?",
+				"answer": "Hampi is 340 km away and the site is vast. Two days means seeing ruins from a moving car window; three days gives you the Vittala group, the Royal Enclosure, a sunrise and the Anegundi side without a stopwatch."
+			},
+			{
+				"question": "Do we need a guide inside the site?",
+				"answer": "Licensed guides at Hampi genuinely earn their fee — the stones don't explain themselves. Hire one at the Virupaksha entrance for the main circuit; your driver handles all the transfers between monument clusters."
+			},
+			{
+				"question": "When is the best time to visit Hampi?",
+				"answer": "October to February — cool mornings, golden light on the granite. Avoid April–May when the boulders turn into a furnace. The Hampi Utsav (usually January) is spectacular but book stays months ahead."
+			}
+		],
+		"relatedPackages": [
+			"mysore-coorg-3-days",
+			"chennai-3-days",
+			"mangalore-udupi-3-days"
+		],
+		"popular": false
+	},
+	{
 		"slug": "kodaikanal-3-days",
 		"image": "destinations/kodaikanal.webp",
 		"name": "Bangalore to Kodaikanal 3-Day Package",
@@ -2795,164 +2774,6 @@
 		"relatedPackages": [
 			"pondicherry-2-days",
 			"ooty-mysore-3-days"
-		],
-		"popular": false
-	},
-	{
-		"slug": "hampi-2-days",
-		"image": "destinations/hampi.webp",
-		"name": "Bangalore to Hampi 2-Day Package",
-		"shortName": "Hampi 2-Day",
-		"durationDays": 2,
-		"durationNights": 1,
-		"routeSlugs": [
-			"hampi"
-		],
-		"overview": [
-			"A weekend inside a UNESCO World Heritage Site: the boulder-strewn capital of the Vijayanagara empire, where the Virupaksha temple still holds worship after seven centuries, the Vittala temple's stone chariot anchors India's most photographed ruins, and sunset from Hemakuta Hill turns the whole valley gold. Day two covers the Royal Enclosure — Lotus Mahal, Elephant Stables, the stepped tank — before the run home.",
-			"Hampi is spread over 25+ sq km, which is precisely where having your own cab and driver wins: you hop between clusters in minutes instead of haggling for autos in the heat. Suited to history lovers, photographers and families with school-age kids; carry hats and water — the site is gloriously shadeless."
-		],
-		"itinerary": [
-			{
-				"day": 1,
-				"title": "Bangalore → Hampi (sacred centre)",
-				"stops": [
-					{
-						"time": "5:30 AM",
-						"place": "Pickup from your home in Bangalore",
-						"note": "Via Chitradurga; breakfast on NH-48"
-					},
-					{
-						"time": "12:30 PM",
-						"place": "Reach Hospet, lunch & hotel check-in",
-						"note": "Hotel booked by you or on request"
-					},
-					{
-						"time": "2:30 PM",
-						"place": "Virupaksha Temple, Hampi",
-						"note": "The living heart of the ruins; watch for Lakshmi the temple elephant"
-					},
-					{
-						"time": "4:00 PM",
-						"place": "Hampi Bazaar & the monolithic bull (Yeduru Basavanna)"
-					},
-					{
-						"time": "5:30 PM",
-						"place": "Hemakuta Hill sunset",
-						"note": "Boulders, shrines and the best golden hour in Karnataka; overnight in Hospet"
-					}
-				]
-			},
-			{
-				"day": 2,
-				"title": "Vittala temple & Royal Enclosure → Bangalore",
-				"stops": [
-					{
-						"time": "7:30 AM",
-						"place": "Vittala Temple & Stone Chariot",
-						"note": "Go early — cooler and nearly empty; buggy ride from the parking"
-					},
-					{
-						"time": "9:30 AM",
-						"place": "Royal Enclosure",
-						"note": "Mahanavami Dibba and the stepped tank"
-					},
-					{
-						"time": "10:45 AM",
-						"place": "Lotus Mahal & Elephant Stables (Zenana Enclosure)"
-					},
-					{
-						"time": "12:00 PM",
-						"place": "Queen's Bath & Ugra Narasimha statue"
-					},
-					{
-						"time": "1:00 PM",
-						"place": "Lunch at Hospet"
-					},
-					{
-						"time": "2:30 PM",
-						"place": "Depart for Bangalore",
-						"note": "Optional Tungabhadra Dam view stop if time permits"
-					},
-					{
-						"time": "9:30 PM",
-						"place": "Drop back home in Bangalore"
-					}
-				]
-			}
-		],
-		"prices": [
-			{
-				"vehicle": "sedan",
-				"price": 10299
-			},
-			{
-				"vehicle": "suv",
-				"price": 14699
-			},
-			{
-				"vehicle": "innova-crysta",
-				"price": 18499
-			},
-			{
-				"vehicle": "tempo-traveller",
-				"price": 21599
-			}
-		],
-		"includedKm": 750,
-		"extraKmRate": {
-			"sedan": 13,
-			"suv": 18,
-			"innova-crysta": 21,
-			"tempo-traveller": 24
-		},
-		"inclusions": [
-			"Fuel charges",
-			"Driver bata (allowance)",
-			"Pickup & drop anywhere in Bangalore",
-			"All sightseeing transfers as per itinerary",
-			"Vehicle & driver at your disposal for the full itinerary",
-			"Applicable taxes"
-		],
-		"exclusions": [
-			"Tolls & parking at actuals",
-			"Inter-state permit fees (Tamil Nadu ₹500–1,500 / Kerala ₹500–3,000 / Andhra Pradesh ₹500–2,500 / Goa ₹2,500–3,500 depending on vehicle)",
-			"Entry tickets & guide fees",
-			"Meals & accommodation",
-			"AC is switched off on steep ghat climbs for safety"
-		],
-		"sightsCovered": [
-			"Virupaksha Temple",
-			"Hampi Bazaar",
-			"Hemakuta Hill",
-			"Vittala Temple & Stone Chariot",
-			"Royal Enclosure & Mahanavami Dibba",
-			"Lotus Mahal",
-			"Elephant Stables",
-			"Queen's Bath",
-			"Ugra Narasimha statue"
-		],
-		"faqs": [
-			{
-				"question": "Do we need a guide at Hampi?",
-				"answer": "Strongly recommended — the ruins come alive with context. Licensed guides are available at Hampi Bazaar (roughly ₹800–1,500 for a half day, payable directly); our driver can help you engage one."
-			},
-			{
-				"question": "Where do we stay — Hampi or Hospet?",
-				"answer": "Hospet (13 km away) has the widest range of proper hotels and is the default halt in this plan. Kamalapura and the island side have character stays too; the cab works with any of them."
-			},
-			{
-				"question": "When is the best season for this trip?",
-				"answer": "October to February is ideal — daytime highs stay bearable and mornings are crisp. Summer visits still work with our early-morning-heavy itinerary, but expect 35°C+ afternoons."
-			},
-			{
-				"question": "Can we add the Anjaneya Hill (Hanuman temple) or Tungabhadra Dam?",
-				"answer": "Anjanadri Hill across the river adds about 2 hours including the 575-step climb — doable on day 2 if you start at 7 AM sharp. The Tungabhadra Dam viewpoint is a quick stop already flagged in the plan."
-			}
-		],
-		"relatedPackages": [
-			"chikmagalur-2-days",
-			"mysore-1-day-tour"
 		],
 		"popular": false
 	}

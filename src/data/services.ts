@@ -51,7 +51,7 @@ export const SERVICES: ServicePage[] = [
 		name: "Outstation Cabs",
 		path: "/outstation-cabs-bangalore/",
 		description: "One-way drops & round trips across South India",
-		priceHook: "from ₹12/km",
+		priceHook: "from ₹13/km",
 		waMessage:
 			"Hi! I want to book an outstation cab from Bangalore. Please share the fare.",
 		icon: "lucide:mountain",

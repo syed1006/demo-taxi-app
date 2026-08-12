@@ -44,4 +44,4 @@ Avoid leaving Mysore between 5 and 7 PM on Sundays — half of Bangalore has the
 
 ## What it costs by cab
 
-A sedan runs **₹2,799 one-way** or **₹5,100 round trip** on the [Bangalore to Mysore taxi](/bangalore-to-mysore-taxi/) page — fuel and driver bata included, tolls at actuals. Travelling one direction only? A [one-way drop](/one-way-cab-bangalore/) means you never pay for the return you don't use.
+A sedan runs **₹3,000 one-way** or **₹5,800 round trip** on the [Bangalore to Mysore taxi](/bangalore-to-mysore-taxi/) page — fuel and driver bata included, tolls at actuals. Travelling one direction only? A [one-way drop](/one-way-cab-bangalore/) means you never pay for the return you don't use.

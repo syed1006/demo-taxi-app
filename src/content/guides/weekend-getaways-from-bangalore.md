@@ -14,7 +14,7 @@ faqs:
   - question: "Which ones work as day trips vs overnight?"
     answer: "Nandi Hills, Lepakshi, Mysore, Shivanasamudra and Hogenakkal are comfortable day trips. Chikmagalur and Coorg deserve an overnight — the drive is 5+ hours each way."
   - question: "What does a cab for a weekend trip cost?"
-    answer: "Day-trip round trips start around ₹3,300 for a sedan (Nandi Hills), with each route's exact one-way and round-trip fares on its page. Multi-day trips bill ₹12/km with a 300 km/day minimum, or take a fixed-price package."
+    answer: "Day-trip round trips start around ₹3,300 for a sedan (Nandi Hills), with each route's exact one-way and round-trip fares on its page. Multi-day trips bill ₹13/km with a 300 km/day minimum, or take a fixed-price package."
   - question: "When's the best season for these trips?"
     answer: "October to February suits all seven. The waterfalls (Shivanasamudra, Hogenakkal) peak just after the monsoon, July to October; the coffee hills are misty and green year-round."
 ---

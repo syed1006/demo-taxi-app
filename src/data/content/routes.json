@@ -98,8 +98,8 @@
 		"days": 1,
 		"fares": {
 			"sedan": {
-				"oneWay": 2100,
-				"roundTrip": 3300
+				"oneWay": 3000,
+				"roundTrip": 5800
 			}
 		},
 		"summary": "Vijayanagara-era Veerabhadra temple across the Andhra border, famed for its hanging pillar and giant Nandi.",
@@ -144,7 +144,7 @@
 		"faqs": [
 			{
 				"question": "Is a one-way drop to Lepakshi available?",
-				"answer": "Yes, the sedan one-way fare is ₹2,100. Since Lepakshi village has virtually no return cabs, most guests book the ₹3,300 round trip with the driver waiting at the temple."
+				"answer": "Yes, the sedan one-way fare is ₹3,000. Since Lepakshi village has virtually no return cabs, most guests book the ₹5,800 round trip with the driver waiting at the temple."
 			},
 			{
 				"question": "Do we need to carry ID for the Andhra Pradesh border?",
@@ -272,8 +272,8 @@
 		"days": 1,
 		"fares": {
 			"sedan": {
-				"oneWay": 2799,
-				"roundTrip": 5100
+				"oneWay": 3000,
+				"roundTrip": 5800
 			}
 		},
 		"summary": "The palace city, now just 3 hours away on the NH-275 expressway — palace, Chamundi Hills and Srirangapatna en route.",
@@ -322,7 +322,7 @@
 		"faqs": [
 			{
 				"question": "Is a one-way drop to Mysore available?",
-				"answer": "Yes — the sedan one-way fare is ₹2,799 and the round trip is ₹5,100. One-way drops are popular on this corridor since the expressway makes it a three-hour hop."
+				"answer": "Yes — the sedan one-way fare is ₹3,000 and the round trip is ₹5,800. One-way drops are popular on this corridor since the expressway makes it a three-hour hop."
 			},
 			{
 				"question": "How long does Bangalore to Mysore take by taxi now?",
@@ -821,7 +821,6 @@
 			"mysore"
 		],
 		"packageSlugs": [
-			"wayanad-2-days",
 			"wayanad-3-days"
 		],
 		"popular": false,
@@ -1012,8 +1011,8 @@
 		"days": 1,
 		"fares": {
 			"sedan": {
-				"oneWay": 4999,
-				"roundTrip": 6499
+				"oneWay": 5500,
+				"roundTrip": 8600
 			}
 		},
 		"summary": "Day-trip darshan run to Tirumala — 250 km via Kolar and Chittoor with doorstep pickup as early as 3 AM.",
@@ -1100,7 +1099,7 @@
 		"fares": {
 			"sedan": {
 				"oneWay": 5999,
-				"roundTrip": 8299
+				"roundTrip": 8600
 			}
 		},
 		"summary": "French Quarter cafes, Auroville and the Rock Beach promenade — a 310 km coastal escape best done over two days.",
@@ -1459,7 +1458,7 @@
 		"fares": {
 			"sedan": {
 				"oneWay": 6599,
-				"roundTrip": 8999
+				"roundTrip": 12900
 			}
 		},
 		"summary": "UNESCO ruins of Vijayanagara — 340 km via Chitradurga to boulder hills, the Stone Chariot and coracle rides.",
@@ -1533,7 +1532,7 @@
 			"chikmagalur"
 		],
 		"packageSlugs": [
-			"hampi-2-days"
+			"hampi-3-days"
 		],
 		"popular": true,
 		"rating": 4.8,
@@ -1721,8 +1720,8 @@
 		"days": 1,
 		"fares": {
 			"sedan": {
-				"oneWay": 4299,
-				"roundTrip": 5599
+				"oneWay": 4500,
+				"roundTrip": 6500
 			}
 		},
 		"summary": "The golden Sripuram temple and a 16th-century moated fort — an easy 215 km day run via Krishnagiri.",
@@ -1805,8 +1804,8 @@
 		"days": 1,
 		"fares": {
 			"sedan": {
-				"oneWay": 4299,
-				"roundTrip": 5599
+				"oneWay": 4500,
+				"roundTrip": 6500
 			}
 		},
 		"summary": "Gateway to Yercaud — 215 km of smooth six-lane NH-44 through Krishnagiri and Dharmapuri in 3.5 hours.",

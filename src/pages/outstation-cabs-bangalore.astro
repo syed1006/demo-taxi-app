@@ -14,9 +14,9 @@ import { formatINR } from "../lib/fare";
 import type { FaqItem } from "../data/faq";
 
 const path = "/outstation-cabs-bangalore/";
-const title = "Outstation Cabs in Bangalore — One-Way & Round Trip from ₹12/km";
+const title = "Outstation Cabs in Bangalore — One-Way & Round Trip from ₹13/km";
 const description =
-	"Book outstation cabs from Bangalore: Sedan ₹12/km, Innova Crysta ₹21/km, Tempo Traveller ₹24/km. One-way drops, round trips & multi-day tours. Call +91 70227 62929.";
+	"Book outstation cabs from Bangalore: Sedan ₹13/km, Innova Crysta ₹21/km, Tempo Traveller ₹24/km. One-way drops, round trips & multi-day tours. Call +91 70227 62929.";
 
 const perKmRows = VEHICLE_CLASS_IDS.map((id) => {
 	const rates = RATE_CARD[id];
@@ -77,7 +77,7 @@ const faqs: FaqItem[] = [
 		subtitle="One-way drops and round trips to 21+ destinations across South India — transparent per-km pricing, verified drivers, fuel and driver bata included."
 		chips={[
 			{ icon: "lucide:map-pin", label: "21+ routes" },
-			{ icon: "lucide:wallet", label: "From ₹12/km" },
+			{ icon: "lucide:wallet", label: "From ₹13/km" },
 			{ icon: "lucide:clock", label: "24/7 pickups" },
 		]}
 		bookHref="/book/?type=outstation"

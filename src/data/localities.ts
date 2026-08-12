@@ -89,7 +89,7 @@ export const LOCALITIES: Locality[] = [
 			},
 			{
 				question: "Do you do one-way drops to other cities from Koramangala?",
-				answer: "Yes — one-way drops bill one side only, with fixed fares to 20 corridors including Mysore ₹2,799 and Chennai ₹6,200, picked up from your door.",
+				answer: "Yes — one-way drops bill one side only, with fixed fares to 20 corridors including Mysore ₹3,000 and Chennai ₹6,200, picked up from your door.",
 			},
 		],
 	},

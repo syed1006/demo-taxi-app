@@ -47,12 +47,12 @@ Best for shopping days, guest visits, weddings and multi-stop errands. Extra hou
 
 | Vehicle | Rate | Driver bata/day |
 | --- | --- | --- |
-| Sedan | ₹12/km | ₹400 |
-| SUV | ₹17/km | ₹500 |
+| Sedan | ₹13/km | ₹400 |
+| SUV | ₹18/km | ₹500 |
 | Innova Crysta | ₹21/km | ₹600 |
 | Tempo Traveller | ₹24/km | ₹600 |
 
-Billing is on the full round-trip distance with a **300 km/day minimum**. Popular corridors skip the math entirely with fixed fares — Mysore ₹5,100 round trip, Coorg, Ooty, Tirupati and 17 more on the [routes page](/outstation-cabs-bangalore/).
+Billing is on the full round-trip distance with a **300 km/day minimum**. Popular corridors skip the math entirely with fixed fares — Mysore ₹5,800 round trip, Coorg, Ooty, Tirupati and 17 more on the [routes page](/outstation-cabs-bangalore/).
 
 ## Outstation — one-way drops
 
